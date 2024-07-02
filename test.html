@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page with Stripe.js and Radar Sessions</title>
+    <link rel="icon" href="favicon.jpg" type="image/x-icon">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // This is a public test key. Replace it with your own live publishable key in production.
+            // Do not use your secret key here.
+            const stripe = Stripe('pk_live_51L63edGbNH48jt3iy6rj7H4cRZQcM96OYFl2bf4R1NKfpvgL8eJaNKwQfaVxtp0iyELpIfU9F0cr9yxI2g5C2OxZ00AYjDf0Za');
+            console.log('Creating Session.');
+            createRadarSession(stripe);
+        });
+
+        async function createRadarSession(stripe) {
+            try {
+                const { radarSession, error } = await stripe.createRadarSession();
+                if (error) {
+                    // Typically you should not abort your checkout flow if an error is returned.
+                    console.error(error);
+                } else {
+                    // Send the Radar Session to your server or store it and
+                    // send it later when the user submits their payment details.
+                    radarSessionHandler(radarSession);
+                }
+            } catch (error) {
+                console.error('An error occurred:', error);
+            }
+        }
+
+        function radarSessionHandler(radarSession) {
+            // Here, implement what you want to do with the radarSession object.
+            // For example, send it to your server.
+            console.log('Radar Session:', radarSession);
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to Our Landing Page</h1>
+    <p>Integrating Stripe.js with Radar Session creation</p>
+    <!-- Your landing page content goes here -->
+</body>
+</html>
