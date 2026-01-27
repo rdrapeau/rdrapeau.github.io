@@ -111,10 +111,19 @@
         }
 
         .project-name {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 1.1rem;
             font-weight: 500;
             color: #111;
             margin-bottom: 0.35rem;
+        }
+
+        .project-favicon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
         }
 
         .project-description {
@@ -162,18 +171,27 @@
             <p class="bio" style="margin-bottom: 1.5rem;">These are random things I've built on the side.</p>
             <div class="projects">
                 <a href="/org_planning/" class="project">
-                    <div class="project-name">Org Planning Tool</div>
+                    <div class="project-name">
+                        <img src="/org_planning/favicon.svg" alt="" class="project-favicon">
+                        Org Planning Tool
+                    </div>
                     <div class="project-description">A Monte Carlo simulation tool for engineering leaders to model
                         organizational growth, promotions, and budget planning across performance cycles.</div>
                     <div class="project-date" data-project="org_planning">Last updated: Jan 2026</div>
                 </a>
                 <a href="/connections/" class="project">
-                    <div class="project-name">Connections</div>
+                    <div class="project-name">
+                        <img src="/connections/favicon.svg" alt="" class="project-favicon">
+                        Connections
+                    </div>
                     <div class="project-description">A simple game I made to play at my wedding.</div>
                     <div class="project-date" data-project="connections">Last updated: Jan 2026</div>
                 </a>
                 <a href="/stitch_by_number/" class="project">
-                    <div class="project-name">Stitch by Number</div>
+                    <div class="project-name">
+                        <img src="/stitch_by_number/favicon.svg" alt="" class="project-favicon">
+                        Stitch by Number
+                    </div>
                     <div class="project-description">A tool that converts images into needlepoint stitch-ready designs
                         with thread color mapping and PDF export.</div>
                     <div class="project-date" data-project="stitch_by_number">Last updated: Jan 2026</div>
