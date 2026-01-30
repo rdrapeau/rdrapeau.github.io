@@ -177,15 +177,15 @@
                     </div>
                     <div class="project-description">A Monte Carlo simulation tool for engineering leaders to model
                         organizational growth, promotions, and budget planning across performance cycles.</div>
-                    <div class="project-date" data-project="org_planning">Last updated: Jan 2026</div>
+                    <div class="project-date" data-project="org_planning">Last updated: --</div>
                 </a>
                 <a href="/connections/" class="project">
                     <div class="project-name">
-                        <img src="/connections/favicon.jpg" alt="" class="project-favicon">
+                        <img src="/connections/icon.jpg" alt="" class="project-favicon">
                         Connections
                     </div>
                     <div class="project-description">A simple game I made to play at my wedding.</div>
-                    <div class="project-date" data-project="connections">Last updated: Jan 2026</div>
+                    <div class="project-date" data-project="connections">Last updated: --</div>
                 </a>
                 <a href="/stitch_by_number/" class="project">
                     <div class="project-name">
@@ -194,11 +194,30 @@
                     </div>
                     <div class="project-description">A tool that converts images into needlepoint stitch-ready designs
                         with thread color mapping and PDF export.</div>
-                    <div class="project-date" data-project="stitch_by_number">Last updated: Jan 2026</div>
+                    <div class="project-date" data-project="stitch_by_number">Last updated: --</div>
                 </a>
             </div>
         </section>
     </div>
+    <script>
+        // Fetch build dates from each project's build-info.json
+        const projects = ['org_planning', 'connections', 'stitch_by_number'];
+
+        projects.forEach(async (project) => {
+            try {
+                const response = await fetch(`/${project}/build-info.json`);
+                if (response.ok) {
+                    const info = await response.json();
+                    const element = document.querySelector(`[data-project="${project}"]`);
+                    if (element && info.buildDate) {
+                        element.textContent = `Last updated: ${info.buildDate}`;
+                    }
+                }
+            } catch (e) {
+                // Silently fail - leave as "--" if build-info.json doesn't exist
+            }
+        });
+    </script>
 </body>
 
 </html>
