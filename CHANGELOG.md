@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-02-10] - In Development Tag
+
+### Added
+- "In Development" badge/tag for the Photo Stacker project card on the homepage
+- Reusable `.tag` and `.tag-in-development` CSS classes for project status badges
+
 ## [2026-01-30] - Build Date Automation
 
 ### Changed
