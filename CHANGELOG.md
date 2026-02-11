@@ -2,10 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2026-02-10] - In Development Tag
+## [2026-02-10] - Dark Mode, Animations & In Development Tag
 
 ### Added
-- "In Development" badge/tag for the Photo Stacker project card on the homepage
+- Automatic dark mode via `prefers-color-scheme: dark` media query (follows browser/OS setting)
+- Subtle fade-in-on-scroll animations for header and project cards using `IntersectionObserver`
+- Hover lift effect (`translateY(-2px)`) on project cards
+- `prefers-reduced-motion` accessibility support — animations disabled when user prefers reduced motion
+- "In Development" badge/tag for the Photo Stacker project card
 - Reusable `.tag` and `.tag-in-development` CSS classes for project status badges
 
 ## [2026-01-30] - Build Date Automation
