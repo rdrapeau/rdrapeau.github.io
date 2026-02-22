@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - New project card for the 1Password OPVault Firefox Extension linking to https://github.com/rdrapeau/1password_extension
-- Uses an inline GitHub SVG icon as the favicon (external project, no hosted sub-app)
+- Added official project icon SVG and "In Development" tag to the card
 - Added `.fade-in.visible:nth-child(5)` animation delay for the new card
 
 ## [2026-02-10] - Dark Mode, Animations & In Development Tag
