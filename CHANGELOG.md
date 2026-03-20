@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-03-19] - Added Rowing Performance Analyzer
+
+### Added
+- New project card for the Rowing Performance Analyzer (Concept2 rowing analytics)
+- Built and deployed the app to `/rowing_performance/` subdirectory
+- Created `generate-build-info.js`, favicon.svg, and deploy script for the rowing_performance project
+- Added 6th `.fade-in.visible:nth-child(6)` animation delay
+
 ## [2026-02-21] - Added 1Password Extension Project
 
 ### Added

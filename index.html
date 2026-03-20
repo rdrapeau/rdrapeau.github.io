@@ -266,6 +266,10 @@
             animation-delay: 0.4s;
         }
 
+        .fade-in.visible:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .fade-in {
                 opacity: 1;
@@ -353,12 +357,22 @@
                         1Password OPVault — all decryption in a separate Node.js process, with Touch ID support on
                         macOS.</div>
                 </a>
+                <a href="/rowing_performance/" class="project fade-in">
+                    <div class="project-name">
+                        <img src="/rowing_performance/favicon.svg" alt="" class="project-favicon">
+                        Rowing Performance Analyzer
+                        <span class="tag tag-in-development">In Development</span>
+                    </div>
+                    <div class="project-description">A Concept2 rowing analytics tool — upload CSV workout data to track
+                        VO₂ Max, HR drift, power efficiency, and cardiovascular progress over time.</div>
+                    <div class="project-date" data-project="rowing_performance">Last updated: --</div>
+                </a>
             </div>
         </section>
     </div>
     <script>
         // Fetch build dates from each project's build-info.json
-        const projects = ['org_planning', 'connections', 'stitch_by_number', 'photo_stacker'];
+        const projects = ['org_planning', 'connections', 'stitch_by_number', 'photo_stacker', 'rowing_performance'];
 
         projects.forEach(async (project) => {
             try {

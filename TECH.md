@@ -25,6 +25,7 @@ The main `index.html` fetches these files and updates the project cards dynamica
 - **org_planning** - Vite + React app for Monte Carlo org planning simulations
 - **stitch_by_number** - Vite + React + TypeScript app for needlepoint design
 - **connections** - Next.js app (static export to `out/` directory)
+- **rowing_performance** - Vite + React + Tailwind app for Concept2 rowing analytics
 
 ### Deployment
 Each project has a `deploy` script in its `package.json` that:
@@ -47,4 +48,7 @@ rdrapeau.github.io/
 └── connections/         # Next.js static export
     ├── build-info.json  # Build metadata
     └── _next/           # Next.js assets
+├── rowing_performance/  # Vite build output
+│   ├── build-info.json  # Build metadata
+│   └── assets/          # JS/CSS bundles
 ```
