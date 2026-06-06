@@ -379,42 +379,97 @@
         </section>
     </div>
     <script>
-        // Fetch build dates from each project's build-info.json
+        // Fetch build dates from each project's build-info.json and sort them dynamically
         const projects = ['fi_sim', 'org_planning', 'connections', 'stitch_by_number', 'photo_stacker', 'rowing_performance'];
+        const projectsContainer = document.querySelector('.projects');
+        
+        // Static timestamps for project links that do not have build-info.json
+        const staticTimestamps = {
+            'https://github.com/rdrapeau/1password_extension': new Date('2026-02-01T00:00:00.000Z').toISOString()
+        };
 
-        projects.forEach(async (project) => {
-            try {
-                const response = await fetch(`/${project}/build-info.json`);
-                if (response.ok) {
-                    const info = await response.json();
-                    const element = document.querySelector(`[data-project="${project}"]`);
-                    if (element && info.buildDate) {
-                        element.textContent = `Last updated: ${info.buildDate}`;
+        async function loadAndSortProjects() {
+            const fetchPromises = projects.map(async (project) => {
+                let timestamp = new Date(0).toISOString(); // Default fallback
+                let buildDate = '--';
+
+                try {
+                    const response = await fetch(`/${project}/build-info.json`);
+                    if (response.ok) {
+                        const info = await response.json();
+                        if (info.timestamp) {
+                            timestamp = info.timestamp;
+                        }
+                        if (info.buildDate) {
+                            buildDate = info.buildDate;
+                        }
                     }
+                } catch (e) {
+                    // Silently fail
                 }
-            } catch (e) {
-                // Silently fail - leave as "--" if build-info.json doesn't exist
-            }
-        });
+
+                const element = document.querySelector(`[data-project="${project}"]`);
+                if (element) {
+                    element.textContent = `Last updated: ${buildDate}`;
+                }
+
+                return { project, timestamp };
+            });
+
+            const results = await Promise.all(fetchPromises);
+
+            const timestampMap = {};
+            results.forEach(r => {
+                timestampMap[r.project] = r.timestamp;
+            });
+
+            const projectElements = Array.from(document.querySelectorAll('.project'));
+
+            projectElements.sort((a, b) => {
+                const dateElA = a.querySelector('[data-project]');
+                const dateElB = b.querySelector('[data-project]');
+                const projA = dateElA ? dateElA.getAttribute('data-project') : null;
+                const projB = dateElB ? dateElB.getAttribute('data-project') : null;
+
+                const hrefA = a.getAttribute('href');
+                const hrefB = b.getAttribute('href');
+
+                const timeA = projA ? new Date(timestampMap[projA] || 0) : new Date(staticTimestamps[hrefA] || 0);
+                const timeB = projB ? new Date(timestampMap[projB] || 0) : new Date(staticTimestamps[hrefB] || 0);
+
+                return timeB - timeA; // Descending order (most recent first)
+            });
+
+            projectElements.forEach(el => {
+                projectsContainer.appendChild(el);
+            });
+
+            // Re-trigger scroll animations after DOM reordering to ensure they fade in correctly
+            initializeAnimations();
+        }
 
         // Scroll-triggered fade-in animations
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const fadeEls = document.querySelectorAll('.fade-in');
+        function initializeAnimations() {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const fadeEls = document.querySelectorAll('.fade-in');
 
-        if (prefersReducedMotion) {
-            fadeEls.forEach(el => el.classList.add('visible'));
-        } else {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
+            if (prefersReducedMotion) {
+                fadeEls.forEach(el => el.classList.add('visible'));
+            } else {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
 
-            fadeEls.forEach(el => observer.observe(el));
+                fadeEls.forEach(el => observer.observe(el));
+            }
         }
+
+        loadAndSortProjects();
     </script>
 </body>
 
