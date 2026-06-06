@@ -304,6 +304,14 @@
             <h2 class="fade-in">Projects</h2>
             <p class="bio fade-in" style="margin-bottom: 1.5rem;">These are random things I've built on the side.</p>
             <div class="projects">
+                <a href="/fi_sim/" class="project fade-in">
+                    <div class="project-name">
+                        <img src="/fi_sim/favicon.svg" alt="" class="project-favicon">
+                        Financial Simulator (FiSim)
+                    </div>
+                    <div class="project-description">A privacy-first, client-side personal finance projection planner featuring localized U.S., UK, and Canadian tax engines, RMDs, and Monte Carlo historical sequence-of-returns stress testing.</div>
+                    <div class="project-date" data-project="fi_sim">Last updated: --</div>
+                </a>
                 <a href="/org_planning/" class="project fade-in">
                     <div class="project-name">
                         <img src="/org_planning/favicon.svg" alt="" class="project-favicon">
@@ -372,7 +380,7 @@
     </div>
     <script>
         // Fetch build dates from each project's build-info.json
-        const projects = ['org_planning', 'connections', 'stitch_by_number', 'photo_stacker', 'rowing_performance'];
+        const projects = ['fi_sim', 'org_planning', 'connections', 'stitch_by_number', 'photo_stacker', 'rowing_performance'];
 
         projects.forEach(async (project) => {
             try {
