@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-29] - Stripe Wordmark Sizing Polish
+
+### Changed
+- Scaled Stripe wordmark logo size by 10% (height 1.025em) and adjusted optical baseline alignment.
+
 ## [2026-08-29] - Grid Column Width Layout Stabilization
 
 ### Fixed
