@@ -208,72 +208,6 @@
             color: #4338ca;
         }
 
-        /* --- Research Header & Scholar Stats Badge --- */
-        .research-header-row {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.75rem;
-        }
-
-        .scholar-stats-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.85rem;
-            padding: 0.5rem 0.85rem;
-            border-radius: 8px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
-            font-size: 0.75rem;
-        }
-
-        .scholar-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .scholar-num {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.1;
-        }
-
-        .scholar-label {
-            font-size: 0.62rem;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-
-        .scholar-divider {
-            width: 1px;
-            height: 22px;
-            background: #e2e8f0;
-        }
-
-        .scholar-link-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.25rem 0.55rem;
-            border-radius: 5px;
-            background: #eef2ff;
-            color: #4f46e5;
-            text-decoration: none;
-            font-size: 0.72rem;
-            font-weight: 600;
-            transition: all 0.15s;
-        }
-
-        .scholar-link-btn:hover {
-            background: #e0e7ff;
-            color: #3730a3;
-        }
-
         /* --- Research Cards & Badges --- */
         .research-grid {
             display: grid;
@@ -348,27 +282,11 @@
         .research-footer {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
             gap: 0.5rem;
             margin-top: 1.1rem;
             padding-top: 0.85rem;
             border-top: 1px solid #f1f5f9;
-        }
-
-        .citation-count {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: #64748b;
-        }
-
-        .cite-icon {
-            width: 13px;
-            height: 13px;
-            opacity: 0.75;
         }
 
         .research-actions {
@@ -935,30 +853,6 @@
                 color: #c7d2fe;
             }
 
-            /* Dark mode for Research */
-            .scholar-stats-badge {
-                background: #181b24;
-                border-color: #262b38;
-            }
-
-            .scholar-num {
-                color: #f8fafc;
-            }
-
-            .scholar-divider {
-                background: #262b38;
-            }
-
-            .scholar-link-btn {
-                background: #1e1b4b;
-                color: #c7d2fe;
-            }
-
-            .scholar-link-btn:hover {
-                background: #312e81;
-                color: #e0e7ff;
-            }
-
             .paper-authors {
                 color: #94a3b8;
             }
@@ -994,10 +888,6 @@
 
             .research-footer {
                 border-top-color: #232834;
-            }
-
-            .citation-count {
-                color: #94a3b8;
             }
 
             .action-pill {
@@ -1545,32 +1435,8 @@
         </section>
 
         <section id="section-research" class="tab-content" role="tabpanel" aria-labelledby="tab-research" style="display: none;">
-            <div class="research-header-row fade-in">
-                <div>
-                    <h2>Research & Publications</h2>
-                    <p class="section-subheading">Peer-reviewed papers in human-in-the-loop ML, crowdsourcing, multimodal accessibility, and mechanism design.</p>
-                </div>
-                <div class="scholar-stats-badge">
-                    <div class="scholar-stat">
-                        <span class="scholar-num">186</span>
-                        <span class="scholar-label">Citations</span>
-                    </div>
-                    <div class="scholar-divider"></div>
-                    <div class="scholar-stat">
-                        <span class="scholar-num">4</span>
-                        <span class="scholar-label">h-index</span>
-                    </div>
-                    <a href="https://scholar.google.com/citations?user=yghhd38AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="scholar-link-btn" title="View Google Scholar Profile">
-                        <svg viewBox="0 0 24 24" width="13" height="13" xmlns="http://www.w3.org/2000/svg" style="margin-right: 4px; vertical-align: -2px;">
-                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
-                        </svg>
-                        Google Scholar ↗
-                    </a>
-                </div>
-            </div>
+            <h2 class="fade-in">Research & Publications</h2>
+            <p class="section-subheading fade-in">Peer-reviewed papers in human-in-the-loop ML, crowdsourcing, multimodal accessibility, and mechanism design.</p>
 
             <div class="research-grid">
                 <!-- 1. Microtalk -->
@@ -1588,31 +1454,10 @@
                         <div class="project-description">
                             A peer argumentation protocol (<em>Assess &rarr; Justify &rarr; Reconsider</em>) where crowd workers exchange structured rationales, boosting individual and aggregate classification accuracy by <strong>+20%</strong> on challenging NLP tasks without ground truth.
                         </div>
-                        <div class="project-preview" data-preview="research_microtalk">
-                            <div class="preview-header">
-                                <span class="preview-engine-tag">Peer Argumentation Lift Flow</span>
-                                <span class="preview-metrics" id="metrics-research_microtalk">Justify &rarr; Reconsider · +20.4% Acc</span>
-                            </div>
-                            <div class="preview-canvas-wrapper">
-                                <canvas class="preview-canvas" id="canvas-research_microtalk"></canvas>
-                            </div>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tech-tag">Crowdsourcing</span>
-                            <span class="tech-tag">Human-in-the-Loop ML</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">Argumentation</span>
-                        </div>
                     </div>
                     <div class="project-footer research-footer">
-                        <div class="citation-count">
-                            <svg viewBox="0 0 16 16" fill="currentColor" class="cite-icon"><path d="M3.5 4A1.5 1.5 0 002 5.5v3A1.5 1.5 0 003.5 10H5v2H3.5a.5.5 0 01-.5-.5V11H1.5A1.5 1.5 0 010 9.5v-4A1.5 1.5 0 011.5 4h2zm7 0A1.5 1.5 0 009 5.5v3A1.5 1.5 0 0010.5 10H12v2h-1.5a.5.5 0 01-.5-.5V11H8.5A1.5 1.5 0 017 9.5v-4A1.5 1.5 0 018.5 4h2z"/></svg>
-                            <span>122 citations</span>
-                        </div>
-                        <div class="research-actions">
-                            <button class="action-pill copy-bibtex-btn" data-bibtex="microtalk">Cite / BibTeX</button>
-                            <a href="https://ojs.aaai.org/index.php/HCOMP/article/view/13274" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary">PDF ↗</a>
-                        </div>
+                        <button class="action-pill copy-bibtex-btn" data-bibtex="microtalk">Cite / BibTeX</button>
+                        <a href="https://ojs.aaai.org/index.php/HCOMP/article/view/13274" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary">PDF ↗</a>
                     </div>
                 </div>
 
@@ -1631,31 +1476,10 @@
                         <div class="project-description">
                             A multimodal accessibility system combining physical relief graphics with smartphone camera QR scanning and finger-pointing guidance to provide localized audio explanations for complex STEM diagrams.
                         </div>
-                        <div class="project-preview" data-preview="research_tactile">
-                            <div class="preview-header">
-                                <span class="preview-engine-tag">Multimodal Diagram Scanner</span>
-                                <span class="preview-metrics" id="metrics-research_tactile">Node 3: Chloroplast · 440Hz Audio</span>
-                            </div>
-                            <div class="preview-canvas-wrapper">
-                                <canvas class="preview-canvas" id="canvas-research_tactile"></canvas>
-                            </div>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tech-tag">Accessibility</span>
-                            <span class="tech-tag">Multimodal HCI</span>
-                            <span class="tech-tag">Computer Vision</span>
-                            <span class="tech-tag">Tactile Audio</span>
-                        </div>
                     </div>
                     <div class="project-footer research-footer">
-                        <div class="citation-count">
-                            <svg viewBox="0 0 16 16" fill="currentColor" class="cite-icon"><path d="M3.5 4A1.5 1.5 0 002 5.5v3A1.5 1.5 0 003.5 10H5v2H3.5a.5.5 0 01-.5-.5V11H1.5A1.5 1.5 0 010 9.5v-4A1.5 1.5 0 011.5 4h2zm7 0A1.5 1.5 0 009 5.5v3A1.5 1.5 0 0010.5 10H12v2h-1.5a.5.5 0 01-.5-.5V11H8.5A1.5 1.5 0 017 9.5v-4A1.5 1.5 0 018.5 4h2z"/></svg>
-                            <span>45 citations</span>
-                        </div>
-                        <div class="research-actions">
-                            <button class="action-pill copy-bibtex-btn" data-bibtex="tactile">Cite / BibTeX</button>
-                            <a href="https://dl.acm.org/doi/10.1145/2840742" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary">ACM DL ↗</a>
-                        </div>
+                        <button class="action-pill copy-bibtex-btn" data-bibtex="tactile">Cite / BibTeX</button>
+                        <a href="https://dl.acm.org/doi/10.1145/2840742" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary">ACM DL ↗</a>
                     </div>
                 </div>
 
@@ -1674,31 +1498,10 @@
                         <div class="project-description">
                             A crowdsourced forecasting mechanism that elicits multiple ranked guesses per individual to capture heterogeneous confidence distributions, creating certainty-weighted crowd aggregations that outperform standard mean estimates.
                         </div>
-                        <div class="project-preview" data-preview="research_guesses">
-                            <div class="preview-header">
-                                <span class="preview-engine-tag">Multi-Guess Density Aggregator</span>
-                                <span class="preview-metrics" id="metrics-research_guesses">Certainty-Weighted P50 · &mu;=42.4</span>
-                            </div>
-                            <div class="preview-canvas-wrapper">
-                                <canvas class="preview-canvas" id="canvas-research_guesses"></canvas>
-                            </div>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tech-tag">Mechanism Design</span>
-                            <span class="tech-tag">Social Choice</span>
-                            <span class="tech-tag">Crowd Forecasting</span>
-                            <span class="tech-tag">Economics & ML</span>
-                        </div>
                     </div>
                     <div class="project-footer research-footer">
-                        <div class="citation-count">
-                            <svg viewBox="0 0 16 16" fill="currentColor" class="cite-icon"><path d="M3.5 4A1.5 1.5 0 002 5.5v3A1.5 1.5 0 003.5 10H5v2H3.5a.5.5 0 01-.5-.5V11H1.5A1.5 1.5 0 010 9.5v-4A1.5 1.5 0 011.5 4h2zm7 0A1.5 1.5 0 009 5.5v3A1.5 1.5 0 0010.5 10H12v2h-1.5a.5.5 0 01-.5-.5V11H8.5A1.5 1.5 0 017 9.5v-4A1.5 1.5 0 018.5 4h2z"/></svg>
-                            <span>15 citations</span>
-                        </div>
-                        <div class="research-actions">
-                            <button class="action-pill copy-bibtex-btn" data-bibtex="guesses">Cite / BibTeX</button>
-                            <a href="https://dl.acm.org/doi/10.1145/2764468.2764516" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary">ACM DL ↗</a>
-                        </div>
+                        <button class="action-pill copy-bibtex-btn" data-bibtex="guesses">Cite / BibTeX</button>
+                        <a href="https://dl.acm.org/doi/10.1145/2764468.2764516" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary">ACM DL ↗</a>
                     </div>
                 </div>
 
@@ -1717,31 +1520,10 @@
                         <div class="project-description">
                             A mobile acoustic speech therapy system providing children with real-time phonological feedback and articulation game mechanics, while streaming phoneme accuracy telemetry to speech-language pathologists.
                         </div>
-                        <div class="project-preview" data-preview="research_kimbee">
-                            <div class="preview-header">
-                                <span class="preview-engine-tag">Acoustic Phoneme & Pitch Wave</span>
-                                <span class="preview-metrics" id="metrics-research_kimbee">/s/ &rarr; /&theta;/ Phoneme · 94.2% Acc</span>
-                            </div>
-                            <div class="preview-canvas-wrapper">
-                                <canvas class="preview-canvas" id="canvas-research_kimbee"></canvas>
-                            </div>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tech-tag">Speech Processing</span>
-                            <span class="tech-tag">mHealth</span>
-                            <span class="tech-tag">Pediatric HCI</span>
-                            <span class="tech-tag">Acoustics</span>
-                        </div>
                     </div>
                     <div class="project-footer research-footer">
-                        <div class="citation-count">
-                            <svg viewBox="0 0 16 16" fill="currentColor" class="cite-icon"><path d="M3.5 4A1.5 1.5 0 002 5.5v3A1.5 1.5 0 003.5 10H5v2H3.5a.5.5 0 01-.5-.5V11H1.5A1.5 1.5 0 010 9.5v-4A1.5 1.5 0 011.5 4h2zm7 0A1.5 1.5 0 009 5.5v3A1.5 1.5 0 0010.5 10H12v2h-1.5a.5.5 0 01-.5-.5V11H8.5A1.5 1.5 0 017 9.5v-4A1.5 1.5 0 018.5 4h2z"/></svg>
-                            <span>4 citations</span>
-                        </div>
-                        <div class="research-actions">
-                            <button class="action-pill copy-bibtex-btn" data-bibtex="kimbee">Cite / BibTeX</button>
-                            <a href="https://scholar.google.com/citations?user=yghhd38AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary">Scholar ↗</a>
-                        </div>
+                        <button class="action-pill copy-bibtex-btn" data-bibtex="kimbee">Cite / BibTeX</button>
+                        <a href="https://scholar.google.com/citations?user=yghhd38AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary">Google Scholar ↗</a>
                     </div>
                 </div>
 
@@ -1760,30 +1542,10 @@
                         <div class="project-description">
                             An empirical study within the OneBusAway mobile transit platform investigating prosocial volunteer dynamics when transit riders crowdsource bus stop accessibility attributes (shelters, seating, sidewalk ramps).
                         </div>
-                        <div class="project-preview" data-preview="research_commute">
-                            <div class="preview-header">
-                                <span class="preview-engine-tag">OneBusAway Transit Map Telemetry</span>
-                                <span class="preview-metrics" id="metrics-research_commute">Stop #4190 · 14 Amenities Logged</span>
-                            </div>
-                            <div class="preview-canvas-wrapper">
-                                <canvas class="preview-canvas" id="canvas-research_commute"></canvas>
-                            </div>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tech-tag">Urban Informatics</span>
-                            <span class="tech-tag">OneBusAway</span>
-                            <span class="tech-tag">Civic Tech</span>
-                            <span class="tech-tag">Accessibility</span>
-                        </div>
                     </div>
                     <div class="project-footer research-footer">
-                        <div class="citation-count">
-                            <span class="tech-tag" style="padding: 0.12rem 0.45rem; font-size: 0.65rem;">OneBusAway Study</span>
-                        </div>
-                        <div class="research-actions">
-                            <button class="action-pill copy-bibtex-btn" data-bibtex="commute">Cite / BibTeX</button>
-                            <a href="https://scholar.google.com/citations?user=yghhd38AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary">Tech Report ↗</a>
-                        </div>
+                        <button class="action-pill copy-bibtex-btn" data-bibtex="commute">Cite / BibTeX</button>
+                        <a href="https://scholar.google.com/citations?user=yghhd38AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary">Tech Report ↗</a>
                     </div>
                 </div>
             </div>
@@ -2658,498 +2420,6 @@
                 return { draw };
             }
 
-            // 8. Research: Microtalk Argumentation Accuracy Pipeline
-            function initResearchMicrotalk() {
-                const canvas = document.getElementById('canvas-research_microtalk');
-                const metricsEl = document.getElementById('metrics-research_microtalk');
-                if (!canvas) return;
-
-                let stageT = 0.85;
-
-                function draw() {
-                    const setup = setupCanvas(canvas);
-                    if (!setup) return;
-                    const { ctx, width, height } = setup;
-                    const dark = isDark();
-
-                    ctx.clearRect(0, 0, width, height);
-                    const padX = 14;
-                    const padY = 12;
-                    const chartW = width - padX * 2;
-                    const chartH = height - padY * 2;
-
-                    // Baseline reference line (Majority vote: 58%)
-                    const baseY = padY + chartH - (0.58 * chartH);
-                    ctx.strokeStyle = dark ? 'rgba(239, 68, 68, 0.4)' : 'rgba(239, 68, 68, 0.35)';
-                    ctx.lineWidth = 1;
-                    ctx.setLineDash([3, 3]);
-                    ctx.beginPath();
-                    ctx.moveTo(padX, baseY);
-                    ctx.lineTo(padX + chartW, baseY);
-                    ctx.stroke();
-                    ctx.setLineDash([]);
-
-                    ctx.fillStyle = dark ? '#f87171' : '#dc2626';
-                    ctx.font = "9px 'JetBrains Mono', monospace";
-                    ctx.textAlign = 'left';
-                    ctx.fillText('Majority Vote 58%', padX + 2, baseY - 4);
-
-                    // Microtalk progression curve (58% -> 66% -> 78.4%)
-                    ctx.beginPath();
-                    for (let x = 0; x <= chartW; x += 4) {
-                        const t = x / chartW;
-                        const acc = 0.58 + (0.204 / (1 + Math.exp(-8 * (t - 0.5))));
-                        const py = padY + chartH - (acc * chartH);
-                        if (x === 0) ctx.moveTo(padX + x, py);
-                        else ctx.lineTo(padX + x, py);
-                    }
-                    ctx.strokeStyle = dark ? '#34d399' : '#059669';
-                    ctx.lineWidth = 2.2;
-                    ctx.stroke();
-
-                    // 3 Stages Markers
-                    const stages = [
-                        { name: '1. Assess', t: 0.15, acc: 0.58 },
-                        { name: '2. Justify', t: 0.5, acc: 0.68 },
-                        { name: '3. Reconsider', t: 0.85, acc: 0.784 }
-                    ];
-
-                    stages.forEach((s) => {
-                        const sx = padX + s.t * chartW;
-                        const sy = padY + chartH - (s.acc * chartH);
-
-                        ctx.strokeStyle = dark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)';
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(sx, padY);
-                        ctx.lineTo(sx, padY + chartH);
-                        ctx.stroke();
-
-                        ctx.fillStyle = dark ? '#34d399' : '#059669';
-                        ctx.beginPath();
-                        ctx.arc(sx, sy, 3.5, 0, Math.PI * 2);
-                        ctx.fill();
-
-                        ctx.fillStyle = dark ? '#94a3b8' : '#64748b';
-                        ctx.font = "8.5px 'JetBrains Mono', monospace";
-                        ctx.textAlign = 'center';
-                        ctx.fillText(s.name, sx, padY + chartH + 9);
-                    });
-
-                    // Scrubber cursor
-                    const curX = padX + stageT * chartW;
-                    const curAcc = 0.58 + (0.204 / (1 + Math.exp(-8 * (stageT - 0.5))));
-                    const curY = padY + chartH - (curAcc * chartH);
-
-                    ctx.strokeStyle = dark ? '#f8fafc' : '#0f172a';
-                    ctx.lineWidth = 1.2;
-                    ctx.setLineDash([2, 2]);
-                    ctx.beginPath();
-                    ctx.moveTo(curX, padY);
-                    ctx.lineTo(curX, padY + chartH);
-                    ctx.stroke();
-                    ctx.setLineDash([]);
-
-                    ctx.fillStyle = dark ? '#f8fafc' : '#0f172a';
-                    ctx.beginPath();
-                    ctx.arc(curX, curY, 4.5, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.strokeStyle = dark ? '#34d399' : '#059669';
-                    ctx.lineWidth = 1.5;
-                    ctx.stroke();
-
-                    if (metricsEl) {
-                        const lift = ((curAcc - 0.58) * 100).toFixed(1);
-                        const stageLabel = stageT < 0.33 ? 'Stage 1: Assess' : (stageT < 0.68 ? 'Stage 2: Justify' : 'Stage 3: Reconsider');
-                        metricsEl.textContent = `${stageLabel} · +${lift}% Accuracy Lift`;
-                    }
-                }
-
-                const wrapper = canvas.parentElement;
-                wrapper.addEventListener('pointermove', (e) => {
-                    const rect = canvas.getBoundingClientRect();
-                    stageT = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-                    draw();
-                });
-
-                draw();
-                return { draw };
-            }
-
-            // 9. Research: Tactile Graphics with a Voice (Multimodal Diagram Scanner)
-            function initResearchTactile() {
-                const canvas = document.getElementById('canvas-research_tactile');
-                const metricsEl = document.getElementById('metrics-research_tactile');
-                if (!canvas) return;
-
-                let activeNode = 2;
-                let scanPulse = 0;
-                let animId = null;
-
-                const nodes = [
-                    { x: 0.2, y: 0.35, label: 'Membrane', freq: 220 },
-                    { x: 0.45, y: 0.65, label: 'Nucleus', freq: 330 },
-                    { x: 0.72, y: 0.32, label: 'Chloroplast', freq: 440 },
-                    { x: 0.82, y: 0.72, label: 'Mitochondria', freq: 550 }
-                ];
-
-                function draw() {
-                    const setup = setupCanvas(canvas);
-                    if (!setup) return;
-                    const { ctx, width, height } = setup;
-                    const dark = isDark();
-
-                    ctx.clearRect(0, 0, width, height);
-
-                    // Connective biology tactile diagram paths
-                    ctx.strokeStyle = dark ? 'rgba(56, 189, 248, 0.2)' : 'rgba(2, 132, 199, 0.18)';
-                    ctx.lineWidth = 2;
-                    ctx.beginPath();
-                    ctx.moveTo(nodes[0].x * width, nodes[0].y * height);
-                    ctx.lineTo(nodes[1].x * width, nodes[1].y * height);
-                    ctx.lineTo(nodes[2].x * width, nodes[2].y * height);
-                    ctx.lineTo(nodes[3].x * width, nodes[3].y * height);
-                    ctx.stroke();
-
-                    // Draw tactile nodes
-                    nodes.forEach((n, idx) => {
-                        const nx = n.x * width;
-                        const ny = n.y * height;
-                        const isTarget = idx === activeNode;
-
-                        if (isTarget) {
-                            // Pulsing audio wave rings
-                            scanPulse = (scanPulse + 0.05) % (Math.PI * 2);
-                            const r1 = 8 + Math.sin(scanPulse) * 4;
-                            ctx.strokeStyle = dark ? 'rgba(56, 189, 248, 0.5)' : 'rgba(2, 132, 199, 0.4)';
-                            ctx.lineWidth = 1.2;
-                            ctx.beginPath();
-                            ctx.arc(nx, ny, r1 + 6, 0, Math.PI * 2);
-                            ctx.stroke();
-
-                            ctx.fillStyle = dark ? '#38bdf8' : '#0284c7';
-                            ctx.beginPath();
-                            ctx.arc(nx, ny, 7, 0, Math.PI * 2);
-                            ctx.fill();
-                        } else {
-                            ctx.fillStyle = dark ? '#1e293b' : '#e2e8f0';
-                            ctx.strokeStyle = dark ? '#475569' : '#94a3b8';
-                            ctx.lineWidth = 1.5;
-                            ctx.beginPath();
-                            ctx.arc(nx, ny, 5, 0, Math.PI * 2);
-                            ctx.fill();
-                            ctx.stroke();
-                        }
-
-                        ctx.fillStyle = dark ? (isTarget ? '#f8fafc' : '#94a3b8') : (isTarget ? '#0f172a' : '#64748b');
-                        ctx.font = `${isTarget ? 'bold ' : ''}9px 'JetBrains Mono', monospace`;
-                        ctx.textAlign = 'center';
-                        ctx.fillText(n.label, nx, ny - 10);
-                    });
-
-                    // Top audio waveform oscilloscope
-                    ctx.strokeStyle = dark ? '#38bdf8' : '#0284c7';
-                    ctx.lineWidth = 1.2;
-                    ctx.beginPath();
-                    const waveY = height - 16;
-                    for (let x = 14; x < width - 14; x += 3) {
-                        const freq = nodes[activeNode].freq / 120;
-                        const yOffset = Math.sin(x * 0.12 * freq + scanPulse * 2) * 5;
-                        if (x === 14) ctx.moveTo(x, waveY + yOffset);
-                        else ctx.lineTo(x, waveY + yOffset);
-                    }
-                    ctx.stroke();
-
-                    if (metricsEl) {
-                        const n = nodes[activeNode];
-                        metricsEl.textContent = `Node ${activeNode + 1}: ${n.label} · ${n.freq}Hz Audio`;
-                    }
-                }
-
-                const wrapper = canvas.parentElement;
-                wrapper.addEventListener('pointermove', (e) => {
-                    const rect = canvas.getBoundingClientRect();
-                    const rx = (e.clientX - rect.left) / rect.width;
-                    let closest = 0;
-                    let minD = Infinity;
-                    nodes.forEach((n, idx) => {
-                        const d = Math.abs(n.x - rx);
-                        if (d < minD) { minD = d; closest = idx; }
-                    });
-                    activeNode = closest;
-                    draw();
-                });
-
-                function loop() {
-                    draw();
-                    animId = requestAnimationFrame(loop);
-                }
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !prefersReducedMotion) {
-                            if (!animId) loop();
-                        } else {
-                            if (animId) cancelAnimationFrame(animId);
-                            animId = null;
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                observer.observe(canvas);
-                draw();
-                return { draw };
-            }
-
-            // 10. Research: The Wisdom of Multiple Guesses (Density Aggregator)
-            function initResearchGuesses() {
-                const canvas = document.getElementById('canvas-research_guesses');
-                const metricsEl = document.getElementById('metrics-research_guesses');
-                if (!canvas) return;
-
-                let certaintyT = 0.7;
-
-                function draw() {
-                    const setup = setupCanvas(canvas);
-                    if (!setup) return;
-                    const { ctx, width, height } = setup;
-                    const dark = isDark();
-
-                    ctx.clearRect(0, 0, width, height);
-                    const padX = 14;
-                    const padY = 12;
-                    const chartW = width - padX * 2;
-                    const chartH = height - padY * 2;
-
-                    const trueTarget = 0.52; // Ground truth target at 52% of axis
-                    const targetPx = padX + trueTarget * chartW;
-
-                    // True target vertical line
-                    ctx.strokeStyle = dark ? 'rgba(245, 158, 11, 0.6)' : 'rgba(217, 119, 6, 0.5)';
-                    ctx.lineWidth = 1.2;
-                    ctx.setLineDash([3, 3]);
-                    ctx.beginPath();
-                    ctx.moveTo(targetPx, padY);
-                    ctx.lineTo(targetPx, padY + chartH);
-                    ctx.stroke();
-                    ctx.setLineDash([]);
-
-                    // Draw naive single-guess flat spread (gray)
-                    ctx.beginPath();
-                    for (let x = 0; x <= chartW; x += 3) {
-                        const px = padX + x;
-                        const dist = (x / chartW) - 0.46;
-                        const naiveY = padY + chartH - Math.exp(-dist * dist * 12) * chartH * 0.42;
-                        if (x === 0) ctx.moveTo(px, naiveY);
-                        else ctx.lineTo(px, naiveY);
-                    }
-                    ctx.strokeStyle = dark ? '#64748b' : '#94a3b8';
-                    ctx.lineWidth = 1.2;
-                    ctx.stroke();
-
-                    // Draw certainty-weighted multi-guess aggregated density curve (purple)
-                    const spreadFactor = 18 + certaintyT * 42;
-                    ctx.beginPath();
-                    for (let x = 0; x <= chartW; x += 2) {
-                        const px = padX + x;
-                        const dist = (x / chartW) - trueTarget;
-                        const densityY = padY + chartH - Math.exp(-dist * dist * spreadFactor) * chartH * 0.88;
-                        if (x === 0) ctx.moveTo(px, densityY);
-                        else ctx.lineTo(px, densityY);
-                    }
-                    ctx.strokeStyle = dark ? '#a855f7' : '#7e22ce';
-                    ctx.lineWidth = 2.2;
-                    ctx.stroke();
-
-                    // Multi-guess participant confidence dots
-                    const sampleGuesses = [0.38, 0.48, 0.52, 0.55, 0.64];
-                    sampleGuesses.forEach((g) => {
-                        const gx = padX + g * chartW;
-                        ctx.fillStyle = dark ? 'rgba(168, 85, 247, 0.4)' : 'rgba(126, 34, 206, 0.3)';
-                        ctx.beginPath();
-                        ctx.arc(gx, padY + chartH - 6, 2.5, 0, Math.PI * 2);
-                        ctx.fill();
-                    });
-
-                    if (metricsEl) {
-                        const conf = Math.round(55 + certaintyT * 40);
-                        metricsEl.textContent = `Certainty-Weighted P50 · ${conf}% Confidence · μ=42.4`;
-                    }
-                }
-
-                const wrapper = canvas.parentElement;
-                wrapper.addEventListener('pointermove', (e) => {
-                    const rect = canvas.getBoundingClientRect();
-                    certaintyT = Math.max(0.1, Math.min(1, (e.clientX - rect.left) / rect.width));
-                    draw();
-                });
-
-                draw();
-                return { draw };
-            }
-
-            // 11. Research: KIMBEE (Acoustic Phoneme & Pitch Waveform)
-            function initResearchKimbee() {
-                const canvas = document.getElementById('canvas-research_kimbee');
-                const metricsEl = document.getElementById('metrics-research_kimbee');
-                if (!canvas) return;
-
-                let wavePhase = 0;
-                let animId = null;
-
-                function draw() {
-                    const setup = setupCanvas(canvas);
-                    if (!setup) return;
-                    const { ctx, width, height } = setup;
-                    const dark = isDark();
-
-                    ctx.clearRect(0, 0, width, height);
-                    const centerY = height / 2;
-
-                    wavePhase += 0.06;
-
-                    // Formant envelope harmonic wave 1 (F1: Pink/Magenta)
-                    ctx.beginPath();
-                    for (let x = 12; x < width - 12; x += 2) {
-                        const envelope = Math.sin((x / width) * Math.PI);
-                        const y = centerY + Math.sin(x * 0.08 + wavePhase) * 22 * envelope + Math.sin(x * 0.16 + wavePhase * 1.5) * 8 * envelope;
-                        if (x === 12) ctx.moveTo(x, y);
-                        else ctx.lineTo(x, y);
-                    }
-                    ctx.strokeStyle = dark ? '#e879f9' : '#c026d3';
-                    ctx.lineWidth = 2;
-                    ctx.stroke();
-
-                    // Formant harmonic wave 2 (F2: Violet accent)
-                    ctx.beginPath();
-                    for (let x = 12; x < width - 12; x += 3) {
-                        const envelope = Math.sin((x / width) * Math.PI);
-                        const y = centerY + Math.cos(x * 0.05 - wavePhase * 0.8) * 14 * envelope;
-                        if (x === 12) ctx.moveTo(x, y);
-                        else ctx.lineTo(x, y);
-                    }
-                    ctx.strokeStyle = dark ? 'rgba(192, 132, 252, 0.45)' : 'rgba(147, 51, 234, 0.35)';
-                    ctx.lineWidth = 1.2;
-                    ctx.stroke();
-
-                    // Pitch contour guide bars
-                    const barCount = 18;
-                    const barW = (width - 32) / barCount;
-                    for (let i = 0; i < barCount; i++) {
-                        const bx = 16 + i * barW;
-                        const barH = (Math.sin(i * 0.4 + wavePhase) * 0.5 + 0.5) * 18;
-                        ctx.fillStyle = dark ? 'rgba(232, 121, 249, 0.25)' : 'rgba(192, 38, 211, 0.2)';
-                        ctx.fillRect(bx, height - 12 - barH, barW - 3, barH);
-                    }
-
-                    if (metricsEl) {
-                        metricsEl.textContent = `/s/ → /θ/ Phoneme · Formant F1/F2 · 94.2% Acc`;
-                    }
-                }
-
-                function loop() {
-                    draw();
-                    animId = requestAnimationFrame(loop);
-                }
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !prefersReducedMotion) {
-                            if (!animId) loop();
-                        } else {
-                            if (animId) cancelAnimationFrame(animId);
-                            animId = null;
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                observer.observe(canvas);
-                draw();
-                return { draw };
-            }
-
-            // 12. Research: Contributing During the Commute (OneBusAway Transit Map Telemetry)
-            function initResearchCommute() {
-                const canvas = document.getElementById('canvas-research_commute');
-                const metricsEl = document.getElementById('metrics-research_commute');
-                if (!canvas) return;
-
-                let activeStop = 1;
-
-                const stops = [
-                    { name: '45th & Univ', x: 0.18, amenities: 12, shelter: true },
-                    { name: 'Campus Pkwy', x: 0.44, amenities: 18, shelter: true },
-                    { name: 'Montlake Blvd', x: 0.72, amenities: 14, shelter: false },
-                    { name: 'Husky Stadium', x: 0.88, amenities: 22, shelter: true }
-                ];
-
-                function draw() {
-                    const setup = setupCanvas(canvas);
-                    if (!setup) return;
-                    const { ctx, width, height } = setup;
-                    const dark = isDark();
-
-                    ctx.clearRect(0, 0, width, height);
-                    const routeY = height * 0.52;
-
-                    // Transit route line
-                    ctx.strokeStyle = dark ? '#059669' : '#10b981';
-                    ctx.lineWidth = 3;
-                    ctx.beginPath();
-                    ctx.moveTo(14, routeY);
-                    ctx.lineTo(width - 14, routeY);
-                    ctx.stroke();
-
-                    // Stops & amenity contribution bars
-                    stops.forEach((s, idx) => {
-                        const sx = s.x * width;
-                        const isTarget = idx === activeStop;
-
-                        // Contribution volume bar
-                        const barH = s.amenities * 1.5;
-                        ctx.fillStyle = isTarget ? (dark ? '#34d399' : '#059669') : (dark ? 'rgba(52, 211, 153, 0.25)' : 'rgba(5, 150, 105, 0.2)');
-                        ctx.fillRect(sx - 4, routeY - 8 - barH, 8, barH);
-
-                        // Stop marker dot
-                        ctx.fillStyle = isTarget ? (dark ? '#f8fafc' : '#0f172a') : (dark ? '#10b981' : '#059669');
-                        ctx.beginPath();
-                        ctx.arc(sx, routeY, isTarget ? 6 : 4, 0, Math.PI * 2);
-                        ctx.fill();
-                        ctx.strokeStyle = dark ? '#0f1117' : '#ffffff';
-                        ctx.lineWidth = 1.5;
-                        ctx.stroke();
-
-                        // Stop Name Label
-                        ctx.fillStyle = dark ? (isTarget ? '#f8fafc' : '#94a3b8') : (isTarget ? '#0f172a' : '#64748b');
-                        ctx.font = `${isTarget ? 'bold ' : ''}8.5px 'JetBrains Mono', monospace`;
-                        ctx.textAlign = 'center';
-                        ctx.fillText(s.name, sx, routeY + 16);
-                    });
-
-                    if (metricsEl) {
-                        const s = stops[activeStop];
-                        metricsEl.textContent = `Stop: ${s.name} · ${s.amenities} Amenities Logged (${s.shelter ? 'Sheltered' : 'Unsheltered'})`;
-                    }
-                }
-
-                const wrapper = canvas.parentElement;
-                wrapper.addEventListener('pointermove', (e) => {
-                    const rect = canvas.getBoundingClientRect();
-                    const rx = (e.clientX - rect.left) / rect.width;
-                    let closest = 0;
-                    let minD = Infinity;
-                    stops.forEach((s, idx) => {
-                        const d = Math.abs(s.x - rx);
-                        if (d < minD) { minD = d; closest = idx; }
-                    });
-                    activeStop = closest;
-                    draw();
-                });
-
-                draw();
-                return { draw };
-            }
-
             const vizList = [
                 initFiSim(),
                 initOrgPlanning(),
@@ -3157,12 +2427,7 @@
                 initStitchByNumber(),
                 initPhotoStacker(),
                 init1Password(),
-                initRowingPerformance(),
-                initResearchMicrotalk(),
-                initResearchTactile(),
-                initResearchGuesses(),
-                initResearchKimbee(),
-                initResearchCommute()
+                initRowingPerformance()
             ];
 
             window.addEventListener('resize', () => {
