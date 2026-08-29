@@ -9,6 +9,7 @@ This is a static GitHub Pages site hosting personal project showcases, mapped to
 - Static HTML with inline CSS and vanilla JavaScript
 - Automatic dark mode via `prefers-color-scheme: dark`
 - Scroll-triggered fade-in animations with `prefers-reduced-motion` accessibility support
+- **Interactive "Show, Don't Tell" Micro-Visualizers**: Zero-dependency HTML5 Canvas simulation preview widgets embedded on project cards (Monte Carlo fan charts, exposure fusion scrubbers, stroke telemetry, and probability cones) with real-time pointer scrubbing and high-DPI retina scaling.
 - Displays project cards sorted dynamically by last updated build date
 - Uses JavaScript `fetch()` to load `./<project>/build-info.json` from each project directory
 - **Path-Relative Design**: All links, images, and fetch requests use relative paths (`./`) so the site functions identically at the root domain (`drapeau.dev/`) or within preview subdirectories (`drapeau.dev/preview/pr-<number>/`).

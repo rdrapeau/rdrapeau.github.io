@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-28] - Interactive "Show, Don't Tell" Project Micro-Widgets (Phase 2)
+
+### Added
+- Embedded live interactive canvas visualizers and telemetry widgets on all project cards:
+  - **Financial Simulator (`fi_sim`)**: Sequence of returns probability cone with interactive timeline scrubber and historical stagflation comparison.
+  - **Org Planning Tool (`org_planning`)**: 35-run stochastic Monte Carlo org growth and promotion fan chart with quarterly cross-section slicing.
+  - **Connections (`connections`)**: 4x4 interactive word grid with smooth category solve and shuffle animations on hover.
+  - **Stitch by Number (`stitch_by_number`)**: Split-view needlepoint quantization canvas with interactive DMC embroidery palette density mapping.
+  - **Photo Stacker (`photo_stacker`)**: Multi-exposure HDR fusion scrubber comparing -2 EV, Mertens-fused HDR, and +2 EV with a live luminance histogram.
+  - **1Password OPVault Extension (`1password_extension`)**: Verified native messaging IPC stream and AES-256 decryption telemetry.
+  - **Rowing Performance Analyzer (`rowing_performance`)**: Concept2 stroke telemetry graph tracking split power vs. cardiovascular heart rate drift with real-time VO₂ Max estimation.
+- Integrated `JetBrains Mono` for tabular metrics, dates, and token badges.
+- Enhanced card micro-interactions, dark mode rendering, high-DPI retina sharpness, and `prefers-reduced-motion` compliance.
+
 ## [2026-08-28] - Added Stripe Wordmark to Bio
 
 ### Added
