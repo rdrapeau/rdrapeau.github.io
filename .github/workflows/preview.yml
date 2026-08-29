@@ -9,6 +9,8 @@ concurrency: preview-${{ github.ref }}
 permissions:
   contents: write
   pull-requests: write
+  pages: read
+  actions: read
 
 jobs:
   deploy-preview:
@@ -17,10 +19,42 @@ jobs:
       - name: Checkout PR
         uses: actions/checkout@v4
 
-      - name: Deploy PR Preview
+      - name: Sync PR Files to gh-pages Branch
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: .
           preview-branch: gh-pages
           umbrella-dir: preview
-          pages-base-url: https://drapeau.dev
+          comment: false
+
+      - name: Wait for GitHub Pages Deployment to Complete
+        id: wait
+        if: github.event.action != 'closed'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Waiting for GitHub Pages to initiate deployment..."
+          sleep 6
+
+          RUN_ID=$(gh run list --workflow pages-build-deployment --branch gh-pages --limit 1 --json databaseId -q '.[0].databaseId')
+
+          if [ -n "$RUN_ID" ]; then
+            echo "Watching GitHub Pages deployment run: $RUN_ID"
+            gh run watch "$RUN_ID" --exit-status || true
+          fi
+
+          echo "time=$(date -u +'%Y-%m-%d %H:%M UTC')" >> "$GITHUB_OUTPUT"
+
+      - name: Post Live Preview Comment
+        if: github.event.action != 'closed'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-preview
+          message: |
+            ### 🚀 PR Preview is Live!
+            
+            :link: **[https://drapeau.dev/preview/pr-${{ github.event.number }}/](https://drapeau.dev/preview/pr-${{ github.event.number }}/)**
+            
+            - **Status**: ✅ GitHub Pages deployment complete
+            - **Updated**: ${{ steps.wait.outputs.time }}
+

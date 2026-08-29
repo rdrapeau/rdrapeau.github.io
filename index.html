@@ -4,11 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ryan Drapeau</title>
+    <title>Ryan Drapeau — Portfolio & Projects</title>
+    <meta name="title" content="Ryan Drapeau — Portfolio & Projects">
+    <meta name="description" content="Personal project portfolio of Ryan Drapeau, Principal ML Engineer at Stripe. Featuring client-side simulation engines, sports analytics, and creative tools.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://drapeau.dev/">
+    <meta property="og:title" content="Ryan Drapeau — Portfolio & Projects">
+    <meta property="og:description" content="Personal project portfolio of Ryan Drapeau, Principal ML Engineer at Stripe. Featuring client-side simulation engines, sports analytics, and creative tools.">
+    <meta property="og:image" content="https://drapeau.dev/drapeau.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://drapeau.dev/">
+    <meta property="twitter:title" content="Ryan Drapeau — Portfolio & Projects">
+    <meta property="twitter:description" content="Personal project portfolio of Ryan Drapeau, Principal ML Engineer at Stripe. Featuring client-side simulation engines, sports analytics, and creative tools.">
+    <meta property="twitter:image" content="https://drapeau.dev/drapeau.jpg">
+
     <link rel="icon" type="image/jpeg" href="./drapeau.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -22,42 +39,45 @@
             color: #1a1a1a;
             line-height: 1.6;
             min-height: 100vh;
-            padding: 4rem 1.5rem;
+            padding: 4.5rem 1.5rem;
         }
 
         .container {
-            max-width: 640px;
+            max-width: 780px;
             margin: 0 auto;
         }
 
         header {
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         .header-content {
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .headshot {
-            width: 80px;
-            height: 80px;
+            width: 84px;
+            height: 84px;
             border-radius: 50%;
             object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         h1 {
-            font-size: 1.75rem;
-            font-weight: 600;
+            font-size: 1.85rem;
+            font-weight: 700;
             color: #111;
+            letter-spacing: -0.02em;
         }
 
         .bio {
-            font-size: 1.1rem;
-            color: #444;
-            margin-bottom: 1rem;
+            font-size: 1.08rem;
+            color: #4b5563;
+            margin-bottom: 1.25rem;
+            line-height: 1.65;
         }
 
         .header-links {
@@ -73,11 +93,12 @@
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s, transform 0.2s;
         }
 
         .social-link:hover {
             opacity: 0.8;
+            transform: translateY(-1px);
         }
 
         .social-link svg {
@@ -86,7 +107,7 @@
         }
 
         .linkedin-link {
-            color: #0077b5;
+            color: #0a66c2;
         }
 
         .github-link {
@@ -94,66 +115,144 @@
         }
 
         h2 {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #888;
-            margin-bottom: 1.5rem;
+            letter-spacing: 0.06em;
+            color: #6b7280;
+            margin-bottom: 0.35rem;
         }
 
+        .section-subheading {
+            font-size: 0.95rem;
+            color: #6b7280;
+            margin-bottom: 1.75rem;
+        }
+
+        /* --- Projects Grid Layout --- */
         .projects {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 1.25rem;
         }
 
+        @media (min-width: 640px) {
+            .projects {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+
+            .project.project-spotlight {
+                grid-column: 1 / -1;
+            }
+        }
+
         .project {
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            padding: 1.25rem 1.5rem;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.35rem 1.5rem;
             text-decoration: none;
             color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            position: relative;
         }
 
         .project:hover {
-            border-color: #ccc;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border-color: #cbd5e1;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
             transform: translateY(-2px);
+        }
+
+        .project-top {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
         }
 
         .project-name {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             gap: 0.5rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #111;
-            margin-bottom: 0.35rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #111827;
+            letter-spacing: -0.01em;
         }
 
         .project-favicon {
             width: 20px;
             height: 20px;
             flex-shrink: 0;
+            border-radius: 4px;
         }
 
         .project-description {
-            font-size: 0.95rem;
-            color: #666;
+            font-size: 0.92rem;
+            color: #4b5563;
+            line-height: 1.55;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 0.18rem 0.5rem;
+            border-radius: 6px;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            line-height: 1.4;
+        }
+
+        .project-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.25rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #f3f4f6;
         }
 
         .project-date {
-            font-size: 0.8rem;
-            color: #999;
-            margin-top: 0.5rem;
+            font-size: 0.78rem;
+            color: #9ca3af;
+        }
+
+        .external-arrow {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #9ca3af;
+            font-weight: 600;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .project:hover .external-arrow {
+            color: #4b5563;
+            transform: translate(2px, -2px);
         }
 
         .tag {
             display: inline-block;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.04em;
@@ -168,62 +267,114 @@
             border: 1px solid #fde68a;
         }
 
+        /* Spotlight (Featured) Card Styling */
+        .spotlight-badge {
+            display: none;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.2rem 0.55rem;
+            border-radius: 9999px;
+            background: #eef2ff;
+            color: #4338ca;
+            border: 1px solid #c7d2fe;
+        }
+
+        .project.project-spotlight {
+            background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+            border-color: #c7d2fe;
+            padding: 1.6rem 1.85rem;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.06);
+        }
+
+        .project.project-spotlight:hover {
+            border-color: #818cf8;
+            box-shadow: 0 8px 28px rgba(99, 102, 241, 0.12);
+        }
+
+        .project.project-spotlight .spotlight-badge {
+            display: inline-block;
+        }
+
+        .project.project-spotlight .project-name {
+            font-size: 1.25rem;
+        }
+
+        .project.project-spotlight .project-description {
+            font-size: 0.98rem;
+            max-width: 680px;
+        }
+
         footer {
-            margin-top: 4rem;
+            margin-top: 4.5rem;
             padding-top: 2rem;
-            border-top: 1px solid #e5e5e5;
+            border-top: 1px solid #e5e7eb;
             text-align: center;
-            color: #999;
+            color: #9ca3af;
             font-size: 0.85rem;
         }
 
         /* --- Dark Mode --- */
         @media (prefers-color-scheme: dark) {
             body {
-                background-color: #121212;
-                color: #e0e0e0;
+                background-color: #0f1117;
+                color: #e2e8f0;
             }
 
             h1 {
-                color: #f0f0f0;
+                color: #f8fafc;
             }
 
             .bio {
-                color: #aaa;
+                color: #94a3b8;
             }
 
             .linkedin-link {
-                color: #3b9fd4;
+                color: #38bdf8;
             }
 
             .github-link {
-                color: #e0e0e0;
+                color: #f8fafc;
             }
 
             h2 {
-                color: #777;
+                color: #94a3b8;
+            }
+
+            .section-subheading {
+                color: #64748b;
             }
 
             .project {
-                background: #1e1e1e;
-                border-color: #333;
+                background: #181b24;
+                border-color: #262b38;
             }
 
             .project:hover {
-                border-color: #555;
-                box-shadow: 0 2px 8px rgba(255, 255, 255, 0.04);
+                border-color: #3b4254;
+                box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
             }
 
             .project-name {
-                color: #f0f0f0;
+                color: #f8fafc;
             }
 
             .project-description {
-                color: #999;
+                color: #94a3b8;
+            }
+
+            .project-footer {
+                border-top-color: #232834;
             }
 
             .project-date {
-                color: #666;
+                color: #64748b;
+            }
+
+            .tech-tag {
+                background-color: #222734;
+                color: #94a3b8;
             }
 
             .tag-in-development {
@@ -232,13 +383,38 @@
                 border-color: #92400e;
             }
 
+            .project.project-spotlight {
+                background: linear-gradient(135deg, #181b24 0%, #171d31 100%);
+                border-color: #3730a3;
+                box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+            }
+
+            .project.project-spotlight:hover {
+                border-color: #6366f1;
+                box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+            }
+
+            .spotlight-badge {
+                background: #1e1b4b;
+                color: #c7d2fe;
+                border-color: #4338ca;
+            }
+
+            .external-arrow {
+                color: #64748b;
+            }
+
+            .project:hover .external-arrow {
+                color: #cbd5e1;
+            }
+
             footer {
-                border-top-color: #333;
-                color: #666;
+                border-top-color: #262b38;
+                color: #64748b;
             }
 
             .headshot {
-                box-shadow: 0 0 0 2px #333;
+                box-shadow: 0 0 0 2px #262b38;
             }
         }
 
@@ -329,75 +505,158 @@
 
         <section>
             <h2 class="fade-in">Projects</h2>
-            <p class="bio fade-in" style="margin-bottom: 1.5rem;">These are random things I've built on the side.</p>
+            <p class="section-subheading fade-in">Personal tools, simulations, and experiments built on the side.</p>
             <div class="projects">
                 <a href="./fi_sim/" class="project fade-in">
-                    <div class="project-name">
-                        <img src="./fi_sim/favicon.svg" alt="" class="project-favicon">
-                        Financial Simulator (FiSim)
-                        <span class="tag tag-in-development">In Development</span>
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                <img src="./fi_sim/favicon.svg" alt="" class="project-favicon">
+                                Financial Simulator (FiSim)
+                                <span class="tag tag-in-development">In Development</span>
+                            </div>
+                            <span class="spotlight-badge">Featured</span>
+                        </div>
+                        <div class="project-description">A privacy-first, client-side personal finance projection planner featuring localized U.S., UK, and Canadian tax engines, RMDs, and Monte Carlo historical sequence-of-returns stress testing.</div>
+                        <div class="project-tags">
+                            <span class="tech-tag">Vue 3</span>
+                            <span class="tech-tag">Monte Carlo</span>
+                            <span class="tech-tag">Tax Engine</span>
+                            <span class="tech-tag">Client-Side</span>
+                        </div>
                     </div>
-                    <div class="project-description">A privacy-first, client-side personal finance projection planner featuring localized U.S., UK, and Canadian tax engines, RMDs, and Monte Carlo historical sequence-of-returns stress testing.</div>
-                    <div class="project-date" data-project="fi_sim">Last updated: --</div>
+                    <div class="project-footer">
+                        <span class="project-date" data-project="fi_sim">Last updated: --</span>
+                    </div>
                 </a>
                 <a href="./org_planning/" class="project fade-in">
-                    <div class="project-name">
-                        <img src="./org_planning/favicon.svg" alt="" class="project-favicon">
-                        Org Planning Tool
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                <img src="./org_planning/favicon.svg" alt="" class="project-favicon">
+                                Org Planning Tool
+                            </div>
+                            <span class="spotlight-badge">Featured</span>
+                        </div>
+                        <div class="project-description">A Monte Carlo simulation tool for engineering leaders to model organizational growth, promotions, and budget planning across performance cycles.</div>
+                        <div class="project-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Vite</span>
+                            <span class="tech-tag">Stochastic Modeling</span>
+                        </div>
                     </div>
-                    <div class="project-description">A Monte Carlo simulation tool for engineering leaders to model
-                        organizational growth, promotions, and budget planning across performance cycles.</div>
-                    <div class="project-date" data-project="org_planning">Last updated: --</div>
+                    <div class="project-footer">
+                        <span class="project-date" data-project="org_planning">Last updated: --</span>
+                    </div>
                 </a>
                 <a href="./connections/" class="project fade-in">
-                    <div class="project-name">
-                        <img src="./connections/icon.jpg" alt="" class="project-favicon">
-                        Connections
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                <img src="./connections/icon.jpg" alt="" class="project-favicon">
+                                Connections
+                            </div>
+                            <span class="spotlight-badge">Featured</span>
+                        </div>
+                        <div class="project-description">A simple wedding word puzzle game - group four groups of four! Made to play at my wedding.</div>
+                        <div class="project-tags">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Word Game</span>
+                        </div>
                     </div>
-                    <div class="project-description">A simple game I made to play at my wedding.</div>
-                    <div class="project-date" data-project="connections">Last updated: --</div>
+                    <div class="project-footer">
+                        <span class="project-date" data-project="connections">Last updated: --</span>
+                    </div>
                 </a>
                 <a href="./stitch_by_number/" class="project fade-in">
-                    <div class="project-name">
-                        <img src="./stitch_by_number/favicon.svg" alt="" class="project-favicon">
-                        Stitch by Number
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                <img src="./stitch_by_number/favicon.svg" alt="" class="project-favicon">
+                                Stitch by Number
+                            </div>
+                            <span class="spotlight-badge">Featured</span>
+                        </div>
+                        <div class="project-description">A tool that converts images into needlepoint stitch-ready designs with thread color mapping and PDF export.</div>
+                        <div class="project-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Canvas / Color Quantization</span>
+                        </div>
                     </div>
-                    <div class="project-description">A tool that converts images into needlepoint stitch-ready designs
-                        with thread color mapping and PDF export.</div>
-                    <div class="project-date" data-project="stitch_by_number">Last updated: --</div>
+                    <div class="project-footer">
+                        <span class="project-date" data-project="stitch_by_number">Last updated: --</span>
+                    </div>
                 </a>
                 <a href="./photo_stacker/" class="project fade-in">
-                    <div class="project-name">
-                        <img src="./photo_stacker/favicon-32.png" alt="" class="project-favicon">
-                        Photo Stacker
-                        <span class="tag tag-in-development">In Development</span>
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                <img src="./photo_stacker/favicon-32.png" alt="" class="project-favicon">
+                                Photo Stacker
+                                <span class="tag tag-in-development">In Development</span>
+                            </div>
+                            <span class="spotlight-badge">Featured</span>
+                        </div>
+                        <div class="project-description">HDR exposure fusion in your browser - merge multiple exposures into a single well-balanced photo with Lightroom-quality results.</div>
+                        <div class="project-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Web Workers</span>
+                            <span class="tech-tag">HDR Fusion</span>
+                        </div>
                     </div>
-                    <div class="project-description">HDR exposure fusion in your browser - merge multiple exposures into
-                        a single well-balanced photo, Lightroom-quality results.</div>
-                    <div class="project-date" data-project="photo_stacker">Last updated: --</div>
+                    <div class="project-footer">
+                        <span class="project-date" data-project="photo_stacker">Last updated: --</span>
+                    </div>
                 </a>
                 <a href="https://github.com/rdrapeau/1password_extension" class="project fade-in" target="_blank"
                     rel="noopener noreferrer">
-                    <div class="project-name">
-                        <svg class="project-favicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
-                            <rect width="48" height="48" rx="10" fill="#4a9eff" />
-                            <path
-                                d="M33 20h-1.5v-3a7.5 7.5 0 0 0-15 0v3H15a3 3 0 0 0-3 3v15a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V23a3 3 0 0 0-3-3zm-9 13.5a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.65-13.5h-9.3V17a4.65 4.65 0 0 1 9.3 0v3z"
-                                fill="#fff" />
-                        </svg>
-                        1Password OPVault Extension
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                <svg class="project-favicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+                                    <rect width="48" height="48" rx="10" fill="#4a9eff" />
+                                    <path
+                                        d="M33 20h-1.5v-3a7.5 7.5 0 0 0-15 0v3H15a3 3 0 0 0-3 3v15a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V23a3 3 0 0 0-3-3zm-9 13.5a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.65-13.5h-9.3V17a4.65 4.65 0 0 1 9.3 0v3z"
+                                        fill="#fff" />
+                                </svg>
+                                1Password OPVault Extension
+                            </div>
+                            <span class="spotlight-badge">Featured</span>
+                        </div>
+                        <div class="project-description">A Firefox extension ported to Manifest V3 that connects to the local 1Password 6 helper app via Native Messaging to read and auto-fill passwords.</div>
+                        <div class="project-tags">
+                            <span class="tech-tag">Firefox MV3</span>
+                            <span class="tech-tag">Native Messaging</span>
+                        </div>
                     </div>
-                    <div class="project-description">A Firefox extension ported to Manifest V3 that connects to the local 1Password 6 helper app via Native Messaging to read and auto-fill passwords.</div>
-                    <div class="project-date">Last updated: Jun 2026</div>
+                    <div class="project-footer">
+                        <span class="project-date">Last updated: Jun 2026</span>
+                        <span class="external-arrow">↗</span>
+                    </div>
                 </a>
                 <a href="./rowing_performance/" class="project fade-in">
-                    <div class="project-name">
-                        <img src="./rowing_performance/favicon.svg" alt="" class="project-favicon">
-                        Rowing Performance Analyzer
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                <img src="./rowing_performance/favicon.svg" alt="" class="project-favicon">
+                                Rowing Performance Analyzer
+                            </div>
+                            <span class="spotlight-badge">Featured</span>
+                        </div>
+                        <div class="project-description">A Concept2 rowing analytics tool — upload CSV workout data to track VO₂ Max, HR drift, power efficiency, and cardiovascular progress over time.</div>
+                        <div class="project-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">VO₂ Max</span>
+                            <span class="tech-tag">Sports Analytics</span>
+                        </div>
                     </div>
-                    <div class="project-description">A Concept2 rowing analytics tool — upload CSV workout data to track
-                        VO₂ Max, HR drift, power efficiency, and cardiovascular progress over time.</div>
-                    <div class="project-date" data-project="rowing_performance">Last updated: --</div>
+                    <div class="project-footer">
+                        <span class="project-date" data-project="rowing_performance">Last updated: --</span>
+                    </div>
                 </a>
             </div>
         </section>
@@ -464,7 +723,12 @@
                 return timeB - timeA; // Descending order (most recent first)
             });
 
-            projectElements.forEach(el => {
+            projectElements.forEach((el, index) => {
+                if (index === 0) {
+                    el.classList.add('project-spotlight');
+                } else {
+                    el.classList.remove('project-spotlight');
+                }
                 projectsContainer.appendChild(el);
             });
 
