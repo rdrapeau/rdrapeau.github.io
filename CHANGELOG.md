@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-28] - Added Stripe Logo to Bio
+
+### Added
+- Official Stripe logo icon SVG next to company name in the header bio with dark mode support
+
 ## [2026-08-28] - Staging Environments & PR Previews
 
 ### Added
