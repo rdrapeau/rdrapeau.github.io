@@ -129,6 +129,76 @@
             margin-bottom: 1.75rem;
         }
 
+        /* --- Filter Bar --- */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.38rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            font-family: inherit;
+            color: #64748b;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            color: #0f172a;
+            border-color: #cbd5e1;
+            background: #f8fafc;
+        }
+
+        .filter-btn.active {
+            color: #0f172a;
+            background: #f1f5f9;
+            border-color: #94a3b8;
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.05rem 0.4rem;
+            border-radius: 9999px;
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+        .filter-btn.active .filter-count {
+            background: #cbd5e1;
+            color: #0f172a;
+        }
+
+        .filter-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        .filter-dot-live {
+            background-color: #10b981;
+        }
+
+        .filter-dot-dev {
+            background-color: #f59e0b;
+        }
+
         /* --- Projects Grid Layout --- */
         .projects {
             display: grid;
@@ -157,14 +227,68 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s, opacity 0.2s;
             position: relative;
+        }
+
+        .project.hidden {
+            display: none !important;
         }
 
         .project:hover {
             border-color: #cbd5e1;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
             transform: translateY(-2px);
+        }
+
+        /* Blueprint / In-Development Card Styling */
+        .project.project-in-dev {
+            border: 1.5px dashed #f59e0b;
+            background: linear-gradient(135deg, #ffffff 0%, #fffdf5 100%);
+        }
+
+        .project.project-in-dev:hover {
+            border-color: #d97706;
+            box-shadow: 0 6px 24px rgba(245, 158, 11, 0.12);
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #d97706;
+            display: inline-block;
+            animation: pulseGlow 2s infinite ease-in-out;
+            margin-right: 3px;
+            vertical-align: middle;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.35;
+                transform: scale(0.8);
+            }
+        }
+
+        .project.project-in-dev.project-spotlight {
+            background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
+            border-color: #f59e0b;
+            box-shadow: 0 6px 24px rgba(245, 158, 11, 0.1);
+        }
+
+        .project.project-in-dev.project-spotlight:hover {
+            border-color: #d97706;
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.2);
+        }
+
+        .project.project-in-dev .spotlight-badge {
+            background: #fef3c7;
+            color: #92400e;
+            border-color: #fde68a;
         }
 
         .project-top {
@@ -251,7 +375,8 @@
         }
 
         .tag {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             font-size: 0.68rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -346,6 +471,35 @@
                 color: #64748b;
             }
 
+            .filter-btn {
+                background: #181b24;
+                color: #94a3b8;
+                border-color: #262b38;
+            }
+
+            .filter-btn:hover {
+                color: #f8fafc;
+                border-color: #3b4254;
+                background: #1e222e;
+            }
+
+            .filter-btn.active {
+                color: #f8fafc;
+                background: #232938;
+                border-color: #475569;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            }
+
+            .filter-count {
+                background: #262b38;
+                color: #94a3b8;
+            }
+
+            .filter-btn.active .filter-count {
+                background: #333a4d;
+                color: #f8fafc;
+            }
+
             .project {
                 background: #181b24;
                 border-color: #262b38;
@@ -354,6 +508,37 @@
             .project:hover {
                 border-color: #3b4254;
                 box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+            }
+
+            .project.project-in-dev {
+                border: 1.5px dashed #b45309;
+                background: linear-gradient(135deg, #181b24 0%, #1c1916 100%);
+            }
+
+            .project.project-in-dev:hover {
+                border-color: #f59e0b;
+                box-shadow: 0 6px 24px rgba(245, 158, 11, 0.15);
+            }
+
+            .pulse-dot {
+                background-color: #fbbf24;
+            }
+
+            .project.project-in-dev.project-spotlight {
+                background: linear-gradient(135deg, #181b24 0%, #291e10 100%);
+                border-color: #d97706;
+                box-shadow: 0 6px 28px rgba(245, 158, 11, 0.2);
+            }
+
+            .project.project-in-dev.project-spotlight:hover {
+                border-color: #f59e0b;
+                box-shadow: 0 8px 32px rgba(245, 158, 11, 0.25);
+            }
+
+            .project.project-in-dev .spotlight-badge {
+                background: #422006;
+                color: #fbbf24;
+                border-color: #92400e;
             }
 
             .project-name {
@@ -506,14 +691,28 @@
         <section>
             <h2 class="fade-in">Projects</h2>
             <p class="section-subheading fade-in">Personal tools, simulations, and experiments built on the side.</p>
+            <div class="filter-bar fade-in">
+                <button class="filter-btn active" data-filter="live">
+                    <span class="filter-dot filter-dot-live"></span> Live Projects
+                    <span class="filter-count" id="count-live">5</span>
+                </button>
+                <button class="filter-btn" data-filter="in-dev">
+                    <span class="filter-dot filter-dot-dev"></span> In Development
+                    <span class="filter-count" id="count-in-dev">2</span>
+                </button>
+                <button class="filter-btn" data-filter="all">
+                    All
+                    <span class="filter-count" id="count-all">7</span>
+                </button>
+            </div>
             <div class="projects">
-                <a href="./fi_sim/" class="project fade-in">
+                <a href="./fi_sim/" class="project project-in-dev fade-in" data-status="in-dev">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
                                 <img src="./fi_sim/favicon.svg" alt="" class="project-favicon">
                                 Financial Simulator (FiSim)
-                                <span class="tag tag-in-development">In Development</span>
+                                <span class="tag tag-in-development"><span class="pulse-dot"></span> In Development</span>
                             </div>
                             <span class="spotlight-badge">Featured</span>
                         </div>
@@ -529,7 +728,7 @@
                         <span class="project-date" data-project="fi_sim">Last updated: --</span>
                     </div>
                 </a>
-                <a href="./org_planning/" class="project fade-in">
+                <a href="./org_planning/" class="project fade-in" data-status="live">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
@@ -549,7 +748,7 @@
                         <span class="project-date" data-project="org_planning">Last updated: --</span>
                     </div>
                 </a>
-                <a href="./connections/" class="project fade-in">
+                <a href="./connections/" class="project fade-in" data-status="live">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
@@ -569,7 +768,7 @@
                         <span class="project-date" data-project="connections">Last updated: --</span>
                     </div>
                 </a>
-                <a href="./stitch_by_number/" class="project fade-in">
+                <a href="./stitch_by_number/" class="project fade-in" data-status="live">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
@@ -589,13 +788,13 @@
                         <span class="project-date" data-project="stitch_by_number">Last updated: --</span>
                     </div>
                 </a>
-                <a href="./photo_stacker/" class="project fade-in">
+                <a href="./photo_stacker/" class="project project-in-dev fade-in" data-status="in-dev">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
                                 <img src="./photo_stacker/favicon-32.png" alt="" class="project-favicon">
                                 Photo Stacker
-                                <span class="tag tag-in-development">In Development</span>
+                                <span class="tag tag-in-development"><span class="pulse-dot"></span> In Development</span>
                             </div>
                             <span class="spotlight-badge">Featured</span>
                         </div>
@@ -611,7 +810,7 @@
                         <span class="project-date" data-project="photo_stacker">Last updated: --</span>
                     </div>
                 </a>
-                <a href="https://github.com/rdrapeau/1password_extension" class="project fade-in" target="_blank"
+                <a href="https://github.com/rdrapeau/1password_extension" class="project fade-in" data-status="live" target="_blank"
                     rel="noopener noreferrer">
                     <div class="project-top">
                         <div class="project-header">
@@ -637,7 +836,7 @@
                         <span class="external-arrow">↗</span>
                     </div>
                 </a>
-                <a href="./rowing_performance/" class="project fade-in">
+                <a href="./rowing_performance/" class="project fade-in" data-status="live">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
@@ -665,11 +864,56 @@
         // Fetch build dates from each project's build-info.json and sort them dynamically
         const projects = ['fi_sim', 'org_planning', 'connections', 'stitch_by_number', 'photo_stacker', 'rowing_performance'];
         const projectsContainer = document.querySelector('.projects');
+        let currentFilter = 'live'; // In-development projects hidden by default
         
         // Static timestamps for project links that do not have build-info.json
         const staticTimestamps = {
             'https://github.com/rdrapeau/1password_extension': new Date('2026-02-01T00:00:00.000Z').toISOString()
         };
+
+        function applyFilter(filter) {
+            currentFilter = filter;
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
+            });
+
+            const projectElements = Array.from(document.querySelectorAll('.project'));
+            let firstVisibleFound = false;
+
+            projectElements.forEach(el => {
+                const status = el.getAttribute('data-status');
+                let shouldShow = false;
+
+                if (filter === 'all') {
+                    shouldShow = true;
+                } else if (filter === 'live') {
+                    shouldShow = (status === 'live');
+                } else if (filter === 'in-dev') {
+                    shouldShow = (status === 'in-dev');
+                }
+
+                if (shouldShow) {
+                    el.classList.remove('hidden');
+                    if (!firstVisibleFound) {
+                        el.classList.add('project-spotlight');
+                        firstVisibleFound = true;
+                    } else {
+                        el.classList.remove('project-spotlight');
+                    }
+                } else {
+                    el.classList.add('hidden');
+                    el.classList.remove('project-spotlight');
+                }
+            });
+        }
+
+        // Attach click listeners to filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyFilter(btn.getAttribute('data-filter'));
+            });
+        });
 
         async function loadAndSortProjects() {
             const fetchPromises = projects.map(async (project) => {
@@ -723,14 +967,12 @@
                 return timeB - timeA; // Descending order (most recent first)
             });
 
-            projectElements.forEach((el, index) => {
-                if (index === 0) {
-                    el.classList.add('project-spotlight');
-                } else {
-                    el.classList.remove('project-spotlight');
-                }
+            projectElements.forEach(el => {
                 projectsContainer.appendChild(el);
             });
+
+            // Apply active filter (defaults to 'live', hiding in-dev projects and highlighting top live project)
+            applyFilter(currentFilter);
 
             // Re-trigger scroll animations after DOM reordering to ensure they fade in correctly
             initializeAnimations();
