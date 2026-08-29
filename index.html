@@ -210,7 +210,8 @@
 
         .site-tab:focus-visible,
         .filter-btn:focus-visible,
-        .action-pill:focus-visible,
+        .project:focus-visible,
+        .research-card:focus-visible,
         .social-link:focus-visible {
             outline: 2px solid #4f46e5;
             outline-offset: 2px;
@@ -285,85 +286,6 @@
             background: #fae8ff;
             color: #86198f;
             border-color: #f5d0fe;
-        }
-
-        .research-footer {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 0.5rem;
-            margin-top: 1.1rem;
-            padding-top: 0.85rem;
-            border-top: 1px solid #f1f5f9;
-        }
-
-        .research-actions {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .action-pill {
-            font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
-            font-size: 0.7rem;
-            font-weight: 500;
-            padding: 0.22rem 0.55rem;
-            border-radius: 5px;
-            background: #f8fafc;
-            color: #475569;
-            border: 1px solid #e2e8f0;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.15s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .action-pill:hover {
-            background: #f1f5f9;
-            color: #0f172a;
-            border-color: #cbd5e1;
-        }
-
-        .action-pill-primary {
-            background: #4f46e5;
-            color: #ffffff;
-            border-color: #4338ca;
-            font-weight: 600;
-        }
-
-        .action-pill-primary:hover {
-            background: #4338ca;
-            color: #ffffff;
-        }
-
-        /* --- Toast Notification Feedback --- */
-        .toast-notification {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: #0f172a;
-            color: #f8fafc;
-            font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
-            font-size: 0.78rem;
-            font-weight: 500;
-            padding: 0.6rem 1.1rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .toast-notification.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
         }
 
         h2 {
@@ -863,7 +785,8 @@
 
             .site-tab:focus-visible,
             .filter-btn:focus-visible,
-            .action-pill:focus-visible,
+            .project:focus-visible,
+            .research-card:focus-visible,
             .social-link:focus-visible {
                 outline-color: #818cf8;
             }
@@ -899,38 +822,6 @@
                 background: #3b0764;
                 color: #e879f9;
                 border-color: #86198f;
-            }
-
-            .research-footer {
-                border-top-color: #232834;
-            }
-
-            .action-pill {
-                background: #181b24;
-                color: #94a3b8;
-                border-color: #262b38;
-            }
-
-            .action-pill:hover {
-                background: #232938;
-                color: #f8fafc;
-                border-color: #3b4254;
-            }
-
-            .action-pill-primary {
-                background: #4f46e5;
-                color: #ffffff;
-                border-color: #4338ca;
-            }
-
-            .action-pill-primary:hover {
-                background: #6366f1;
-                color: #ffffff;
-            }
-
-            .toast-notification {
-                background: #f8fafc;
-                color: #0f172a;
             }
 
             h2 {
@@ -1455,7 +1346,7 @@
 
             <div class="research-grid">
                 <!-- 1. Microtalk -->
-                <div class="research-card fade-in" data-paper="microtalk">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="microtalk">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
@@ -1470,14 +1361,10 @@
                             A peer argumentation protocol (<em>Assess &rarr; Justify &rarr; Reconsider</em>) where crowd workers exchange structured rationales, boosting individual and aggregate classification accuracy by <strong>+20%</strong> on challenging NLP tasks without ground truth.
                         </div>
                     </div>
-                    <div class="project-footer research-footer">
-                        <button class="action-pill copy-bibtex-btn" data-bibtex="microtalk">Cite / BibTeX</button>
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary" title="View on Google Scholar" aria-label="View on Google Scholar">↗</a>
-                    </div>
-                </div>
+                </a>
 
                 <!-- 2. Tactile Graphics with a Voice -->
-                <div class="research-card fade-in" data-paper="tactile_graphics">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="tactile_graphics">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
@@ -1492,14 +1379,10 @@
                             A multimodal accessibility system combining physical relief graphics with smartphone camera QR scanning and finger-pointing guidance to provide localized audio explanations for complex STEM diagrams.
                         </div>
                     </div>
-                    <div class="project-footer research-footer">
-                        <button class="action-pill copy-bibtex-btn" data-bibtex="tactile">Cite / BibTeX</button>
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary" title="View on Google Scholar" aria-label="View on Google Scholar">↗</a>
-                    </div>
-                </div>
+                </a>
 
                 <!-- 3. The Wisdom of Multiple Guesses -->
-                <div class="research-card fade-in" data-paper="multiple_guesses">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:d1gkVwhDpl0C" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="multiple_guesses">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
@@ -1514,14 +1397,10 @@
                             A crowdsourced forecasting mechanism that elicits multiple ranked guesses per individual to capture heterogeneous confidence distributions, creating certainty-weighted crowd aggregations that outperform standard mean estimates.
                         </div>
                     </div>
-                    <div class="project-footer research-footer">
-                        <button class="action-pill copy-bibtex-btn" data-bibtex="guesses">Cite / BibTeX</button>
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:d1gkVwhDpl0C" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary" title="View on Google Scholar" aria-label="View on Google Scholar">↗</a>
-                    </div>
-                </div>
+                </a>
 
                 <!-- 4. KIMBEE -->
-                <div class="research-card fade-in" data-paper="kimbee">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="kimbee">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
@@ -1536,14 +1415,10 @@
                             A mobile acoustic speech therapy system providing children with real-time phonological feedback and articulation game mechanics, while streaming phoneme accuracy telemetry to speech-language pathologists.
                         </div>
                     </div>
-                    <div class="project-footer research-footer">
-                        <button class="action-pill copy-bibtex-btn" data-bibtex="kimbee">Cite / BibTeX</button>
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary" title="View on Google Scholar" aria-label="View on Google Scholar">↗</a>
-                    </div>
-                </div>
+                </a>
 
                 <!-- 5. Contributing During the Commute -->
-                <div class="research-card fade-in" data-paper="commute">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="commute">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
@@ -1558,15 +1433,9 @@
                             An empirical study within the OneBusAway mobile transit platform investigating prosocial volunteer dynamics when transit riders crowdsource bus stop accessibility attributes (shelters, seating, sidewalk ramps).
                         </div>
                     </div>
-                    <div class="project-footer research-footer">
-                        <button class="action-pill copy-bibtex-btn" data-bibtex="commute">Cite / BibTeX</button>
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener noreferrer" class="action-pill action-pill-primary" title="View on Google Scholar" aria-label="View on Google Scholar">↗</a>
-                    </div>
-                </div>
+                </a>
             </div>
         </section>
-
-        <div id="toast-notification" class="toast-notification" aria-live="polite"></div>
     </div>
     <script>
         // Fetch build dates from each project's build-info.json and sort them dynamically
@@ -2550,85 +2419,10 @@
             });
         }
 
-        // BibTeX Copy Functionality
-        function initBibTeXCopy() {
-            const bibtexRecords = {
-                microtalk: `@inproceedings{drapeau2016microtalk,
-  title={Microtalk: Using argumentation to improve crowdsourcing accuracy},
-  author={Drapeau, Ryan and Chilton, Lydia and Bragg, Jonathan and Weld, Daniel},
-  booktitle={Proceedings of the AAAI Conference on Human Computation and Crowdsourcing},
-  volume={4},
-  number={1},
-  pages={32--41},
-  year={2016}
-}`,
-                tactile: `@article{baker2016tactile,
-  title={Tactile graphics with a voice},
-  author={Baker, Catherine M and Milne, Lauren R and Drapeau, Ryan and Scofield, Jeffrey and Bennett, Cynthia L and Ladner, Richard E},
-  journal={ACM Transactions on Accessible Computing (TACCESS)},
-  volume={8},
-  number={1},
-  pages={1--22},
-  year={2016},
-  publisher={ACM New York, NY, USA}
-}`,
-                guesses: `@inproceedings{ugander2015wisdom,
-  title={The wisdom of multiple guesses},
-  author={Ugander, Johan and Drapeau, Ryan and Guestrin, Carlos},
-  booktitle={Proceedings of the Sixteenth ACM Conference on Economics and Computation},
-  pages={383--400},
-  year={2015}
-}`,
-                kimbee: `@article{drapeau2015kimbee,
-  title={KIMBEE: A Speech Therapy Application for Children},
-  author={Drapeau, Ryan and Huynh, Nicolas and Nech, Aaron},
-  journal={Department of Computer Science \\& Engineering, University of Washington},
-  year={2015}
-}`,
-                commute: `@techreport{bonnar2015contributing,
-  title={Contributing During the Commute: Why Transit Riders Submit Information About Bus Stops with StopInfo},
-  author={Bonnar, Caitlin and Campbell, Meg and Drapeau, Ryan and Bennett, Cynthia L and Borning, Alan},
-  institution={Department of Computer Science \\& Engineering, University of Washington},
-  number={UW-CSE-15-09-04},
-  year={2015}
-}`
-            };
-
-            const toast = document.getElementById('toast-notification');
-            let toastTimeout = null;
-
-            function showToast(msg) {
-                if (!toast) return;
-                toast.textContent = msg;
-                toast.classList.add('show');
-                if (toastTimeout) clearTimeout(toastTimeout);
-                toastTimeout = setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 2400);
-            }
-
-            document.querySelectorAll('.copy-bibtex-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const key = btn.getAttribute('data-bibtex');
-                    const bibtex = bibtexRecords[key];
-                    if (bibtex && navigator.clipboard) {
-                        navigator.clipboard.writeText(bibtex).then(() => {
-                            showToast('✓ BibTeX copied to clipboard');
-                        }).catch(() => {
-                            showToast('BibTeX ready to copy');
-                        });
-                    }
-                });
-            });
-        }
-
-        // Initialize projects, visualizers, tab navigation, and BibTeX
+        // Initialize projects, visualizers, and tab navigation
         loadAndSortProjects().then(() => {
             initProjectVisualizers();
             initTabNavigation();
-            initBibTeXCopy();
         });
     </script>
 </body>
