@@ -449,25 +449,6 @@
             display: block;
         }
 
-        .preview-hint {
-            position: absolute;
-            bottom: 4px;
-            right: 8px;
-            font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
-            font-size: 0.6rem;
-            color: #94a3af;
-            pointer-events: none;
-            background: rgba(248, 250, 252, 0.85);
-            padding: 0.1rem 0.35rem;
-            border-radius: 4px;
-            backdrop-filter: blur(4px);
-            transition: opacity 0.2s;
-        }
-
-        .project-preview:hover .preview-hint {
-            opacity: 0.2;
-        }
-
         .project-footer {
             display: flex;
             align-items: center;
@@ -716,11 +697,6 @@
                 color: #f8fafc;
             }
 
-            .preview-hint {
-                background: rgba(18, 21, 30, 0.85);
-                color: #64748b;
-            }
-
             .tag-in-development {
                 background-color: #422006;
                 color: #fbbf24;
@@ -883,7 +859,6 @@
                             </div>
                             <div class="preview-canvas-wrapper">
                                 <canvas class="preview-canvas" id="canvas-fi_sim"></canvas>
-                                <span class="preview-hint">hover/scrub timeline</span>
                             </div>
                         </div>
                         <div class="project-tags">
@@ -914,7 +889,6 @@
                             </div>
                             <div class="preview-canvas-wrapper">
                                 <canvas class="preview-canvas" id="canvas-org_planning"></canvas>
-                                <span class="preview-hint">hover/scrub quarters</span>
                             </div>
                         </div>
                         <div class="project-tags">
@@ -944,7 +918,6 @@
                             </div>
                             <div class="preview-canvas-wrapper">
                                 <canvas class="preview-canvas" id="canvas-connections"></canvas>
-                                <span class="preview-hint">hover to shuffle/solve</span>
                             </div>
                         </div>
                         <div class="project-tags">
@@ -974,7 +947,6 @@
                             </div>
                             <div class="preview-canvas-wrapper">
                                 <canvas class="preview-canvas" id="canvas-stitch_by_number"></canvas>
-                                <span class="preview-hint">hover to quantize</span>
                             </div>
                         </div>
                         <div class="project-tags">
@@ -1005,7 +977,6 @@
                             </div>
                             <div class="preview-canvas-wrapper">
                                 <canvas class="preview-canvas" id="canvas-photo_stacker"></canvas>
-                                <span class="preview-hint">drag/hover exposure split</span>
                             </div>
                         </div>
                         <div class="project-tags">
@@ -1042,7 +1013,6 @@
                             </div>
                             <div class="preview-canvas-wrapper">
                                 <canvas class="preview-canvas" id="canvas-1password"></canvas>
-                                <span class="preview-hint">hover for crypto stream</span>
                             </div>
                         </div>
                         <div class="project-tags">
@@ -1072,7 +1042,6 @@
                             </div>
                             <div class="preview-canvas-wrapper">
                                 <canvas class="preview-canvas" id="canvas-rowing_performance"></canvas>
-                                <span class="preview-hint">hover/scrub workout</span>
                             </div>
                         </div>
                         <div class="project-tags">
