@@ -23,4 +23,4 @@ jobs:
           source-dir: .
           preview-branch: gh-pages
           umbrella-dir: preview
-          custom-url: drapeau.dev
+          pages-base-url: https://drapeau.dev
