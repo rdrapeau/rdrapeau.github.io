@@ -2,7 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2026-08-29] - Added robots.txt & Anti-Indexing Privacy Meta Tags
+## [2026-08-29] - Added Patents & Inventions Tab
+
+### Added
+- **Patents & Inventions Tab**: Added third navigation tab (`Patents` [10]) to `.site-tabs` with keyboard shortcut `3`, bidirectional arrow key cycling, and `#patents` hash synchronization.
+- **10 Patent Cards**: Added cards for all 10 patents across Machine Learning Fraud Detection, Payment Orchestration, Privacy-Preserving Cryptography, and Distributed Systems at Stripe:
+  - *Systems and methods for identity graph based fraud detection* (`US Patent 11,704,673`)
+  - *Systems and methods for secure identifiers for electronic transactions* (`US 2025/0125969 A1`)
+  - *Systems and methods for hard deletion of data across systems* (`US 2024/0126908 A1`)
+  - *Systems and methods for privacy preserving fraud detection during electronic transactions* (`US 2025/0117802 A1`)
+  - *Merchant specific machine learning model for fraud detection* (`US 2025/0165978 A1`)
+  - *Systems and methods for enhanced transaction authentication* (`US 2024/0112192 A1`)
+  - *Systems and methods for smart remediation for transactions* (`US 2024/0152924 A1`)
+  - *Fraud detection using real-time and batch features* (`US 2024/0161115 A1`)
+  - *Systems and methods for machine learning feature generation* (`EP 4627492 A1`)
+  - *Machine learning model training and deployment pipeline* (`US 2024/0070484 A1`)
+- **Interactive Card & Badge Styling**: Full-card clickable anchors linking to Google Patents with hover lift, pointer cursor, dark mode support, and status badges (`badge-granted` / `badge-app`).
 
 ### Added
 - **`robots.txt`**: Added site-wide crawler disallow rule (`User-agent: *`, `Disallow: /`) to block all search engine web crawlers, indexers, and AI scrapers.
