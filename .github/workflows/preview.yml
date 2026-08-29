@@ -9,6 +9,8 @@ concurrency: preview-${{ github.ref }}
 permissions:
   contents: write
   pull-requests: write
+  pages: read
+  actions: read
 
 jobs:
   deploy-preview:
@@ -24,3 +26,4 @@ jobs:
           preview-branch: gh-pages
           umbrella-dir: preview
           pages-base-url: https://drapeau.dev
+          wait-for-pages-deployment: true
