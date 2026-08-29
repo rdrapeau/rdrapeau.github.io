@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Sync PR Files to gh-pages Branch
-        uses: rossjrw/pr-preview-action@0320ea4b971a81232822a9f5d37803a628867a03 # v1.4.8
+        uses: rossjrw/pr-preview-action@430e3dfc1de8a8ae77e77d862d25676ef9db55d1 # v1.4.8
         with:
           source-dir: .
           preview-branch: gh-pages
@@ -53,7 +53,7 @@ jobs:
 
       - name: Post Live Preview Comment
         if: github.event.action != 'closed'
-        uses: marocchino/sticky-pull-request-comment@331f8f5b4215f0445d3c07b49676628e80773bf2 # v2.9.0
+        uses: marocchino/sticky-pull-request-comment@331f8f5b4215f0445d3c07b4967662a32a2d3e31 # v2.9.0
         with:
           header: pr-preview
           message: |
