@@ -77,7 +77,7 @@ gh pr create --base master --head <branch-name> --title "<PR Title>" --body "<De
 
 ---
 
-### 4. Verify the Staging Preview Environment
+### 4. Verify Staging Preview & Request User Approval
 
 1. Watch the PR preview workflow:
    ```bash
@@ -91,12 +91,16 @@ gh pr create --base master --head <branch-name> --title "<PR Title>" --body "<De
    - Project cards and favicons load without 404s.
    - Project cards sort dynamically by build date.
    - Sub-app navigation works properly.
+4. **MANDATORY STOP — Present to User & Wait for Approval**:
+   - Provide the PR URL and preview URL (`https://drapeau.dev/preview/pr-<number>/`) to the user.
+   - **DO NOT autonomously merge the PR**.
+   - End your turn and wait for the user to review the staging environment and give explicit approval.
 
 ---
 
-### 5. Merge and Deploy to Production
+### 5. Merge and Deploy to Production (Only After Explicit User Approval)
 
-Once the preview is verified and approved:
+**Only after the user has explicitly approved the PR in the conversation**:
 
 1. Merge the PR and delete the feature branch:
    ```bash

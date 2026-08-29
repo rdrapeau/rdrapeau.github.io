@@ -6,8 +6,9 @@
    - Never commit directly to `master`.
    - Always create a dedicated branch (`feat/...`, `fix/...`, `docs/...`) for any code, asset, or documentation changes.
    - Push the branch and open a Pull Request using `gh pr create`.
-   - Verify the ephemeral preview environment at `https://drapeau.dev/preview/pr-<number>/` before merging.
-   - Once approved, merge using `gh pr merge <number> --merge --delete-branch`.
+   - Verify the ephemeral preview environment at `https://drapeau.dev/preview/pr-<number>/` and share the link with the user.
+   - **Require User Approval**: STOP and wait for explicit user approval. Never merge autonomously.
+   - Once explicitly approved by the user, merge using `gh pr merge <number> --merge --delete-branch`.
 
 2. **Path & Asset Relativity (Strict)**:
    - All internal links, images, favicons, and `fetch()` requests in `index.html` MUST use relative paths (`./`) to support nested preview paths (`/preview/pr-<number>/`).
