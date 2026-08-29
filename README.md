@@ -4,7 +4,7 @@ Personal website and showcase for side projects, hosted on GitHub Pages with cus
 
 ## Architecture
 
-- **Landing Page (`index.html`)**: Lightweight static HTML with vanilla CSS (including automatic dark mode and scroll animations) and vanilla JavaScript.
+- **Landing Page (`index.html`)**: Lightweight static HTML with vanilla CSS (including automatic dark mode and scroll animations), vanilla JavaScript, and interactive "Show, Don't Tell" Canvas micro-widgets embedded on project cards.
 - **Dynamic Project Sorting**: `index.html` dynamically fetches `build-info.json` from each project subfolder and sorts project cards by last build date.
 - **Portability**: All asset, image, and project links use relative paths (`./`) so the site functions identically at the root domain or inside subdirectories.
 
