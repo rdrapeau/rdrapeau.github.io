@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ryan Drapeau</title>
-    <link rel="icon" type="image/jpeg" href="/drapeau.jpg">
+    <link rel="icon" type="image/jpeg" href="./drapeau.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -286,7 +286,7 @@
     <div class="container">
         <header class="fade-in">
             <div class="header-content">
-                <img src="/drapeau.jpg" alt="Ryan Drapeau" class="headshot">
+                <img src="./drapeau.jpg" alt="Ryan Drapeau" class="headshot">
                 <h1>Ryan Drapeau</h1>
             </div>
             <p class="bio">I am currently a Principal ML Engineer at Stripe.</p>
@@ -304,44 +304,44 @@
             <h2 class="fade-in">Projects</h2>
             <p class="bio fade-in" style="margin-bottom: 1.5rem;">These are random things I've built on the side.</p>
             <div class="projects">
-                <a href="/fi_sim/" class="project fade-in">
+                <a href="./fi_sim/" class="project fade-in">
                     <div class="project-name">
-                        <img src="/fi_sim/favicon.svg" alt="" class="project-favicon">
+                        <img src="./fi_sim/favicon.svg" alt="" class="project-favicon">
                         Financial Simulator (FiSim)
                         <span class="tag tag-in-development">In Development</span>
                     </div>
                     <div class="project-description">A privacy-first, client-side personal finance projection planner featuring localized U.S., UK, and Canadian tax engines, RMDs, and Monte Carlo historical sequence-of-returns stress testing.</div>
                     <div class="project-date" data-project="fi_sim">Last updated: --</div>
                 </a>
-                <a href="/org_planning/" class="project fade-in">
+                <a href="./org_planning/" class="project fade-in">
                     <div class="project-name">
-                        <img src="/org_planning/favicon.svg" alt="" class="project-favicon">
+                        <img src="./org_planning/favicon.svg" alt="" class="project-favicon">
                         Org Planning Tool
                     </div>
                     <div class="project-description">A Monte Carlo simulation tool for engineering leaders to model
                         organizational growth, promotions, and budget planning across performance cycles.</div>
                     <div class="project-date" data-project="org_planning">Last updated: --</div>
                 </a>
-                <a href="/connections/" class="project fade-in">
+                <a href="./connections/" class="project fade-in">
                     <div class="project-name">
-                        <img src="/connections/icon.jpg" alt="" class="project-favicon">
+                        <img src="./connections/icon.jpg" alt="" class="project-favicon">
                         Connections
                     </div>
                     <div class="project-description">A simple game I made to play at my wedding.</div>
                     <div class="project-date" data-project="connections">Last updated: --</div>
                 </a>
-                <a href="/stitch_by_number/" class="project fade-in">
+                <a href="./stitch_by_number/" class="project fade-in">
                     <div class="project-name">
-                        <img src="/stitch_by_number/favicon.svg" alt="" class="project-favicon">
+                        <img src="./stitch_by_number/favicon.svg" alt="" class="project-favicon">
                         Stitch by Number
                     </div>
                     <div class="project-description">A tool that converts images into needlepoint stitch-ready designs
                         with thread color mapping and PDF export.</div>
                     <div class="project-date" data-project="stitch_by_number">Last updated: --</div>
                 </a>
-                <a href="/photo_stacker/" class="project fade-in">
+                <a href="./photo_stacker/" class="project fade-in">
                     <div class="project-name">
-                        <img src="/photo_stacker/favicon-32.png" alt="" class="project-favicon">
+                        <img src="./photo_stacker/favicon-32.png" alt="" class="project-favicon">
                         Photo Stacker
                         <span class="tag tag-in-development">In Development</span>
                     </div>
@@ -363,9 +363,9 @@
                     <div class="project-description">A Firefox extension ported to Manifest V3 that connects to the local 1Password 6 helper app via Native Messaging to read and auto-fill passwords.</div>
                     <div class="project-date">Last updated: Jun 2026</div>
                 </a>
-                <a href="/rowing_performance/" class="project fade-in">
+                <a href="./rowing_performance/" class="project fade-in">
                     <div class="project-name">
-                        <img src="/rowing_performance/favicon.svg" alt="" class="project-favicon">
+                        <img src="./rowing_performance/favicon.svg" alt="" class="project-favicon">
                         Rowing Performance Analyzer
                     </div>
                     <div class="project-description">A Concept2 rowing analytics tool — upload CSV workout data to track
@@ -391,7 +391,7 @@
                 let buildDate = '--';
 
                 try {
-                    const response = await fetch(`/${project}/build-info.json`);
+                    const response = await fetch(`./${project}/build-info.json`);
                     if (response.ok) {
                         const info = await response.json();
                         if (info.timestamp) {
