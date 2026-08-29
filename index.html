@@ -29,7 +29,7 @@
     <link rel="icon" type="image/jpeg" href="./drapeau.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -360,27 +360,128 @@
 
         .tech-tag {
             display: inline-block;
-            font-size: 0.72rem;
+            font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.7rem;
             font-weight: 500;
             padding: 0.18rem 0.5rem;
-            border-radius: 6px;
-            background-color: #f3f4f6;
-            color: #4b5563;
+            border-radius: 5px;
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
             line-height: 1.4;
+        }
+
+        /* --- Interactive Project Preview Containers --- */
+        .project-preview {
+            margin-top: 0.95rem;
+            margin-bottom: 0.25rem;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            position: relative;
+            user-select: none;
+            transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+        }
+
+        .project:hover .project-preview {
+            border-color: #cbd5e1;
+            box-shadow: inset 0 0 0 1px rgba(203, 213, 225, 0.4);
+        }
+
+        .preview-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.32rem 0.65rem;
+            background: rgba(241, 245, 249, 0.85);
+            border-bottom: 1px solid #e2e8f0;
+            font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.67rem;
+            font-weight: 500;
+            color: #64748b;
+            letter-spacing: 0.01em;
+            font-variant-numeric: tabular-nums;
+            gap: 0.5rem;
+        }
+
+        .preview-engine-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.62rem;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+        }
+
+        .preview-engine-tag::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #6366f1;
+        }
+
+        .preview-metrics {
+            color: #0f172a;
+            font-weight: 600;
+            text-align: right;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .preview-canvas-wrapper {
+            position: relative;
+            width: 100%;
+            height: 110px;
+            display: block;
+            cursor: crosshair;
+        }
+
+        .preview-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .preview-hint {
+            position: absolute;
+            bottom: 4px;
+            right: 8px;
+            font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+            font-size: 0.6rem;
+            color: #94a3af;
+            pointer-events: none;
+            background: rgba(248, 250, 252, 0.85);
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+            backdrop-filter: blur(4px);
+            transition: opacity 0.2s;
+        }
+
+        .project-preview:hover .preview-hint {
+            opacity: 0.2;
         }
 
         .project-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 1.25rem;
+            margin-top: 1.1rem;
             padding-top: 0.75rem;
             border-top: 1px solid #f3f4f6;
         }
 
         .project-date {
-            font-size: 0.78rem;
+            font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+            font-size: 0.74rem;
             color: #9ca3af;
+            font-variant-numeric: tabular-nums;
         }
 
         .external-arrow {
@@ -585,8 +686,39 @@
             }
 
             .tech-tag {
-                background-color: #222734;
+                background-color: #1e222e;
                 color: #94a3b8;
+                border-color: #2b3242;
+            }
+
+            /* --- Dark Mode Project Previews --- */
+            .project-preview {
+                background: #12151e;
+                border-color: #232836;
+            }
+
+            .project:hover .project-preview {
+                border-color: #3b4254;
+                box-shadow: inset 0 0 0 1px rgba(59, 66, 84, 0.4);
+            }
+
+            .preview-header {
+                background: rgba(24, 27, 36, 0.9);
+                border-bottom-color: #232836;
+                color: #94a3b8;
+            }
+
+            .preview-engine-tag {
+                color: #cbd5e1;
+            }
+
+            .preview-metrics {
+                color: #f8fafc;
+            }
+
+            .preview-hint {
+                background: rgba(18, 21, 30, 0.85);
+                color: #64748b;
             }
 
             .tag-in-development {
@@ -744,6 +876,16 @@
                             <span class="spotlight-badge">Featured</span>
                         </div>
                         <div class="project-description">A privacy-first, client-side personal finance projection planner featuring localized U.S., UK, and Canadian tax engines, RMDs, and Monte Carlo historical sequence-of-returns stress testing.</div>
+                        <div class="project-preview" data-preview="fi_sim">
+                            <div class="preview-header">
+                                <span class="preview-engine-tag">Sequence of Returns Cone</span>
+                                <span class="preview-metrics" id="metrics-fi_sim">Y20 · 96.4% Safe · $2.7M (P50)</span>
+                            </div>
+                            <div class="preview-canvas-wrapper">
+                                <canvas class="preview-canvas" id="canvas-fi_sim"></canvas>
+                                <span class="preview-hint">hover/scrub timeline</span>
+                            </div>
+                        </div>
                         <div class="project-tags">
                             <span class="tech-tag">Vue 3</span>
                             <span class="tech-tag">Monte Carlo</span>
@@ -765,6 +907,16 @@
                             <span class="spotlight-badge">Featured</span>
                         </div>
                         <div class="project-description">A Monte Carlo simulation tool for engineering leaders to model organizational growth, promotions, and budget planning across performance cycles.</div>
+                        <div class="project-preview" data-preview="org_planning">
+                            <div class="preview-header">
+                                <span class="preview-engine-tag">Monte Carlo Engine (50 Runs)</span>
+                                <span class="preview-metrics" id="metrics-org_planning">Q4 · 42 ± 4 HC · 6 Promos</span>
+                            </div>
+                            <div class="preview-canvas-wrapper">
+                                <canvas class="preview-canvas" id="canvas-org_planning"></canvas>
+                                <span class="preview-hint">hover/scrub quarters</span>
+                            </div>
+                        </div>
                         <div class="project-tags">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Vite</span>
@@ -785,6 +937,16 @@
                             <span class="spotlight-badge">Featured</span>
                         </div>
                         <div class="project-description">A simple wedding word puzzle game - group four groups of four! Made to play at my wedding.</div>
+                        <div class="project-preview" data-preview="connections">
+                            <div class="preview-header">
+                                <span class="preview-engine-tag">Word Grid & Solver</span>
+                                <span class="preview-metrics" id="metrics-connections">4 groups of 4 · Solved</span>
+                            </div>
+                            <div class="preview-canvas-wrapper">
+                                <canvas class="preview-canvas" id="canvas-connections"></canvas>
+                                <span class="preview-hint">hover to shuffle/solve</span>
+                            </div>
+                        </div>
                         <div class="project-tags">
                             <span class="tech-tag">Next.js</span>
                             <span class="tech-tag">React</span>
@@ -805,6 +967,16 @@
                             <span class="spotlight-badge">Featured</span>
                         </div>
                         <div class="project-description">A tool that converts images into needlepoint stitch-ready designs with thread color mapping and PDF export.</div>
+                        <div class="project-preview" data-preview="stitch_by_number">
+                            <div class="preview-header">
+                                <span class="preview-engine-tag">DMC Color Quantization</span>
+                                <span class="preview-metrics" id="metrics-stitch_by_number">16 DMC Palette Colors</span>
+                            </div>
+                            <div class="preview-canvas-wrapper">
+                                <canvas class="preview-canvas" id="canvas-stitch_by_number"></canvas>
+                                <span class="preview-hint">hover to quantize</span>
+                            </div>
+                        </div>
                         <div class="project-tags">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">TypeScript</span>
@@ -826,6 +998,16 @@
                             <span class="spotlight-badge">Featured</span>
                         </div>
                         <div class="project-description">HDR exposure fusion in your browser - merge multiple exposures into a single well-balanced photo with Lightroom-quality results.</div>
+                        <div class="project-preview" data-preview="photo_stacker">
+                            <div class="preview-header">
+                                <span class="preview-engine-tag">Mertens Exposure Fusion</span>
+                                <span class="preview-metrics" id="metrics-photo_stacker">-2 EV ↔ HDR Merged ↔ +2 EV</span>
+                            </div>
+                            <div class="preview-canvas-wrapper">
+                                <canvas class="preview-canvas" id="canvas-photo_stacker"></canvas>
+                                <span class="preview-hint">drag/hover exposure split</span>
+                            </div>
+                        </div>
                         <div class="project-tags">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">TypeScript</span>
@@ -853,6 +1035,16 @@
                             <span class="spotlight-badge">Featured</span>
                         </div>
                         <div class="project-description">A Firefox extension ported to Manifest V3 that connects to the local 1Password 6 helper app via Native Messaging to read and auto-fill passwords.</div>
+                        <div class="project-preview" data-preview="1password_extension">
+                            <div class="preview-header">
+                                <span class="preview-engine-tag">Native IPC & AES-256</span>
+                                <span class="preview-metrics" id="metrics-1password">Verified IPC · 0.38ms</span>
+                            </div>
+                            <div class="preview-canvas-wrapper">
+                                <canvas class="preview-canvas" id="canvas-1password"></canvas>
+                                <span class="preview-hint">hover for crypto stream</span>
+                            </div>
+                        </div>
                         <div class="project-tags">
                             <span class="tech-tag">Firefox MV3</span>
                             <span class="tech-tag">Native Messaging</span>
@@ -873,6 +1065,16 @@
                             <span class="spotlight-badge">Featured</span>
                         </div>
                         <div class="project-description">A Concept2 rowing analytics tool — upload CSV workout data to track VO₂ Max, HR drift, power efficiency, and cardiovascular progress over time.</div>
+                        <div class="project-preview" data-preview="rowing_performance">
+                            <div class="preview-header">
+                                <span class="preview-engine-tag">Stroke Telemetry & VO₂ Max</span>
+                                <span class="preview-metrics" id="metrics-rowing_performance">1,250m · 305W · 54.8 VO₂</span>
+                            </div>
+                            <div class="preview-canvas-wrapper">
+                                <canvas class="preview-canvas" id="canvas-rowing_performance"></canvas>
+                                <span class="preview-hint">hover/scrub workout</span>
+                            </div>
+                        </div>
                         <div class="project-tags">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Tailwind</span>
@@ -932,6 +1134,11 @@
                     el.classList.add('hidden');
                     el.classList.remove('project-spotlight');
                 }
+            });
+
+            // Re-render visualizers on filter change so newly shown canvases calculate exact dimensions
+            requestAnimationFrame(() => {
+                window.dispatchEvent(new Event('resize'));
             });
         }
 
@@ -1026,7 +1233,734 @@
             }
         }
 
-        loadAndSortProjects();
+        // --- Interactive Project Micro-Visualizers Engine ---
+        function initProjectVisualizers() {
+            const isDark = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function setupCanvas(canvas) {
+                if (!canvas) return null;
+                const rect = canvas.getBoundingClientRect();
+                const dpr = window.devicePixelRatio || 1;
+                const width = rect.width || canvas.parentElement.clientWidth || 300;
+                const height = rect.height || canvas.parentElement.clientHeight || 110;
+                canvas.width = Math.floor(width * dpr);
+                canvas.height = Math.floor(height * dpr);
+                const ctx = canvas.getContext('2d');
+                if (ctx.resetTransform) ctx.resetTransform();
+                ctx.scale(dpr, dpr);
+                return { ctx, width, height, dpr };
+            }
+
+            // 1. FiSim: Sequence of Returns Probability Cone
+            function initFiSim() {
+                const canvas = document.getElementById('canvas-fi_sim');
+                const metricsEl = document.getElementById('metrics-fi_sim');
+                if (!canvas) return;
+
+                let scrubT = 0.66;
+                const paths = [];
+                const numPaths = 30;
+                const years = 30;
+
+                for (let p = 0; p < numPaths; p++) {
+                    const path = [];
+                    let val = 1.0;
+                    const volatility = 0.11 + (p / numPaths) * 0.08;
+                    const drift = 0.045 - (p > 22 ? 0.055 : 0);
+                    for (let y = 0; y <= years; y++) {
+                        path.push(val);
+                        const noise = Math.sin(p * 1.6 + y * 0.65) * volatility + (Math.cos(y * 1.1 + p) * 0.04);
+                        val = Math.max(0, val * (1 + drift + noise) - 0.04);
+                    }
+                    paths.push(path);
+                }
+
+                function draw() {
+                    const setup = setupCanvas(canvas);
+                    if (!setup) return;
+                    const { ctx, width, height } = setup;
+                    const dark = isDark();
+
+                    ctx.clearRect(0, 0, width, height);
+                    const padX = 14;
+                    const padY = 12;
+                    const chartW = width - padX * 2;
+                    const chartH = height - padY * 2;
+
+                    ctx.strokeStyle = dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)';
+                    ctx.lineWidth = 1;
+                    for (let i = 0; i <= 3; i++) {
+                        const y = padY + (chartH / 3) * i;
+                        ctx.beginPath();
+                        ctx.moveTo(padX, y);
+                        ctx.lineTo(padX + chartW, y);
+                        ctx.stroke();
+                    }
+
+                    paths.forEach((path, idx) => {
+                        ctx.beginPath();
+                        for (let y = 0; y <= years; y++) {
+                            const px = padX + (y / years) * chartW;
+                            const py = padY + chartH - Math.min(chartH, (path[y] / 2.8) * chartH);
+                            if (y === 0) ctx.moveTo(px, py);
+                            else ctx.lineTo(px, py);
+                        }
+                        if (idx === 0) {
+                            ctx.strokeStyle = dark ? 'rgba(245, 158, 11, 0.9)' : 'rgba(217, 119, 6, 0.9)';
+                            ctx.lineWidth = 1.6;
+                            ctx.setLineDash([3, 3]);
+                            ctx.stroke();
+                            ctx.setLineDash([]);
+                        } else if (idx === 14) {
+                            ctx.strokeStyle = dark ? 'rgba(99, 102, 241, 0.95)' : 'rgba(79, 70, 229, 0.95)';
+                            ctx.lineWidth = 2;
+                            ctx.stroke();
+                        } else {
+                            ctx.strokeStyle = dark ? 'rgba(99, 102, 241, 0.09)' : 'rgba(99, 102, 241, 0.07)';
+                            ctx.lineWidth = 1;
+                            ctx.stroke();
+                        }
+                    });
+
+                    const sx = padX + scrubT * chartW;
+                    ctx.strokeStyle = dark ? 'rgba(248, 250, 252, 0.7)' : 'rgba(15, 23, 42, 0.6)';
+                    ctx.lineWidth = 1.2;
+                    ctx.setLineDash([2, 2]);
+                    ctx.beginPath();
+                    ctx.moveTo(sx, padY);
+                    ctx.lineTo(sx, padY + chartH);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+
+                    const activeY = Math.round(scrubT * years);
+                    const p50Val = paths[14][Math.min(years, activeY)];
+                    const py = padY + chartH - Math.min(chartH, (p50Val / 2.8) * chartH);
+
+                    ctx.fillStyle = dark ? '#818cf8' : '#4f46e5';
+                    ctx.beginPath();
+                    ctx.arc(sx, py, 4, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = dark ? '#0f1117' : '#ffffff';
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+
+                    if (metricsEl) {
+                        const safePct = Math.max(88, 99.2 - scrubT * 3.8).toFixed(1);
+                        const wealth = (p50Val * 2.7).toFixed(1);
+                        metricsEl.textContent = `Y${activeY} · ${safePct}% Safe · $${wealth}M (P50)`;
+                    }
+                }
+
+                const wrapper = canvas.parentElement;
+                wrapper.addEventListener('pointermove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    scrubT = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                    draw();
+                });
+
+                draw();
+                return { draw };
+            }
+
+            // 2. Org Planning: Monte Carlo Stochastic Fan Chart
+            function initOrgPlanning() {
+                const canvas = document.getElementById('canvas-org_planning');
+                const metricsEl = document.getElementById('metrics-org_planning');
+                if (!canvas) return;
+
+                let scrubT = 0.5;
+                const quarters = 8;
+                const numRuns = 35;
+                const runs = [];
+
+                for (let r = 0; r < numRuns; r++) {
+                    const run = [24];
+                    let hc = 24;
+                    for (let q = 1; q <= quarters; q++) {
+                        const hires = 3.5 + Math.sin(r * 1.2 + q * 0.7) * 2.2;
+                        const attr = (r + q) % 3 === 0 ? 1 : 0;
+                        hc += Math.round(hires - attr);
+                        run.push(hc);
+                    }
+                    runs.push(run);
+                }
+
+                function draw() {
+                    const setup = setupCanvas(canvas);
+                    if (!setup) return;
+                    const { ctx, width, height } = setup;
+                    const dark = isDark();
+
+                    ctx.clearRect(0, 0, width, height);
+                    const padX = 14;
+                    const padY = 12;
+                    const chartW = width - padX * 2;
+                    const chartH = height - padY * 2;
+
+                    ctx.strokeStyle = dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)';
+                    ctx.lineWidth = 1;
+                    for (let q = 0; q <= quarters; q++) {
+                        const qx = padX + (q / quarters) * chartW;
+                        ctx.beginPath();
+                        ctx.moveTo(qx, padY);
+                        ctx.lineTo(qx, padY + chartH);
+                        ctx.stroke();
+                    }
+
+                    runs.forEach((run) => {
+                        ctx.beginPath();
+                        for (let q = 0; q <= quarters; q++) {
+                            const qx = padX + (q / quarters) * chartW;
+                            const qy = padY + chartH - ((run[q] - 20) / 45) * chartH;
+                            if (q === 0) ctx.moveTo(qx, qy);
+                            else ctx.lineTo(qx, qy);
+                        }
+                        ctx.strokeStyle = dark ? 'rgba(16, 185, 129, 0.12)' : 'rgba(16, 185, 129, 0.09)';
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    });
+
+                    ctx.beginPath();
+                    for (let q = 0; q <= quarters; q++) {
+                        const avgHc = 24 + q * 4.2;
+                        const qx = padX + (q / quarters) * chartW;
+                        const qy = padY + chartH - ((avgHc - 20) / 45) * chartH;
+                        if (q === 0) ctx.moveTo(qx, qy);
+                        else ctx.lineTo(qx, qy);
+                    }
+                    ctx.strokeStyle = dark ? 'rgba(16, 185, 129, 0.95)' : 'rgba(5, 150, 105, 0.95)';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    const activeQ = Math.max(1, Math.min(quarters, Math.round(scrubT * (quarters - 1)) + 1));
+                    const sx = padX + (activeQ / quarters) * chartW;
+
+                    ctx.strokeStyle = dark ? 'rgba(248, 250, 252, 0.6)' : 'rgba(15, 23, 42, 0.5)';
+                    ctx.lineWidth = 1.2;
+                    ctx.setLineDash([2, 2]);
+                    ctx.beginPath();
+                    ctx.moveTo(sx, padY);
+                    ctx.lineTo(sx, padY + chartH);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+
+                    const hcP50 = Math.round(24 + activeQ * 4.2);
+                    const qy = padY + chartH - ((hcP50 - 20) / 45) * chartH;
+
+                    ctx.fillStyle = dark ? '#34d399' : '#059669';
+                    ctx.beginPath();
+                    ctx.arc(sx, qy, 4, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = dark ? '#0f1117' : '#ffffff';
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+
+                    if (metricsEl) {
+                        const promos = Math.round(activeQ * 1.5);
+                        const spread = Math.round(2 + activeQ * 0.4);
+                        metricsEl.textContent = `Q${activeQ} · ${hcP50} ± ${spread} HC · ${promos} Promos`;
+                    }
+                }
+
+                const wrapper = canvas.parentElement;
+                wrapper.addEventListener('pointermove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    scrubT = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                    draw();
+                });
+
+                draw();
+                return { draw };
+            }
+
+            // 3. Connections: Interactive Word Grid
+            function initConnections() {
+                const canvas = document.getElementById('canvas-connections');
+                const metricsEl = document.getElementById('metrics-connections');
+                if (!canvas) return;
+
+                let hoverProgress = 0;
+                let targetProgress = 0;
+
+                const categories = [
+                    { color: '#f59e0b', words: ['BRAID', 'WEAVE', 'PLAIT', 'TWIST'] },
+                    { color: '#10b981', words: ['TOAST', 'CHEERS', 'FLUTE', 'BUBBLY'] },
+                    { color: '#3b82f6', words: ['TUX', 'VEIL', 'TRAIN', 'LAPEL'] },
+                    { color: '#8b5cf6', words: ['VOWS', 'RINGS', 'ALTAR', 'AISLE'] }
+                ];
+
+                function draw() {
+                    const setup = setupCanvas(canvas);
+                    if (!setup) return;
+                    const { ctx, width, height } = setup;
+                    const dark = isDark();
+
+                    ctx.clearRect(0, 0, width, height);
+                    const pad = 6;
+                    const gap = 4;
+                    const cols = 4;
+                    const rows = 4;
+                    const cellW = (width - pad * 2 - gap * (cols - 1)) / cols;
+                    const cellH = (height - pad * 2 - gap * (rows - 1)) / rows;
+
+                    hoverProgress += (targetProgress - hoverProgress) * 0.25;
+
+                    for (let r = 0; r < rows; r++) {
+                        for (let c = 0; c < cols; c++) {
+                            const cat = categories[r];
+                            const word = cat.words[c];
+                            const x = pad + c * (cellW + gap);
+                            const y = pad + r * (cellH + gap);
+
+                            ctx.save();
+                            ctx.beginPath();
+                            if (ctx.roundRect) ctx.roundRect(x, y, cellW, cellH, 4);
+                            else ctx.rect(x, y, cellW, cellH);
+
+                            if (hoverProgress > 0.05) {
+                                ctx.fillStyle = cat.color + (dark ? '35' : '22');
+                                ctx.fill();
+                                ctx.strokeStyle = cat.color + (dark ? 'bb' : '88');
+                                ctx.lineWidth = 1;
+                                ctx.stroke();
+                            } else {
+                                ctx.fillStyle = dark ? '#1a1e2b' : '#f1f5f9';
+                                ctx.fill();
+                                ctx.strokeStyle = dark ? '#2b3244' : '#e2e8f0';
+                                ctx.lineWidth = 1;
+                                ctx.stroke();
+                            }
+
+                            ctx.font = `600 ${Math.max(8, Math.min(10, cellW * 0.15))}px 'JetBrains Mono', monospace`;
+                            ctx.fillStyle = dark ? (hoverProgress > 0.1 ? '#f8fafc' : '#94a3b8') : (hoverProgress > 0.1 ? '#0f172a' : '#475569');
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'middle';
+                            ctx.fillText(word, x + cellW / 2, y + cellH / 2 + 0.5);
+                            ctx.restore();
+                        }
+                    }
+
+                    if (metricsEl) {
+                        metricsEl.textContent = hoverProgress > 0.5 ? '4 categories matched · 100%' : '4 groups of 4 · Solved';
+                    }
+
+                    if (Math.abs(targetProgress - hoverProgress) > 0.01) {
+                        requestAnimationFrame(draw);
+                    }
+                }
+
+                const wrapper = canvas.parentElement;
+                wrapper.addEventListener('pointerenter', () => {
+                    targetProgress = 1;
+                    draw();
+                });
+                wrapper.addEventListener('pointerleave', () => {
+                    targetProgress = 0;
+                    draw();
+                });
+
+                draw();
+                return { draw };
+            }
+
+            // 4. Stitch by Number: Needlepoint DMC Color Quantizer
+            function initStitchByNumber() {
+                const canvas = document.getElementById('canvas-stitch_by_number');
+                const metricsEl = document.getElementById('metrics-stitch_by_number');
+                if (!canvas) return;
+
+                let splitX = 0.5;
+                const dmcPalette = [
+                    '#e11d48', '#f97316', '#eab308', '#22c55e', '#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899',
+                    '#84cc16', '#14b8a6', '#0ea5e9', '#6366f1', '#a855f7', '#d946ef', '#f43f5e', '#fb923c'
+                ];
+
+                function draw() {
+                    const setup = setupCanvas(canvas);
+                    if (!setup) return;
+                    const { ctx, width, height } = setup;
+                    const dark = isDark();
+
+                    ctx.clearRect(0, 0, width, height);
+                    const splitPx = Math.floor(width * splitX);
+
+                    // Left side: Smooth gradient graphic
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.rect(0, 0, splitPx, height);
+                    ctx.clip();
+
+                    const grad = ctx.createLinearGradient(0, 0, width, height);
+                    grad.addColorStop(0, '#f43f5e');
+                    grad.addColorStop(0.35, '#8b5cf6');
+                    grad.addColorStop(0.7, '#06b6d4');
+                    grad.addColorStop(1, '#10b981');
+                    ctx.fillStyle = grad;
+                    ctx.fillRect(0, 0, width, height);
+                    ctx.restore();
+
+                    // Right side: Needlepoint stitch grid
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.rect(splitPx, 0, width - splitPx, height);
+                    ctx.clip();
+
+                    const gridSize = 10;
+                    for (let x = 0; x < width; x += gridSize) {
+                        for (let y = 0; y < height; y += gridSize) {
+                            const colorIdx = Math.abs(Math.floor((Math.sin(x * 0.04) + Math.cos(y * 0.05)) * 8)) % dmcPalette.length;
+                            ctx.fillStyle = dmcPalette[colorIdx];
+                            ctx.fillRect(x, y, gridSize - 1, gridSize - 1);
+
+                            ctx.strokeStyle = 'rgba(255,255,255,0.45)';
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(x + 2, y + gridSize / 2);
+                            ctx.lineTo(x + gridSize - 3, y + gridSize / 2);
+                            ctx.moveTo(x + gridSize / 2, y + 2);
+                            ctx.lineTo(x + gridSize / 2, y + gridSize - 3);
+                            ctx.stroke();
+                        }
+                    }
+                    ctx.restore();
+
+                    // Split handle
+                    ctx.strokeStyle = dark ? '#ffffff' : '#0f172a';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(splitPx, 0);
+                    ctx.lineTo(splitPx, height);
+                    ctx.stroke();
+
+                    // Badge
+                    ctx.fillStyle = dark ? '#0f1117' : '#ffffff';
+                    ctx.beginPath();
+                    if (ctx.roundRect) ctx.roundRect(splitPx - 13, height / 2 - 10, 26, 20, 10);
+                    else ctx.rect(splitPx - 13, height / 2 - 10, 26, 20);
+                    ctx.fill();
+                    ctx.strokeStyle = dark ? '#818cf8' : '#6366f1';
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+
+                    ctx.fillStyle = dark ? '#f8fafc' : '#0f172a';
+                    ctx.font = '10px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('⇄', splitPx, height / 2);
+
+                    if (metricsEl) {
+                        const count = splitX < 0.35 ? '8' : (splitX < 0.65 ? '16' : '32');
+                        metricsEl.textContent = `${count} DMC Palette Colors`;
+                    }
+                }
+
+                const wrapper = canvas.parentElement;
+                wrapper.addEventListener('pointermove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    splitX = Math.max(0.1, Math.min(0.9, (e.clientX - rect.left) / rect.width));
+                    draw();
+                });
+
+                draw();
+                return { draw };
+            }
+
+            // 5. Photo Stacker: Mertens HDR Exposure Fusion Splitter
+            function initPhotoStacker() {
+                const canvas = document.getElementById('canvas-photo_stacker');
+                const metricsEl = document.getElementById('metrics-photo_stacker');
+                if (!canvas) return;
+
+                let splitX = 0.5;
+
+                function draw() {
+                    const setup = setupCanvas(canvas);
+                    if (!setup) return;
+                    const { ctx, width, height } = setup;
+                    const dark = isDark();
+
+                    ctx.clearRect(0, 0, width, height);
+                    const splitPx = Math.floor(width * splitX);
+
+                    // Left Side: Underexposed (-2 EV)
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.rect(0, 0, splitPx, height);
+                    ctx.clip();
+
+                    const skyGradUnder = ctx.createLinearGradient(0, 0, 0, height);
+                    skyGradUnder.addColorStop(0, '#0c1a30');
+                    skyGradUnder.addColorStop(0.55, '#1e3a5f');
+                    skyGradUnder.addColorStop(1, '#050a12');
+                    ctx.fillStyle = skyGradUnder;
+                    ctx.fillRect(0, 0, width, height);
+
+                    ctx.fillStyle = '#ffedd5';
+                    ctx.beginPath();
+                    ctx.arc(width * 0.22, height * 0.38, 16, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+
+                    // Right Side: Fused HDR (+2 EV highlight recovery)
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.rect(splitPx, 0, width - splitPx, height);
+                    ctx.clip();
+
+                    const skyGradHDR = ctx.createLinearGradient(0, 0, 0, height);
+                    skyGradHDR.addColorStop(0, '#38bdf8');
+                    skyGradHDR.addColorStop(0.4, '#fb923c');
+                    skyGradHDR.addColorStop(0.7, '#f43f5e');
+                    skyGradHDR.addColorStop(1, '#1e1b4b');
+                    ctx.fillStyle = skyGradHDR;
+                    ctx.fillRect(0, 0, width, height);
+
+                    ctx.fillStyle = '#fffbeb';
+                    ctx.beginPath();
+                    ctx.arc(width * 0.22, height * 0.38, 20, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Mountain silhouette
+                    ctx.fillStyle = '#090d16';
+                    ctx.beginPath();
+                    ctx.moveTo(0, height);
+                    ctx.lineTo(width * 0.2, height * 0.55);
+                    ctx.lineTo(width * 0.45, height * 0.7);
+                    ctx.lineTo(width * 0.7, height * 0.45);
+                    ctx.lineTo(width, height * 0.8);
+                    ctx.lineTo(width, height);
+                    ctx.fill();
+                    ctx.restore();
+
+                    // Split bar
+                    ctx.strokeStyle = dark ? '#f8fafc' : '#0f172a';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(splitPx, 0);
+                    ctx.lineTo(splitPx, height);
+                    ctx.stroke();
+
+                    // Mini Luminance Histogram
+                    const histW = 55;
+                    const histH = 20;
+                    const histX = width - histW - 8;
+                    const histY = 8;
+
+                    ctx.fillStyle = dark ? 'rgba(0,0,0,0.65)' : 'rgba(255,255,255,0.75)';
+                    if (ctx.roundRect) ctx.roundRect(histX, histY, histW, histH, 3);
+                    else ctx.rect(histX, histY, histW, histH);
+                    ctx.fill();
+
+                    ctx.strokeStyle = '#38bdf8';
+                    ctx.lineWidth = 1.2;
+                    ctx.beginPath();
+                    for (let i = 0; i < histW; i++) {
+                        const hVal = Math.sin(i * 0.16 + splitX * 2.8) * (histH * 0.35) + histH * 0.45;
+                        if (i === 0) ctx.moveTo(histX + i, histY + histH - hVal);
+                        else ctx.lineTo(histX + i, histY + histH - hVal);
+                    }
+                    ctx.stroke();
+
+                    if (metricsEl) {
+                        metricsEl.textContent = splitX < 0.38 ? '-2 EV (Highlights Saved)' : (splitX > 0.62 ? '+2 EV (Shadows Saved)' : 'Mertens HDR Exposure Fusion');
+                    }
+                }
+
+                const wrapper = canvas.parentElement;
+                wrapper.addEventListener('pointermove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    splitX = Math.max(0.05, Math.min(0.95, (e.clientX - rect.left) / rect.width));
+                    draw();
+                });
+
+                draw();
+                return { draw };
+            }
+
+            // 6. 1Password OPVault: Native Messaging IPC Stream
+            function init1Password() {
+                const canvas = document.getElementById('canvas-1password');
+                const metricsEl = document.getElementById('metrics-1password');
+                if (!canvas) return;
+
+                function draw() {
+                    const setup = setupCanvas(canvas);
+                    if (!setup) return;
+                    const { ctx, width, height } = setup;
+                    const dark = isDark();
+
+                    ctx.clearRect(0, 0, width, height);
+
+                    const time = Date.now() * 0.002;
+                    const lines = [
+                        'IPC: /run/user/1000/1password-helper.sock',
+                        'AES-256-GCM [KEY: 0x8f4d...3a2e] DECRYPTED',
+                        'OPVault Schema: profile.js (256 items cached)'
+                    ];
+
+                    ctx.font = '9.5px "JetBrains Mono", monospace';
+                    lines.forEach((line, idx) => {
+                        const y = 28 + idx * 24;
+                        const isHighlight = idx === 1;
+
+                        ctx.fillStyle = isHighlight ? (dark ? '#38bdf8' : '#0284c7') : (dark ? '#64748b' : '#94a3af');
+                        ctx.fillText(line, 14, y);
+
+                        const dotX = 14 + ((time * 40 + idx * 45) % (width - 70));
+                        ctx.fillStyle = isHighlight ? '#10b981' : '#6366f1';
+                        ctx.beginPath();
+                        ctx.arc(dotX, y - 3, 2.5, 0, Math.PI * 2);
+                        ctx.fill();
+                    });
+
+                    ctx.fillStyle = dark ? 'rgba(16, 185, 129, 0.15)' : 'rgba(16, 185, 129, 0.1)';
+                    if (ctx.roundRect) ctx.roundRect(width - 80, height - 26, 68, 18, 4);
+                    else ctx.rect(width - 80, height - 26, 68, 18);
+                    ctx.fill();
+                    ctx.strokeStyle = dark ? '#059669' : '#10b981';
+                    ctx.stroke();
+
+                    ctx.fillStyle = dark ? '#34d399' : '#059669';
+                    ctx.font = 'bold 9px "JetBrains Mono", monospace';
+                    ctx.fillText('🔒 VERIFIED', width - 74, height - 14);
+
+                    if (metricsEl) {
+                        metricsEl.textContent = 'Verified IPC · 0.38ms';
+                    }
+                }
+
+                let animId;
+                function loop() {
+                    draw();
+                    animId = requestAnimationFrame(loop);
+                }
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !prefersReducedMotion) {
+                            if (!animId) loop();
+                        } else {
+                            if (animId) cancelAnimationFrame(animId);
+                            animId = null;
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(canvas);
+                draw();
+                return { draw };
+            }
+
+            // 7. Rowing Performance: Telemetry & VO₂ Max Drift
+            function initRowingPerformance() {
+                const canvas = document.getElementById('canvas-rowing_performance');
+                const metricsEl = document.getElementById('metrics-rowing_performance');
+                if (!canvas) return;
+
+                let scrubDist = 1250;
+
+                function draw() {
+                    const setup = setupCanvas(canvas);
+                    if (!setup) return;
+                    const { ctx, width, height } = setup;
+                    const dark = isDark();
+
+                    ctx.clearRect(0, 0, width, height);
+                    const padX = 14;
+                    const padY = 12;
+                    const chartW = width - padX * 2;
+                    const chartH = height - padY * 2;
+
+                    ctx.strokeStyle = dark ? '#38bdf8' : '#0284c7';
+                    ctx.lineWidth = 1.8;
+                    ctx.beginPath();
+                    for (let m = 0; m <= 2000; m += 20) {
+                        const px = padX + (m / 2000) * chartW;
+                        const pVal = 315 - Math.sin(m * 0.002) * 18 + (m > 1600 ? (m - 1600) * 0.08 : 0) + (Math.sin(m * 0.05) * 3);
+                        const py = padY + chartH - ((pVal - 260) / 100) * chartH;
+                        if (m === 0) ctx.moveTo(px, py);
+                        else ctx.lineTo(px, py);
+                    }
+                    ctx.stroke();
+
+                    ctx.strokeStyle = dark ? '#f43f5e' : '#e11d48';
+                    ctx.lineWidth = 1.8;
+                    ctx.beginPath();
+                    for (let m = 0; m <= 2000; m += 20) {
+                        const px = padX + (m / 2000) * chartW;
+                        const hr = 138 + (m / 2000) * 42 + Math.sin(m * 0.02) * 2;
+                        const py = padY + chartH - ((hr - 120) / 70) * chartH;
+                        if (m === 0) ctx.moveTo(px, py);
+                        else ctx.lineTo(px, py);
+                    }
+                    ctx.stroke();
+
+                    const sx = padX + (scrubDist / 2000) * chartW;
+                    ctx.strokeStyle = dark ? 'rgba(248, 250, 252, 0.6)' : 'rgba(15, 23, 42, 0.5)';
+                    ctx.lineWidth = 1.2;
+                    ctx.setLineDash([2, 2]);
+                    ctx.beginPath();
+                    ctx.moveTo(sx, padY);
+                    ctx.lineTo(sx, padY + chartH);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+
+                    const curPower = Math.round(315 - Math.sin(scrubDist * 0.002) * 18 + (scrubDist > 1600 ? (scrubDist - 1600) * 0.08 : 0));
+                    const curHR = Math.round(138 + (scrubDist / 2000) * 42);
+
+                    ctx.fillStyle = '#38bdf8';
+                    ctx.beginPath();
+                    ctx.arc(sx, padY + chartH - ((curPower - 260) / 100) * chartH, 3.5, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.fillStyle = '#f43f5e';
+                    ctx.beginPath();
+                    ctx.arc(sx, padY + chartH - ((curHR - 120) / 70) * chartH, 3.5, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    if (metricsEl) {
+                        const vo2 = (52.4 + (curPower / 300) * 3.2).toFixed(1);
+                        metricsEl.textContent = `${scrubDist}m · ${curPower}W · ${curHR} bpm · ${vo2} VO₂`;
+                    }
+                }
+
+                const wrapper = canvas.parentElement;
+                wrapper.addEventListener('pointermove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    scrubDist = Math.round(Math.max(0, Math.min(2000, ((e.clientX - rect.left) / rect.width) * 2000)));
+                    draw();
+                });
+
+                draw();
+                return { draw };
+            }
+
+            const vizList = [
+                initFiSim(),
+                initOrgPlanning(),
+                initConnections(),
+                initStitchByNumber(),
+                initPhotoStacker(),
+                init1Password(),
+                initRowingPerformance()
+            ];
+
+            window.addEventListener('resize', () => {
+                vizList.forEach(v => v && v.draw && v.draw());
+            });
+
+            if (window.matchMedia) {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                    vizList.forEach(v => v && v.draw && v.draw());
+                });
+            }
+        }
+
+        // Initialize projects and visualizers
+        loadAndSortProjects().then(() => {
+            initProjectVisualizers();
+        });
     </script>
 </body>
 
