@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-29] - Added Research Tab & Interactive Academic Simulation Cards (Option A)
+
+### Added
+- **Segmented Site Navigation Tabs**: Added fluid sliding pill navigation tabs (`Projects` [7] and `Research` [5]) with keyboard shortcut navigation (`1` for Projects, `2` for Research) and deep-linking URL hash synchronization (`#projects`, `#research`).
+- **Google Scholar Integration**: Added Google Scholar social icon and header link, aggregate academic telemetry badge (186 citations, 4 h-index, University of Washington), and direct links to publisher DOIs/PDFs.
+- **5 Academic Research Cards & Interactive Micro-Visualizers**:
+  - **Microtalk (AAAI HCOMP 2016)**: Interactive 3-stage peer argumentation lift pipeline (*Assess $\to$ Justify $\to$ Reconsider*) demonstrating +20% accuracy gain over baseline voting.
+  - **Tactile Graphics with a Voice (ACM TACCESS 2016)**: Multimodal diagram scanner with interactive tactile node touch targets, acoustic sonar pulses, and localized voice audio telemetry.
+  - **The Wisdom of Multiple Guesses (ACM EC 2015)**: Multi-guess probability density aggregator comparing certainty-weighted crowd distributions vs naive single-point estimates.
+  - **KIMBEE (UW CSE 2015)**: Real-time speech acoustic waveform, harmonic pitch contour, and articulation score analyzer.
+  - **Contributing During the Commute (UW CSE / OneBusAway 2015)**: Urban transit crowdsourcing route map with stop amenity contribution telemetry and prosocial volunteer metrics.
+- **BibTeX Citation Copy System**: Instant one-click BibTeX copy button on each research card with animated toast feedback.
+
 ## [2026-08-29] - Stripe Wordmark Sizing Polish
 
 ### Changed
