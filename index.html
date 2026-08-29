@@ -80,21 +80,23 @@
             line-height: 1.65;
         }
 
-        .stripe-brand {
+        .stripe-wordmark-link {
             display: inline-flex;
-            align-items: center;
-            gap: 0.28rem;
-            white-space: nowrap;
-            font-weight: 600;
-            color: #111827;
-            vertical-align: -0.12em;
+            vertical-align: -0.16em;
+            text-decoration: none;
+            color: #533afd;
+            transition: opacity 0.2s, transform 0.2s;
         }
 
-        .stripe-logo {
-            width: 1.05em;
-            height: 1.05em;
-            color: #635bff;
-            flex-shrink: 0;
+        .stripe-wordmark-link:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        .stripe-wordmark {
+            height: 0.93em;
+            width: auto;
+            display: block;
         }
 
         .header-links {
@@ -472,11 +474,7 @@
                 color: #94a3b8;
             }
 
-            .stripe-brand {
-                color: #f8fafc;
-            }
-
-            .stripe-logo {
+            .stripe-wordmark-link {
                 color: #7c75ff;
             }
 
@@ -692,7 +690,7 @@
                 <img src="./drapeau.jpg" alt="Ryan Drapeau" class="headshot">
                 <h1>Ryan Drapeau</h1>
             </div>
-            <p class="bio">I am currently a Principal ML Engineer at <span class="stripe-brand"><svg class="stripe-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg>Stripe</span>.</p>
+            <p class="bio">I am currently a Principal ML Engineer at <a href="https://stripe.com" class="stripe-wordmark-link" target="_blank" rel="noopener noreferrer" aria-label="Stripe"><svg class="stripe-wordmark" viewBox="0 0 360 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z" fill="currentColor"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z" fill="currentColor"/></svg></a>.</p>
             <div class="header-links">
                 <a href="https://www.linkedin.com/in/rdrapeau/" class="social-link linkedin-link" target="_blank"
                     rel="noopener noreferrer">
