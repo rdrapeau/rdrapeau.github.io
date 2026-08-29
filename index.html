@@ -213,20 +213,23 @@
         .filter-btn:focus-visible,
         .project:focus-visible,
         .research-card:focus-visible,
+        .patent-card:focus-visible,
         .social-link:focus-visible {
             outline: 2px solid #4f46e5;
             outline-offset: 2px;
         }
 
-        /* --- Research Cards & Badges --- */
-        .research-grid {
+        /* --- Research & Patent Cards & Badges --- */
+        .research-grid,
+        .patent-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.25rem;
         }
 
         @media (min-width: 640px) {
-            .research-grid {
+            .research-grid,
+            .patent-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 1.25rem;
             }
@@ -283,6 +286,44 @@
             background: #fae8ff;
             color: #86198f;
             border-color: #f5d0fe;
+        }
+
+        .badge-granted {
+            background: #ecfdf5;
+            color: #065f46;
+            border-color: #a7f3d0;
+        }
+
+        .badge-app {
+            background: #eff6ff;
+            color: #1e40af;
+            border-color: #bfdbfe;
+        }
+
+        .card-badges {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .stripe-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.2rem 0.45rem;
+            border-radius: 5px;
+            background: #f1f5f9;
+            color: #635bff;
+            border: 1px solid #e2e8f0;
+            line-height: 1;
+        }
+
+        .stripe-badge-logo {
+            height: 0.72rem;
+            width: auto;
+            display: block;
         }
 
         h2 {
@@ -389,7 +430,8 @@
         }
 
         .project,
-        .research-card {
+        .research-card,
+        .patent-card {
             background: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 12px;
@@ -398,7 +440,7 @@
             color: inherit;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s, opacity 0.2s;
             position: relative;
             min-width: 0;
@@ -412,7 +454,8 @@
         }
 
         .project:hover,
-        .research-card:hover {
+        .research-card:hover,
+        .patent-card:hover {
             border-color: #cbd5e1;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
             transform: translateY(-2px);
@@ -785,6 +828,7 @@
             .filter-btn:focus-visible,
             .project:focus-visible,
             .research-card:focus-visible,
+            .patent-card:focus-visible,
             .social-link:focus-visible {
                 outline-color: #818cf8;
             }
@@ -820,6 +864,24 @@
                 background: #3b0764;
                 color: #e879f9;
                 border-color: #86198f;
+            }
+
+            .badge-granted {
+                background: #064e3b;
+                color: #34d399;
+                border-color: #047857;
+            }
+
+            .badge-app {
+                background: #1e3a8a;
+                color: #60a5fa;
+                border-color: #1d4ed8;
+            }
+
+            .stripe-badge {
+                background: #1e2230;
+                border-color: #2e3548;
+                color: #7a73ff;
             }
 
             h2 {
@@ -860,13 +922,15 @@
             }
 
             .project,
-            .research-card {
+            .research-card,
+            .patent-card {
                 background: #181b24;
                 border-color: #262b38;
             }
 
             .project:hover,
-            .research-card:hover {
+            .research-card:hover,
+            .patent-card:hover {
                 border-color: #3b4254;
                 box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
             }
@@ -1100,6 +1164,13 @@
                 </svg>
                 <span>Research</span>
                 <span class="tab-badge">5</span>
+            </button>
+            <button class="site-tab" id="tab-patents" role="tab" aria-selected="false" aria-controls="section-patents" data-tab="patents">
+                <svg class="tab-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 1.887.87 3.57 2.235 4.673A2 2 0 017 14.25v.75a2 2 0 002 2h2a2 2 0 002-2v-.75a2 2 0 01.765-1.577A6 6 0 0016 8a6 6 0 00-6-6zm-1 16a1 1 0 011-1h0a1 1 0 011 1v.5a1.5 1.5 0 01-1.5 1.5h-1A1.5 1.5 0 017 18.5V18a1 1 0 011-1h1z" clip-rule="evenodd" />
+                </svg>
+                <span>Patents</span>
+                <span class="tab-badge">10</span>
             </button>
         </div>
 
@@ -1429,6 +1500,194 @@
                         </div>
                         <div class="project-description">
                             An empirical study within the OneBusAway mobile transit platform investigating prosocial volunteer dynamics when transit riders crowdsource bus stop accessibility attributes (shelters, seating, sidewalk ramps).
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- --- Patents & Inventions Section --- -->
+        <section id="section-patents" class="tab-content" role="tabpanel" aria-labelledby="tab-patents" style="display: none;">
+            <h2 class="fade-in">Patents & Inventions</h2>
+            <p class="section-subheading fade-in">Inventions in machine learning fraud detection, transaction security, and distributed data systems at Stripe.</p>
+
+            <div class="patent-grid">
+                <!-- 1. Systems and methods for identity graph based fraud detection -->
+                <a href="https://patents.google.com/patent/US11704673B1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="identity_graphs">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for identity graph based fraud detection
+                            </div>
+                            <div class="card-badges">
+                                <span class="stripe-badge" aria-label="Stripe"><svg class="stripe-badge-logo" viewBox="0 0 360 150" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z"/></svg></span>
+                                <span class="venue-badge badge-granted">US Patent 11,704,673</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            Connects related accounts and devices into identity networks to catch fraudsters trying to disguise their identity.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2. Systems and methods for secure identifiers for electronic transactions -->
+                <a href="https://patents.google.com/patent/US20250125969A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="secure_identifiers">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for secure identifiers for electronic transactions
+                            </div>
+                            <div class="card-badges">
+                                <span class="stripe-badge" aria-label="Stripe"><svg class="stripe-badge-logo" viewBox="0 0 360 150" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z"/></svg></span>
+                                <span class="venue-badge badge-app">US 2025/0125969 A1</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            Creates secure digital fingerprints for devices to recognize repeat visitors and flag suspicious payment attempts.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 3. Systems and methods for hard deletion of data across systems -->
+                <a href="https://patents.google.com/patent/US20240126908A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="hard_deletion">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for hard deletion of data across systems
+                            </div>
+                            <div class="card-badges">
+                                <span class="stripe-badge" aria-label="Stripe"><svg class="stripe-badge-logo" viewBox="0 0 360 150" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z"/></svg></span>
+                                <span class="venue-badge badge-app">US 2024/0126908 A1</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            Reliably and permanently erases user data across complex distributed databases to protect consumer privacy.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 4. Systems and methods for privacy preserving fraud detection during electronic transactions -->
+                <a href="https://patents.google.com/patent/US20250117802A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="privacy_fraud">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for privacy preserving fraud detection during electronic transactions
+                            </div>
+                            <div class="card-badges">
+                                <span class="stripe-badge" aria-label="Stripe"><svg class="stripe-badge-logo" viewBox="0 0 360 150" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z"/></svg></span>
+                                <span class="venue-badge badge-app">US 2025/0117802 A1</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            Analyzes transactions for fraud using privacy-preserving encryption so customer personal details are never exposed.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 5. Merchant specific machine learning model for fraud detection -->
+                <a href="https://patents.google.com/patent/US20250165978A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="merchant_specific_ml">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Merchant specific machine learning model for fraud detection
+                            </div>
+                            <div class="card-badges">
+                                <span class="stripe-badge" aria-label="Stripe"><svg class="stripe-badge-logo" viewBox="0 0 360 150" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z"/></svg></span>
+                                <span class="venue-badge badge-app">US 2025/0165978 A1</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            Trains customized AI models tailored to each business's unique sales patterns and risk profile.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 6. Systems and methods for enhanced transaction authentication -->
+                <a href="https://patents.google.com/patent/US20240112192A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="enhanced_auth">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for enhanced transaction authentication
+                            </div>
+                            <div class="card-badges">
+                                <span class="stripe-badge" aria-label="Stripe"><svg class="stripe-badge-logo" viewBox="0 0 360 150" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z"/></svg></span>
+                                <span class="venue-badge badge-app">US 2024/0112192 A1</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            Dynamically requests extra verification steps only when a payment looks unusually risky, keeping checkout smooth for real buyers.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 7. Systems and methods for smart remediation for transactions -->
+                <a href="https://patents.google.com/patent/US20240152924A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="smart_remediation">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for smart remediation for transactions
+                            </div>
+                            <div class="card-badges">
+                                <span class="stripe-badge" aria-label="Stripe"><svg class="stripe-badge-logo" viewBox="0 0 360 150" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z"/></svg></span>
+                                <span class="venue-badge badge-app">US 2024/0152924 A1</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            Automatically fixes and resolves payment errors or disputes right after a transaction happens.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 8. Fraud detection using real-time and batch features -->
+                <a href="https://patents.google.com/patent/US20240161115A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="realtime_batch_features">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Fraud detection using real-time and batch features
+                            </div>
+                            <div class="card-badges">
+                                <span class="stripe-badge" aria-label="Stripe"><svg class="stripe-badge-logo" viewBox="0 0 360 150" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z"/></svg></span>
+                                <span class="venue-badge badge-app">US 2024/0161115 A1</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            Combines instant live payment signals with long-term account history to score fraud risk in milliseconds.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 9. Systems and methods for machine learning feature generation -->
+                <a href="https://patents.google.com/patent/EP4627492A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="feature_generation">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for machine learning feature generation
+                            </div>
+                            <div class="card-badges">
+                                <span class="stripe-badge" aria-label="Stripe"><svg class="stripe-badge-logo" viewBox="0 0 360 150" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z"/></svg></span>
+                                <span class="venue-badge badge-app">EP 4627492 A1</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            Automatically discovers and builds new data patterns to help AI models catch evolving fraud tactics.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 10. Machine learning model training and deployment pipeline -->
+                <a href="https://patents.google.com/patent/US20240070484A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="ml_training_pipeline">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Machine learning model training and deployment pipeline
+                            </div>
+                            <div class="card-badges">
+                                <span class="stripe-badge" aria-label="Stripe"><svg class="stripe-badge-logo" viewBox="0 0 360 150" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z"/></svg></span>
+                                <span class="venue-badge badge-app">US 2024/0070484 A1</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            Continuously trains and deploys updated AI fraud models in the background as new payment trends emerge.
                         </div>
                     </div>
                 </a>
@@ -2327,55 +2586,46 @@
         function initTabNavigation() {
             const tabProjects = document.getElementById('tab-projects');
             const tabResearch = document.getElementById('tab-research');
+            const tabPatents = document.getElementById('tab-patents');
             const sectionProjects = document.getElementById('section-projects');
             const sectionResearch = document.getElementById('section-research');
+            const sectionPatents = document.getElementById('section-patents');
 
             function switchTab(tabId, updateHash = true) {
-                if (tabId === 'research') {
-                    if (sectionProjects) sectionProjects.style.display = 'none';
-                    if (sectionResearch) sectionResearch.style.display = 'block';
-                    if (tabProjects) {
-                        tabProjects.classList.remove('active');
-                        tabProjects.setAttribute('aria-selected', 'false');
-                        tabProjects.tabIndex = -1;
+                const tabs = [
+                    { id: 'projects', btn: tabProjects, sec: sectionProjects },
+                    { id: 'research', btn: tabResearch, sec: sectionResearch },
+                    { id: 'patents', btn: tabPatents, sec: sectionPatents }
+                ];
+
+                tabs.forEach(t => {
+                    const isActive = (t.id === tabId);
+                    if (t.sec) t.sec.style.display = isActive ? 'block' : 'none';
+                    if (t.btn) {
+                        t.btn.classList.toggle('active', isActive);
+                        t.btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                        t.btn.tabIndex = isActive ? 0 : -1;
                     }
-                    if (tabResearch) {
-                        tabResearch.classList.add('active');
-                        tabResearch.setAttribute('aria-selected', 'true');
-                        tabResearch.tabIndex = 0;
+                    if (isActive && t.sec) {
+                        t.sec.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
                     }
-                    if (updateHash) history.replaceState(null, '', '#research');
-                    document.querySelectorAll('#section-research .fade-in').forEach(el => el.classList.add('visible'));
-                } else {
-                    if (sectionResearch) sectionResearch.style.display = 'none';
-                    if (sectionProjects) sectionProjects.style.display = 'block';
-                    if (tabResearch) {
-                        tabResearch.classList.remove('active');
-                        tabResearch.setAttribute('aria-selected', 'false');
-                        tabResearch.tabIndex = -1;
-                    }
-                    if (tabProjects) {
-                        tabProjects.classList.add('active');
-                        tabProjects.setAttribute('aria-selected', 'true');
-                        tabProjects.tabIndex = 0;
-                    }
-                    if (updateHash) history.replaceState(null, '', '#projects');
-                    document.querySelectorAll('#section-projects .fade-in').forEach(el => el.classList.add('visible'));
+                });
+
+                if (updateHash) {
+                    history.replaceState(null, '', `#${tabId}`);
                 }
+
                 requestAnimationFrame(() => {
                     window.dispatchEvent(new Event('resize'));
                 });
             }
 
-            if (tabProjects) {
-                tabProjects.addEventListener('click', () => switchTab('projects'));
-            }
-            if (tabResearch) {
-                tabResearch.addEventListener('click', () => switchTab('research'));
-            }
+            if (tabProjects) tabProjects.addEventListener('click', () => switchTab('projects'));
+            if (tabResearch) tabResearch.addEventListener('click', () => switchTab('research'));
+            if (tabPatents) tabPatents.addEventListener('click', () => switchTab('patents'));
 
             // Keyboard navigation: Left/Right arrows across tabs
-            const tabButtons = [tabProjects, tabResearch].filter(Boolean);
+            const tabButtons = [tabProjects, tabResearch, tabPatents].filter(Boolean);
             tabButtons.forEach((tab, index) => {
                 tab.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
@@ -2388,33 +2638,34 @@
                 });
             });
 
-            // Keyboard shortcuts: 1 for Projects, 2 for Research
+            // Keyboard shortcuts: 1 for Projects, 2 for Research, 3 for Patents
             window.addEventListener('keydown', (e) => {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
                 if (e.key === '1') {
                     switchTab('projects');
                     if (tabProjects) tabProjects.focus();
-                }
-                if (e.key === '2') {
+                } else if (e.key === '2') {
                     switchTab('research');
                     if (tabResearch) tabResearch.focus();
+                } else if (e.key === '3') {
+                    switchTab('patents');
+                    if (tabPatents) tabPatents.focus();
                 }
             });
 
-            // Hash sync on load and change
-            if (window.location.hash === '#research') {
-                switchTab('research', false);
-            } else {
-                switchTab('projects', false);
-            }
-
-            window.addEventListener('hashchange', () => {
-                if (window.location.hash === '#research') {
+            function syncFromHash() {
+                const hash = window.location.hash;
+                if (hash === '#research') {
                     switchTab('research', false);
+                } else if (hash === '#patents') {
+                    switchTab('patents', false);
                 } else {
                     switchTab('projects', false);
                 }
-            });
+            }
+
+            syncFromHash();
+            window.addEventListener('hashchange', syncFromHash);
         }
 
         // Initialize projects, visualizers, and tab navigation
