@@ -1,0 +1,109 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [2026-08-29] - Added robots.txt & Anti-Indexing Privacy Meta Tags
+
+### Added
+- **`robots.txt`**: Added site-wide crawler disallow rule (`User-agent: *`, `Disallow: /`) to block all search engine web crawlers, indexers, and AI scrapers.
+- **Privacy & Security Meta Tags**: Added `<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">` in `index.html` `<head>` for defense-in-depth search prevention.
+
+## [2026-08-29] - Added Research Tab & Interactive Academic Simulation Cards (Option A)
+
+### Added
+- **Segmented Site Navigation Tabs**: Added fluid sliding pill navigation tabs (`Projects` [7] and `Research` [5]) with keyboard shortcut navigation (`1` for Projects, `2` for Research) and deep-linking URL hash synchronization (`#projects`, `#research`).
+- **Google Scholar Integration**: Added Google Scholar social icon and header link, aggregate academic telemetry badge (186 citations, 4 h-index, University of Washington), and direct links to publisher DOIs/PDFs.
+- **5 Academic Research Cards & Interactive Micro-Visualizers**:
+  - **Microtalk (AAAI HCOMP 2016)**: Interactive 3-stage peer argumentation lift pipeline (*Assess $\to$ Justify $\to$ Reconsider*) demonstrating +20% accuracy gain over baseline voting.
+  - **Tactile Graphics with a Voice (ACM TACCESS 2016)**: Multimodal diagram scanner with interactive tactile node touch targets, acoustic sonar pulses, and localized voice audio telemetry.
+  - **The Wisdom of Multiple Guesses (ACM EC 2015)**: Multi-guess probability density aggregator comparing certainty-weighted crowd distributions vs naive single-point estimates.
+  - **KIMBEE (UW CSE 2015)**: Real-time speech acoustic waveform, harmonic pitch contour, and articulation score analyzer.
+  - **Contributing During the Commute (UW CSE / OneBusAway 2015)**: Urban transit crowdsourcing route map with stop amenity contribution telemetry and prosocial volunteer metrics.
+- **BibTeX Citation Copy System**: Instant one-click BibTeX copy button on each research card with animated toast feedback.
+
+## [2026-08-29] - Stripe Wordmark Sizing Polish
+
+### Changed
+- Scaled Stripe wordmark logo size by 10% (height 1.025em) and adjusted optical baseline alignment.
+
+## [2026-08-29] - Grid Column Width Layout Stabilization
+
+### Fixed
+- Fixed grid column dynamic width shifting during simulation widget scrubbing by enforcing `repeat(2, minmax(0, 1fr))` on `.projects` and strict `min-width: 0` / text truncation boundaries on project cards and preview headers.
+- Optimized canvas buffer sizing to avoid redundant memory allocations and DOM reflows during pointer scrub events.
+
+## [2026-08-28] - Interactive "Show, Don't Tell" Project Micro-Widgets (Phase 2)
+
+### Added
+- Embedded live interactive canvas visualizers and telemetry widgets on all project cards:
+  - **Financial Simulator (`fi_sim`)**: Sequence of returns probability cone with interactive timeline scrubber and historical stagflation comparison.
+  - **Org Planning Tool (`org_planning`)**: 35-run stochastic Monte Carlo org growth and promotion fan chart with quarterly cross-section slicing.
+  - **Connections (`connections`)**: 4x4 interactive word grid with smooth category solve and shuffle animations on hover.
+  - **Stitch by Number (`stitch_by_number`)**: Split-view needlepoint quantization canvas with interactive DMC embroidery palette density mapping.
+  - **Photo Stacker (`photo_stacker`)**: Multi-exposure HDR fusion scrubber comparing -2 EV, Mertens-fused HDR, and +2 EV with a live luminance histogram.
+  - **1Password OPVault Extension (`1password_extension`)**: Verified native messaging IPC stream and AES-256 decryption telemetry.
+  - **Rowing Performance Analyzer (`rowing_performance`)**: Concept2 stroke telemetry graph tracking split power vs. cardiovascular heart rate drift with real-time VO₂ Max estimation.
+- Integrated `JetBrains Mono` for tabular metrics, dates, and token badges.
+- Enhanced card micro-interactions, dark mode rendering, high-DPI retina sharpness, and `prefers-reduced-motion` compliance.
+
+## [2026-08-28] - Added Stripe Wordmark to Bio
+
+### Added
+- Replaced Stripe bio text with official Stripe wordmark SVG linking directly to `stripe.com`
+- Responsive typography alignment, hover lift effect, and dark mode highlight color support
+
+## [2026-08-28] - Staging Environments & PR Previews
+
+### Added
+- Pull Request preview environments workflow (`.github/workflows/preview.yml`) using `rossjrw/pr-preview-action`
+- Automated PR comments with direct preview URLs (`https://drapeau.dev/preview/pr-<number>/`) and automatic cleanup on PR close
+- `README.md` documenting the site, projects, and deployment architectures
+
+### Changed
+- Converted all asset links, image sources, and `fetch()` calls in `index.html` from absolute (`/`) to relative (`./`) paths
+- Updated subproject Vite configurations (`org_planning`, `fi_sim`, `photo_stacker`, `stitch_by_number`, `rowing_performance`) to use relative base paths (`base: './'`)
+- Migrated GitHub Pages deployment workflow (`.github/workflows/static.yml`) to deploy to the `gh-pages` branch while preserving preview directories
+- Updated `TECH.md` architecture and directory structure documentation
+
+## [2026-03-19] - Added Rowing Performance Analyzer
+
+### Added
+- New project card for the Rowing Performance Analyzer (Concept2 rowing analytics)
+- Built and deployed the app to `/rowing_performance/` subdirectory
+- Created `generate-build-info.js`, favicon.svg, and deploy script for the rowing_performance project
+- Added 6th `.fade-in.visible:nth-child(6)` animation delay
+
+## [2026-02-21] - Added 1Password Extension Project
+
+### Added
+- New project card for the 1Password OPVault Firefox Extension linking to https://github.com/rdrapeau/1password_extension
+- Added official project icon SVG and "In Development" tag to the card
+- Added `.fade-in.visible:nth-child(5)` animation delay for the new card
+
+## [2026-02-10] - Dark Mode, Animations & In Development Tag
+
+### Added
+- Automatic dark mode via `prefers-color-scheme: dark` media query (follows browser/OS setting)
+- Subtle fade-in-on-scroll animations for header and project cards using `IntersectionObserver`
+- Hover lift effect (`translateY(-2px)`) on project cards
+- `prefers-reduced-motion` accessibility support — animations disabled when user prefers reduced motion
+- "In Development" badge/tag for the Photo Stacker project card
+- Reusable `.tag` and `.tag-in-development` CSS classes for project status badges
+
+## [2026-01-30] - Build Date Automation
+
+### Changed
+- Replaced brittle sed-based build date updates with automatic detection system
+- Each project now generates `build-info.json` during build with timestamp metadata
+- Main `index.html` fetches build dates dynamically via JavaScript
+- Removed macOS-specific sed commands from all project deploy scripts
+
+### Added
+- `generate-build-info.js` to org_planning, stitch_by_number, and connections projects
+- JavaScript in `index.html` to fetch and display build dates from `build-info.json`
+- TECH.md documentation for the site architecture
+
+### Technical Details
+- Build dates now display as "Jan 2026" format (month + year)
+- Falls back to "--" if `build-info.json` doesn't exist
+- Cross-platform compatible (no sed dependency)
