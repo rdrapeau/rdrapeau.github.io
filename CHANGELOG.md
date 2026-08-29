@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-29] - Added robots.txt & Anti-Indexing Privacy Meta Tags
+
+### Added
+- **`robots.txt`**: Added site-wide crawler disallow rule (`User-agent: *`, `Disallow: /`) to block all search engine web crawlers, indexers, and AI scrapers.
+- **Privacy & Security Meta Tags**: Added `<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">` in `index.html` `<head>` for defense-in-depth search prevention.
+
 ## [2026-08-29] - Added Research Tab & Interactive Academic Simulation Cards (Option A)
 
 ### Added
