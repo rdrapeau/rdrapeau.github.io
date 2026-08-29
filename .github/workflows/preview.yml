@@ -28,6 +28,7 @@ jobs:
           comment: false
 
       - name: Wait for GitHub Pages Deployment to Complete
+        id: wait
         if: github.event.action != 'closed'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -42,6 +43,8 @@ jobs:
             gh run watch "$RUN_ID" --exit-status || true
           fi
 
+          echo "time=$(date -u +'%Y-%m-%d %H:%M UTC')" >> "$GITHUB_OUTPUT"
+
       - name: Post Live Preview Comment
         if: github.event.action != 'closed'
         uses: marocchino/sticky-pull-request-comment@v2
@@ -53,5 +56,5 @@ jobs:
             :link: **[https://drapeau.dev/preview/pr-${{ github.event.number }}/](https://drapeau.dev/preview/pr-${{ github.event.number }}/)**
             
             - **Status**: ✅ GitHub Pages deployment complete
-            - **Updated**: $(date -u +"%Y-%m-%d %H:%M UTC")
+            - **Updated**: ${{ steps.wait.outputs.time }}
 
