@@ -133,8 +133,155 @@
             color: #0a66c2;
         }
 
-        .github-link {
-            color: #24292f;
+        .scholar-link {
+            color: #4285f4;
+        }
+
+        /* --- Segmented Site Navigation Tabs --- */
+        .site-tabs {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.28rem;
+            border-radius: 10px;
+            margin-top: 1.6rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e2e8f0;
+            gap: 0.25rem;
+        }
+
+        .site-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1.05rem;
+            border-radius: 7px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            font-family: inherit;
+            color: #64748b;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+        }
+
+        .site-tab:hover {
+            color: #0f172a;
+        }
+
+        .site-tab.active {
+            color: #0f172a;
+            background: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        .tab-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.75;
+        }
+
+        .site-tab.active .tab-icon {
+            opacity: 1;
+            color: #4f46e5;
+        }
+
+        .tab-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.05rem 0.42rem;
+            border-radius: 9999px;
+            background: #e2e8f0;
+            color: #475569;
+            transition: all 0.2s;
+        }
+
+        .site-tab.active .tab-badge {
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+
+        .site-tab:focus-visible,
+        .filter-btn:focus-visible,
+        .project:focus-visible,
+        .research-card:focus-visible,
+        .social-link:focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 2px;
+        }
+
+        /* --- Research Cards & Badges --- */
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .research-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.25rem;
+            }
+        }
+
+        .paper-authors {
+            font-size: 0.84rem;
+            color: #64748b;
+            line-height: 1.45;
+            margin-top: -0.15rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .author-self {
+            font-weight: 700;
+            color: #0f172a;
+            text-decoration: underline;
+            text-decoration-color: #cbd5e1;
+            text-underline-offset: 2px;
+        }
+
+        .venue-badge {
+            font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 0.18rem 0.5rem;
+            border-radius: 5px;
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+        }
+
+        .venue-hcomp {
+            background: #fef3c7;
+            color: #92400e;
+            border-color: #fde68a;
+        }
+
+        .venue-taccess {
+            background: #e0f2fe;
+            color: #0369a1;
+            border-color: #bae6fd;
+        }
+
+        .venue-ec {
+            background: #ede9fe;
+            color: #6d28d9;
+            border-color: #ddd6fe;
+        }
+
+        .venue-uw {
+            background: #fae8ff;
+            color: #86198f;
+            border-color: #f5d0fe;
         }
 
         h2 {
@@ -240,7 +387,8 @@
             }
         }
 
-        .project {
+        .project,
+        .research-card {
             background: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 12px;
@@ -255,13 +403,15 @@
             min-width: 0;
             overflow: hidden;
             box-sizing: border-box;
+            cursor: pointer;
         }
 
         .project.hidden {
             display: none !important;
         }
 
-        .project:hover {
+        .project:hover,
+        .research-card:hover {
             border-color: #cbd5e1;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
             transform: translateY(-2px);
@@ -396,7 +546,8 @@
             box-sizing: border-box;
         }
 
-        .project:hover .project-preview {
+        .project:hover .project-preview,
+        .research-card:hover .project-preview {
             border-color: #cbd5e1;
             box-shadow: inset 0 0 0 1px rgba(203, 213, 225, 0.4);
         }
@@ -591,6 +742,85 @@
                 color: #f8fafc;
             }
 
+            .scholar-link {
+                color: #60a5fa;
+            }
+
+            /* Dark mode for tabs */
+            .site-tabs {
+                background: #181b24;
+                border-color: #262b38;
+            }
+
+            .site-tab {
+                color: #94a3b8;
+            }
+
+            .site-tab:hover {
+                color: #f8fafc;
+            }
+
+            .site-tab.active {
+                background: #232938;
+                color: #f8fafc;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+            }
+
+            .site-tab.active .tab-icon {
+                color: #818cf8;
+            }
+
+            .tab-badge {
+                background: #262b38;
+                color: #94a3b8;
+            }
+
+            .site-tab.active .tab-badge {
+                background: #312e81;
+                color: #c7d2fe;
+            }
+
+            .site-tab:focus-visible,
+            .filter-btn:focus-visible,
+            .project:focus-visible,
+            .research-card:focus-visible,
+            .social-link:focus-visible {
+                outline-color: #818cf8;
+            }
+
+            .paper-authors {
+                color: #94a3b8;
+            }
+
+            .author-self {
+                color: #f8fafc;
+                text-decoration-color: #475569;
+            }
+
+            .venue-hcomp {
+                background: #422006;
+                color: #fbbf24;
+                border-color: #92400e;
+            }
+
+            .venue-taccess {
+                background: #082f49;
+                color: #38bdf8;
+                border-color: #0369a1;
+            }
+
+            .venue-ec {
+                background: #2e1065;
+                color: #c084fc;
+                border-color: #6b21a8;
+            }
+
+            .venue-uw {
+                background: #3b0764;
+                color: #e879f9;
+                border-color: #86198f;
+            }
+
             h2 {
                 color: #94a3b8;
             }
@@ -628,12 +858,14 @@
                 color: #f8fafc;
             }
 
-            .project {
+            .project,
+            .research-card {
                 background: #181b24;
                 border-color: #262b38;
             }
 
-            .project:hover {
+            .project:hover,
+            .research-card:hover {
                 border-color: #3b4254;
                 box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
             }
@@ -697,7 +929,8 @@
                 border-color: #232836;
             }
 
-            .project:hover .project-preview {
+            .project:hover .project-preview,
+            .research-card:hover .project-preview {
                 border-color: #3b4254;
                 box-shadow: inset 0 0 0 1px rgba(59, 66, 84, 0.4);
             }
@@ -839,10 +1072,37 @@
                     </svg>
                     GitHub
                 </a>
+                <a href="https://scholar.google.com/citations?user=yghhd38AAAAJ&hl=en" class="social-link scholar-link" target="_blank"
+                    rel="noopener noreferrer" aria-label="Google Scholar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                    </svg>
+                    Google Scholar
+                </a>
             </div>
         </header>
 
-        <section>
+        <div class="site-tabs fade-in" role="tablist" aria-label="Portfolio Sections">
+            <button class="site-tab active" id="tab-projects" role="tab" aria-selected="true" aria-controls="section-projects" data-tab="projects">
+                <svg class="tab-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                </svg>
+                <span>Projects</span>
+                <span class="tab-badge">7</span>
+            </button>
+            <button class="site-tab" id="tab-research" role="tab" aria-selected="false" aria-controls="section-research" data-tab="research">
+                <svg class="tab-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                </svg>
+                <span>Research</span>
+                <span class="tab-badge">5</span>
+            </button>
+        </div>
+
+        <section id="section-projects" class="tab-content" role="tabpanel" aria-labelledby="tab-projects">
             <h2 class="fade-in">Projects</h2>
             <p class="section-subheading fade-in">Personal tools, simulations, and experiments built on the side.</p>
             <div class="filter-bar fade-in">
@@ -1076,6 +1336,103 @@
                 </a>
             </div>
         </section>
+
+        <section id="section-research" class="tab-content" role="tabpanel" aria-labelledby="tab-research" style="display: none;">
+            <h2 class="fade-in">Research & Publications</h2>
+            <p class="section-subheading fade-in">Peer-reviewed papers in human-in-the-loop ML, crowdsourcing, and multimodal accessibility.</p>
+
+            <div class="research-grid">
+                <!-- 1. Microtalk -->
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="microtalk">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Microtalk: Argumentation in Crowdsourcing
+                            </div>
+                            <span class="venue-badge venue-hcomp">AAAI HCOMP '16</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span>, Lydia B. Chilton, Jonathan Bragg, Daniel S. Weld
+                        </div>
+                        <div class="project-description">
+                            A peer argumentation protocol (<em>Assess &rarr; Justify &rarr; Reconsider</em>) where crowd workers exchange structured rationales, boosting individual and aggregate classification accuracy by <strong>+20%</strong> on challenging NLP tasks without ground truth.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2. Tactile Graphics with a Voice -->
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="tactile_graphics">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Tactile Graphics with a Voice
+                            </div>
+                            <span class="venue-badge venue-taccess">ACM TACCESS '16</span>
+                        </div>
+                        <div class="paper-authors">
+                            Catherine M. Baker, Lauren R. Milne, <span class="author-self">Ryan Drapeau</span>, Jeffrey Scofield, Cynthia L. Bennett, Richard E. Ladner
+                        </div>
+                        <div class="project-description">
+                            A multimodal accessibility system combining physical relief graphics with smartphone camera QR scanning and finger-pointing guidance to provide localized audio explanations for complex STEM diagrams.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 3. The Wisdom of Multiple Guesses -->
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:d1gkVwhDpl0C" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="multiple_guesses">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                The Wisdom of Multiple Guesses
+                            </div>
+                            <span class="venue-badge venue-ec">ACM EC '15</span>
+                        </div>
+                        <div class="paper-authors">
+                            Johan Ugander, <span class="author-self">Ryan Drapeau</span>, Carlos Guestrin
+                        </div>
+                        <div class="project-description">
+                            A crowdsourced forecasting mechanism that elicits multiple ranked guesses per individual to capture heterogeneous confidence distributions, creating certainty-weighted crowd aggregations that outperform standard mean estimates.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 4. KIMBEE -->
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="kimbee">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                KIMBEE: Speech Therapy for Children
+                            </div>
+                            <span class="venue-badge venue-uw">UW CSE '15</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span>, Nicolas Huynh, Aaron Nech
+                        </div>
+                        <div class="project-description">
+                            A mobile acoustic speech therapy system providing children with real-time phonological feedback and articulation game mechanics, while streaming phoneme accuracy telemetry to speech-language pathologists.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 5. Contributing During the Commute -->
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="commute">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Contributing During the Commute
+                            </div>
+                            <span class="venue-badge venue-uw">UW CSE '15</span>
+                        </div>
+                        <div class="paper-authors">
+                            Caitlin Bonnar, Meg Campbell, <span class="author-self">Ryan Drapeau</span>, Cynthia L. Bennett, Alan Borning
+                        </div>
+                        <div class="project-description">
+                            An empirical study within the OneBusAway mobile transit platform investigating prosocial volunteer dynamics when transit riders crowdsource bus stop accessibility attributes (shelters, seating, sidewalk ramps).
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
     </div>
     <script>
         // Fetch build dates from each project's build-info.json and sort them dynamically
@@ -1095,7 +1452,7 @@
                 btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
             });
 
-            const projectElements = Array.from(document.querySelectorAll('.project'));
+            const projectElements = Array.from(document.querySelectorAll('#section-projects .project'));
             let firstVisibleFound = false;
 
             projectElements.forEach(el => {
@@ -1172,7 +1529,7 @@
                 timestampMap[r.project] = r.timestamp;
             });
 
-            const projectElements = Array.from(document.querySelectorAll('.project'));
+            const projectElements = Array.from(document.querySelectorAll('#section-projects .project'));
 
             projectElements.sort((a, b) => {
                 const dateElA = a.querySelector('[data-project]');
@@ -1965,9 +2322,104 @@
             }
         }
 
-        // Initialize projects and visualizers
+        // Tab Switching and Navigation
+        function initTabNavigation() {
+            const tabProjects = document.getElementById('tab-projects');
+            const tabResearch = document.getElementById('tab-research');
+            const sectionProjects = document.getElementById('section-projects');
+            const sectionResearch = document.getElementById('section-research');
+
+            function switchTab(tabId, updateHash = true) {
+                if (tabId === 'research') {
+                    if (sectionProjects) sectionProjects.style.display = 'none';
+                    if (sectionResearch) sectionResearch.style.display = 'block';
+                    if (tabProjects) {
+                        tabProjects.classList.remove('active');
+                        tabProjects.setAttribute('aria-selected', 'false');
+                        tabProjects.tabIndex = -1;
+                    }
+                    if (tabResearch) {
+                        tabResearch.classList.add('active');
+                        tabResearch.setAttribute('aria-selected', 'true');
+                        tabResearch.tabIndex = 0;
+                    }
+                    if (updateHash) history.replaceState(null, '', '#research');
+                    document.querySelectorAll('#section-research .fade-in').forEach(el => el.classList.add('visible'));
+                } else {
+                    if (sectionResearch) sectionResearch.style.display = 'none';
+                    if (sectionProjects) sectionProjects.style.display = 'block';
+                    if (tabResearch) {
+                        tabResearch.classList.remove('active');
+                        tabResearch.setAttribute('aria-selected', 'false');
+                        tabResearch.tabIndex = -1;
+                    }
+                    if (tabProjects) {
+                        tabProjects.classList.add('active');
+                        tabProjects.setAttribute('aria-selected', 'true');
+                        tabProjects.tabIndex = 0;
+                    }
+                    if (updateHash) history.replaceState(null, '', '#projects');
+                    document.querySelectorAll('#section-projects .fade-in').forEach(el => el.classList.add('visible'));
+                }
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event('resize'));
+                });
+            }
+
+            if (tabProjects) {
+                tabProjects.addEventListener('click', () => switchTab('projects'));
+            }
+            if (tabResearch) {
+                tabResearch.addEventListener('click', () => switchTab('research'));
+            }
+
+            // Keyboard navigation: Left/Right arrows across tabs
+            const tabButtons = [tabProjects, tabResearch].filter(Boolean);
+            tabButtons.forEach((tab, index) => {
+                tab.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        const nextIdx = e.key === 'ArrowRight' ? (index + 1) % tabButtons.length : (index - 1 + tabButtons.length) % tabButtons.length;
+                        const nextTab = tabButtons[nextIdx];
+                        nextTab.focus();
+                        switchTab(nextTab.getAttribute('data-tab'));
+                    }
+                });
+            });
+
+            // Keyboard shortcuts: 1 for Projects, 2 for Research
+            window.addEventListener('keydown', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                if (e.key === '1') {
+                    switchTab('projects');
+                    if (tabProjects) tabProjects.focus();
+                }
+                if (e.key === '2') {
+                    switchTab('research');
+                    if (tabResearch) tabResearch.focus();
+                }
+            });
+
+            // Hash sync on load and change
+            if (window.location.hash === '#research') {
+                switchTab('research', false);
+            } else {
+                switchTab('projects', false);
+            }
+
+            window.addEventListener('hashchange', () => {
+                if (window.location.hash === '#research') {
+                    switchTab('research', false);
+                } else {
+                    switchTab('projects', false);
+                }
+            });
+        }
+
+        // Initialize projects, visualizers, and tab navigation
         loadAndSortProjects().then(() => {
             initProjectVisualizers();
+            initTabNavigation();
         });
     </script>
 </body>
