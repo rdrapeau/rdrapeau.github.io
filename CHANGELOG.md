@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-28] - Staging Environments & PR Previews
+
+### Added
+- Pull Request preview environments workflow (`.github/workflows/preview.yml`) using `rossjrw/pr-preview-action`
+- Automated PR comments with direct preview URLs (`https://drapeau.dev/preview/pr-<number>/`) and automatic cleanup on PR close
+- `README.md` documenting the site, projects, and deployment architectures
+
+### Changed
+- Converted all asset links, image sources, and `fetch()` calls in `index.html` from absolute (`/`) to relative (`./`) paths
+- Updated subproject Vite configurations (`org_planning`, `fi_sim`, `photo_stacker`, `stitch_by_number`, `rowing_performance`) to use relative base paths (`base: './'`)
+- Migrated GitHub Pages deployment workflow (`.github/workflows/static.yml`) to deploy to the `gh-pages` branch while preserving preview directories
+- Updated `TECH.md` architecture and directory structure documentation
+
 ## [2026-03-19] - Added Rowing Performance Analyzer
 
 ### Added
