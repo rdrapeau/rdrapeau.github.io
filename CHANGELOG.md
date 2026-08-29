@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-29] - Grid Column Width Layout Stabilization
+
+### Fixed
+- Fixed grid column dynamic width shifting during simulation widget scrubbing by enforcing `repeat(2, minmax(0, 1fr))` on `.projects` and strict `min-width: 0` / text truncation boundaries on project cards and preview headers.
+- Optimized canvas buffer sizing to avoid redundant memory allocations and DOM reflows during pointer scrub events.
+
 ## [2026-08-28] - Interactive "Show, Don't Tell" Project Micro-Widgets (Phase 2)
 
 ### Added
