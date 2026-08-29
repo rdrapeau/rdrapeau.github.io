@@ -213,20 +213,23 @@
         .filter-btn:focus-visible,
         .project:focus-visible,
         .research-card:focus-visible,
+        .patent-card:focus-visible,
         .social-link:focus-visible {
             outline: 2px solid #4f46e5;
             outline-offset: 2px;
         }
 
-        /* --- Research Cards & Badges --- */
-        .research-grid {
+        /* --- Research & Patent Cards & Badges --- */
+        .research-grid,
+        .patent-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.25rem;
         }
 
         @media (min-width: 640px) {
-            .research-grid {
+            .research-grid,
+            .patent-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 1.25rem;
             }
@@ -283,6 +286,18 @@
             background: #fae8ff;
             color: #86198f;
             border-color: #f5d0fe;
+        }
+
+        .badge-granted {
+            background: #ecfdf5;
+            color: #065f46;
+            border-color: #a7f3d0;
+        }
+
+        .badge-app {
+            background: #eff6ff;
+            color: #1e40af;
+            border-color: #bfdbfe;
         }
 
         h2 {
@@ -389,7 +404,8 @@
         }
 
         .project,
-        .research-card {
+        .research-card,
+        .patent-card {
             background: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 12px;
@@ -398,7 +414,7 @@
             color: inherit;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s, opacity 0.2s;
             position: relative;
             min-width: 0;
@@ -412,7 +428,8 @@
         }
 
         .project:hover,
-        .research-card:hover {
+        .research-card:hover,
+        .patent-card:hover {
             border-color: #cbd5e1;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
             transform: translateY(-2px);
@@ -785,6 +802,7 @@
             .filter-btn:focus-visible,
             .project:focus-visible,
             .research-card:focus-visible,
+            .patent-card:focus-visible,
             .social-link:focus-visible {
                 outline-color: #818cf8;
             }
@@ -820,6 +838,18 @@
                 background: #3b0764;
                 color: #e879f9;
                 border-color: #86198f;
+            }
+
+            .badge-granted {
+                background: #064e3b;
+                color: #34d399;
+                border-color: #047857;
+            }
+
+            .badge-app {
+                background: #1e3a8a;
+                color: #60a5fa;
+                border-color: #1d4ed8;
             }
 
             h2 {
@@ -860,13 +890,15 @@
             }
 
             .project,
-            .research-card {
+            .research-card,
+            .patent-card {
                 background: #181b24;
                 border-color: #262b38;
             }
 
             .project:hover,
-            .research-card:hover {
+            .research-card:hover,
+            .patent-card:hover {
                 border-color: #3b4254;
                 box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
             }
@@ -1100,6 +1132,13 @@
                 </svg>
                 <span>Research</span>
                 <span class="tab-badge">5</span>
+            </button>
+            <button class="site-tab" id="tab-patents" role="tab" aria-selected="false" aria-controls="section-patents" data-tab="patents">
+                <svg class="tab-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 1.887.87 3.57 2.235 4.673A2 2 0 017 14.25v.75a2 2 0 002 2h2a2 2 0 002-2v-.75a2 2 0 01.765-1.577A6 6 0 0016 8a6 6 0 00-6-6zm-1 16a1 1 0 011-1h0a1 1 0 011 1v.5a1.5 1.5 0 01-1.5 1.5h-1A1.5 1.5 0 017 18.5V18a1 1 0 011-1h1z" clip-rule="evenodd" />
+                </svg>
+                <span>Patents</span>
+                <span class="tab-badge">10</span>
             </button>
         </div>
 
@@ -1429,6 +1468,194 @@
                         </div>
                         <div class="project-description">
                             An empirical study within the OneBusAway mobile transit platform investigating prosocial volunteer dynamics when transit riders crowdsource bus stop accessibility attributes (shelters, seating, sidewalk ramps).
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- --- Patents & Inventions Section --- -->
+        <section id="section-patents" class="tab-content" role="tabpanel" aria-labelledby="tab-patents" style="display: none;">
+            <h2 class="fade-in">Patents & Inventions</h2>
+            <p class="section-subheading fade-in">Inventions in machine learning fraud detection, transaction security, and distributed data systems at Stripe.</p>
+
+            <div class="patent-grid">
+                <!-- 1. Systems and methods for identity graph based fraud detection -->
+                <a href="https://patents.google.com/patent/US11704673B1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="identity_graphs">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for identity graph based fraud detection
+                            </div>
+                            <span class="venue-badge badge-granted">US Patent 11,704,673</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span> &bull; Stripe, Inc.
+                        </div>
+                        <div class="project-description">
+                            Method and apparatus for detecting transaction fraud using identity graphs, associating entities with unprovided attributes to feed machine learning risk scoring models.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2. Systems and methods for secure identifiers for electronic transactions -->
+                <a href="https://patents.google.com/patent/US20250125969A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="secure_identifiers">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for secure identifiers for electronic transactions
+                            </div>
+                            <span class="venue-badge badge-app">US 2025/0125969 A1</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span> &bull; Stripe, Inc.
+                        </div>
+                        <div class="project-description">
+                            Extracting device and entity attributes via secure cryptographic identifiers during network operations to detect unauthorized transaction requests.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 3. Systems and methods for hard deletion of data across systems -->
+                <a href="https://patents.google.com/patent/US20240126908A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="hard_deletion">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for hard deletion of data across systems
+                            </div>
+                            <span class="venue-badge badge-app">US 2024/0126908 A1</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span> &bull; Stripe, Inc.
+                        </div>
+                        <div class="project-description">
+                            Cascading cryptographic deletion and verifiable data shredding across distributed partitions and heterogeneous datastores for strict privacy compliance.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 4. Systems and methods for privacy preserving fraud detection during electronic transactions -->
+                <a href="https://patents.google.com/patent/US20250117802A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="privacy_fraud">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for privacy preserving fraud detection during electronic transactions
+                            </div>
+                            <span class="venue-badge badge-app">US 2025/0117802 A1</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span> &bull; Stripe, Inc.
+                        </div>
+                        <div class="project-description">
+                            Multi-party cryptographic protocols for evaluating transaction fraud risks across merchant and payment networks without exposing sensitive customer PII.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 5. Merchant specific machine learning model for fraud detection -->
+                <a href="https://patents.google.com/patent/US20250165978A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="merchant_specific_ml">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Merchant specific machine learning model for fraud detection
+                            </div>
+                            <span class="venue-badge badge-app">US 2025/0165978 A1</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span> &bull; Stripe, Inc.
+                        </div>
+                        <div class="project-description">
+                            Server system training and serving custom, merchant-specific machine learning models tailored dynamically to individual business risk profiles and fraud distributions.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 6. Systems and methods for enhanced transaction authentication -->
+                <a href="https://patents.google.com/patent/US20240112192A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="enhanced_auth">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for enhanced transaction authentication
+                            </div>
+                            <span class="venue-badge badge-app">US 2024/0112192 A1</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span> &bull; Stripe, Inc.
+                        </div>
+                        <div class="project-description">
+                            Adaptive step-up authentication protocol evaluating transaction characteristics to dynamically trigger verification challenges for card-originated payments.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 7. Systems and methods for smart remediation for transactions -->
+                <a href="https://patents.google.com/patent/US20240152924A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="smart_remediation">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for smart remediation for transactions
+                            </div>
+                            <span class="venue-badge badge-app">US 2024/0152924 A1</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span> &bull; Stripe, Inc.
+                        </div>
+                        <div class="project-description">
+                            Automated post-approval monitoring engine that tracks approved transactions during a dynamic risk window to remediate payment disputes and anomalies.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 8. Fraud detection using real-time and batch features -->
+                <a href="https://patents.google.com/patent/US20240161115A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="realtime_batch_features">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Fraud detection using real-time and batch features
+                            </div>
+                            <span class="venue-badge badge-app">US 2024/0161115 A1</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span> &bull; Stripe, Inc.
+                        </div>
+                        <div class="project-description">
+                            High-throughput scoring engine combining sub-second real-time streaming transaction signals with deep historical batch feature vectors.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 9. Systems and methods for machine learning feature generation -->
+                <a href="https://patents.google.com/patent/EP4627492A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="feature_generation">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Systems and methods for machine learning feature generation
+                            </div>
+                            <span class="venue-badge badge-app">EP 4627492 A1</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span> &bull; Stripe, Inc.
+                        </div>
+                        <div class="project-description">
+                            Combinatorial feature generation engine composing ML feature templates across variable groupings for large-scale risk models.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 10. Machine learning model training and deployment pipeline -->
+                <a href="https://patents.google.com/patent/US20240070484A1/en" target="_blank" rel="noopener noreferrer" class="patent-card fade-in" data-patent="ml_training_pipeline">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Machine learning model training and deployment pipeline
+                            </div>
+                            <span class="venue-badge badge-app">US 2024/0070484 A1</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Lee Drapeau</span> &bull; Stripe, Inc.
+                        </div>
+                        <div class="project-description">
+                            Continuous ML training and automated deployment pipeline monitoring streaming multi-type transaction datasets using sliding-window label ingestion.
                         </div>
                     </div>
                 </a>
@@ -2327,55 +2554,46 @@
         function initTabNavigation() {
             const tabProjects = document.getElementById('tab-projects');
             const tabResearch = document.getElementById('tab-research');
+            const tabPatents = document.getElementById('tab-patents');
             const sectionProjects = document.getElementById('section-projects');
             const sectionResearch = document.getElementById('section-research');
+            const sectionPatents = document.getElementById('section-patents');
 
             function switchTab(tabId, updateHash = true) {
-                if (tabId === 'research') {
-                    if (sectionProjects) sectionProjects.style.display = 'none';
-                    if (sectionResearch) sectionResearch.style.display = 'block';
-                    if (tabProjects) {
-                        tabProjects.classList.remove('active');
-                        tabProjects.setAttribute('aria-selected', 'false');
-                        tabProjects.tabIndex = -1;
+                const tabs = [
+                    { id: 'projects', btn: tabProjects, sec: sectionProjects },
+                    { id: 'research', btn: tabResearch, sec: sectionResearch },
+                    { id: 'patents', btn: tabPatents, sec: sectionPatents }
+                ];
+
+                tabs.forEach(t => {
+                    const isActive = (t.id === tabId);
+                    if (t.sec) t.sec.style.display = isActive ? 'block' : 'none';
+                    if (t.btn) {
+                        t.btn.classList.toggle('active', isActive);
+                        t.btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                        t.btn.tabIndex = isActive ? 0 : -1;
                     }
-                    if (tabResearch) {
-                        tabResearch.classList.add('active');
-                        tabResearch.setAttribute('aria-selected', 'true');
-                        tabResearch.tabIndex = 0;
+                    if (isActive && t.sec) {
+                        t.sec.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
                     }
-                    if (updateHash) history.replaceState(null, '', '#research');
-                    document.querySelectorAll('#section-research .fade-in').forEach(el => el.classList.add('visible'));
-                } else {
-                    if (sectionResearch) sectionResearch.style.display = 'none';
-                    if (sectionProjects) sectionProjects.style.display = 'block';
-                    if (tabResearch) {
-                        tabResearch.classList.remove('active');
-                        tabResearch.setAttribute('aria-selected', 'false');
-                        tabResearch.tabIndex = -1;
-                    }
-                    if (tabProjects) {
-                        tabProjects.classList.add('active');
-                        tabProjects.setAttribute('aria-selected', 'true');
-                        tabProjects.tabIndex = 0;
-                    }
-                    if (updateHash) history.replaceState(null, '', '#projects');
-                    document.querySelectorAll('#section-projects .fade-in').forEach(el => el.classList.add('visible'));
+                });
+
+                if (updateHash) {
+                    history.replaceState(null, '', `#${tabId}`);
                 }
+
                 requestAnimationFrame(() => {
                     window.dispatchEvent(new Event('resize'));
                 });
             }
 
-            if (tabProjects) {
-                tabProjects.addEventListener('click', () => switchTab('projects'));
-            }
-            if (tabResearch) {
-                tabResearch.addEventListener('click', () => switchTab('research'));
-            }
+            if (tabProjects) tabProjects.addEventListener('click', () => switchTab('projects'));
+            if (tabResearch) tabResearch.addEventListener('click', () => switchTab('research'));
+            if (tabPatents) tabPatents.addEventListener('click', () => switchTab('patents'));
 
             // Keyboard navigation: Left/Right arrows across tabs
-            const tabButtons = [tabProjects, tabResearch].filter(Boolean);
+            const tabButtons = [tabProjects, tabResearch, tabPatents].filter(Boolean);
             tabButtons.forEach((tab, index) => {
                 tab.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
@@ -2388,33 +2606,34 @@
                 });
             });
 
-            // Keyboard shortcuts: 1 for Projects, 2 for Research
+            // Keyboard shortcuts: 1 for Projects, 2 for Research, 3 for Patents
             window.addEventListener('keydown', (e) => {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
                 if (e.key === '1') {
                     switchTab('projects');
                     if (tabProjects) tabProjects.focus();
-                }
-                if (e.key === '2') {
+                } else if (e.key === '2') {
                     switchTab('research');
                     if (tabResearch) tabResearch.focus();
+                } else if (e.key === '3') {
+                    switchTab('patents');
+                    if (tabPatents) tabPatents.focus();
                 }
             });
 
-            // Hash sync on load and change
-            if (window.location.hash === '#research') {
-                switchTab('research', false);
-            } else {
-                switchTab('projects', false);
-            }
-
-            window.addEventListener('hashchange', () => {
-                if (window.location.hash === '#research') {
+            function syncFromHash() {
+                const hash = window.location.hash;
+                if (hash === '#research') {
                     switchTab('research', false);
+                } else if (hash === '#patents') {
+                    switchTab('patents', false);
                 } else {
                     switchTab('projects', false);
                 }
-            });
+            }
+
+            syncFromHash();
+            window.addEventListener('hashchange', syncFromHash);
         }
 
         // Initialize projects, visualizers, and tab navigation
