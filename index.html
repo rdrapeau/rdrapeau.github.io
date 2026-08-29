@@ -208,6 +208,14 @@
             color: #4338ca;
         }
 
+        .site-tab:focus-visible,
+        .filter-btn:focus-visible,
+        .action-pill:focus-visible,
+        .social-link:focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 2px;
+        }
+
         /* --- Research Cards & Badges --- */
         .research-grid {
             display: grid;
@@ -851,6 +859,13 @@
             .site-tab.active .tab-badge {
                 background: #312e81;
                 color: #c7d2fe;
+            }
+
+            .site-tab:focus-visible,
+            .filter-btn:focus-visible,
+            .action-pill:focus-visible,
+            .social-link:focus-visible {
+                outline-color: #818cf8;
             }
 
             .paper-authors {
@@ -2455,10 +2470,12 @@
                     if (tabProjects) {
                         tabProjects.classList.remove('active');
                         tabProjects.setAttribute('aria-selected', 'false');
+                        tabProjects.tabIndex = -1;
                     }
                     if (tabResearch) {
                         tabResearch.classList.add('active');
                         tabResearch.setAttribute('aria-selected', 'true');
+                        tabResearch.tabIndex = 0;
                     }
                     if (updateHash) history.replaceState(null, '', '#research');
                     document.querySelectorAll('#section-research .fade-in').forEach(el => el.classList.add('visible'));
@@ -2468,10 +2485,12 @@
                     if (tabResearch) {
                         tabResearch.classList.remove('active');
                         tabResearch.setAttribute('aria-selected', 'false');
+                        tabResearch.tabIndex = -1;
                     }
                     if (tabProjects) {
                         tabProjects.classList.add('active');
                         tabProjects.setAttribute('aria-selected', 'true');
+                        tabProjects.tabIndex = 0;
                     }
                     if (updateHash) history.replaceState(null, '', '#projects');
                     document.querySelectorAll('#section-projects .fade-in').forEach(el => el.classList.add('visible'));
@@ -2488,11 +2507,31 @@
                 tabResearch.addEventListener('click', () => switchTab('research'));
             }
 
+            // Keyboard navigation: Left/Right arrows across tabs
+            const tabButtons = [tabProjects, tabResearch].filter(Boolean);
+            tabButtons.forEach((tab, index) => {
+                tab.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        const nextIdx = e.key === 'ArrowRight' ? (index + 1) % tabButtons.length : (index - 1 + tabButtons.length) % tabButtons.length;
+                        const nextTab = tabButtons[nextIdx];
+                        nextTab.focus();
+                        switchTab(nextTab.getAttribute('data-tab'));
+                    }
+                });
+            });
+
             // Keyboard shortcuts: 1 for Projects, 2 for Research
             window.addEventListener('keydown', (e) => {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-                if (e.key === '1') switchTab('projects');
-                if (e.key === '2') switchTab('research');
+                if (e.key === '1') {
+                    switchTab('projects');
+                    if (tabProjects) tabProjects.focus();
+                }
+                if (e.key === '2') {
+                    switchTab('research');
+                    if (tabResearch) tabResearch.focus();
+                }
             });
 
             // Hash sync on load and change
