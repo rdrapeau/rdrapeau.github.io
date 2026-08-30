@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-30] - Added Writing & Talks Tab
+
+### Added
+- **Writing & Talks Tab**: Added 4th navigation tab (`Writing` [4]) to `.site-tabs` with keyboard shortcut `4`, arrow key cycling, and deep-linking `#writing` URL hash synchronization.
+- **4 Technical Writing & Talk Cards**:
+  - **How we built it: Stripe Radar** (*Stripe Dot Dev Blog*): Deep dive on the architectural decisions, feature generation pipelines, and engineering lessons behind Stripe's ML fraud detection system evaluating 1,000+ signals in <100ms.
+  - **Lessons Learned Building Stripe Radar** (*Stripe Developers / YouTube*): Video presentation covering real-time feature engineering, neural network architectures (ResNets), explainability trade-offs, and managing the ML flywheel.
+  - **Ryan Drapeau: Battling Fraud with ML at Stripe** (*The Gradient Podcast, Episode 82*): In-depth conversation on global ML defense networks, extreme fraud data scarcity (<0.1%), adversarial dynamics, and model training velocity.
+  - **Optimizing payments at scale: How Stripe applies AI across the payment lifecycle** (*Stripe Guides*): Comprehensive guide on deploying adaptive AI models across pre-auth risk scoring, smart network routing, adaptive 3D Secure, and intelligent retry engines.
+- **Card Badges & Dark Mode Palette**: Dedicated badges for `Stripe Dev`, `Stripe Developers`, `The Gradient`, `Stripe Guides`, `Article`, `Tech Talk`, `Podcast`, and `Guide` with full dark mode contrast support.
+
 ## [2026-08-29] - Mobile Responsiveness & Touch Interaction Optimization
 
 ### Added

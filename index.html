@@ -219,9 +219,10 @@
             outline-offset: 2px;
         }
 
-        /* --- Research & Patent Cards & Badges --- */
+        /* --- Research, Patent & Writing Cards & Badges --- */
         .research-grid,
-        .patent-grid {
+        .patent-grid,
+        .writing-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.25rem;
@@ -229,13 +230,15 @@
 
         @media (min-width: 640px) {
             .research-grid,
-            .patent-grid {
+            .patent-grid,
+            .writing-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 1.25rem;
             }
         }
 
-        .paper-authors {
+        .paper-authors,
+        .article-meta {
             font-size: 0.84rem;
             color: #64748b;
             line-height: 1.45;
@@ -288,6 +291,30 @@
             border-color: #f5d0fe;
         }
 
+        .venue-gradient {
+            background: #fff7ed;
+            color: #c2410c;
+            border-color: #ffedd5;
+        }
+
+        .venue-stripedev {
+            background: #eef2ff;
+            color: #4338ca;
+            border-color: #e0e7ff;
+        }
+
+        .venue-youtube {
+            background: #fef2f2;
+            color: #b91c1c;
+            border-color: #fee2e2;
+        }
+
+        .venue-stripeguide {
+            background: #ecfeff;
+            color: #0e7490;
+            border-color: #cffafe;
+        }
+
         .badge-granted {
             background: #ecfdf5;
             color: #065f46;
@@ -298,6 +325,30 @@
             background: #eff6ff;
             color: #1e40af;
             border-color: #bfdbfe;
+        }
+
+        .badge-podcast {
+            background: #fdf2f8;
+            color: #9d174d;
+            border-color: #fce7f3;
+        }
+
+        .badge-talk {
+            background: #fff1f2;
+            color: #be123c;
+            border-color: #ffe4e6;
+        }
+
+        .badge-article {
+            background: #f8fafc;
+            color: #334155;
+            border-color: #e2e8f0;
+        }
+
+        .badge-guide {
+            background: #f0fdf4;
+            color: #166534;
+            border-color: #dcfce7;
         }
 
         .card-badges {
@@ -431,7 +482,8 @@
 
         .project,
         .research-card,
-        .patent-card {
+        .patent-card,
+        .writing-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
@@ -458,7 +510,8 @@
 
         .project:hover,
         .research-card:hover,
-        .patent-card:hover {
+        .patent-card:hover,
+        .writing-card:hover {
             transform: translateY(-4px);
             border-color: #94a3b8;
             box-shadow: 0 14px 28px -4px rgba(15, 23, 42, 0.1),
@@ -467,7 +520,8 @@
 
         .project:hover .project-name,
         .research-card:hover .project-name,
-        .patent-card:hover .project-name {
+        .patent-card:hover .project-name,
+        .writing-card:hover .project-name {
             color: #4f46e5;
         }
 
@@ -850,7 +904,8 @@
             /* Responsive card padding and wrapping */
             .project,
             .research-card,
-            .patent-card {
+            .patent-card,
+            .writing-card {
                 padding: 1.15rem 1.15rem;
             }
 
@@ -901,9 +956,9 @@
             }
 
             .site-tab {
-                font-size: 0.78rem;
-                padding: 0.48rem 0.2rem;
-                gap: 0.25rem;
+                font-size: 0.72rem;
+                padding: 0.44rem 0.15rem;
+                gap: 0.2rem;
             }
 
             .site-tab .tab-icon {
@@ -911,8 +966,8 @@
             }
 
             .tab-badge {
-                font-size: 0.64rem;
-                padding: 0.04rem 0.28rem;
+                font-size: 0.6rem;
+                padding: 0.03rem 0.25rem;
             }
         }
 
@@ -986,11 +1041,13 @@
             .project:focus-visible,
             .research-card:focus-visible,
             .patent-card:focus-visible,
+            .writing-card:focus-visible,
             .social-link:focus-visible {
                 outline-color: #818cf8;
             }
 
-            .paper-authors {
+            .paper-authors,
+            .article-meta {
                 color: #94a3b8;
             }
 
@@ -1023,6 +1080,30 @@
                 border-color: #86198f;
             }
 
+            .venue-gradient {
+                background: #431407;
+                color: #fb923c;
+                border-color: #9a3412;
+            }
+
+            .venue-stripedev {
+                background: #1e1b4b;
+                color: #a5b4fc;
+                border-color: #3730a3;
+            }
+
+            .venue-youtube {
+                background: #450a0a;
+                color: #f87171;
+                border-color: #991b1b;
+            }
+
+            .venue-stripeguide {
+                background: #083344;
+                color: #38bdf8;
+                border-color: #0e7490;
+            }
+
             .badge-granted {
                 background: #064e3b;
                 color: #34d399;
@@ -1033,6 +1114,30 @@
                 background: #1e3a8a;
                 color: #60a5fa;
                 border-color: #1d4ed8;
+            }
+
+            .badge-podcast {
+                background: #500724;
+                color: #f472b6;
+                border-color: #831843;
+            }
+
+            .badge-talk {
+                background: #450a0a;
+                color: #f87171;
+                border-color: #7f1d1d;
+            }
+
+            .badge-article {
+                background: #1e222e;
+                color: #94a3b8;
+                border-color: #2b3242;
+            }
+
+            .badge-guide {
+                background: #052e16;
+                color: #4ade80;
+                border-color: #15803d;
             }
 
             .stripe-badge {
@@ -1080,7 +1185,8 @@
 
             .project,
             .research-card,
-            .patent-card {
+            .patent-card,
+            .writing-card {
                 background: #181b24;
                 border-color: #262b38;
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -1088,7 +1194,8 @@
 
             .project:hover,
             .research-card:hover,
-            .patent-card:hover {
+            .patent-card:hover,
+            .writing-card:hover {
                 transform: translateY(-4px);
                 border-color: #475569;
                 box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.7),
@@ -1097,7 +1204,8 @@
 
             .project:hover .project-name,
             .research-card:hover .project-name,
-            .patent-card:hover .project-name {
+            .patent-card:hover .project-name,
+            .writing-card:hover .project-name {
                 color: #818cf8;
             }
 
@@ -1340,6 +1448,13 @@
                 </svg>
                 <span>Patents</span>
                 <span class="tab-badge">10</span>
+            </button>
+            <button class="site-tab" id="tab-writing" role="tab" aria-selected="false" aria-controls="section-writing" data-tab="writing">
+                <svg class="tab-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
+                </svg>
+                <span>Writing</span>
+                <span class="tab-badge">4</span>
             </button>
         </div>
 
@@ -1857,6 +1972,98 @@
                         </div>
                         <div class="project-description">
                             Continuously trains and deploys updated AI fraud models in the background as new payment trends emerge.
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- --- Writing & Talks Section --- -->
+        <section id="section-writing" class="tab-content" role="tabpanel" aria-labelledby="tab-writing" style="display: none;">
+            <h2 class="fade-in">Writing & Talks</h2>
+            <p class="section-subheading fade-in">Articles, technical deep-dives, guides, and podcasts on machine learning systems, fraud detection, and payment architecture at Stripe.</p>
+
+            <div class="writing-grid">
+                <!-- 1. How we built it: Stripe Radar -->
+                <a href="https://stripe.dev/blog/how-we-built-it-stripe-radar" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="radar-blog">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                How we built it: Stripe Radar
+                            </div>
+                            <div class="card-badges">
+                                <span class="venue-badge venue-stripedev">Stripe Dev</span>
+                                <span class="venue-badge badge-article">Article</span>
+                            </div>
+                        </div>
+                        <div class="article-meta">
+                            March 2023 · 10 min read · Stripe Engineering
+                        </div>
+                        <div class="project-description">
+                            The architectural decisions, feature pipelines, and engineering lessons learned over years of building and scaling Stripe Radar to score 1,000+ transaction signals in sub-100ms latency envelopes.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2. Lessons learned building Stripe Radar -->
+                <a href="https://www.youtube.com/watch?v=6kpnaaz_RZA" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="radar-talk">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Lessons Learned Building Stripe Radar
+                            </div>
+                            <div class="card-badges">
+                                <span class="venue-badge venue-youtube">Stripe Developers</span>
+                                <span class="venue-badge badge-talk">Tech Talk</span>
+                            </div>
+                        </div>
+                        <div class="article-meta">
+                            Video Talk · Stripe Developers (YouTube)
+                        </div>
+                        <div class="project-description">
+                            A technical deep-dive on real-time feature engineering, neural network architectures (ResNets), model explainability vs. performance trade-offs, and managing the ML feedback flywheel.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 3. Ryan Drapeau: Battling Fraud with ML at Stripe -->
+                <a href="https://thegradientpub.substack.com/p/ryan-drapeau-battling-fraud-with" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="gradient-podcast">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Ryan Drapeau: Battling Fraud with ML at Stripe
+                            </div>
+                            <div class="card-badges">
+                                <span class="venue-badge venue-gradient">The Gradient</span>
+                                <span class="venue-badge badge-podcast">Podcast</span>
+                            </div>
+                        </div>
+                        <div class="article-meta">
+                            July 2023 · The Gradient Podcast (Ep. 82)
+                        </div>
+                        <div class="project-description">
+                            An in-depth interview exploring Stripe's global machine learning fraud defense across millions of businesses, extreme class imbalance (&lt;0.1% fraud), adversarial dynamics, and model training velocity.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 4. Optimizing payments at scale -->
+                <a href="https://stripe.com/guides/optimizing-payments-at-scale" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="payments-scale">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Optimizing payments at scale: How Stripe applies AI across the payment lifecycle
+                            </div>
+                            <div class="card-badges">
+                                <span class="venue-badge venue-stripeguide">Stripe Guides</span>
+                                <span class="venue-badge badge-guide">Guide</span>
+                            </div>
+                        </div>
+                        <div class="article-meta">
+                            Technical Guide · Stripe
+                        </div>
+                        <div class="project-description">
+                            A comprehensive guide detailing how Stripe orchestrates adaptive AI models across pre-auth risk scoring, smart network routing, adaptive 3D Secure, and intelligent retry engines to unlock billions in revenue.
                         </div>
                     </div>
                 </a>
@@ -2771,15 +2978,18 @@
             const tabProjects = document.getElementById('tab-projects');
             const tabResearch = document.getElementById('tab-research');
             const tabPatents = document.getElementById('tab-patents');
+            const tabWriting = document.getElementById('tab-writing');
             const sectionProjects = document.getElementById('section-projects');
             const sectionResearch = document.getElementById('section-research');
             const sectionPatents = document.getElementById('section-patents');
+            const sectionWriting = document.getElementById('section-writing');
 
             function switchTab(tabId, updateHash = true) {
                 const tabs = [
                     { id: 'projects', btn: tabProjects, sec: sectionProjects },
                     { id: 'research', btn: tabResearch, sec: sectionResearch },
-                    { id: 'patents', btn: tabPatents, sec: sectionPatents }
+                    { id: 'patents', btn: tabPatents, sec: sectionPatents },
+                    { id: 'writing', btn: tabWriting, sec: sectionWriting }
                 ];
 
                 tabs.forEach(t => {
@@ -2807,9 +3017,10 @@
             if (tabProjects) tabProjects.addEventListener('click', () => switchTab('projects'));
             if (tabResearch) tabResearch.addEventListener('click', () => switchTab('research'));
             if (tabPatents) tabPatents.addEventListener('click', () => switchTab('patents'));
+            if (tabWriting) tabWriting.addEventListener('click', () => switchTab('writing'));
 
             // Keyboard navigation: Left/Right arrows across tabs
-            const tabButtons = [tabProjects, tabResearch, tabPatents].filter(Boolean);
+            const tabButtons = [tabProjects, tabResearch, tabPatents, tabWriting].filter(Boolean);
             tabButtons.forEach((tab, index) => {
                 tab.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
@@ -2822,7 +3033,7 @@
                 });
             });
 
-            // Keyboard shortcuts: 1 for Projects, 2 for Research, 3 for Patents
+            // Keyboard shortcuts: 1 for Projects, 2 for Research, 3 for Patents, 4 for Writing
             window.addEventListener('keydown', (e) => {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
                 if (e.key === '1') {
@@ -2834,6 +3045,9 @@
                 } else if (e.key === '3') {
                     switchTab('patents');
                     if (tabPatents) tabPatents.focus();
+                } else if (e.key === '4') {
+                    switchTab('writing');
+                    if (tabWriting) tabWriting.focus();
                 }
             });
 
@@ -2843,6 +3057,8 @@
                     switchTab('research', false);
                 } else if (hash === '#patents') {
                     switchTab('patents', false);
+                } else if (hash === '#writing') {
+                    switchTab('writing', false);
                 } else {
                     switchTab('projects', false);
                 }
