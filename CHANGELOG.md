@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-29] - Mobile Responsiveness & Touch Interaction Optimization
+
+### Added
+- **Mobile Responsive Layout Breakpoints**: Added comprehensive `@media (max-width: 639px)` and `@media (max-width: 380px)` styles:
+  - Responsive body padding adapting from 72px down to 36px on mobile viewports ($\le 639\text{px}$) and 32px on compact phones ($\le 380\text{px}$).
+  - Full-width flexible segmented navigation tabs (`.site-tabs` and `.site-tab`) with centered labels, auto-scaling badges, and compact icon sizing to eliminate horizontal page overflow ($478\text{px} \to 375\text{px} / 320\text{px}$).
+  - Mobile-friendly wrapping for social header links and filter pill buttons.
+  - Responsive card padding and header wrapping for project, research, and patent cards.
+- **Touch Gesture & Interaction Safety**:
+  - Added `touch-action: pan-y` on `.preview-canvas-wrapper` to ensure seamless vertical page scrolling across interactive canvas previews without touch interception.
+  - Added touch tap toggle support on *Connections* micro-visualizer so mobile users can tap to solve/shuffle without requiring desktop hover.
+  - Prevented card link navigation on canvas scrubbing/dragging so interactions do not trigger accidental page changes.
+- **Accessible Touch Target Sizes**:
+  - Increased `.site-tab` buttons to 42px min-height.
+  - Increased `.filter-btn` pills to 38px min-height.
+  - Increased `.social-link` elements to 38px min-height.
+
 ## [2026-08-29] - Added Patents & Inventions Tab
 
 ### Added
