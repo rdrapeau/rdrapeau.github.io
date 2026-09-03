@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-09-02] - Streamlined Project Cards: Removed Technology Tags
+
+### Removed
+- **Project Technology Tags**: Removed `.project-tags` badges (e.g., Vue 3, React, TypeScript, Next.js, Monte Carlo) from all project cards on the Projects tab for a cleaner, decluttered card aesthetic focused directly on project outcomes and interactive canvas previews.
+- **Unused Tag CSS**: Cleaned up obsolete `.project-tags` and `.tech-tag` stylesheet rules in both light and dark modes.
+
 ## [2026-09-02] - Le Drapeau: French Flag Emoji Hover Easter Egg
 
 ### Added
