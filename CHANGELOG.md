@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-09-02] - Le Drapeau: French Flag Emoji Hover Easter Egg
+
+### Added
+- **"Le Drapeau" French Flag Emoji Hover Interaction**: Added a subtle, delightful Easter egg honoring the French translation of *Drapeau* (*flag* 🇫🇷):
+  - **Hover & Touch Swap**: When hovering over (or tapping on mobile) "Drapeau" in the header heading (`Ryan Drapeau`), the surname smoothly morphs into a French flag emoji (`Ryan 🇫🇷`) using CSS transforms and opacity transitions.
+  - **Zero Jank Layout Preservation**: Uses an inline grid container (`display: inline-grid; grid-template-areas: "content"`) ensuring seamless in-place swapping without layout shift.
+  - **Accessibility & Focus Support**: Provides `title="Drapeau is French for flag 🇫🇷"`, accessible `aria-label`, keyboard activation (`Enter` / `Space`), and full `prefers-reduced-motion` compliance.
+
 ## [2026-08-31] - 2x2 Grid Mobile Navigation & Balanced Filter Layout
 
 ### Changed
