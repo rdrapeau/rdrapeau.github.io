@@ -36,6 +36,22 @@ Opening or updating any Pull Request triggers [`.github/workflows/preview.yml`](
 
 ---
 
+## Testing
+
+The repository includes a zero-dependency, native Node.js test suite (`node --test`) enforcing strict repository rules, HTML validity, and subproject integrity:
+
+```bash
+npm test
+```
+
+### Test Suites (`test/`):
+- **Path & Asset Relativity (`test/paths.test.mjs`)**: Enforces `AGENTS.md` Rule #2 — verifies all internal assets, images, and `fetch()` calls use relative paths (`./`) and exist on disk.
+- **Subproject Integrity (`test/subprojects.test.mjs`)**: Enforces `AGENTS.md` Rule #3 — verifies all subprojects have `index.html` and `build-info.json` with valid timestamps.
+- **HTML & Document Structure (`test/html-structure.test.mjs`)**: Verifies semantic HTML5 standards, responsive viewports, tab badge count synchronization, filter button counts, and accessibility (`target="_blank"` rel safety, img alt tags, reduced motion).
+- **Easter Eggs & Interactive Hooks (`test/easter-eggs.test.mjs`)**: Verifies the "Le Drapeau" French flag emoji hover interaction, accessible button roles, and JavaScript initializers.
+
+---
+
 ## Technical Documentation
 
 For detailed architecture, build scripts, and directory structures, see [TECH.md](TECH.md).
