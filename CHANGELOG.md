@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-09-02] - US Patent 2024/0126908: 'Hard Delete' Particle Disintegration Easter Egg
+
+### Added
+- **Interactive Hard Delete Simulation (US Patent 2024/0126908 A1)**: Added a cinematic Easter egg referencing Ryan's granted patent on *"Systems and methods for hard deletion of data across systems"*:
+  - **Triggers**: Accessible via the discreet footer trigger button (`⚠️ Test Hard Delete US Patent 2024/0126908`) or directly from the patent card action badge.
+  - **Dynamic Canvas Particle Shredder**: When triggered, cards, headers, and DOM elements dissolve into upward-drifting digital ash and embers using high-performance Canvas 2D physics.
+  - **Live Distributed System HUD**: Simulates real-time tombstoning logs across distributed data shards (`/shards/cluster-us-west-2a`, multi-region ACK sync, and DoD cryptographic key zeroization).
+  - **Tombstone State & Instant Restoration**: Renders a solemn tombstone zeroized state with an accessible `Restore from Time Machine Backup` button (or keyboard shortcut `⌘Z` / `Ctrl+Z` / `Escape`) to smoothly reconstitute the cluster back to life.
+- **Site Footer**: Added a minimalist, responsive site footer with copyright, location (`Seattle, WA`), and patent Easter egg trigger.
+
 ## [2026-08-31] - 2x2 Grid Mobile Navigation & Balanced Filter Layout
 
 ### Changed
