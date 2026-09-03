@@ -16,6 +16,7 @@ This skill defines the standard development, preview, and deployment lifecycle f
 2. **Path Portability**: All asset URLs, favicons, project links, and `fetch()` requests in `index.html` MUST use relative paths (`./`) so they function seamlessly both at the root domain (`https://drapeau.dev/`) and within preview subdirectories (`https://drapeau.dev/preview/pr-<number>/`).
 3. **Subproject Build Isolation**: When building subprojects (Vite, Next.js, etc.), configurations must output relative assets (`base: './'` in `vite.config.*`).
 4. **Automated Ephemeral Staging**: Every PR automatically provisions an isolated staging environment at `https://drapeau.dev/preview/pr-<number>/` on the `gh-pages` branch, and automatically tears it down on PR merge/closure.
+5. **Continuous Test Coverage**: Every new feature, UI interaction, project addition, or Easter egg MUST include automated tests in `test/` (integrity) and/or `e2e/` (Playwright). All tests must pass locally before opening a PR.
 
 ---
 
@@ -38,7 +39,7 @@ Branch naming conventions:
 
 ---
 
-### 2. Implement Changes & Ensure Path Relativity
+### 2. Implement Changes & Write Automated Tests
 
 #### A. When editing `index.html`:
 - Use `./drapeau.jpg` instead of `/drapeau.jpg`
@@ -57,9 +58,24 @@ Branch naming conventions:
 5. Add/update the project card in [`index.html`](file:///Users/drapeau/Documents/Developer/rdrapeau.github.io/index.html).
 6. Document changes in [`CHANGELOG.md`](file:///Users/drapeau/Documents/Developer/rdrapeau.github.io/CHANGELOG.md), [`README.md`](file:///Users/drapeau/Documents/Developer/rdrapeau.github.io/README.md), and [`TECH.md`](file:///Users/drapeau/Documents/Developer/rdrapeau.github.io/TECH.md).
 
+#### C. When adding a new feature, project, or interaction:
+1. Add structural/integrity tests in `test/` (`paths.test.mjs`, `subprojects.test.mjs`, `html-structure.test.mjs`, `easter-eggs.test.mjs`).
+2. Add cross-browser and mobile interaction tests in `e2e/` (`navigation.spec.mjs`, `filter.spec.mjs`, `interactive-visualizers.spec.mjs`, etc.).
+3. Never weaken or delete existing tests unless functionality is intentionally deprecated.
+
 ---
 
-### 3. Commit and Open a Pull Request
+### 3. Run Local Tests & Open a Pull Request
+
+Run the test suite locally and verify all checks pass:
+
+```bash
+# Run unit & repository integrity tests (<120ms)
+npm test
+
+# Run Playwright E2E tests
+npm run test:e2e:chromium
+```
 
 Commit changes with descriptive commit messages and push to GitHub:
 

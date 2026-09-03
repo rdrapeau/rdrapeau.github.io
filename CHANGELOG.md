@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-09-02] - Guidance Update: Strict Test Coverage & Continuous Verification
+
+### Added
+- **Repository Guidelines & Workflow Policy**: Updated `AGENTS.md` and `pages-pr-preview-workflow` skill:
+  - Enforces running automated tests locally (`npm test` and `npm run test:e2e:chromium`) before committing or opening a PR.
+  - Requires writing corresponding structural/integrity tests (`test/`) and/or browser interaction tests (`e2e/`) whenever adding any new feature, project, tab, filter, canvas visualizer, Easter egg, or metadata.
+
 ## [2026-09-02] - Cross-Browser Playwright E2E Test Suite
 
 ### Added
