@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-08-31] - 2x2 Grid Mobile Navigation & Balanced Filter Layout
+
+### Changed
+- **2x2 Segmented Navigation Grid**: Redesigned `.site-tabs` on mobile (`@media (max-width: 639px)`) into an intuitive 2-row, 2-column grid (`Projects (7)`, `Research (5)`, `Patents (10)`, `Writing (4)`):
+  - 100% discoverability: all 4 tabs and count badges remain fully visible at a glance on mobile without horizontal scrolling.
+  - Large tap targets: expanded tab buttons to `min-height: 44px` conforming to Apple Human Interface Guidelines and WCAG 2.5.5 touch target criteria.
+  - Centered tile layout with full icons, labels, and badges preserved across all phone viewports down to 320px.
+- **3-Column Equal Filter Bar**: Formatted `.filter-bar` into a 3-column grid (`Live (5)`, `In Dev (2)`, `All (7)`) on mobile, eliminating awkward wrapping of the "All" pill button onto a second line.
+- **Accessible Touch Heights**: Increased `.social-link` and `.filter-btn` touch target heights to 42px on mobile screens.
+
 ## [2026-08-30] - Added Writing & Talks Tab
 
 ### Added
