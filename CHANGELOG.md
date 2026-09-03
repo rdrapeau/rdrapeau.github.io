@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-09-02] - Automated CI Test Suite & Repository Rule Validation
+
+### Added
+- **Automated Zero-Dependency Test Suite (`test/`)**: Implemented a comprehensive test suite powered by Node.js native test runner (`node:test`) and assertions (`node:assert`):
+  - `test/paths.test.mjs`: Validates `AGENTS.md` Rule #2 (Path & Asset Relativity) ensuring all internal links, images, assets, and `fetch()` calls use relative paths (`./`) and exist on disk.
+  - `test/subprojects.test.mjs`: Validates `AGENTS.md` Rule #3 (Subproject Integrity) ensuring all 6 hosted subprojects have `index.html` and `build-info.json` with valid timestamps.
+  - `test/html-structure.test.mjs`: Validates HTML5 doctype, UTF-8 charset, responsive viewport, social OpenGraph tags, tab badge count synchronization (Projects, Research, Patents, Writing), filter button counts, and accessibility (`target="_blank"` rel safety, img alt tags, reduced motion).
+  - `test/easter-eggs.test.mjs`: Validates the "Le Drapeau" French flag emoji hover Easter egg DOM structure, accessible ARIA roles, CSS transitions, and JavaScript initializers.
+- **GitHub Actions Integration**: Added `.github/workflows/test.yml` running `npm test` on PRs and master pushes, and added automated test verification steps to `.github/workflows/preview.yml` and `.github/workflows/static.yml` to prevent regressions before preview or production deployment.
+
 ## [2026-09-02] - Streamlined Project Cards: Removed Technology Tags
 
 ### Removed

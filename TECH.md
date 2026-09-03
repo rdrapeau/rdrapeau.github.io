@@ -58,7 +58,15 @@ rdrapeau.github.io/
 ├── .github/
 │   └── workflows/
 │       ├── static.yml           # Production deploy workflow
-│       └── preview.yml          # PR preview staging workflow
+│       ├── preview.yml          # PR preview staging workflow
+│       └── test.yml             # Automated CI test suite workflow
+├── test/
+│   ├── helpers.mjs              # Test utilities & HTML parser
+│   ├── paths.test.mjs           # Path & asset relativity tests (Rule #2)
+│   ├── subprojects.test.mjs     # Subproject integrity & build-info tests (Rule #3)
+│   ├── html-structure.test.mjs  # Document structure & tab sync tests
+│   └── easter-eggs.test.mjs     # Easter egg & interactive hook tests
+├── package.json                 # Node test scripts (npm test)
 ├── index.html                   # Main landing page (relative paths)
 ├── drapeau.jpg                  # Profile headshot
 ├── CNAME                        # Custom domain configuration (drapeau.dev)
