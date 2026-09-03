@@ -5,11 +5,18 @@
   "description": "Ryan Drapeau's personal portfolio, research, and projects website",
   "type": "module",
   "scripts": {
-    "test": "node --test test/**/*.test.mjs"
+    "test": "node --test test/**/*.test.mjs",
+    "test:unit": "node --test test/**/*.test.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:chromium": "playwright test --project=chromium",
+    "test:all": "node --test test/**/*.test.mjs && playwright test"
   },
   "engines": {
     "node": ">=20.0.0"
   },
   "author": "Ryan Drapeau",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
 }
