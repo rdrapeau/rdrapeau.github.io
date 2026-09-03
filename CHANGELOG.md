@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-09-02] - Cross-Browser Playwright E2E Test Suite
+
+### Added
+- **Playwright End-to-End Browser Test Suite (`e2e/`)**: Configured comprehensive cross-browser and mobile device testing across Chromium, Firefox, WebKit (Safari), Mobile Chrome (Pixel 5), and Mobile Safari (iPhone 12):
+  - `e2e/navigation.spec.mjs`: Tests smooth tab switching, URL hash routing, history sync, and keyboard navigation shortcuts (`1`, `2`, `3`, `4`).
+  - `e2e/filter.spec.mjs`: Tests project filter buttons (`Live Projects (5)`, `In Development (2)`, `All (7)`).
+  - `e2e/interactive-visualizers.spec.mjs`: Tests HTML5 canvas simulations rendering, pointer scrubbing interaction, and zero uncaught runtime errors.
+  - `e2e/drapeau-easter-egg.spec.mjs`: Tests the "Le Drapeau" French flag hover morphing, tap toggling for touch devices, and keyboard accessibility (`Enter`/`Space`).
+  - `e2e/accessibility-responsive.spec.mjs`: Tests mobile 2x2 grid responsiveness without overflow, dark/light mode styles, and resource HTTP status checks.
+- **Lightweight Test Server (`scripts/serve.mjs`)**: Added a zero-dependency static file server with correct MIME types, caching, and range support for Playwright test executions.
+- **CI Workflow Enhancement (`.github/workflows/test.yml`)**: Added parallel CI jobs for fast unit/integrity checks (`7s`) and automated Playwright E2E tests in Chromium.
+
 ## [2026-09-02] - Automated CI Test Suite & Repository Rule Validation
 
 ### Added

@@ -3054,6 +3054,7 @@
 
             syncFromHash();
             window.addEventListener('hashchange', syncFromHash);
+            window.addEventListener('popstate', syncFromHash);
         }
 
         // --- Le Drapeau French Flag Easter Egg ---

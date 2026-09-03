@@ -92,9 +92,14 @@ export function getSubprojects() {
         '.agents',
         'node_modules',
         'test',
+        'e2e',
+        'scripts',
         'assets',
         'scratch',
-        'coverage'
+        'coverage',
+        'test-results',
+        'playwright-report',
+        '.playwright'
     ]);
 
     const entries = fs.readdirSync(ROOT_DIR, { withFileTypes: true });

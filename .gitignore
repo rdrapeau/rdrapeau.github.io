@@ -32,3 +32,9 @@ pnpm-debug.log*
 *.swo
 *~
 
+# Test artifacts and reports
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+

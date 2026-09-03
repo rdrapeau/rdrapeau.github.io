@@ -66,7 +66,16 @@ rdrapeau.github.io/
 │   ├── subprojects.test.mjs     # Subproject integrity & build-info tests (Rule #3)
 │   ├── html-structure.test.mjs  # Document structure & tab sync tests
 │   └── easter-eggs.test.mjs     # Easter egg & interactive hook tests
-├── package.json                 # Node test scripts (npm test)
+├── e2e/
+│   ├── navigation.spec.mjs      # Tab switching, hash routing, shortcuts
+│   ├── filter.spec.mjs          # Live/In-Dev/All project filtering
+│   ├── interactive-visualizers.spec.mjs # Canvas rendering & scrubbing
+│   ├── drapeau-easter-egg.spec.mjs      # French flag hover interaction
+│   └── accessibility-responsive.spec.mjs # 2x2 grid, themes, asset sanity
+├── scripts/
+│   └── serve.mjs                # Lightweight zero-dependency test server
+├── playwright.config.mjs        # Playwright cross-browser configuration
+├── package.json                 # Node test scripts (npm test, npm run test:e2e)
 ├── index.html                   # Main landing page (relative paths)
 ├── drapeau.jpg                  # Profile headshot
 ├── CNAME                        # Custom domain configuration (drapeau.dev)
