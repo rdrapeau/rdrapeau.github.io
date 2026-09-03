@@ -2,19 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2026-09-02] - Le Drapeau: Interactive Silk Cloth Flag Physics Easter Egg
+## [2026-09-02] - Le Drapeau: French Flag Emoji Hover Easter Egg
 
 ### Added
-- **"Le Drapeau" Interactive Cloth Simulation**: Added an interactive physics Easter egg honoring the French translation of *Drapeau* (*flag* 🏳️):
-  - **Avatar Flag Badge & Trigger**: Added an interactive waving flag hint badge (`🏳️`) to the profile headshot in the header, with spring hover expansion and accessible keyboard activation (`Enter`/`Space`).
-  - **Verlet Physics Engine**: Integrated a zero-dependency 2D Verlet numerical integration cloth engine (20×13 particles with structural and shear spring constraints) rendering realistic silk fluttering, momentum, and fold shading at locked 60fps.
-  - **Physical Interactions**: Users can click/touch and drag any point on the cloth to pull and stretch the fabric, or rapidly sweep the cursor/touch to fan aerodynamic wind currents across the flag.
-  - **Multiple Flag Standards**: Provided switchable visual themes:
-    - *Drapeau ML*: Custom navy standard with electric indigo diagonal sash, gold trim, and ML monogram insignia.
-    - *Tricolore 🇫🇷*: Classic French silk Tricolor (*Bleu, Blanc, Rouge*).
-    - *Mesh Stress*: Real-time structural strain heat map visualization.
-  - **Wind & Environment Presets**: Controls for *Calm*, *Breeze*, *Gale*, and *Zero-G Space* (weightless floating silk in zero gravity).
-  - **Accessible Native Dialog Modal**: Rendered inside a native HTML5 `<dialog>` with focus management, backdrop blur, and automatic physics loop suspension when closed to conserve battery and CPU.
+- **"Le Drapeau" French Flag Emoji Hover Interaction**: Added a subtle, delightful Easter egg honoring the French translation of *Drapeau* (*flag* 🇫🇷):
+  - **Hover & Touch Swap**: When hovering over (or tapping on mobile) "Drapeau" in the header heading (`Ryan Drapeau`), the surname smoothly morphs into a French flag emoji (`Ryan 🇫🇷`) using CSS transforms and opacity transitions.
+  - **Zero Jank Layout Preservation**: Uses an inline grid container (`display: inline-grid; grid-template-areas: "content"`) ensuring seamless in-place swapping without layout shift.
+  - **Accessibility & Focus Support**: Provides `title="Drapeau is French for flag 🇫🇷"`, accessible `aria-label`, keyboard activation (`Enter` / `Space`), and full `prefers-reduced-motion` compliance.
 
 ## [2026-08-31] - 2x2 Grid Mobile Navigation & Balanced Filter Layout
 
