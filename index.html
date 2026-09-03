@@ -63,12 +63,209 @@
             margin-bottom: 1.25rem;
         }
 
+        .headshot-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 50%;
+            outline: none;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .headshot-wrapper:hover {
+            transform: scale(1.04);
+        }
+
+        .headshot-wrapper:focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 3px;
+        }
+
+        .flag-hint-badge {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            line-height: 1;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            user-select: none;
+        }
+
+        .headshot-wrapper:hover .flag-hint-badge {
+            transform: scale(1.22) rotate(-8deg);
+        }
+
         .headshot {
             width: 84px;
             height: 84px;
             border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: block;
+        }
+
+        /* --- Le Drapeau Cloth Simulation Dialog --- */
+        .flag-dialog {
+            border: none;
+            border-radius: 16px;
+            padding: 0;
+            background: transparent;
+            max-width: 640px;
+            width: calc(100% - 2rem);
+            margin: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            overflow: visible;
+        }
+
+        .flag-dialog::backdrop {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .flag-dialog[open]::backdrop {
+            opacity: 1;
+        }
+
+        .flag-modal-card {
+            background: #ffffff;
+            color: #0f172a;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.25rem 1.25rem 1.1rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .flag-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.85rem;
+            gap: 0.75rem;
+        }
+
+        .flag-modal-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin: 0;
+        }
+
+        .flag-modal-subtitle {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 0.2rem;
+            line-height: 1.4;
+        }
+
+        .flag-modal-close {
+            background: #f1f5f9;
+            border: none;
+            color: #64748b;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .flag-modal-close:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .flag-modal-close:focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 2px;
+        }
+
+        .flag-canvas-wrapper {
+            position: relative;
+            background: #090d16;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            overflow: hidden;
+            touch-action: none;
+            cursor: grab;
+        }
+
+        .flag-canvas-wrapper:active {
+            cursor: grabbing;
+        }
+
+        #flag-canvas {
+            display: block;
+            width: 100%;
+            height: 280px;
+        }
+
+        .flag-controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.85rem;
+            gap: 0.5rem;
+        }
+
+        .flag-pill-group {
+            display: inline-flex;
+            background: #f1f5f9;
+            padding: 3px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            gap: 2px;
+        }
+
+        .flag-ctrl-btn {
+            background: transparent;
+            border: none;
+            color: #64748b;
+            padding: 5px 10px;
+            font-size: 0.76rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: inherit;
+        }
+
+        .flag-ctrl-btn:hover {
+            color: #0f172a;
+        }
+
+        .flag-ctrl-btn.active {
+            background: #4f46e5;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .flag-hint {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 0.65rem;
         }
 
         h1 {
@@ -837,6 +1034,12 @@
                 height: 72px;
             }
 
+            .flag-hint-badge {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
+            }
+
             h1 {
                 font-size: 1.62rem;
             }
@@ -1359,6 +1562,11 @@
             .headshot {
                 box-shadow: 0 0 0 2px #262b38;
             }
+
+            .flag-hint-badge {
+                background: #1e293b;
+                border-color: #0f172a;
+            }
         }
 
         /* --- Scroll Animations --- */
@@ -1422,7 +1630,10 @@
     <div class="container">
         <header class="fade-in">
             <div class="header-content">
-                <img src="./drapeau.jpg" alt="Ryan Drapeau" class="headshot">
+                <div class="headshot-wrapper" id="headshot-wrapper" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Unfurl Le Drapeau silk cloth simulation" title="Le Drapeau — Click to unfurl flag">
+                    <img src="./drapeau.jpg" alt="Ryan Drapeau" class="headshot">
+                    <div class="flag-hint-badge" aria-hidden="true">🏳️</div>
+                </div>
                 <h1>Ryan Drapeau</h1>
             </div>
             <p class="bio">I am currently a Principal ML Engineer at <a href="https://stripe.com" class="stripe-wordmark-link" target="_blank" rel="noopener noreferrer" aria-label="Stripe"><svg class="stripe-wordmark" viewBox="0 0 360 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M360 77.4001C360 51.8001 347.6 31.6001 323.9 31.6001C300.1 31.6001 285.7 51.8001 285.7 77.2001C285.7 107.3 302.7 122.5 327.1 122.5C339 122.5 348 119.8 354.8 116V96.0001C348 99.4001 340.2 101.5 330.3 101.5C320.6 101.5 312 98.1001 310.9 86.3001H359.8C359.8 85.0001 360 79.8001 360 77.4001ZM310.6 67.9001C310.6 56.6001 317.5 51.9001 323.8 51.9001C329.9 51.9001 336.4 56.6001 336.4 67.9001H310.6Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M247.1 31.6001C237.3 31.6001 231 36.2001 227.5 39.4001L226.2 33.2001H204.2V149.8L229.2 144.5L229.3 116.2C232.9 118.8 238.2 122.5 247 122.5C264.9 122.5 281.2 108.1 281.2 76.4001C281.1 47.4001 264.6 31.6001 247.1 31.6001ZM241.1 100.5C235.2 100.5 231.7 98.4001 229.3 95.8001L229.2 58.7001C231.8 55.8001 235.4 53.8001 241.1 53.8001C250.2 53.8001 256.5 64.0001 256.5 77.1001C256.5 90.5001 250.3 100.5 241.1 100.5Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M169.8 25.7L194.9 20.3V0L169.8 5.3V25.7Z" fill="currentColor"/><path d="M194.9 33.3H169.8V120.8H194.9V33.3Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.9 40.7L141.3 33.3H119.7V120.8H144.7V61.5C150.6 53.8 160.6 55.2 163.7 56.3V33.3C160.5 32.1 148.8 29.9 142.9 40.7Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M92.8999 11.6001L68.4999 16.8001L68.3999 96.9001C68.3999 111.7 79.4999 122.6 94.2999 122.6C102.5 122.6 108.5 121.1 111.8 119.3V99.0001C108.6 100.3 92.7999 104.9 92.7999 90.1001V54.6001H111.8V33.3001H92.7999L92.8999 11.6001Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.3 58.7001C25.3 54.8001 28.5 53.3001 33.8 53.3001C41.4 53.3001 51 55.6001 58.6 59.7001V36.2001C50.3 32.9001 42.1 31.6001 33.8 31.6001C13.5 31.6001 0 42.2001 0 59.9001C0 87.5001 38 83.1001 38 95.0001C38 99.6001 34 101.1 28.4 101.1C20.1 101.1 9.5 97.7001 1.1 93.1001V116.9C10.4 120.9 19.8 122.6 28.4 122.6C49.2 122.6 63.5 112.3 63.5 94.4001C63.4 64.6001 25.3 69.9001 25.3 58.7001Z" fill="currentColor"/></svg></a>.</p>
@@ -2071,6 +2282,47 @@
             </div>
         </section>
     </div>
+
+    <!-- Le Drapeau — Interactive Silk Cloth Simulation Modal -->
+    <dialog id="drapeau-flag-dialog" class="flag-dialog" aria-labelledby="flag-dialog-title">
+        <div class="flag-modal-card">
+            <div class="flag-modal-header">
+                <div class="flag-modal-title-group">
+                    <h3 id="flag-dialog-title" class="flag-modal-title">
+                        <span>🏳️</span>
+                        <span>Le Drapeau — Silk Cloth Physics</span>
+                    </h3>
+                    <div class="flag-modal-subtitle"><em>Drapeau</em> is French for <em>flag</em>. Grab and tug the silk, or move your cursor rapidly to blow wind across it.</div>
+                </div>
+                <button type="button" class="flag-modal-close" id="flag-modal-close" aria-label="Close flag simulation">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="flag-canvas-wrapper" id="flag-canvas-wrapper">
+                <canvas id="flag-canvas"></canvas>
+            </div>
+
+            <div class="flag-controls">
+                <div class="flag-pill-group" id="flag-theme-pills">
+                    <button type="button" class="flag-ctrl-btn active" data-theme="drapeau">Drapeau ML</button>
+                    <button type="button" class="flag-ctrl-btn" data-theme="tricolor">Tricolore 🇫🇷</button>
+                    <button type="button" class="flag-ctrl-btn" data-theme="wireframe">Mesh Stress</button>
+                </div>
+
+                <div class="flag-pill-group" id="flag-wind-pills">
+                    <button type="button" class="flag-ctrl-btn" data-wind="calm">Calm</button>
+                    <button type="button" class="flag-ctrl-btn active" data-wind="breeze">Breeze</button>
+                    <button type="button" class="flag-ctrl-btn" data-wind="gale">Gale</button>
+                    <button type="button" class="flag-ctrl-btn" data-wind="space">Zero-G</button>
+                </div>
+            </div>
+            <div class="flag-hint">Click &amp; drag anywhere on the flag to pull and stretch • Move cursor rapidly to fan the cloth</div>
+        </div>
+    </dialog>
+
     <script>
         // Fetch build dates from each project's build-info.json and sort them dynamically
         const projects = ['fi_sim', 'org_planning', 'connections', 'stitch_by_number', 'photo_stacker', 'rowing_performance'];
@@ -3069,10 +3321,457 @@
             window.addEventListener('hashchange', syncFromHash);
         }
 
-        // Initialize projects, visualizers, and tab navigation
+        // --- Le Drapeau: Interactive Silk Cloth Flag Simulation ---
+        function initDrapeauFlagSimulation() {
+            const headshotWrapper = document.getElementById('headshot-wrapper');
+            const dialog = document.getElementById('drapeau-flag-dialog');
+            const closeBtn = document.getElementById('flag-modal-close');
+            const canvas = document.getElementById('flag-canvas');
+            const wrapper = document.getElementById('flag-canvas-wrapper');
+            if (!headshotWrapper || !dialog || !canvas || !wrapper) return;
+
+            const ctx = canvas.getContext('2d');
+            const COLS = 20;
+            const ROWS = 13;
+            let particles = [];
+            let constraints = [];
+            let currentTheme = 'drapeau';
+            let currentWind = 'breeze';
+            let draggedParticle = null;
+            let mouseX = 0, mouseY = 0, prevMouseX = 0, prevMouseY = 0;
+            let isPointerDown = false;
+            let animId = null;
+            let time = 0;
+            let isRunning = false;
+
+            class Particle {
+                constructor(x, y, pinned = false) {
+                    this.x = x;
+                    this.y = y;
+                    this.oldX = x;
+                    this.oldY = y;
+                    this.pinned = pinned;
+                }
+
+                update(dt, gravity, drag, windX, windY) {
+                    if (this.pinned) return;
+                    const vx = (this.x - this.oldX) * drag;
+                    const vy = (this.y - this.oldY) * drag;
+                    this.oldX = this.x;
+                    this.oldY = this.y;
+                    this.x += vx + windX * dt;
+                    this.y += vy + (gravity + windY) * dt;
+                }
+            }
+
+            class Constraint {
+                constructor(p1, p2) {
+                    this.p1 = p1;
+                    this.p2 = p2;
+                    this.restDist = Math.hypot(p2.x - p1.x, p2.y - p1.y);
+                }
+
+                resolve() {
+                    const dx = this.p2.x - this.p1.x;
+                    const dy = this.p2.y - this.p1.y;
+                    const currentDist = Math.hypot(dx, dy);
+                    if (currentDist === 0) return;
+                    const diff = (currentDist - this.restDist) / currentDist;
+                    const offsetX = dx * 0.5 * diff;
+                    const offsetY = dy * 0.5 * diff;
+
+                    if (!this.p1.pinned) {
+                        this.p1.x += offsetX;
+                        this.p1.y += offsetY;
+                    }
+                    if (!this.p2.pinned) {
+                        this.p2.x -= offsetX;
+                        this.p2.y -= offsetY;
+                    }
+                }
+            }
+
+            function initCloth() {
+                const rect = canvas.getBoundingClientRect();
+                const w = rect.width;
+                const h = rect.height;
+
+                const flagW = Math.min(380, w * 0.62);
+                const flagH = Math.min(200, h * 0.68);
+                const startX = Math.max(50, (w - flagW) * 0.32);
+                const startY = (h - flagH) * 0.5;
+
+                const cellW = flagW / (COLS - 1);
+                const cellH = flagH / (ROWS - 1);
+
+                particles = [];
+                constraints = [];
+
+                for (let r = 0; r < ROWS; r++) {
+                    const row = [];
+                    for (let c = 0; c < COLS; c++) {
+                        const x = startX + c * cellW;
+                        const y = startY + r * cellH;
+                        const pinned = (c === 0);
+                        row.push(new Particle(x, y, pinned));
+                    }
+                    particles.push(row);
+                }
+
+                for (let r = 0; r < ROWS; r++) {
+                    for (let c = 0; c < COLS; c++) {
+                        if (c < COLS - 1) {
+                            constraints.push(new Constraint(particles[r][c], particles[r][c + 1]));
+                        }
+                        if (r < ROWS - 1) {
+                            constraints.push(new Constraint(particles[r][c], particles[r + 1][c]));
+                        }
+                        if (c < COLS - 1 && r < ROWS - 1) {
+                            constraints.push(new Constraint(particles[r][c], particles[r + 1][c + 1]));
+                        }
+                        if (c > 0 && r < ROWS - 1) {
+                            constraints.push(new Constraint(particles[r][c], particles[r + 1][c - 1]));
+                        }
+                    }
+                }
+            }
+
+            function resize() {
+                const dpr = window.devicePixelRatio || 1;
+                const rect = canvas.getBoundingClientRect();
+                if (rect.width === 0 || rect.height === 0) return;
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                initCloth();
+            }
+
+            function getWindParameters(t) {
+                let baseWind = 0;
+                let gustFreq = 2.5;
+                let gravity = 9.8;
+                let drag = 0.94;
+
+                if (currentWind === 'calm') {
+                    baseWind = 1.5;
+                    gravity = 11;
+                    gustFreq = 1.0;
+                } else if (currentWind === 'breeze') {
+                    baseWind = 9.0;
+                    gravity = 9.8;
+                    gustFreq = 3.0;
+                } else if (currentWind === 'gale') {
+                    baseWind = 22.0;
+                    gravity = 6.0;
+                    gustFreq = 5.5;
+                } else if (currentWind === 'space') {
+                    baseWind = 3.0;
+                    gravity = 0.0;
+                    gustFreq = 1.2;
+                    drag = 0.98;
+                }
+
+                const gust = Math.sin(t * gustFreq) * 2.5 + Math.cos(t * gustFreq * 2.2) * 1.5;
+                return {
+                    windX: baseWind + gust,
+                    gravity: gravity,
+                    drag: drag
+                };
+            }
+
+            function updatePhysics() {
+                time += 0.032;
+                const dt = 0.032;
+                const { windX, gravity, drag } = getWindParameters(time);
+
+                const pointerVx = mouseX - prevMouseX;
+                const pointerVy = mouseY - prevMouseY;
+                prevMouseX = mouseX;
+                prevMouseY = mouseY;
+
+                for (let r = 0; r < ROWS; r++) {
+                    for (let c = 0; c < COLS; c++) {
+                        const p = particles[r][c];
+                        const wave = Math.sin(time * 3.5 + c * 0.45) * 2.0;
+                        let localWindY = wave;
+
+                        if (!isPointerDown) {
+                            const distToMouse = Math.hypot(p.x - mouseX, p.y - mouseY);
+                            if (distToMouse < 80) {
+                                const force = (1 - distToMouse / 80) * 8;
+                                p.x += pointerVx * force * 0.08;
+                                p.y += pointerVy * force * 0.08;
+                            }
+                        }
+
+                        p.update(dt, gravity, drag, windX, localWindY);
+                    }
+                }
+
+                if (draggedParticle) {
+                    draggedParticle.x = mouseX;
+                    draggedParticle.y = mouseY;
+                }
+
+                const ITERATIONS = 5;
+                for (let i = 0; i < ITERATIONS; i++) {
+                    for (const c of constraints) {
+                        c.resolve();
+                    }
+                }
+            }
+
+            function renderFlag() {
+                const rect = canvas.getBoundingClientRect();
+                ctx.clearRect(0, 0, rect.width, rect.height);
+
+                if (particles.length > 0) {
+                    const topP = particles[0][0];
+                    const botP = particles[ROWS - 1][0];
+
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+                    ctx.fillRect(topP.x - 1, topP.y - 25, 6, rect.height);
+
+                    const poleGrad = ctx.createLinearGradient(topP.x - 4, 0, topP.x + 4, 0);
+                    poleGrad.addColorStop(0, '#94a3b8');
+                    poleGrad.addColorStop(0.5, '#f8fafc');
+                    poleGrad.addColorStop(1, '#475569');
+                    ctx.fillStyle = poleGrad;
+                    ctx.fillRect(topP.x - 3, topP.y - 28, 6, rect.height - topP.y + 28);
+
+                    const finialGrad = ctx.createRadialGradient(topP.x - 1, topP.y - 30, 1, topP.x, topP.y - 30, 8);
+                    finialGrad.addColorStop(0, '#fef08a');
+                    finialGrad.addColorStop(0.6, '#eab308');
+                    finialGrad.addColorStop(1, '#854d0e');
+                    ctx.fillStyle = finialGrad;
+                    ctx.beginPath();
+                    ctx.arc(topP.x, topP.y - 30, 7, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.fillStyle = '#cbd5e1';
+                    ctx.fillRect(topP.x - 4, topP.y - 2, 8, 4);
+                    ctx.fillRect(botP.x - 4, botP.y - 2, 8, 4);
+                }
+
+                for (let r = 0; r < ROWS - 1; r++) {
+                    for (let c = 0; c < COLS - 1; c++) {
+                        const p0 = particles[r][c];
+                        const p1 = particles[r][c + 1];
+                        const p2 = particles[r + 1][c + 1];
+                        const p3 = particles[r + 1][c];
+
+                        const slope = (p1.y - p0.y) + (p2.x - p3.x) * 0.2;
+                        const foldLight = Math.max(0.65, Math.min(1.4, 1.0 + Math.sin(slope * 0.15 + c * 0.4) * 0.35));
+
+                        if (currentTheme === 'wireframe') {
+                            ctx.strokeStyle = `hsl(${Math.max(0, 140 - Math.abs(slope) * 20)}, 90%, 55%)`;
+                            ctx.lineWidth = 1;
+                            ctx.strokeRect(p0.x, p0.y, p1.x - p0.x, p3.y - p0.y);
+                            continue;
+                        }
+
+                        let baseColor;
+                        if (currentTheme === 'tricolor') {
+                            const u = c / (COLS - 1);
+                            if (u < 0.333) {
+                                baseColor = [0, 35, 149];
+                            } else if (u < 0.666) {
+                                baseColor = [240, 243, 246];
+                            } else {
+                                baseColor = [237, 41, 57];
+                            }
+                        } else {
+                            const u = c / (COLS - 1);
+                            const v = r / (ROWS - 1);
+                            const isSash = Math.abs(u - v * 0.8 - 0.1) < 0.12;
+                            if (isSash) {
+                                baseColor = [99, 102, 241];
+                            } else if (u < 0.05 || u > 0.95 || v < 0.05 || v > 0.95) {
+                                baseColor = [234, 179, 8];
+                            } else {
+                                baseColor = [15, 23, 42];
+                            }
+                        }
+
+                        const red = Math.min(255, Math.max(0, Math.round(baseColor[0] * foldLight)));
+                        const green = Math.min(255, Math.max(0, Math.round(baseColor[1] * foldLight)));
+                        const blue = Math.min(255, Math.max(0, Math.round(baseColor[2] * foldLight)));
+
+                        ctx.fillStyle = `rgb(${red}, ${green}, ${blue})`;
+                        ctx.beginPath();
+                        ctx.moveTo(p0.x, p0.y);
+                        ctx.lineTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.lineTo(p3.x, p3.y);
+                        ctx.closePath();
+                        ctx.fill();
+                    }
+                }
+
+                if (currentTheme === 'drapeau' && particles.length > 0) {
+                    const centerRow = Math.floor(ROWS / 2);
+                    const centerCol = Math.floor(COLS / 2);
+                    const cp = particles[centerRow][centerCol];
+                    const leftP = particles[centerRow][centerCol - 2];
+                    const rightP = particles[centerRow][centerCol + 2];
+
+                    const angle = Math.atan2(rightP.y - leftP.y, rightP.x - leftP.x);
+
+                    ctx.save();
+                    ctx.translate(cp.x, cp.y);
+                    ctx.rotate(angle);
+
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+                    ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+                    ctx.shadowBlur = 6;
+                    ctx.font = 'bold 15px -apple-system, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('⚡ DRAPEAU ⚡', 0, -6);
+
+                    ctx.font = '600 10px "JetBrains Mono", monospace';
+                    ctx.fillStyle = '#6366f1';
+                    ctx.fillText('ML · PATENTS · CODE', 0, 9);
+                    ctx.restore();
+                }
+            }
+
+            function loop() {
+                if (!isRunning) return;
+                updatePhysics();
+                renderFlag();
+                animId = requestAnimationFrame(loop);
+            }
+
+            function startSimulation() {
+                if (isRunning) return;
+                isRunning = true;
+                resize();
+                loop();
+            }
+
+            function stopSimulation() {
+                isRunning = false;
+                if (animId) {
+                    cancelAnimationFrame(animId);
+                    animId = null;
+                }
+                draggedParticle = null;
+                isPointerDown = false;
+            }
+
+            function getCanvasPos(e) {
+                const rect = canvas.getBoundingClientRect();
+                return {
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top
+                };
+            }
+
+            function findNearestParticle(x, y) {
+                let nearest = null;
+                let minDist = 40;
+                for (let r = 0; r < ROWS; r++) {
+                    for (let c = 0; c < COLS; c++) {
+                        const p = particles[r][c];
+                        const d = Math.hypot(p.x - x, p.y - y);
+                        if (d < minDist) {
+                            minDist = d;
+                            nearest = p;
+                        }
+                    }
+                }
+                return nearest;
+            }
+
+            wrapper.addEventListener('pointerdown', (e) => {
+                wrapper.setPointerCapture(e.pointerId);
+                const pos = getCanvasPos(e);
+                mouseX = pos.x;
+                mouseY = pos.y;
+                prevMouseX = mouseX;
+                prevMouseY = mouseY;
+                isPointerDown = true;
+
+                const p = findNearestParticle(mouseX, mouseY);
+                if (p && !p.pinned) {
+                    draggedParticle = p;
+                }
+            });
+
+            wrapper.addEventListener('pointermove', (e) => {
+                const pos = getCanvasPos(e);
+                mouseX = pos.x;
+                mouseY = pos.y;
+            });
+
+            function endPointer(e) {
+                isPointerDown = false;
+                draggedParticle = null;
+                try {
+                    wrapper.releasePointerCapture(e.pointerId);
+                } catch (_) {}
+            }
+
+            wrapper.addEventListener('pointerup', endPointer);
+            wrapper.addEventListener('pointercancel', endPointer);
+
+            document.getElementById('flag-theme-pills').addEventListener('click', (e) => {
+                const btn = e.target.closest('button');
+                if (!btn) return;
+                document.querySelectorAll('#flag-theme-pills button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTheme = btn.getAttribute('data-theme');
+            });
+
+            document.getElementById('flag-wind-pills').addEventListener('click', (e) => {
+                const btn = e.target.closest('button');
+                if (!btn) return;
+                document.querySelectorAll('#flag-wind-pills button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentWind = btn.getAttribute('data-wind');
+            });
+
+            function openModal() {
+                dialog.showModal();
+                startSimulation();
+            }
+
+            function closeModal() {
+                dialog.close();
+                stopSimulation();
+            }
+
+            headshotWrapper.addEventListener('click', openModal);
+            headshotWrapper.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openModal();
+                }
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+
+            dialog.addEventListener('click', (e) => {
+                const rect = dialog.getBoundingClientRect();
+                const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+                    rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+                if (!isInDialog) {
+                    closeModal();
+                }
+            });
+
+            dialog.addEventListener('close', stopSimulation);
+            window.addEventListener('resize', () => {
+                if (isRunning) resize();
+            });
+        }
+
+        // Initialize projects, visualizers, tab navigation, and flag simulation
         loadAndSortProjects().then(() => {
             initProjectVisualizers();
             initTabNavigation();
+            initDrapeauFlagSimulation();
         });
     </script>
 </body>
