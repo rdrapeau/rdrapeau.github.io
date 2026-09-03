@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-09-02] - 'Career Connections' Secret Minigame Easter Egg
+
+### Added
+- **"Career Connections" Interactive Minigame**: Added a secret 4×4 NYT-style Connections puzzle based on Ryan's career and background:
+  - **Launch Points**: Accessible via the `[ 🧩 Play Career Edition ]` pill button in the Connections project card preview header or by clicking directly into the Category Color Matrix canvas.
+  - **Custom Career Categories**:
+    - 🟨 *Stripe ML & Risk*: `RADAR`, `TOMBSTONE`, `FRAUD`, `RESNET`
+    - 🟩 *Crew & Rowing*: `ERGOMETER`, `SPLIT`, `STROKE`, `SCULL`
+    - 🟦 *University of Washington*: `HUSKY`, `DUB`, `RED SQUARE`, `SUZZALLO`
+    - 🟪 *Things with Cones*: `RETINA`, `PINE`, `TRAFFIC`, `ICE CREAM`
+  - **NYT-Style Puzzle Mechanics**: Dynamic tile selection (up to 4 words), tile shuffling, mistake tracking (4 attempts with live dot indicators), and "One away..." hints.
+  - **Victory & Social Sharing**: Animated category collapse banners, victory summary box, and 1-click clipboard export with standard emoji grid format (`🟨🟩🟦🟪`).
+  - **Responsive Dialog Modal**: Native `<dialog>` modal with frosted backdrop blur, full touch optimization for mobile viewports, and keyboard focus management.
+
 ## [2026-08-31] - 2x2 Grid Mobile Navigation & Balanced Filter Layout
 
 ### Changed
