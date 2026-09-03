@@ -38,17 +38,34 @@ Opening or updating any Pull Request triggers [`.github/workflows/preview.yml`](
 
 ## Testing
 
-The repository includes a zero-dependency, native Node.js test suite (`node --test`) enforcing strict repository rules, HTML validity, and subproject integrity:
+The repository includes both a zero-dependency native Node.js structural test suite and an end-to-end browser test suite powered by [Playwright](https://playwright.dev/):
 
 ```bash
+# Run fast native unit & repository integrity tests (<120ms, zero dependencies)
 npm test
+
+# Run cross-browser Playwright E2E tests (Chromium, Firefox, WebKit, Mobile Safari, Mobile Chrome)
+npm run test:e2e
+
+# Run Playwright E2E tests in Chromium only
+npm run test:e2e:chromium
+
+# Run everything
+npm run test:all
 ```
 
-### Test Suites (`test/`):
+### 1. Repository Integrity & Structural Tests (`test/`)
 - **Path & Asset Relativity (`test/paths.test.mjs`)**: Enforces `AGENTS.md` Rule #2 — verifies all internal assets, images, and `fetch()` calls use relative paths (`./`) and exist on disk.
 - **Subproject Integrity (`test/subprojects.test.mjs`)**: Enforces `AGENTS.md` Rule #3 — verifies all subprojects have `index.html` and `build-info.json` with valid timestamps.
 - **HTML & Document Structure (`test/html-structure.test.mjs`)**: Verifies semantic HTML5 standards, responsive viewports, tab badge count synchronization, filter button counts, and accessibility (`target="_blank"` rel safety, img alt tags, reduced motion).
 - **Easter Eggs & Interactive Hooks (`test/easter-eggs.test.mjs`)**: Verifies the "Le Drapeau" French flag emoji hover interaction, accessible button roles, and JavaScript initializers.
+
+### 2. Cross-Browser E2E Tests (`e2e/`)
+- **Navigation & Tabs (`e2e/navigation.spec.mjs`)**: Tests tab switching, deep-link hash routing, and keyboard shortcuts (`1`, `2`, `3`, `4`).
+- **Filter Bar (`e2e/filter.spec.mjs`)**: Tests project filtering by status (`Live Projects (5)`, `In Development (2)`, `All (7)`).
+- **Interactive Visualizers (`e2e/interactive-visualizers.spec.mjs`)**: Tests canvas rendering, scrubber pointer telemetry tracking, and ensures zero uncaught runtime exceptions.
+- **Le Drapeau Easter Egg (`e2e/drapeau-easter-egg.spec.mjs`)**: Tests surname hover morphing, tap toggling, and keyboard accessibility (`Enter`/`Space`).
+- **Responsive Layout & Accessibility (`e2e/accessibility-responsive.spec.mjs`)**: Tests mobile 2x2 tab grid without horizontal overflow, dark/light theme color scheme switching, and asset load response codes.
 
 ---
 
