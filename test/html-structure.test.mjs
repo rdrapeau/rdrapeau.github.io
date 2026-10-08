@@ -37,6 +37,34 @@ describe('Document & HTML Structure Integrity', () => {
             assert.match(html, /<meta\s+property=["']og:description["']/i, 'Missing og:description');
             assert.match(html, /<meta\s+property=["']og:type["']/i, 'Missing og:type');
         });
+
+        it('has valid Schema.org JSON-LD structured data with Person, Articles, and Patents', () => {
+            const jsonLdMatch = /<script\s+type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/i.exec(html);
+            assert.ok(jsonLdMatch, 'Document must have <script type="application/ld+json"> tag');
+
+            let parsed;
+            assert.doesNotThrow(() => {
+                parsed = JSON.parse(jsonLdMatch[1]);
+            }, 'Schema.org JSON-LD must be valid JSON');
+
+            assert.equal(parsed['@context'], 'https://schema.org');
+            assert.ok(Array.isArray(parsed['@graph']), '@graph must be an array');
+
+            const person = parsed['@graph'].find(item => item['@type'] === 'Person');
+            assert.ok(person, 'Must contain a Person entity in @graph');
+            assert.equal(person.name, 'Ryan Drapeau');
+            assert.equal(person.worksFor.name, 'Stripe');
+            assert.equal(person.alumniOf.name, 'University of Washington');
+            assert.ok(person.sameAs.length >= 3, 'Must contain social and scholar links');
+
+            const publications = parsed['@graph'].find(item => item['@id'] === 'https://drapeau.dev/#publications');
+            assert.ok(publications, 'Must contain publications collection');
+            assert.equal(publications.itemListElement.length, 5, 'Must contain 5 research publications');
+
+            const patents = parsed['@graph'].find(item => item['@id'] === 'https://drapeau.dev/#patents');
+            assert.ok(patents, 'Must contain patents collection');
+            assert.equal(patents.itemListElement.length, 10, 'Must contain 10 patents');
+        });
     });
 
     describe('Tabs & Badge Count Synchronization', () => {
@@ -78,6 +106,30 @@ describe('Document & HTML Structure Integrity', () => {
                 );
             });
         }
+
+        it('initial projects section has active-panel class for View Transitions API', () => {
+            assert.match(
+                html,
+                /<section[^>]*?id=["']section-projects["'][^>]*?class=["'][^"']*?\bactive-panel\b/i,
+                'Initial section-projects must have active-panel class'
+            );
+        });
+
+        it('includes View Transitions API CSS declarations with reduced-motion fallback', () => {
+            assert.match(html, /view-transition-name:\s*active-tab-panel;/i, 'Missing view-transition-name: active-tab-panel');
+            assert.match(html, /::view-transition-group\(active-tab-panel\)/i, 'Missing ::view-transition-group');
+            assert.match(html, /::view-transition-old\(active-tab-panel\)/i, 'Missing ::view-transition-old');
+            assert.match(html, /::view-transition-new\(active-tab-panel\)/i, 'Missing ::view-transition-new');
+            assert.match(
+                html,
+                /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?view-transition-name:\s*none\s*!important/i,
+                'Must disable view-transition-name under prefers-reduced-motion'
+            );
+        });
+
+        it('JavaScript checks document.startViewTransition for progressive enhancement', () => {
+            assert.match(html, /document\.startViewTransition/i, 'Must check document.startViewTransition in switchTab');
+        });
     });
 
     describe('Projects Filter Synchronization', () => {

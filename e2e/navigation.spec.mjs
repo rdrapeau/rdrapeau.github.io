@@ -15,6 +15,7 @@ test.describe('Navigation & Tab Switching', () => {
 
         const projectsSection = page.locator('#section-projects');
         await expect(projectsSection).toBeVisible();
+        await expect(projectsSection).toHaveClass(/\bactive-panel\b/);
     });
 
     test('switches tabs smoothly when clicked and updates URL hash', async ({ page }) => {
@@ -22,6 +23,7 @@ test.describe('Navigation & Tab Switching', () => {
         await page.click('#tab-writing');
         await expect(page.locator('#tab-writing')).toHaveClass(/\bactive\b/);
         await expect(page.locator('#section-writing')).toBeVisible();
+        await expect(page.locator('#section-writing')).toHaveClass(/\bactive-panel\b/);
         await expect(page.locator('#section-projects')).toBeHidden();
         expect(page.url()).toContain('#writing');
 
@@ -29,6 +31,7 @@ test.describe('Navigation & Tab Switching', () => {
         await page.click('#tab-patents');
         await expect(page.locator('#tab-patents')).toHaveClass(/\bactive\b/);
         await expect(page.locator('#section-patents')).toBeVisible();
+        await expect(page.locator('#section-patents')).toHaveClass(/\bactive-panel\b/);
         await expect(page.locator('#section-writing')).toBeHidden();
         expect(page.url()).toContain('#patents');
 
@@ -36,6 +39,7 @@ test.describe('Navigation & Tab Switching', () => {
         await page.click('#tab-research');
         await expect(page.locator('#tab-research')).toHaveClass(/\bactive\b/);
         await expect(page.locator('#section-research')).toBeVisible();
+        await expect(page.locator('#section-research')).toHaveClass(/\bactive-panel\b/);
         await expect(page.locator('#section-patents')).toBeHidden();
         expect(page.url()).toContain('#research');
 
@@ -43,6 +47,7 @@ test.describe('Navigation & Tab Switching', () => {
         await page.click('#tab-projects');
         await expect(page.locator('#tab-projects')).toHaveClass(/\bactive\b/);
         await expect(page.locator('#section-projects')).toBeVisible();
+        await expect(page.locator('#section-projects')).toHaveClass(/\bactive-panel\b/);
         await expect(page.locator('#section-research')).toBeHidden();
         expect(page.url()).toContain('#projects');
     });
@@ -119,5 +124,20 @@ test.describe('Navigation & Tab Switching', () => {
         await page.keyboard.press('ArrowLeft');
         await expect(page.locator('#tab-patents')).toBeFocused();
         await expect(page.locator('#section-patents')).toBeVisible();
+    });
+
+    test('serves valid Schema.org JSON-LD microdata in head', async ({ page }) => {
+        const jsonLdContent = await page.locator('script[type="application/ld+json"]').textContent();
+        expect(jsonLdContent).not.toBeNull();
+
+        const data = JSON.parse(jsonLdContent);
+        expect(data['@context']).toBe('https://schema.org');
+        expect(Array.isArray(data['@graph'])).toBe(true);
+
+        const person = data['@graph'].find(item => item['@type'] === 'Person');
+        expect(person).toBeDefined();
+        expect(person.name).toBe('Ryan Drapeau');
+        expect(person.jobTitle).toBe('Principal Machine Learning Engineer');
+        expect(person.worksFor.name).toBe('Stripe');
     });
 });

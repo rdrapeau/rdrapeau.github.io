@@ -10,6 +10,8 @@ This is a static GitHub Pages site hosting personal project showcases, mapped to
 - Automatic dark mode via `prefers-color-scheme: dark`
 - Scroll-triggered fade-in animations with `prefers-reduced-motion` accessibility support
 - **Segmented Site Navigation Tabs**: Deep-linkable tabs (`#projects`, `#writing`, `#patents`, `#research`) with sliding active pill state, keyboard shortcuts (`1` for Projects, `2` for Writing, `3` for Patents, `4` for Research), and hash history synchronization.
+- **Native View Transitions API**: Progressive enhancement tab switching using `document.startViewTransition()` with `.tab-content.active-panel` animations and strict `prefers-reduced-motion` compliance.
+- **Schema.org JSON-LD Structured Data**: Embedded semantic microdata graphs (`Person`, `ProfilePage`, `ScholarlyArticle`, `Patent`) for rich search indexing and entity association.
 - **Interactive "Show, Don't Tell" Micro-Visualizers**: Zero-dependency HTML5 Canvas simulation preview widgets embedded on project cards (Monte Carlo fan charts, exposure fusion scrubbers, stroke telemetry, and color quantization) with real-time pointer scrubbing and high-DPI retina scaling.
 - **Academic Research, Patent & Writing Catalogs**: Displays 7 projects, 4 writing pieces/talks, 10 Stripe inventions/patents, and 5 peer-reviewed publications with Google Scholar / Google Patents integration, venue pills, status badges, and direct citation links.
 - Displays project cards sorted dynamically by last updated build date
