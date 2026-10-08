@@ -18,32 +18,32 @@ test.describe('Navigation & Tab Switching', () => {
     });
 
     test('switches tabs smoothly when clicked and updates URL hash', async ({ page }) => {
-        // Switch to Research tab
-        await page.click('#tab-research');
-        await expect(page.locator('#tab-research')).toHaveClass(/\bactive\b/);
-        await expect(page.locator('#section-research')).toBeVisible();
+        // Switch to Writing tab
+        await page.click('#tab-writing');
+        await expect(page.locator('#tab-writing')).toHaveClass(/\bactive\b/);
+        await expect(page.locator('#section-writing')).toBeVisible();
         await expect(page.locator('#section-projects')).toBeHidden();
-        expect(page.url()).toContain('#research');
+        expect(page.url()).toContain('#writing');
 
         // Switch to Patents tab
         await page.click('#tab-patents');
         await expect(page.locator('#tab-patents')).toHaveClass(/\bactive\b/);
         await expect(page.locator('#section-patents')).toBeVisible();
-        await expect(page.locator('#section-research')).toBeHidden();
+        await expect(page.locator('#section-writing')).toBeHidden();
         expect(page.url()).toContain('#patents');
 
-        // Switch to Writing tab
-        await page.click('#tab-writing');
-        await expect(page.locator('#tab-writing')).toHaveClass(/\bactive\b/);
-        await expect(page.locator('#section-writing')).toBeVisible();
+        // Switch to Research tab
+        await page.click('#tab-research');
+        await expect(page.locator('#tab-research')).toHaveClass(/\bactive\b/);
+        await expect(page.locator('#section-research')).toBeVisible();
         await expect(page.locator('#section-patents')).toBeHidden();
-        expect(page.url()).toContain('#writing');
+        expect(page.url()).toContain('#research');
 
         // Switch back to Projects tab
         await page.click('#tab-projects');
         await expect(page.locator('#tab-projects')).toHaveClass(/\bactive\b/);
         await expect(page.locator('#section-projects')).toBeVisible();
-        await expect(page.locator('#section-writing')).toBeHidden();
+        await expect(page.locator('#section-research')).toBeHidden();
         expect(page.url()).toContain('#projects');
     });
 
@@ -55,13 +55,17 @@ test.describe('Navigation & Tab Switching', () => {
     });
 
     test('reacts to direct URL hash navigation', async ({ page }) => {
-        await page.goto('/#research');
-        await expect(page.locator('#section-research')).toBeVisible();
-        await expect(page.locator('#tab-research')).toHaveClass(/\bactive\b/);
-
         await page.goto('/#writing');
         await expect(page.locator('#section-writing')).toBeVisible();
         await expect(page.locator('#tab-writing')).toHaveClass(/\bactive\b/);
+
+        await page.goto('/#patents');
+        await expect(page.locator('#section-patents')).toBeVisible();
+        await expect(page.locator('#tab-patents')).toHaveClass(/\bactive\b/);
+
+        await page.goto('/#research');
+        await expect(page.locator('#section-research')).toBeVisible();
+        await expect(page.locator('#tab-research')).toHaveClass(/\bactive\b/);
 
         await page.goto('/#projects');
         await expect(page.locator('#section-projects')).toBeVisible();
@@ -72,20 +76,48 @@ test.describe('Navigation & Tab Switching', () => {
         // Focus body to ensure window receives keyboard events across all browser engines
         await page.locator('body').click();
 
-        // Press 2 -> Research
+        // Press 2 -> Writing
         await page.keyboard.press('2');
-        await expect(page.locator('#section-research')).toBeVisible();
+        await expect(page.locator('#section-writing')).toBeVisible();
+        await expect(page.locator('#tab-writing')).toHaveClass(/\bactive\b/);
 
         // Press 3 -> Patents
         await page.keyboard.press('3');
         await expect(page.locator('#section-patents')).toBeVisible();
+        await expect(page.locator('#tab-patents')).toHaveClass(/\bactive\b/);
 
-        // Press 4 -> Writing
+        // Press 4 -> Research
         await page.keyboard.press('4');
-        await expect(page.locator('#section-writing')).toBeVisible();
+        await expect(page.locator('#section-research')).toBeVisible();
+        await expect(page.locator('#tab-research')).toHaveClass(/\bactive\b/);
 
         // Press 1 -> Projects
         await page.keyboard.press('1');
         await expect(page.locator('#section-projects')).toBeVisible();
+        await expect(page.locator('#tab-projects')).toHaveClass(/\bactive\b/);
+    });
+
+    test('supports arrow key navigation across tabs in order (Projects -> Writing -> Patents -> Research)', async ({ page }) => {
+        await page.locator('#tab-projects').focus();
+
+        // Right arrow -> Writing
+        await page.keyboard.press('ArrowRight');
+        await expect(page.locator('#tab-writing')).toBeFocused();
+        await expect(page.locator('#section-writing')).toBeVisible();
+
+        // Right arrow -> Patents
+        await page.keyboard.press('ArrowRight');
+        await expect(page.locator('#tab-patents')).toBeFocused();
+        await expect(page.locator('#section-patents')).toBeVisible();
+
+        // Right arrow -> Research
+        await page.keyboard.press('ArrowRight');
+        await expect(page.locator('#tab-research')).toBeFocused();
+        await expect(page.locator('#section-research')).toBeVisible();
+
+        // Left arrow -> Patents
+        await page.keyboard.press('ArrowLeft');
+        await expect(page.locator('#tab-patents')).toBeFocused();
+        await expect(page.locator('#section-patents')).toBeVisible();
     });
 });
