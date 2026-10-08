@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-07] - Reordered Portfolio Sections: Projects, Writing, Patents, Research
+
+### Changed
+- **Reordered Portfolio Sections & Tabs**: Updated navigation tab buttons and document sections in `index.html` to the exact order: **Projects**, **Writing**, **Patents**, **Research**.
+- **Keyboard Shortcuts & Arrow Navigation**: Updated numeric keyboard shortcuts (`1` for Projects, `2` for Writing, `3` for Patents, `4` for Research) and tab button arrow-key sequence to reflect the new order.
+- **Test Suite Updates**:
+  - `test/html-structure.test.mjs`: Added DOM ordering integrity assertions verifying tab buttons and section panels match the Projects &rarr; Writing &rarr; Patents &rarr; Research sequence.
+  - `e2e/navigation.spec.mjs`: Updated Playwright tests to verify tab switching sequence, numeric shortcuts, and arrow-key navigation in the updated order.
+
 ## [2026-09-02] - Guidance Update: Strict Test Coverage & Continuous Verification
 
 ### Added

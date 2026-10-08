@@ -1488,12 +1488,12 @@
                 <span>Projects</span>
                 <span class="tab-badge">7</span>
             </button>
-            <button class="site-tab" id="tab-research" role="tab" aria-selected="false" aria-controls="section-research" data-tab="research">
+            <button class="site-tab" id="tab-writing" role="tab" aria-selected="false" aria-controls="section-writing" data-tab="writing">
                 <svg class="tab-icon" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
                 </svg>
-                <span>Research</span>
-                <span class="tab-badge">5</span>
+                <span>Writing</span>
+                <span class="tab-badge">4</span>
             </button>
             <button class="site-tab" id="tab-patents" role="tab" aria-selected="false" aria-controls="section-patents" data-tab="patents">
                 <svg class="tab-icon" viewBox="0 0 20 20" fill="currentColor">
@@ -1502,12 +1502,12 @@
                 <span>Patents</span>
                 <span class="tab-badge">10</span>
             </button>
-            <button class="site-tab" id="tab-writing" role="tab" aria-selected="false" aria-controls="section-writing" data-tab="writing">
+            <button class="site-tab" id="tab-research" role="tab" aria-selected="false" aria-controls="section-research" data-tab="research">
                 <svg class="tab-icon" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
+                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                 </svg>
-                <span>Writing</span>
-                <span class="tab-badge">4</span>
+                <span>Research</span>
+                <span class="tab-badge">5</span>
             </button>
         </div>
 
@@ -1709,97 +1709,64 @@
             </div>
         </section>
 
-        <section id="section-research" class="tab-content" role="tabpanel" aria-labelledby="tab-research" style="display: none;">
-            <h2 class="fade-in">Research & Publications</h2>
-            <p class="section-subheading fade-in">Peer-reviewed papers in human-in-the-loop ML, crowdsourcing, and multimodal accessibility.</p>
+        <!-- --- Writing & Talks Section --- -->
+        <section id="section-writing" class="tab-content" role="tabpanel" aria-labelledby="tab-writing" style="display: none;">
+            <h2 class="fade-in">Writing & Talks</h2>
+            <p class="section-subheading fade-in">Articles, technical deep-dives, guides, and podcasts on machine learning systems, fraud detection, and payment architecture at Stripe.</p>
 
-            <div class="research-grid">
-                <!-- 1. Microtalk -->
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="microtalk">
+            <div class="writing-grid">
+                <!-- 1. How we built it: Stripe Radar -->
+                <a href="https://stripe.dev/blog/how-we-built-it-stripe-radar" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="radar-blog">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
-                                Microtalk: Argumentation in Crowdsourcing
+                                How we built it: Stripe Radar
                             </div>
-                            <span class="venue-badge venue-hcomp">AAAI HCOMP '16</span>
-                        </div>
-                        <div class="paper-authors">
-                            <span class="author-self">Ryan Drapeau</span>, Lydia B. Chilton, Jonathan Bragg, Daniel S. Weld
                         </div>
                         <div class="project-description">
-                            A peer argumentation protocol (<em>Assess &rarr; Justify &rarr; Reconsider</em>) where crowd workers exchange structured rationales, boosting individual and aggregate classification accuracy by <strong>+20%</strong> on challenging NLP tasks without ground truth.
+                            The architectural decisions, feature pipelines, and engineering lessons learned over years of building and scaling Stripe Radar to score 1,000+ transaction signals in sub-100ms latency envelopes.
                         </div>
                     </div>
                 </a>
 
-                <!-- 2. Tactile Graphics with a Voice -->
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="tactile_graphics">
+                <!-- 2. Lessons learned building Stripe Radar -->
+                <a href="https://www.youtube.com/watch?v=6kpnaaz_RZA" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="radar-talk">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
-                                Tactile Graphics with a Voice
+                                Lessons Learned Building Stripe Radar
                             </div>
-                            <span class="venue-badge venue-taccess">ACM TACCESS '16</span>
-                        </div>
-                        <div class="paper-authors">
-                            Catherine M. Baker, Lauren R. Milne, <span class="author-self">Ryan Drapeau</span>, Jeffrey Scofield, Cynthia L. Bennett, Richard E. Ladner
                         </div>
                         <div class="project-description">
-                            A multimodal accessibility system combining physical relief graphics with smartphone camera QR scanning and finger-pointing guidance to provide localized audio explanations for complex STEM diagrams.
+                            A technical deep-dive on real-time feature engineering, neural network architectures (ResNets), model explainability vs. performance trade-offs, and managing the ML feedback flywheel.
                         </div>
                     </div>
                 </a>
 
-                <!-- 3. The Wisdom of Multiple Guesses -->
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:d1gkVwhDpl0C" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="multiple_guesses">
+                <!-- 3. Ryan Drapeau: Battling Fraud with ML at Stripe -->
+                <a href="https://thegradientpub.substack.com/p/ryan-drapeau-battling-fraud-with" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="gradient-podcast">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
-                                The Wisdom of Multiple Guesses
+                                Ryan Drapeau: Battling Fraud with ML at Stripe
                             </div>
-                            <span class="venue-badge venue-ec">ACM EC '15</span>
-                        </div>
-                        <div class="paper-authors">
-                            Johan Ugander, <span class="author-self">Ryan Drapeau</span>, Carlos Guestrin
                         </div>
                         <div class="project-description">
-                            A crowdsourced forecasting mechanism that elicits multiple ranked guesses per individual to capture heterogeneous confidence distributions, creating certainty-weighted crowd aggregations that outperform standard mean estimates.
+                            An in-depth interview exploring Stripe's global machine learning fraud defense across millions of businesses, extreme class imbalance (&lt;0.1% fraud), adversarial dynamics, and model training velocity.
                         </div>
                     </div>
                 </a>
 
-                <!-- 4. KIMBEE -->
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="kimbee">
+                <!-- 4. Optimizing payments at scale -->
+                <a href="https://stripe.com/guides/optimizing-payments-at-scale" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="payments-scale">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
-                                KIMBEE: Speech Therapy for Children
+                                Optimizing payments at scale: How Stripe applies AI across the payment lifecycle
                             </div>
-                            <span class="venue-badge venue-uw">UW CSE '15</span>
-                        </div>
-                        <div class="paper-authors">
-                            <span class="author-self">Ryan Drapeau</span>, Nicolas Huynh, Aaron Nech
                         </div>
                         <div class="project-description">
-                            A mobile acoustic speech therapy system providing children with real-time phonological feedback and articulation game mechanics, while streaming phoneme accuracy telemetry to speech-language pathologists.
-                        </div>
-                    </div>
-                </a>
-
-                <!-- 5. Contributing During the Commute -->
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="commute">
-                    <div class="project-top">
-                        <div class="project-header">
-                            <div class="project-name">
-                                Contributing During the Commute
-                            </div>
-                            <span class="venue-badge venue-uw">UW CSE '15</span>
-                        </div>
-                        <div class="paper-authors">
-                            Caitlin Bonnar, Meg Campbell, <span class="author-self">Ryan Drapeau</span>, Cynthia L. Bennett, Alan Borning
-                        </div>
-                        <div class="project-description">
-                            An empirical study within the OneBusAway mobile transit platform investigating prosocial volunteer dynamics when transit riders crowdsource bus stop accessibility attributes (shelters, seating, sidewalk ramps).
+                            A comprehensive guide detailing how Stripe orchestrates adaptive AI models across pre-auth risk scoring, smart network routing, adaptive 3D Secure, and intelligent retry engines to unlock billions in revenue.
                         </div>
                     </div>
                 </a>
@@ -1994,64 +1961,98 @@
             </div>
         </section>
 
-        <!-- --- Writing & Talks Section --- -->
-        <section id="section-writing" class="tab-content" role="tabpanel" aria-labelledby="tab-writing" style="display: none;">
-            <h2 class="fade-in">Writing & Talks</h2>
-            <p class="section-subheading fade-in">Articles, technical deep-dives, guides, and podcasts on machine learning systems, fraud detection, and payment architecture at Stripe.</p>
+        <!-- --- Research & Publications Section --- -->
+        <section id="section-research" class="tab-content" role="tabpanel" aria-labelledby="tab-research" style="display: none;">
+            <h2 class="fade-in">Research & Publications</h2>
+            <p class="section-subheading fade-in">Peer-reviewed papers in human-in-the-loop ML, crowdsourcing, and multimodal accessibility.</p>
 
-            <div class="writing-grid">
-                <!-- 1. How we built it: Stripe Radar -->
-                <a href="https://stripe.dev/blog/how-we-built-it-stripe-radar" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="radar-blog">
+            <div class="research-grid">
+                <!-- 1. Microtalk -->
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="microtalk">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
-                                How we built it: Stripe Radar
+                                Microtalk: Argumentation in Crowdsourcing
                             </div>
+                            <span class="venue-badge venue-hcomp">AAAI HCOMP '16</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span>, Lydia B. Chilton, Jonathan Bragg, Daniel S. Weld
                         </div>
                         <div class="project-description">
-                            The architectural decisions, feature pipelines, and engineering lessons learned over years of building and scaling Stripe Radar to score 1,000+ transaction signals in sub-100ms latency envelopes.
+                            A peer argumentation protocol (<em>Assess &rarr; Justify &rarr; Reconsider</em>) where crowd workers exchange structured rationales, boosting individual and aggregate classification accuracy by <strong>+20%</strong> on challenging NLP tasks without ground truth.
                         </div>
                     </div>
                 </a>
 
-                <!-- 2. Lessons learned building Stripe Radar -->
-                <a href="https://www.youtube.com/watch?v=6kpnaaz_RZA" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="radar-talk">
+                <!-- 2. Tactile Graphics with a Voice -->
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="tactile_graphics">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
-                                Lessons Learned Building Stripe Radar
+                                Tactile Graphics with a Voice
                             </div>
+                            <span class="venue-badge venue-taccess">ACM TACCESS '16</span>
+                        </div>
+                        <div class="paper-authors">
+                            Catherine M. Baker, Lauren R. Milne, <span class="author-self">Ryan Drapeau</span>, Jeffrey Scofield, Cynthia L. Bennett, Richard E. Ladner
                         </div>
                         <div class="project-description">
-                            A technical deep-dive on real-time feature engineering, neural network architectures (ResNets), model explainability vs. performance trade-offs, and managing the ML feedback flywheel.
+                            A multimodal accessibility system combining physical relief graphics with smartphone camera QR scanning and finger-pointing guidance to provide localized audio explanations for complex STEM diagrams.
                         </div>
                     </div>
                 </a>
 
-                <!-- 3. Ryan Drapeau: Battling Fraud with ML at Stripe -->
-                <a href="https://thegradientpub.substack.com/p/ryan-drapeau-battling-fraud-with" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="gradient-podcast">
+                <!-- 3. The Wisdom of Multiple Guesses -->
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:d1gkVwhDpl0C" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="multiple_guesses">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
-                                Ryan Drapeau: Battling Fraud with ML at Stripe
+                                The Wisdom of Multiple Guesses
                             </div>
+                            <span class="venue-badge venue-ec">ACM EC '15</span>
+                        </div>
+                        <div class="paper-authors">
+                            Johan Ugander, <span class="author-self">Ryan Drapeau</span>, Carlos Guestrin
                         </div>
                         <div class="project-description">
-                            An in-depth interview exploring Stripe's global machine learning fraud defense across millions of businesses, extreme class imbalance (&lt;0.1% fraud), adversarial dynamics, and model training velocity.
+                            A crowdsourced forecasting mechanism that elicits multiple ranked guesses per individual to capture heterogeneous confidence distributions, creating certainty-weighted crowd aggregations that outperform standard mean estimates.
                         </div>
                     </div>
                 </a>
 
-                <!-- 4. Optimizing payments at scale -->
-                <a href="https://stripe.com/guides/optimizing-payments-at-scale" target="_blank" rel="noopener noreferrer" class="writing-card fade-in" data-article="payments-scale">
+                <!-- 4. KIMBEE -->
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="kimbee">
                     <div class="project-top">
                         <div class="project-header">
                             <div class="project-name">
-                                Optimizing payments at scale: How Stripe applies AI across the payment lifecycle
+                                KIMBEE: Speech Therapy for Children
                             </div>
+                            <span class="venue-badge venue-uw">UW CSE '15</span>
+                        </div>
+                        <div class="paper-authors">
+                            <span class="author-self">Ryan Drapeau</span>, Nicolas Huynh, Aaron Nech
                         </div>
                         <div class="project-description">
-                            A comprehensive guide detailing how Stripe orchestrates adaptive AI models across pre-auth risk scoring, smart network routing, adaptive 3D Secure, and intelligent retry engines to unlock billions in revenue.
+                            A mobile acoustic speech therapy system providing children with real-time phonological feedback and articulation game mechanics, while streaming phoneme accuracy telemetry to speech-language pathologists.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 5. Contributing During the Commute -->
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="commute">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <div class="project-name">
+                                Contributing During the Commute
+                            </div>
+                            <span class="venue-badge venue-uw">UW CSE '15</span>
+                        </div>
+                        <div class="paper-authors">
+                            Caitlin Bonnar, Meg Campbell, <span class="author-self">Ryan Drapeau</span>, Cynthia L. Bennett, Alan Borning
+                        </div>
+                        <div class="project-description">
+                            An empirical study within the OneBusAway mobile transit platform investigating prosocial volunteer dynamics when transit riders crowdsource bus stop accessibility attributes (shelters, seating, sidewalk ramps).
                         </div>
                     </div>
                 </a>
@@ -2964,20 +2965,20 @@
         // Tab Switching and Navigation
         function initTabNavigation() {
             const tabProjects = document.getElementById('tab-projects');
-            const tabResearch = document.getElementById('tab-research');
-            const tabPatents = document.getElementById('tab-patents');
             const tabWriting = document.getElementById('tab-writing');
+            const tabPatents = document.getElementById('tab-patents');
+            const tabResearch = document.getElementById('tab-research');
             const sectionProjects = document.getElementById('section-projects');
-            const sectionResearch = document.getElementById('section-research');
-            const sectionPatents = document.getElementById('section-patents');
             const sectionWriting = document.getElementById('section-writing');
+            const sectionPatents = document.getElementById('section-patents');
+            const sectionResearch = document.getElementById('section-research');
 
             function switchTab(tabId, updateHash = true) {
                 const tabs = [
                     { id: 'projects', btn: tabProjects, sec: sectionProjects },
-                    { id: 'research', btn: tabResearch, sec: sectionResearch },
+                    { id: 'writing', btn: tabWriting, sec: sectionWriting },
                     { id: 'patents', btn: tabPatents, sec: sectionPatents },
-                    { id: 'writing', btn: tabWriting, sec: sectionWriting }
+                    { id: 'research', btn: tabResearch, sec: sectionResearch }
                 ];
 
                 tabs.forEach(t => {
@@ -3003,12 +3004,12 @@
             }
 
             if (tabProjects) tabProjects.addEventListener('click', () => switchTab('projects'));
-            if (tabResearch) tabResearch.addEventListener('click', () => switchTab('research'));
-            if (tabPatents) tabPatents.addEventListener('click', () => switchTab('patents'));
             if (tabWriting) tabWriting.addEventListener('click', () => switchTab('writing'));
+            if (tabPatents) tabPatents.addEventListener('click', () => switchTab('patents'));
+            if (tabResearch) tabResearch.addEventListener('click', () => switchTab('research'));
 
             // Keyboard navigation: Left/Right arrows across tabs
-            const tabButtons = [tabProjects, tabResearch, tabPatents, tabWriting].filter(Boolean);
+            const tabButtons = [tabProjects, tabWriting, tabPatents, tabResearch].filter(Boolean);
             tabButtons.forEach((tab, index) => {
                 tab.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
@@ -3021,32 +3022,32 @@
                 });
             });
 
-            // Keyboard shortcuts: 1 for Projects, 2 for Research, 3 for Patents, 4 for Writing
+            // Keyboard shortcuts: 1 for Projects, 2 for Writing, 3 for Patents, 4 for Research
             window.addEventListener('keydown', (e) => {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
                 if (e.key === '1') {
                     switchTab('projects');
                     if (tabProjects) tabProjects.focus();
                 } else if (e.key === '2') {
-                    switchTab('research');
-                    if (tabResearch) tabResearch.focus();
+                    switchTab('writing');
+                    if (tabWriting) tabWriting.focus();
                 } else if (e.key === '3') {
                     switchTab('patents');
                     if (tabPatents) tabPatents.focus();
                 } else if (e.key === '4') {
-                    switchTab('writing');
-                    if (tabWriting) tabWriting.focus();
+                    switchTab('research');
+                    if (tabResearch) tabResearch.focus();
                 }
             });
 
             function syncFromHash() {
                 const hash = window.location.hash;
-                if (hash === '#research') {
-                    switchTab('research', false);
+                if (hash === '#writing') {
+                    switchTab('writing', false);
                 } else if (hash === '#patents') {
                     switchTab('patents', false);
-                } else if (hash === '#writing') {
-                    switchTab('writing', false);
+                } else if (hash === '#research') {
+                    switchTab('research', false);
                 } else {
                     switchTab('projects', false);
                 }
