@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-07] - Modern Web Standards & SEO: View Transitions API & Schema.org JSON-LD
+
+### Added
+- **Native View Transitions API**:
+  - Implemented progressive-enhancement tab transitions using `document.startViewTransition()` to smoothly cross-fade and morph `.tab-content.active-panel` state when navigating between **Projects**, **Writing**, **Patents**, and **Research**.
+  - Respects accessibility standards with automatic bypass and zero-animation execution under `@media (prefers-reduced-motion: reduce)`.
+- **Schema.org JSON-LD Structured Data**:
+  - Embedded rich semantic microdata in `<script type="application/ld+json">` covering:
+    - `Person`: name, job title (Principal ML Engineer), affiliation (Stripe), education (University of Washington), sameAs profiles, and core competency entities.
+    - `ProfilePage`: canonical site entity binding.
+    - `ItemList` of `ScholarlyArticle`: complete metadata for all 5 peer-reviewed publications.
+    - `ItemList` of `Patent`: complete metadata for all 10 Stripe inventions and patents.
+- **Automated Tests**:
+  - Added structural integrity tests in `test/html-structure.test.mjs` verifying Schema.org JSON-LD syntax, entity graph completeness, and View Transitions CSS/JS rules.
+  - Added cross-browser E2E assertions in `e2e/navigation.spec.mjs` verifying `.active-panel` state updates during tab switches and JSON-LD DOM presence.
+
 ## [2026-10-07] - Reordered Portfolio Sections: Projects, Writing, Patents, Research
 
 ### Changed
