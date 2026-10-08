@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-07] - Modern Web Standards Suite: Speculation Rules, Searchable Hidden Tabs, Color Scheme, Web Manifest & CSS Enhancements
+
+### Added
+- **Speculation Rules API**:
+  - Implemented `<script type="speculationrules">` with moderate prefetching rules for 6 internal subprojects (`fi_sim`, `org_planning`, `connections`, `stitch_by_number`, `photo_stacker`, `rowing_performance`), providing instantaneous navigations upon hover/interaction.
+- **Searchable Hidden Tabs (`hidden="until-found"` & `beforematch`)**:
+  - Replaced `style="display: none;"` with HTML standard `hidden="until-found"` on inactive tabs.
+  - Full text across Writing, Patents, and Research is now indexed by browser Find-in-Page (Ctrl/Cmd+F).
+  - Wired `beforematch` event handlers to activate and reveal tabs automatically when a search match occurs.
+- **Root Color Scheme & Dual Theme Colors**:
+  - Declared `color-scheme: light dark;` on `:root` to notify browser UI, form controls, and scrollbars of native dark/light rendering capability.
+  - Added dual adaptive `<meta name="theme-color">` tags matching light (`#fafafa`) and dark (`#0f1117`) backgrounds for native browser address bar / mobile status bar tinting.
+- **Progressive Web App (PWA) Manifest**:
+  - Added `manifest.webmanifest` linked via `<link rel="manifest" href="./manifest.webmanifest">` declaring standalone display mode, application shortcuts, icons, and theme colors for home screen installation.
+- **Modern CSS Typography & Layout Performance**:
+  - Added `text-wrap: balance;` to section and card headings to eliminate typographic orphans.
+  - Added `text-wrap: pretty;` to descriptive copy for optimal line breaking.
+  - Configured project cards with `content-visibility: auto;` and `contain-intrinsic-size: auto 160px;` to skip layout and rendering work for off-screen cards until scrolled into view.
+  - Added `container-type: inline-size;` to project and item card grids for future container query responsiveness.
+- **Largest Contentful Paint (LCP) Prioritization**:
+  - Added `fetchpriority="high"` to the hero headshot avatar image (`img.headshot`).
+- **Automated Tests**:
+  - Added 9 structural integrity tests in `test/html-structure.test.mjs` verifying color-scheme declarations, theme-color meta tags, webmanifest existence and validity, Speculation Rules JSON, `hidden="until-found"`, `fetchpriority="high"`, CSS properties, and `beforematch` listeners.
+  - Added cross-browser E2E assertions in `e2e/navigation.spec.mjs` and `e2e/accessibility-responsive.spec.mjs` testing `beforematch` event simulation, Speculation Rules script attachment, computed color-scheme, and webmanifest HTTP 200 delivery.
+
 ## [2026-10-07] - Modern Web Standards & SEO: View Transitions API & Schema.org JSON-LD
 
 ### Added

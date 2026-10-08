@@ -57,4 +57,21 @@ test.describe('Responsive Layout & Accessibility', () => {
 
         expect(failedImages).toEqual([]);
     });
+
+    test('declares and computes native root color-scheme', async ({ page }) => {
+        await page.goto('/');
+        const colorScheme = await page.evaluate(() => {
+            return window.getComputedStyle(document.documentElement).colorScheme;
+        });
+        expect(colorScheme).toBe('light dark');
+    });
+
+    test('verifies webmanifest loads successfully with HTTP 200', async ({ request }) => {
+        const response = await request.get('/manifest.webmanifest');
+        expect(response.status()).toBe(200);
+        const json = await response.json();
+        expect(json.name).toContain('Ryan Drapeau');
+        expect(json.display).toBe('standalone');
+    });
 });
+
