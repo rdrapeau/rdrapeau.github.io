@@ -42,10 +42,20 @@ describe('Document & HTML Structure Integrity', () => {
     describe('Tabs & Badge Count Synchronization', () => {
         const expectedTabs = [
             { id: 'projects', sectionId: 'section-projects', buttonId: 'tab-projects', itemClass: 'project' },
-            { id: 'research', sectionId: 'section-research', buttonId: 'tab-research', itemClass: 'research-card' },
+            { id: 'writing', sectionId: 'section-writing', buttonId: 'tab-writing', itemClass: 'writing-card' },
             { id: 'patents', sectionId: 'section-patents', buttonId: 'tab-patents', itemClass: 'patent-card' },
-            { id: 'writing', sectionId: 'section-writing', buttonId: 'tab-writing', itemClass: 'writing-card' }
+            { id: 'research', sectionId: 'section-research', buttonId: 'tab-research', itemClass: 'research-card' }
         ];
+
+        it('tab buttons are ordered: Projects, Writing, Patents, Research', () => {
+            const buttonOrderRegex = /id=["']tab-projects["'][\s\S]*?id=["']tab-writing["'][\s\S]*?id=["']tab-patents["'][\s\S]*?id=["']tab-research["']/;
+            assert.ok(buttonOrderRegex.test(html), 'Expected tab buttons in order: Projects, Writing, Patents, Research');
+        });
+
+        it('tab sections are ordered: Projects, Writing, Patents, Research', () => {
+            const sectionOrderRegex = /id=["']section-projects["'][\s\S]*?id=["']section-writing["'][\s\S]*?id=["']section-patents["'][\s\S]*?id=["']section-research["']/;
+            assert.ok(sectionOrderRegex.test(html), 'Expected tab sections in order: Projects, Writing, Patents, Research');
+        });
 
         for (const tab of expectedTabs) {
             it(`tab "${tab.id}" section and button exist with valid ARIA roles`, () => {

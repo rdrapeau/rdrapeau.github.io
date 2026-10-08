@@ -9,9 +9,9 @@ This is a static GitHub Pages site hosting personal project showcases, mapped to
 - Static HTML with inline CSS and vanilla JavaScript
 - Automatic dark mode via `prefers-color-scheme: dark`
 - Scroll-triggered fade-in animations with `prefers-reduced-motion` accessibility support
-- **Segmented Site Navigation Tabs**: Deep-linkable tabs (`#projects`, `#research`, `#patents`) with sliding active pill state, keyboard shortcuts (`1` for Projects, `2` for Research, `3` for Patents), and hash history synchronization.
+- **Segmented Site Navigation Tabs**: Deep-linkable tabs (`#projects`, `#writing`, `#patents`, `#research`) with sliding active pill state, keyboard shortcuts (`1` for Projects, `2` for Writing, `3` for Patents, `4` for Research), and hash history synchronization.
 - **Interactive "Show, Don't Tell" Micro-Visualizers**: Zero-dependency HTML5 Canvas simulation preview widgets embedded on project cards (Monte Carlo fan charts, exposure fusion scrubbers, stroke telemetry, and color quantization) with real-time pointer scrubbing and high-DPI retina scaling.
-- **Academic Research & Patent Catalogs**: Displays 5 peer-reviewed publications and 10 Stripe inventions/patents with Google Scholar / Google Patents integration, venue pills, status badges, and direct citation links.
+- **Academic Research, Patent & Writing Catalogs**: Displays 7 projects, 4 writing pieces/talks, 10 Stripe inventions/patents, and 5 peer-reviewed publications with Google Scholar / Google Patents integration, venue pills, status badges, and direct citation links.
 - Displays project cards sorted dynamically by last updated build date
 - Uses JavaScript `fetch()` to load `./<project>/build-info.json` from each project directory
 - **Path-Relative Design**: All links, images, and fetch requests use relative paths (`./`) so the site functions identically at the root domain (`drapeau.dev/`) or within preview subdirectories (`drapeau.dev/preview/pr-<number>/`).
