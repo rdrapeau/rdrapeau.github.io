@@ -1,6 +1,8 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { getIndexHtml, getElementsByClass, getElementTextById, getTabBadgeCount, getSectionHtml } from './helpers.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+import { getIndexHtml, getElementsByClass, getElementTextById, getTabBadgeCount, getSectionHtml, ROOT_DIR } from './helpers.mjs';
 
 describe('Document & HTML Structure Integrity', () => {
     const html = getIndexHtml();
@@ -241,4 +243,94 @@ describe('Document & HTML Structure Integrity', () => {
             );
         });
     });
+
+    describe('Modern Web Standards & Searchability', () => {
+        it('declares color-scheme: light dark on root in CSS', () => {
+            assert.match(
+                html,
+                /color-scheme:\s*light\s+dark/i,
+                'Root CSS must declare color-scheme: light dark'
+            );
+        });
+
+        it('includes adaptive light and dark meta theme-color tags', () => {
+            assert.match(
+                html,
+                /<meta\s+name=["']theme-color["']\s+content=["']#fafafa["']\s+media=["']\(prefers-color-scheme:\s*light\)["']/i,
+                'Must include light theme-color meta tag'
+            );
+            assert.match(
+                html,
+                /<meta\s+name=["']theme-color["']\s+content=["']#0f1117["']\s+media=["']\(prefers-color-scheme:\s*dark\)["']/i,
+                'Must include dark theme-color meta tag'
+            );
+        });
+
+        it('links valid web app manifest at ./manifest.webmanifest', () => {
+            assert.match(
+                html,
+                /<link\s+rel=["']manifest["']\s+href=["']\.\/manifest\.webmanifest["']/i,
+                'Must link ./manifest.webmanifest'
+            );
+            const manifestPath = path.join(ROOT_DIR, 'manifest.webmanifest');
+            assert.ok(fs.existsSync(manifestPath), 'manifest.webmanifest file must exist on disk');
+            const manifestContent = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+            assert.equal(manifestContent.display, 'standalone');
+            assert.ok(manifestContent.icons.length > 0);
+        });
+
+        it('includes Speculation Rules API script with valid JSON prefetch rules', () => {
+            const specMatch = html.match(/<script\s+type=["']speculationrules["']>([\s\S]*?)<\/script>/i);
+            assert.ok(specMatch, 'Expected <script type="speculationrules"> block in HTML');
+            const specJson = JSON.parse(specMatch[1]);
+            assert.ok(specJson.prefetch, 'Speculation rules must define prefetch rules');
+            assert.ok(Array.isArray(specJson.prefetch[0].urls), 'Must declare prefetch urls list');
+            assert.ok(specJson.prefetch[0].urls.includes('./fi_sim/'));
+        });
+
+        it('declares hidden="until-found" on initial inactive tab sections', () => {
+            assert.match(
+                html,
+                /<section\s+[^>]*?id=["']section-writing["'][^>]*?hidden=["']until-found["']/i,
+                'section-writing opening tag must have hidden="until-found"'
+            );
+            assert.match(
+                html,
+                /<section\s+[^>]*?id=["']section-patents["'][^>]*?hidden=["']until-found["']/i,
+                'section-patents opening tag must have hidden="until-found"'
+            );
+            assert.match(
+                html,
+                /<section\s+[^>]*?id=["']section-research["'][^>]*?hidden=["']until-found["']/i,
+                'section-research opening tag must have hidden="until-found"'
+            );
+        });
+
+        it('headshot image specifies fetchpriority="high" for LCP optimization', () => {
+            assert.match(
+                html,
+                /<img\s+[^>]*?class=["'][^"']*headshot[^"']*["'][^>]*?fetchpriority=["']high["']/i,
+                'Headshot image must have fetchpriority="high"'
+            );
+        });
+
+        it('CSS includes text-wrap: balance and text-wrap: pretty', () => {
+            assert.match(html, /text-wrap:\s*balance/i, 'CSS must include text-wrap: balance');
+            assert.match(html, /text-wrap:\s*pretty/i, 'CSS must include text-wrap: pretty');
+        });
+
+        it('CSS includes content-visibility: auto with contain-intrinsic-size', () => {
+            assert.match(html, /content-visibility:\s*auto/i, 'CSS must include content-visibility: auto');
+            assert.match(html, /contain-intrinsic-size:\s*auto\s+160px/i, 'CSS must include contain-intrinsic-size');
+        });
+
+        it('JavaScript registers beforematch event listeners on tab panels', () => {
+            assert.match(
+                html,
+                /addEventListener\(\s*['"]beforematch['"]/i,
+                'Tab navigation script must listen for beforematch events'
+            );
+        });
+    });
 });
+
