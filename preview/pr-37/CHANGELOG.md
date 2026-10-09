@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - **1-Click BibTeX Citation Dialog Modal**:
   - Implemented an accessible native HTML5 `<dialog id="bibtex-dialog">` modal displaying clean, pre-formatted BibTeX citation entries for all 5 peer-reviewed publications and UW technical reports.
-  - Added dedicated `.bibtex-btn` pill triggers with quotation mark icons on each research card in `#section-research` (`microtalk`, `tactile_graphics`, `multiple_guesses`, `kimbee`, `commute`).
+  - Added compact `.bibtex-btn` pill triggers with quotation mark icons in the bottom right of each research card (`.research-footer`) across all 5 publications (`microtalk`, `tactile_graphics`, `multiple_guesses`, `kimbee`, `commute`).
   - Added 1-click `#bibtex-copy-btn` with visual confirmation state (`Copied! ✓` and `.copied` styling) using modern `navigator.clipboard.writeText()` with legacy fallback.
   - Included a direct "Open in Google Scholar &rarr;" external link within the modal footer for fast access to full citation metrics and PDF assets.
 - **WAI-ARIA & Keyboard Accessibility**:
