@@ -242,6 +242,104 @@ describe('Document & HTML Structure Integrity', () => {
                 'CSS must contain prefers-reduced-motion media query'
             );
         });
+
+        it('includes a skip-to-content link pointing to #main-content', () => {
+            assert.match(
+                html,
+                /<a\s+[^>]*?href=["']#main-content["'][^>]*?class=["'][^"']*skip-link[^"']*["'][^>]*>Skip to main content<\/a>/i,
+                'Must include an accessible skip link targeting #main-content'
+            );
+        });
+
+        it('wraps main portfolio sections in semantic <main id="main-content"> landmark', () => {
+            assert.match(
+                html,
+                /<main\s+id=["']main-content["']>/i,
+                'Must include semantic <main id="main-content"> landmark'
+            );
+            assert.match(
+                html,
+                /<\/main>/i,
+                'Must properly close </main> landmark'
+            );
+        });
+
+        it('wraps site tabs in semantic <nav> landmark with aria-label', () => {
+            assert.match(
+                html,
+                /<nav\s+class=["'][^"']*site-tabs-nav[^"']*["']\s+aria-label=["'][^"']+["']>/i,
+                'Must include semantic <nav> landmark with aria-label for tabs navigation'
+            );
+        });
+
+        it('all interactive preview canvases have role="img" and descriptive aria-label', () => {
+            const canvasRegex = /<canvas\s+[^>]*?class=["'][^"']*preview-canvas[^"']*["'][^>]*>/gi;
+            let match;
+            let count = 0;
+            while ((match = canvasRegex.exec(html)) !== null) {
+                count++;
+                const canvasTag = match[0];
+                assert.match(canvasTag, /role=["']img["']/i, `Canvas must have role="img": ${canvasTag}`);
+                assert.match(canvasTag, /aria-label=["'][^"']+["']/i, `Canvas must have aria-label: ${canvasTag}`);
+            }
+            assert.ok(count >= 6, 'Must verify all preview canvases have accessible image semantics');
+        });
+
+        it('all portfolio card titles use h3.project-name heading elements', () => {
+            const h3CardsRegex = /<h3\s+class=["']project-name["']>/gi;
+            const matches = html.match(h3CardsRegex);
+            assert.ok(matches && matches.length >= 26, `Expected at least 26 <h3 class="project-name"> headings, found ${matches ? matches.length : 0}`);
+
+            // Ensure no old div.project-name remain
+            const divProjectNames = html.match(/<div\s+class=["']project-name["']>/gi);
+            assert.equal(divProjectNames, null, 'Must not have any lingering <div class="project-name"> elements');
+        });
+
+        it('filter buttons container has role="toolbar" and buttons declare aria-pressed', () => {
+            assert.match(
+                html,
+                /<div\s+class=["'][^"']*filter-bar[^"']*["']\s+role=["']toolbar["']\s+aria-label=["'][^"']+["']>/i,
+                'Filter buttons container must declare role="toolbar" and aria-label'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?data-filter=["']live["'][^>]*?aria-pressed=["']true["']/i,
+                'Active Live filter button must initially have aria-pressed="true"'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?data-filter=["']all["'][^>]*?aria-pressed=["']false["']/i,
+                'Inactive All filter button must initially have aria-pressed="false"'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?data-filter=["']in-dev["'][^>]*?aria-pressed=["']false["']/i,
+                'Inactive In-Dev filter button must initially have aria-pressed="false"'
+            );
+        });
+
+        it('tab buttons declare roving tabindex with active tab at 0 and inactive tabs at -1', () => {
+            assert.match(
+                html,
+                /<button\s+[^>]*?id=["']tab-projects["'][^>]*?tabindex=["']0["']/i,
+                'Active Projects tab button must initially have tabindex="0"'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?id=["']tab-writing["'][^>]*?tabindex=["']-1["']/i,
+                'Inactive Writing tab button must initially have tabindex="-1"'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?id=["']tab-patents["'][^>]*?tabindex=["']-1["']/i,
+                'Inactive Patents tab button must initially have tabindex="-1"'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?id=["']tab-research["'][^>]*?tabindex=["']-1["']/i,
+                'Inactive Research tab button must initially have tabindex="-1"'
+            );
+        });
     });
 
     describe('Modern Web Standards & Searchability', () => {
