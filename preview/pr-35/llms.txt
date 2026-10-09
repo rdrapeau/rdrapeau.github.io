@@ -8,7 +8,6 @@ This file provides a structured, machine-readable overview of Ryan Drapeau's per
 - Full Name: Ryan Drapeau
 - Current Role: Principal ML Engineer at Stripe (2016–present)
 - Education: University of Washington (M.S. & B.S. in Computer Science)
-- Location: Seattle, WA / San Francisco, CA
 - Website: https://drapeau.dev
 - LinkedIn: https://www.linkedin.com/in/rdrapeau/
 - Google Scholar: https://scholar.google.com/citations?user=yghhd38AAAAJ

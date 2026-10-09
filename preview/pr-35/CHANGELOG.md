@@ -11,11 +11,12 @@ All notable changes to this project will be documented in this file.
   - Added `/llms-full.txt` containing the complete unabridged text and descriptions of all projects, writings, patent abstracts, and paper abstracts for instant single-fetch ingestion by LLMs and RAG agents.
 - **HTML Alternate Link Discovery**:
   - Added `<link rel="alternate" type="text/markdown" href="./llms.txt" title="LLM Summary">` in `index.html` `<head>`.
-- **`robots.txt` & Meta Robots Privacy Protection**:
+- **Privacy Preservation & Location Anonymization**:
   - Maintained strict privacy preservation with `robots.txt` (`User-agent: *`, `Disallow: /`) and `index.html` (`<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">`) to block all general search crawlers, scrapers, and automated bots.
+  - Omitted personal geographic location details from `llms.txt` and `llms-full.txt` for personal privacy.
   - Hosted `llms.txt` and `llms-full.txt` statically at the site root for direct URL access and targeted AI ingestion.
 - **Automated Tests**:
-  - Added 4 structural unit tests in `test/html-structure.test.mjs` verifying `llms.txt`, `llms-full.txt`, `meta name="robots"` noindex rules, and `robots.txt` Disallow policy.
+  - Added 5 structural unit tests in `test/html-structure.test.mjs` verifying `llms.txt`, `llms-full.txt`, `meta name="robots"` noindex rules, `robots.txt` Disallow policy, and omission of personal location data.
   - Added 2 Playwright E2E tests in `e2e/accessibility-responsive.spec.mjs` verifying HTTP 200 delivery of `/llms.txt`, `/llms-full.txt`, and crawler disallowance in `/robots.txt`.
 
 ## [2026-10-08] - WCAG 2.1 & 2.2 Level AA Accessibility Improvements

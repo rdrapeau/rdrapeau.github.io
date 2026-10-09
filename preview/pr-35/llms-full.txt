@@ -9,7 +9,7 @@ This document contains the unabridged text, descriptions, technical abstracts, a
 ## 1. Personal & Professional Profile
 
 - **Name**: Ryan Drapeau
-- **Current Position**: Principal Machine Learning Engineer at Stripe (San Francisco, CA / Seattle, WA)
+- **Current Position**: Principal Machine Learning Engineer at Stripe
 - **Tenure**: 2016 – Present
 - **Education**: 
   - Master of Science (M.S.) in Computer Science, University of Washington
