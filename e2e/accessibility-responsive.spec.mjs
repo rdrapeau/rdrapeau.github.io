@@ -87,13 +87,13 @@ test.describe('Responsive Layout & Accessibility', () => {
         expect(fullText).toContain('Full Portfolio & Research Dossier');
     });
 
-    test('verifies robots.txt loads successfully and specifies llms.txt allowances', async ({ request }) => {
+    test('verifies robots.txt loads successfully and allows crawling', async ({ request }) => {
         const response = await request.get('/robots.txt');
         expect(response.status()).toBe(200);
         const text = await response.text();
-        expect(text).toContain('Allow: /llms.txt');
-        expect(text).toContain('Allow: /llms-full.txt');
-        expect(text).toContain('Disallow: /');
+        expect(text).toContain('User-agent: *');
+        expect(text).toContain('Allow: /');
+        expect(text).not.toContain('Disallow: /');
     });
 
     test('skip-to-content link becomes visible on keyboard focus and navigates to #main-content', async ({ page }) => {

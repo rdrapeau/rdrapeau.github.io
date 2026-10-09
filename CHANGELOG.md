@@ -11,10 +11,11 @@ All notable changes to this project will be documented in this file.
   - Added `/llms-full.txt` containing the complete unabridged text and descriptions of all projects, writings, patent abstracts, and paper abstracts for instant single-fetch ingestion by LLMs and RAG agents.
 - **HTML Alternate Link Discovery**:
   - Added `<link rel="alternate" type="text/markdown" href="./llms.txt" title="LLM Summary">` in `index.html` `<head>`.
-- **`robots.txt` Explicit AI Allowances**:
-  - Configured `robots.txt` to explicitly allow `/llms.txt` and `/llms-full.txt` while maintaining general crawling restrictions (`Disallow: /`).
+- **`robots.txt` & Meta Robots Open Policy**:
+  - Configured `robots.txt` with `User-agent: *` and `Allow: /` to permit all search engines, web crawlers, and AI models to discover and index the site and its `llms.txt` specifications.
+  - Updated `<meta name="robots" content="index, follow">` in `index.html` to align with public indexing and search discovery.
 - **Automated Tests**:
-  - Added 3 structural unit tests in `test/html-structure.test.mjs` verifying `llms.txt` and `llms-full.txt` existence, format, and `robots.txt` rules.
+  - Added 4 structural unit tests in `test/html-structure.test.mjs` verifying `llms.txt`, `llms-full.txt`, `meta name="robots"` index/follow, and `robots.txt` Allow rules.
   - Added 2 Playwright E2E tests in `e2e/accessibility-responsive.spec.mjs` verifying HTTP 200 delivery and content of `/llms.txt`, `/llms-full.txt`, and `/robots.txt`.
 
 ## [2026-10-08] - WCAG 2.1 & 2.2 Level AA Accessibility Improvements

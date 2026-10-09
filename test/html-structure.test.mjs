@@ -457,13 +457,21 @@ describe('Document & HTML Structure Integrity', () => {
             assert.match(fullContent, /Microtalk: Argumentation in Crowdsourcing/i);
         });
 
-        it('robots.txt explicitly allows llms.txt and llms-full.txt while disallowing crawling', () => {
+        it('robots.txt allows all crawlers, search engines, and AI agents', () => {
             const robotsPath = path.resolve(ROOT_DIR, 'robots.txt');
             assert.ok(fs.existsSync(robotsPath), 'robots.txt must exist at repository root');
             const robotsContent = fs.readFileSync(robotsPath, 'utf8');
-            assert.match(robotsContent, /Allow:\s*\/llms\.txt/i, 'robots.txt must contain Allow: /llms.txt');
-            assert.match(robotsContent, /Allow:\s*\/llms-full\.txt/i, 'robots.txt must contain Allow: /llms-full.txt');
-            assert.match(robotsContent, /Disallow:\s*\//i, 'robots.txt must contain Disallow: /');
+            assert.match(robotsContent, /User-agent:\s*\*/i, 'robots.txt must declare User-agent: *');
+            assert.match(robotsContent, /Allow:\s*\//i, 'robots.txt must declare Allow: /');
+            assert.doesNotMatch(robotsContent, /Disallow:\s*\//i, 'robots.txt must not disallow crawling');
+        });
+
+        it('declares index, follow in meta robots tag', () => {
+            assert.match(
+                html,
+                /<meta\s+name=["']robots["']\s+content=["']index,\s*follow["']/i,
+                'HTML must declare <meta name="robots" content="index, follow">'
+            );
         });
     });
 });
