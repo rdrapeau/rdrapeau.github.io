@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-08] - WCAG 2.1 & 2.2 Level AA Accessibility Improvements
+
+### Added
+- **Skip-to-Content Navigation**:
+  - Implemented an accessible skip link `<a href="#main-content" class="skip-link">Skip to main content</a>` as the first focusable body element, smoothly animating into the viewport on keyboard focus and jumping directly to `#main-content`.
+- **Semantic Landmark Architecture**:
+  - Wrapped core portfolio tab panels in `<main id="main-content">`.
+  - Wrapped portfolio navigation tabs in `<nav class="site-tabs-nav" aria-label="Portfolio Sections">` landmark.
+- **WAI-ARIA Roving Tabindex & Tablist Navigation**:
+  - Declared roving tabindex on tab buttons (`tabindex="0"` on the active tab, `tabindex="-1"` on inactive tabs).
+  - Added keyboard navigation support for `Home` (jump to first tab) and `End` (jump to last tab) keys alongside existing arrow key cycling.
+- **Filter Toolbar Semantics (`role="toolbar"` & `aria-pressed`)**:
+  - Added `role="toolbar"` and `aria-label="Filter projects by status"` to `.filter-bar`.
+  - Added `aria-pressed` states to Live, In Development, and All buttons, synchronized dynamically in `applyFilter()`.
+- **Canvas Micro-Visualizer Semantics**:
+  - Tagged all 7 interactive canvas preview widgets with `role="img"` and screen-reader accessible `aria-label` descriptions explaining their visualizations.
+- **Strict Heading Hierarchy (H1 &rarr; H2 &rarr; H3)**:
+  - Standardized all 26 portfolio card titles (7 projects, 4 writing pieces, 10 patents, 5 research papers) from unsemantic `div.project-name` into `h3.project-name`.
+  - Updated `#drapeau-name` accessible name to `"Drapeau (French for flag 🇫🇷)"` to eliminate duplicated speech synthesis announcements in the H1 title.
+- **Color Contrast & Touch Targets**:
+  - Remediated light mode `.scholar-link`, inactive `.site-tab`, and `.section-subheading` colors to exceed WCAG AA 4.5:1 contrast against light backgrounds.
+  - Remediated dark mode `.badge-app`, `.venue-uw`, `.venue-ec`, and `.section-subheading` colors to exceed WCAG AA 4.5:1 contrast against dark backgrounds.
+  - Enhanced high-contrast `:focus-visible` rings across cards, links, tabs, and interactive elements.
+  - Increased header social icon touch targets to `min-height: 36px`.
+- **Automated Tests**:
+  - Added 7 structural integrity tests in `test/html-structure.test.mjs` verifying skip link, main landmark, nav landmark, canvas image roles, h3 heading hierarchy, filter toolbar `aria-pressed`, and roving tabindex attributes.
+  - Added 5 end-to-end browser tests in `e2e/accessibility-responsive.spec.mjs` testing keyboard skip link reveal/activation, filter `aria-pressed` state toggles, tablist arrow/Home/End keyboard navigation, canvas labels, and heading structure.
+
 ## [2026-10-07] - Modern Web Standards Suite: Speculation Rules, Searchable Hidden Tabs, Color Scheme, Web Manifest & CSS Enhancements
 
 ### Added

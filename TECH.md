@@ -19,6 +19,13 @@ This is a static GitHub Pages site hosting personal project showcases, mapped to
 - **Schema.org JSON-LD Structured Data**: Embedded semantic microdata graphs (`Person`, `ProfilePage`, `ScholarlyArticle`, `Patent`) for rich search indexing and entity association.
 - **Interactive "Show, Don't Tell" Micro-Visualizers**: Zero-dependency HTML5 Canvas simulation preview widgets embedded on project cards (Monte Carlo fan charts, exposure fusion scrubbers, stroke telemetry, and color quantization) with real-time pointer scrubbing and high-DPI retina scaling.
 - **Academic Research, Patent & Writing Catalogs**: Displays 7 projects, 4 writing pieces/talks, 10 Stripe inventions/patents, and 5 peer-reviewed publications with Google Scholar / Google Patents integration, venue pills, status badges, and direct citation links.
+- **Accessibility & Inclusive Design (WCAG 2.1 & 2.2 Level AA)**:
+  - **Skip-to-Content Link**: Keyboard focusable `.skip-link` immediately inside `<body>` targeting `<main id="main-content">`.
+  - **Landmarks & WAI-ARIA**: Tab navigation enclosed in `<nav class="site-tabs-nav" aria-label="Portfolio Sections">`; portfolio panels enclosed in `<main id="main-content">`; filter bar declares `role="toolbar"` and dynamic `aria-pressed` states.
+  - **Roving Tabindex Keyboard Navigation**: Tabs implement roving `tabindex="0"` / `tabindex="-1"` with arrow key cycling, numeric shortcuts (`1`, `2`, `3`, `4`), and `Home` / `End` key boundary jumps.
+  - **Heading Hierarchy**: Semantic heading structure without skips: H1 (`header h1`) &rarr; H2 (`section h2`) &rarr; H3 (`h3.project-name` across all 26 portfolio cards).
+  - **Canvas Visualizer Semantics**: Interactive preview canvases declare `role="img"` and descriptive `aria-label` attributes.
+  - **Color Contrast & Focus Rings**: Compliant contrast ratios exceeding 4.5:1 AA standards across light and dark modes, high-contrast `:focus-visible` rings with 2px offset, and touch target sizing &ge; 36px.
 - Displays project cards sorted dynamically by last updated build date
 - Uses JavaScript `fetch()` to load `./<project>/build-info.json` from each project directory
 - **Path-Relative Design**: All links, images, and fetch requests use relative paths (`./`) so the site functions identically at the root domain (`drapeau.dev/`) or within preview subdirectories (`drapeau.dev/preview/pr-<number>/`).

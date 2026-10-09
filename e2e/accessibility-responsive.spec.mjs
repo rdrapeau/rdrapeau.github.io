@@ -73,5 +73,109 @@ test.describe('Responsive Layout & Accessibility', () => {
         expect(json.name).toContain('Ryan Drapeau');
         expect(json.display).toBe('standalone');
     });
+
+    test('skip-to-content link becomes visible on keyboard focus and navigates to #main-content', async ({ page }) => {
+        await page.goto('/');
+        const skipLink = page.locator('.skip-link');
+
+        // Before focus, it should be positioned off-screen
+        const boundingBoxBefore = await skipLink.boundingBox();
+        expect(boundingBoxBefore.y).toBeLessThan(0);
+
+        // Press Tab to focus the first interactive element (skip link)
+        await page.keyboard.press('Tab');
+        await expect(skipLink).toBeFocused();
+
+        // When focused, wait for transition to bring it into viewport
+        await expect.poll(async () => {
+            const box = await skipLink.boundingBox();
+            return box ? box.y : -1;
+        }).toBeGreaterThanOrEqual(0);
+
+        // Activating skip link jumps focus / scroll to #main-content
+        await page.keyboard.press('Enter');
+        const mainContent = page.locator('#main-content');
+        await expect(mainContent).toBeVisible();
+    });
+
+    test('filter buttons toggle aria-pressed state on click', async ({ page }) => {
+        await page.goto('/');
+        const liveBtn = page.locator('button[data-filter="live"]');
+        const allBtn = page.locator('button[data-filter="all"]');
+        const devBtn = page.locator('button[data-filter="in-dev"]');
+
+        await expect(liveBtn).toHaveAttribute('aria-pressed', 'true');
+        await expect(allBtn).toHaveAttribute('aria-pressed', 'false');
+        await expect(devBtn).toHaveAttribute('aria-pressed', 'false');
+
+        // Click All
+        await allBtn.click();
+        await expect(liveBtn).toHaveAttribute('aria-pressed', 'false');
+        await expect(allBtn).toHaveAttribute('aria-pressed', 'true');
+        await expect(devBtn).toHaveAttribute('aria-pressed', 'false');
+
+        // Click In Development
+        await devBtn.click();
+        await expect(liveBtn).toHaveAttribute('aria-pressed', 'false');
+        await expect(allBtn).toHaveAttribute('aria-pressed', 'false');
+        await expect(devBtn).toHaveAttribute('aria-pressed', 'true');
+    });
+
+    test('tablist supports arrow navigation and Home/End roving tabindex keys', async ({ page }) => {
+        await page.goto('/');
+        const projectsTab = page.locator('#tab-projects');
+        const writingTab = page.locator('#tab-writing');
+        const researchTab = page.locator('#tab-research');
+
+        // Projects is initially active
+        await expect(projectsTab).toHaveAttribute('tabindex', '0');
+        await expect(writingTab).toHaveAttribute('tabindex', '-1');
+
+        await projectsTab.focus();
+        await expect(projectsTab).toBeFocused();
+
+        // Right arrow moves to Writing
+        await page.keyboard.press('ArrowRight');
+        await expect(writingTab).toBeFocused();
+        await expect(writingTab).toHaveAttribute('tabindex', '0');
+        await expect(projectsTab).toHaveAttribute('tabindex', '-1');
+
+        // End key jumps directly to Research
+        await page.keyboard.press('End');
+        await expect(researchTab).toBeFocused();
+        await expect(researchTab).toHaveAttribute('tabindex', '0');
+
+        // Home key jumps back to Projects
+        await page.keyboard.press('Home');
+        await expect(projectsTab).toBeFocused();
+        await expect(projectsTab).toHaveAttribute('tabindex', '0');
+    });
+
+    test('preview canvases have role="img" and descriptive aria-label', async ({ page }) => {
+        await page.goto('/');
+        const canvases = page.locator('.preview-canvas');
+        const count = await canvases.count();
+        expect(count).toBeGreaterThanOrEqual(6);
+
+        for (let i = 0; i < count; i++) {
+            const canvas = canvases.nth(i);
+            await expect(canvas).toHaveAttribute('role', 'img');
+            const label = await canvas.getAttribute('aria-label');
+            expect(label).toBeTruthy();
+            expect(label.length).toBeGreaterThan(5);
+        }
+    });
+
+    test('heading hierarchy follows logical h1 -> h2 -> h3 order without skips', async ({ page }) => {
+        await page.goto('/');
+        const h1Count = await page.locator('h1').count();
+        expect(h1Count).toBe(1);
+
+        const h2Count = await page.locator('h2').count();
+        expect(h2Count).toBeGreaterThanOrEqual(4);
+
+        const h3Count = await page.locator('h3.project-name').count();
+        expect(h3Count).toBeGreaterThanOrEqual(26);
+    });
 });
 
