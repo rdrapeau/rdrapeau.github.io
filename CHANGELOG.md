@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-08] - CI/CD Deployment Concurrency & GitHub Actions Modernization
+
+### Fixed
+- **Serialized `gh-pages` Deployment Concurrency**:
+  - Configured shared `gh-pages-write` concurrency group with `cancel-in-progress: false` across `.github/workflows/static.yml` and `.github/workflows/preview.yml`.
+  - Eliminates the race condition where simultaneous pushes to `gh-pages` (e.g. master deploy vs. PR preview cleanup on merge) caused git non-fast-forward rejection (`[rejected] gh-pages -> gh-pages (fetch first)`).
+- **GitHub Actions Modernization & Deprecation Fixes**:
+  - Upgraded `actions/setup-node` from deprecated `@v4` (targeting Node 20) to SHA-pinned `v7.1.0` (`actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1`) across `static.yml`, `preview.yml`, and `test.yml`, supporting native Node 24 runtime without runner warnings.
+  - Upgraded `peaceiris/actions-gh-pages` from `v4.0.0` to SHA-pinned `v4.1.0` (`peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453`).
+- **Automated Workflow Integrity Tests**:
+  - Added `test/ci-workflows.test.mjs` with 4 automated structural tests verifying existence of all workflow configurations, concurrency groups, and action pin versions.
+
 ## [2026-10-08] - Machine-Readable AI Standards: llms.txt & llms-full.txt
 
 ### Added
