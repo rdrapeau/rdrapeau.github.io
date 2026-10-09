@@ -34,10 +34,24 @@ describe('Document & HTML Structure Integrity', () => {
             assert.match(titleMatch[1], /Ryan Drapeau/i, 'Title must contain Ryan Drapeau');
         });
 
-        it('has Open Graph social sharing meta tags', () => {
+        it('has Open Graph social sharing meta tags with 1200x630 preview card', () => {
             assert.match(html, /<meta\s+property=["']og:title["']/i, 'Missing og:title');
             assert.match(html, /<meta\s+property=["']og:description["']/i, 'Missing og:description');
             assert.match(html, /<meta\s+property=["']og:type["']/i, 'Missing og:type');
+            assert.match(html, /<meta\s+property=["']og:image["']\s+content=["']https:\/\/drapeau\.dev\/og-image\.png["']/i, 'Missing og:image pointing to og-image.png');
+            assert.match(html, /<meta\s+property=["']og:image:width["']\s+content=["']1200["']/i, 'Missing og:image:width of 1200');
+            assert.match(html, /<meta\s+property=["']og:image:height["']\s+content=["']630["']/i, 'Missing og:image:height of 630');
+            assert.match(html, /<meta\s+property=["']og:image:alt["']/i, 'Missing og:image:alt description');
+
+            // Twitter card configuration
+            assert.match(html, /<meta\s+name=["']twitter:card["']\s+content=["']summary_large_image["']/i, 'Missing twitter:card summary_large_image');
+            assert.match(html, /<meta\s+name=["']twitter:image["']\s+content=["']https:\/\/drapeau\.dev\/og-image\.png["']/i, 'Missing twitter:image pointing to og-image.png');
+
+            // Ensure og-image.png exists on disk
+            const ogImageOnDisk = path.join(ROOT_DIR, 'og-image.png');
+            assert.ok(fs.existsSync(ogImageOnDisk), 'og-image.png must exist in repository root');
+            const stats = fs.statSync(ogImageOnDisk);
+            assert.ok(stats.size > 50000, 'og-image.png should be a valid high-resolution image file (> 50KB)');
         });
 
         it('has valid Schema.org JSON-LD structured data with Person, Articles, and Patents', () => {

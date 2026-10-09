@@ -2,7 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2026-10-08] - 1-Click BibTeX Citation Modal for Academic Research
+## [2026-10-08] - Custom 1200×630 OpenGraph Social Preview Card (og:image)
+
+### Added
+- **Custom 1200×630 OpenGraph Social Preview Card (`og-image.png`)**:
+  - Designed and rendered a custom high-fidelity 1200×630 pixel social sharing preview card (`og:image`) conforming to the universal Open Graph 1.91:1 aspect ratio.
+  - Features the portfolio's signature dark slate palette (`#090d16` & `#0f172a`), radial ambient indigo/violet glows (`#6366f1` / `#8b5cf6`), and subtle grid texture overlay.
+  - Prominently showcases Ryan Drapeau's portrait with dual-gradient aura, bold Inter typography, the French flag Easter egg (`🇫🇷`), and the official Stripe wordmark badge (`#635bff`).
+  - Incorporates 4 distinct thematic catalog pillars matching the site's tabs: Projects (`7`), Writing (`4`), Patents (`10`), and Academic Research (`5`), each with thematic accent top borders and pill badges.
+  - Highlights core site architecture in bottom badges: `⚡ Zero-Backend Static PWA`, `🔒 No Tracking / Privacy-First`, and `📊 Interactive Canvas Engines` alongside `https://drapeau.dev →`.
+  - Strictly preserves personal geographic anonymity with zero location disclosure.
+- **Enhanced Open Graph & Twitter Card Meta Tags**:
+  - Configured `index.html` `<head>` with explicit `og:image`, `og:image:secure_url`, `og:image:type="image/png"`, `og:image:width="1200"`, `og:image:height="630"`, and accessible `og:image:alt`.
+  - Upgraded Twitter Card from basic `summary` to `summary_large_image` with matching `twitter:image` and `twitter:image:alt` tags.
+- **Automated Testing & Continuous Verification**:
+  - Added structural assertions in `test/html-structure.test.mjs` verifying `og:image`, dimensions (1200×630), `twitter:card="summary_large_image"`, and disk file presence/size.
+  - Added end-to-end browser test in `e2e/accessibility-responsive.spec.mjs` validating meta attributes and verifying successful HTTP 200 image serving.
+  - Added resilience enhancement (`scrollIntoViewIfNeeded`) in `e2e/bibtex-modal.spec.mjs` to ensure consistent cross-browser test stability under parallel load.
 
 ### Added
 - **1-Click BibTeX Citation Dialog Modal**:
