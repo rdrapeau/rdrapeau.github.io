@@ -74,6 +74,27 @@ test.describe('Responsive Layout & Accessibility', () => {
         expect(json.display).toBe('standalone');
     });
 
+    test('verifies llms.txt and llms-full.txt load successfully with HTTP 200', async ({ request }) => {
+        const llmsResp = await request.get('/llms.txt');
+        expect(llmsResp.status()).toBe(200);
+        const llmsText = await llmsResp.text();
+        expect(llmsText).toContain('# Ryan Drapeau');
+        expect(llmsText).toContain('## Projects');
+
+        const fullResp = await request.get('/llms-full.txt');
+        expect(fullResp.status()).toBe(200);
+        const fullText = await fullResp.text();
+        expect(fullText).toContain('Full Portfolio & Research Dossier');
+    });
+
+    test('verifies robots.txt loads successfully and disallows crawling', async ({ request }) => {
+        const response = await request.get('/robots.txt');
+        expect(response.status()).toBe(200);
+        const text = await response.text();
+        expect(text).toContain('User-agent: *');
+        expect(text).toContain('Disallow: /');
+    });
+
     test('skip-to-content link becomes visible on keyboard focus and navigates to #main-content', async ({ page }) => {
         await page.goto('/');
         const skipLink = page.locator('.skip-link');
