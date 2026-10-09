@@ -14,6 +14,9 @@ permissions:
 jobs:
   deploy-preview:
     runs-on: ubuntu-latest
+    concurrency:
+      group: "gh-pages-write"
+      cancel-in-progress: false
     permissions:
       contents: write
       pull-requests: write
@@ -25,7 +28,7 @@ jobs:
 
       - name: Set up Node.js
         if: github.event.action != 'closed'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
 
