@@ -1,3 +1,5 @@
-# Disallow all search engines, web crawlers, and AI scrapers from crawling or indexing any part of the site
+# Disallow general web crawling and scraping while allowing AI discovery via llms.txt
 User-agent: *
+Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /

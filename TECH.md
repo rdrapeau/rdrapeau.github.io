@@ -25,7 +25,11 @@ This is a static GitHub Pages site hosting personal project showcases, mapped to
   - **Roving Tabindex Keyboard Navigation**: Tabs implement roving `tabindex="0"` / `tabindex="-1"` with arrow key cycling, numeric shortcuts (`1`, `2`, `3`, `4`), and `Home` / `End` key boundary jumps.
   - **Heading Hierarchy**: Semantic heading structure without skips: H1 (`header h1`) &rarr; H2 (`section h2`) &rarr; H3 (`h3.project-name` across all 26 portfolio cards).
   - **Canvas Visualizer Semantics**: Interactive preview canvases declare `role="img"` and descriptive `aria-label` attributes.
-  - **Color Contrast & Focus Rings**: Compliant contrast ratios exceeding 4.5:1 AA standards across light and dark modes, high-contrast `:focus-visible` rings with 2px offset, and touch target sizing &ge; 36px.
+- **Machine-Readable AI Standards (`llms.txt` & `llms-full.txt`)**:
+  - Hosted at root `/llms.txt` adhering to [llmstxt.org](https://llmstxt.org) standard with structured markdown indexing bio, projects, writings, patents, and papers.
+  - Companion `/llms-full.txt` provides the complete unabridged dossier for token-efficient LLM context window ingestion without extra requests.
+  - Linked in `index.html` head via `<link rel="alternate" type="text/markdown" href="./llms.txt" title="LLM Summary">`.
+  - Configured in `robots.txt` with explicit `Allow: /llms.txt` and `Allow: /llms-full.txt` rules alongside privacy preservation.
 - Displays project cards sorted dynamically by last updated build date
 - Uses JavaScript `fetch()` to load `./<project>/build-info.json` from each project directory
 - **Path-Relative Design**: All links, images, and fetch requests use relative paths (`./`) so the site functions identically at the root domain (`drapeau.dev/`) or within preview subdirectories (`drapeau.dev/preview/pr-<number>/`).

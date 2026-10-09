@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-08] - Machine-Readable AI Standards: llms.txt & llms-full.txt
+
+### Added
+- **`llms.txt` Standard Implementation**:
+  - Added `/llms.txt` following the [llmstxt.org](https://llmstxt.org) standard, providing a clean, token-efficient Markdown index of Ryan Drapeau's background, side projects, Stripe technical writings, distributed systems patents, and academic research papers.
+- **Companion `llms-full.txt` Dossier**:
+  - Added `/llms-full.txt` containing the complete unabridged text and descriptions of all projects, writings, patent abstracts, and paper abstracts for instant single-fetch ingestion by LLMs and RAG agents.
+- **HTML Alternate Link Discovery**:
+  - Added `<link rel="alternate" type="text/markdown" href="./llms.txt" title="LLM Summary">` in `index.html` `<head>`.
+- **`robots.txt` Explicit AI Allowances**:
+  - Configured `robots.txt` to explicitly allow `/llms.txt` and `/llms-full.txt` while maintaining general crawling restrictions (`Disallow: /`).
+- **Automated Tests**:
+  - Added 3 structural unit tests in `test/html-structure.test.mjs` verifying `llms.txt` and `llms-full.txt` existence, format, and `robots.txt` rules.
+  - Added 2 Playwright E2E tests in `e2e/accessibility-responsive.spec.mjs` verifying HTTP 200 delivery and content of `/llms.txt`, `/llms-full.txt`, and `/robots.txt`.
+
 ## [2026-10-08] - WCAG 2.1 & 2.2 Level AA Accessibility Improvements
 
 ### Added

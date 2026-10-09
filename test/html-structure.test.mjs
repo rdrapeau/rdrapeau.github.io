@@ -429,6 +429,42 @@ describe('Document & HTML Structure Integrity', () => {
                 'Tab navigation script must listen for beforematch events'
             );
         });
+
+        it('links valid llms.txt summary at ./llms.txt conforming to standard', () => {
+            assert.match(
+                html,
+                /<link\s+[^>]*?rel=["']alternate["'][^>]*?type=["']text\/markdown["'][^>]*?href=["']\.\/llms\.txt["']/i,
+                'HTML must declare <link rel="alternate" type="text/markdown" href="./llms.txt">'
+            );
+
+            const llmsPath = path.resolve(ROOT_DIR, 'llms.txt');
+            assert.ok(fs.existsSync(llmsPath), 'llms.txt must exist at repository root');
+            const llmsContent = fs.readFileSync(llmsPath, 'utf8');
+            assert.match(llmsContent, /^#\s+Ryan Drapeau/m, 'llms.txt must start with title heading');
+            assert.match(llmsContent, /## Projects/i, 'llms.txt must include Projects section');
+            assert.match(llmsContent, /## Writing/i, 'llms.txt must include Writing section');
+            assert.match(llmsContent, /## Patents/i, 'llms.txt must include Patents section');
+            assert.match(llmsContent, /## Academic Research/i, 'llms.txt must include Research section');
+        });
+
+        it('contains companion llms-full.txt file on disk with complete dossier', () => {
+            const llmsFullPath = path.resolve(ROOT_DIR, 'llms-full.txt');
+            assert.ok(fs.existsSync(llmsFullPath), 'llms-full.txt must exist at repository root');
+            const fullContent = fs.readFileSync(llmsFullPath, 'utf8');
+            assert.ok(fullContent.length > 2000, 'llms-full.txt must contain detailed dossier content');
+            assert.match(fullContent, /Financial Simulator \(FiSim\)/i);
+            assert.match(fullContent, /US 11,704,673/i);
+            assert.match(fullContent, /Microtalk: Argumentation in Crowdsourcing/i);
+        });
+
+        it('robots.txt explicitly allows llms.txt and llms-full.txt while disallowing crawling', () => {
+            const robotsPath = path.resolve(ROOT_DIR, 'robots.txt');
+            assert.ok(fs.existsSync(robotsPath), 'robots.txt must exist at repository root');
+            const robotsContent = fs.readFileSync(robotsPath, 'utf8');
+            assert.match(robotsContent, /Allow:\s*\/llms\.txt/i, 'robots.txt must contain Allow: /llms.txt');
+            assert.match(robotsContent, /Allow:\s*\/llms-full\.txt/i, 'robots.txt must contain Allow: /llms-full.txt');
+            assert.match(robotsContent, /Disallow:\s*\//i, 'robots.txt must contain Disallow: /');
+        });
     });
 });
 
