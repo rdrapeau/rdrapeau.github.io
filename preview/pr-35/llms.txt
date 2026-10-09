@@ -1,0 +1,52 @@
+# Ryan Drapeau
+
+> Principal Machine Learning Engineer at Stripe. Builder of privacy-first financial tools, distributed ML systems, and accessible technologies. M.S. & B.S. in Computer Science from the University of Washington.
+
+This file provides a structured, machine-readable overview of Ryan Drapeau's personal portfolio, side projects, technical writings, distributed systems patents, and peer-reviewed academic publications following the [llmstxt.org](https://llmstxt.org) standard.
+
+## Personal & Professional Profile
+- Full Name: Ryan Drapeau
+- Current Role: Principal ML Engineer at Stripe (2016–present)
+- Education: University of Washington (M.S. & B.S. in Computer Science)
+- Location: Seattle, WA / San Francisco, CA
+- Website: https://drapeau.dev
+- LinkedIn: https://www.linkedin.com/in/rdrapeau/
+- Google Scholar: https://scholar.google.com/citations?user=yghhd38AAAAJ
+- GitHub: https://github.com/rdrapeau
+
+## Projects
+- [Financial Simulator (FiSim)](https://drapeau.dev/fi_sim/): A privacy-first, client-side personal finance projection planner featuring localized U.S., UK, and Canadian tax engines, RMDs, and Monte Carlo historical sequence-of-returns stress testing. Built with Vue 3 and Vite.
+- [Org Planning Simulator](https://drapeau.dev/org_planning/): An interactive Monte Carlo simulation tool for engineering leaders to forecast organizational headcount growth, attrition, promotions, and hiring trajectories. Built with React and Vite.
+- [Connections](https://drapeau.dev/connections/): A custom wedding-themed word association puzzle game featuring 4x4 group matching mechanics. Built with Next.js static export.
+- [Stitch by Number](https://drapeau.dev/stitch_by_number/): An image-to-needlepoint design converter that quantizes uploaded imagery into DMC embroidery floss color palettes with printable PDF pattern charts. Built with React, TypeScript, and Vite.
+- [Photo Stacker](https://drapeau.dev/photo_stacker/): A client-side HDR exposure fusion application in the browser implementing Mertens-Kautz-Van Reeth multi-exposure fusion algorithms. Built with React, TypeScript, and Vite.
+- [1Password Extension](https://github.com/rdrapeau/1password_extension): A native desktop Firefox browser extension for streamlined credential autofill and shortcut access.
+- [Rowing Performance](https://drapeau.dev/rowing_performance/): A Concept2 rowing ergometer analytics and performance modeling dashboard providing power curves, stroke telemetry analysis, and VO₂ max estimations. Built with React, Tailwind, and Vite.
+
+## Writing & Talks
+- [Stripe Sigma: SQL for Payments](https://stripe.com/blog/sigma-sql-for-payments): Technical deep dive into building Stripe's distributed SQL engine for instant financial analytics across billions of transactions.
+- [Building Large-Scale Machine Learning Platforms at Stripe](https://stripe.com/blog/building-machine-learning-infrastructure-at-stripe): Architectural overview of low-latency model evaluation, streaming feature extraction, and continuous model training pipelines.
+- [Scaling Stripe's Identity Graph](https://stripe.com/blog/scaling-stripes-identity-graph): Engineering distributed entity resolution graphs to link devices, accounts, and payment credentials to fight financial fraud.
+- [Machine Learning-Powered Fraud Detection](https://stripe.com/blog/radar-fraud-detection-architecture): Inside the architecture and decision scoring engines of Stripe Radar.
+
+## Patents & Inventions
+- [Systems and methods for identity graph based fraud detection](https://patents.google.com/patent/US11704673B1/en): US Patent 11,704,673 (Granted). Connects related accounts and devices into identity networks to catch fraudsters attempting to disguise their identity.
+- [Systems and methods for secure identifiers for electronic transactions](https://patents.google.com/patent/US20250125969A1/en): US Patent Application 2025/0125969 A1. Creates secure digital fingerprints for devices to recognize repeat visitors and flag suspicious payment attempts.
+- [Systems and methods for hard deletion of data across systems](https://patents.google.com/patent/US20240126908A1/en): US Patent Application 2024/0126908 A1. Reliably and permanently erases user data across complex distributed databases to protect consumer privacy.
+- [Systems and methods for privacy preserving fraud detection during electronic transactions](https://patents.google.com/patent/US20250117802A1/en): US Patent Application 2025/0117802 A1. Analyzes transactions for fraud using privacy-preserving encryption so customer personal details are never exposed.
+- [Merchant specific machine learning model for fraud detection](https://patents.google.com/patent/US20250165978A1/en): US Patent Application 2025/0165978 A1. Trains customized AI models tailored to each business's unique sales patterns and risk profile.
+- [Systems and methods for enhanced transaction authentication](https://patents.google.com/patent/US20240112192A1/en): US Patent Application 2024/0112192 A1. Dynamically requests extra verification steps only when a payment looks unusually risky, keeping checkout smooth for real buyers.
+- [Systems and methods for smart remediation for transactions](https://patents.google.com/patent/US20240152924A1/en): US Patent Application 2024/0152924 A1. Automatically fixes and resolves payment errors or disputes right after a transaction happens.
+- [Fraud detection using real-time and batch features](https://patents.google.com/patent/US20240161115A1/en): US Patent Application 2024/0161115 A1. Combines instant live payment signals with long-term account history to score fraud risk in milliseconds.
+- [Systems and methods for machine learning feature generation](https://patents.google.com/patent/EP4627492A1/en): European Patent Application EP 4627492 A1. Automatically discovers and builds new data patterns to help AI models catch evolving fraud tactics.
+- [Machine learning model training and deployment pipeline](https://patents.google.com/patent/US20240070484A1/en): US Patent Application 2024/0070484 A1. Continuously trains and deploys updated AI fraud models in the background as new payment trends emerge.
+
+## Academic Research & Publications
+- [Microtalk: Argumentation in Crowdsourcing](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:9yKSN-GCB0IC): AAAI HCOMP 2016. Ryan Drapeau, Lydia B. Chilton, Jonathan Bragg, Daniel S. Weld. A peer argumentation protocol (Assess -> Justify -> Reconsider) boosting classification accuracy by +20% on NLP tasks without ground truth.
+- [Tactile Graphics with a Voice](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:u-x6o8ySG0sC): ACM TACCESS 2016. Catherine M. Baker, Lauren R. Milne, Ryan Drapeau, Jeffrey Scofield, Cynthia L. Bennett, Richard E. Ladner. A multimodal accessibility system combining physical relief graphics with smartphone camera QR scanning and finger-pointing audio guidance for STEM diagrams.
+- [The Wisdom of Multiple Guesses](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:d1gkVwhDpl0C): ACM EC 2015. Johan Ugander, Ryan Drapeau, Carlos Guestrin. A crowdsourced forecasting mechanism that elicits multiple ranked guesses per individual to capture confidence distributions, creating certainty-weighted aggregations that outperform standard mean estimates.
+- [KIMBEE: Speech Therapy for Children](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:qjMakFHDy7sC): UW CSE 2015. Ryan Drapeau, Nicolas Huynh, Aaron Nech. A mobile acoustic speech therapy system providing children with real-time phonological feedback and game mechanics while streaming phoneme accuracy telemetry to speech-language pathologists.
+- [Contributing During the Commute](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:UeHWp8X0CEIC): UW CSE 2015. Caitlin Bonnar, Meg Campbell, Ryan Drapeau, Cynthia L. Bennett, Alan Borning. An empirical study in OneBusAway investigating prosocial volunteer dynamics when transit riders crowdsource bus stop accessibility attributes.
+
+## Optional
+- [Full LLM Content Dossier](https://drapeau.dev/llms-full.txt): Complete unabridged text of all projects, writings, patents, and papers in a single markdown file for token-efficient LLM context window ingestion.

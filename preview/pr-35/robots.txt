@@ -1,0 +1,5 @@
+# Disallow general web crawling and scraping while allowing AI discovery via llms.txt
+User-agent: *
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /
