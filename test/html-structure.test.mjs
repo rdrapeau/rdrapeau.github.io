@@ -472,6 +472,17 @@ describe('Document & HTML Structure Integrity', () => {
                 'HTML must declare <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">'
             );
         });
+
+        it('omits personal geographic location from llms.txt, llms-full.txt, and HTML for privacy', () => {
+            const llmsPath = path.resolve(ROOT_DIR, 'llms.txt');
+            const llmsContent = fs.readFileSync(llmsPath, 'utf8');
+            const llmsFullPath = path.resolve(ROOT_DIR, 'llms-full.txt');
+            const fullContent = fs.readFileSync(llmsFullPath, 'utf8');
+
+            assert.doesNotMatch(llmsContent, /Seattle|San Francisco/i, 'llms.txt must not contain personal geographic location');
+            assert.doesNotMatch(fullContent, /Seattle|San Francisco/i, 'llms-full.txt must not contain personal geographic location');
+            assert.doesNotMatch(html, /Seattle|San Francisco/i, 'index.html must not contain personal geographic location');
+        });
     });
 });
 
