@@ -75,6 +75,7 @@ test.describe('1-Click BibTeX Citation Modal', () => {
 
     test('closes dialog on Escape key and restores focus', async ({ page }) => {
         const triggerBtn = page.locator('.bibtex-btn[data-paper="kimbee"]');
+        await triggerBtn.scrollIntoViewIfNeeded();
         await triggerBtn.click();
 
         const dialog = page.locator('#bibtex-dialog');

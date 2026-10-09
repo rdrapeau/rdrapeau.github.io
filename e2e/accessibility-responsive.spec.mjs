@@ -198,5 +198,27 @@ test.describe('Responsive Layout & Accessibility', () => {
         const h3Count = await page.locator('h3.project-name').count();
         expect(h3Count).toBeGreaterThanOrEqual(26);
     });
+
+    test('serves valid OpenGraph and Twitter summary_large_image card tags and loads og-image.png', async ({ page }) => {
+        await page.goto('/');
+
+        // Verify Open Graph meta tags
+        const ogImage = await page.locator('meta[property="og:image"]').getAttribute('content');
+        const ogWidth = await page.locator('meta[property="og:image:width"]').getAttribute('content');
+        const ogHeight = await page.locator('meta[property="og:image:height"]').getAttribute('content');
+        const twitterCard = await page.locator('meta[name="twitter:card"]').getAttribute('content');
+        const twitterImage = await page.locator('meta[name="twitter:image"]').getAttribute('content');
+
+        expect(ogImage).toBe('https://drapeau.dev/og-image.png');
+        expect(ogWidth).toBe('1200');
+        expect(ogHeight).toBe('630');
+        expect(twitterCard).toBe('summary_large_image');
+        expect(twitterImage).toBe('https://drapeau.dev/og-image.png');
+
+        // Verify og-image.png is accessible on the web server
+        const response = await page.request.get('/og-image.png');
+        expect(response.status()).toBe(200);
+        expect(response.headers()['content-type']).toContain('image/png');
+    });
 });
 
