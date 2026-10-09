@@ -457,20 +457,19 @@ describe('Document & HTML Structure Integrity', () => {
             assert.match(fullContent, /Microtalk: Argumentation in Crowdsourcing/i);
         });
 
-        it('robots.txt allows all crawlers, search engines, and AI agents', () => {
+        it('robots.txt disallows all search engines and web crawlers', () => {
             const robotsPath = path.resolve(ROOT_DIR, 'robots.txt');
             assert.ok(fs.existsSync(robotsPath), 'robots.txt must exist at repository root');
             const robotsContent = fs.readFileSync(robotsPath, 'utf8');
             assert.match(robotsContent, /User-agent:\s*\*/i, 'robots.txt must declare User-agent: *');
-            assert.match(robotsContent, /Allow:\s*\//i, 'robots.txt must declare Allow: /');
-            assert.doesNotMatch(robotsContent, /Disallow:\s*\//i, 'robots.txt must not disallow crawling');
+            assert.match(robotsContent, /Disallow:\s*\//i, 'robots.txt must declare Disallow: /');
         });
 
-        it('declares index, follow in meta robots tag', () => {
+        it('declares noindex, nofollow in meta robots tag', () => {
             assert.match(
                 html,
-                /<meta\s+name=["']robots["']\s+content=["']index,\s*follow["']/i,
-                'HTML must declare <meta name="robots" content="index, follow">'
+                /<meta\s+name=["']robots["']\s+content=["']noindex,\s*nofollow,\s*noarchive,\s*nosnippet["']/i,
+                'HTML must declare <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">'
             );
         });
     });

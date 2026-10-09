@@ -11,12 +11,12 @@ All notable changes to this project will be documented in this file.
   - Added `/llms-full.txt` containing the complete unabridged text and descriptions of all projects, writings, patent abstracts, and paper abstracts for instant single-fetch ingestion by LLMs and RAG agents.
 - **HTML Alternate Link Discovery**:
   - Added `<link rel="alternate" type="text/markdown" href="./llms.txt" title="LLM Summary">` in `index.html` `<head>`.
-- **`robots.txt` & Meta Robots Open Policy**:
-  - Configured `robots.txt` with `User-agent: *` and `Allow: /` to permit all search engines, web crawlers, and AI models to discover and index the site and its `llms.txt` specifications.
-  - Updated `<meta name="robots" content="index, follow">` in `index.html` to align with public indexing and search discovery.
+- **`robots.txt` & Meta Robots Privacy Protection**:
+  - Maintained strict privacy preservation with `robots.txt` (`User-agent: *`, `Disallow: /`) and `index.html` (`<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">`) to block all general search crawlers, scrapers, and automated bots.
+  - Hosted `llms.txt` and `llms-full.txt` statically at the site root for direct URL access and targeted AI ingestion.
 - **Automated Tests**:
-  - Added 4 structural unit tests in `test/html-structure.test.mjs` verifying `llms.txt`, `llms-full.txt`, `meta name="robots"` index/follow, and `robots.txt` Allow rules.
-  - Added 2 Playwright E2E tests in `e2e/accessibility-responsive.spec.mjs` verifying HTTP 200 delivery and content of `/llms.txt`, `/llms-full.txt`, and `/robots.txt`.
+  - Added 4 structural unit tests in `test/html-structure.test.mjs` verifying `llms.txt`, `llms-full.txt`, `meta name="robots"` noindex rules, and `robots.txt` Disallow policy.
+  - Added 2 Playwright E2E tests in `e2e/accessibility-responsive.spec.mjs` verifying HTTP 200 delivery of `/llms.txt`, `/llms-full.txt`, and crawler disallowance in `/robots.txt`.
 
 ## [2026-10-08] - WCAG 2.1 & 2.2 Level AA Accessibility Improvements
 
