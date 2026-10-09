@@ -60,11 +60,13 @@ GitHub Pages is served from the **`gh-pages`** branch.
 #### 1. Production Deployment (`master`)
 - Workflow: `.github/workflows/static.yml`
 - Triggers on: Push to `master` branch.
+- Concurrency: Serialized via shared `gh-pages-write` concurrency group with `cancel-in-progress: false` to eliminate push race conditions against preview deletions.
 - Action: Uses `peaceiris/actions-gh-pages` with `keep_files: true` to publish `master` to the root of `gh-pages` without wiping out active PR preview subdirectories.
 
 #### 2. Staging & PR Previews
 - Workflow: `.github/workflows/preview.yml`
 - Triggers on: `pull_request` (`opened`, `synchronize`, `reopened`, `closed`).
+- Concurrency: Serialized via shared `gh-pages-write` concurrency group on `deploy-preview` job to prevent simultaneous pushes to `gh-pages`.
 - Action: Uses `rossjrw/pr-preview-action` to:
   - Deploy PR builds to `preview/pr-<number>/` on `gh-pages`.
   - Automatically comment on the PR with the live URL: `https://drapeau.dev/preview/pr-<number>/`.
@@ -83,7 +85,8 @@ rdrapeau.github.io/
 │   ├── paths.test.mjs           # Path & asset relativity tests (Rule #2)
 │   ├── subprojects.test.mjs     # Subproject integrity & build-info tests (Rule #3)
 │   ├── html-structure.test.mjs  # Document structure & tab sync tests
-│   └── easter-eggs.test.mjs     # Easter egg & interactive hook tests
+│   ├── easter-eggs.test.mjs     # Easter egg & interactive hook tests
+│   └── ci-workflows.test.mjs    # GitHub Actions workflow & concurrency tests
 ├── e2e/
 │   ├── navigation.spec.mjs      # Tab switching, hash routing, shortcuts
 │   ├── filter.spec.mjs          # Live/In-Dev/All project filtering
