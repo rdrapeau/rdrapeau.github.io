@@ -1,3 +1,0 @@
-# Disallow all search engines, web crawlers, and AI scrapers from crawling or indexing any part of the site
-User-agent: *
-Disallow: /
