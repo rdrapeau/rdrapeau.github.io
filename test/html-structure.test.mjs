@@ -484,5 +484,60 @@ describe('Document & HTML Structure Integrity', () => {
             assert.doesNotMatch(html, /Seattle|San Francisco/i, 'index.html must not contain personal geographic location');
         });
     });
+
+    describe('1-Click BibTeX Citation Modal', () => {
+        const expectedPaperKeys = ['microtalk', 'tactile_graphics', 'multiple_guesses', 'kimbee', 'commute'];
+
+        it('defines native HTML5 <dialog> modal with accessible attributes and controls', () => {
+            assert.match(
+                html,
+                /<dialog\s+[^>]*?id=["']bibtex-dialog["'][^>]*?class=["'][^"']*bibtex-dialog[^"']*["'][^>]*?aria-labelledby=["']bibtex-dialog-title["']/i,
+                'Modal dialog must be a native <dialog> with id="bibtex-dialog" and aria-labelledby="bibtex-dialog-title"'
+            );
+            assert.match(html, /id=["']bibtex-dialog-title["']/i, 'Dialog must contain #bibtex-dialog-title heading');
+            assert.match(html, /id=["']bibtex-close-btn["'][^>]*?aria-label=["']Close dialog["']/i, 'Dialog must contain #bibtex-close-btn with aria-label');
+            assert.match(html, /id=["']bibtex-paper-title["']/i, 'Dialog must contain #bibtex-paper-title display element');
+            assert.match(html, /id=["']bibtex-code-text["']/i, 'Dialog must contain #bibtex-code-text code container');
+            assert.match(html, /id=["']bibtex-scholar-link["']/i, 'Dialog must contain #bibtex-scholar-link Google Scholar link');
+            assert.match(html, /id=["']bibtex-copy-btn["']/i, 'Dialog must contain #bibtex-copy-btn button');
+            assert.match(html, /id=["']bibtex-copy-text["']/i, 'Dialog must contain #bibtex-copy-text button text');
+        });
+
+        it('every research publication card contains a title link and a BibTeX button in research-footer', () => {
+            for (const key of expectedPaperKeys) {
+                const cardRegex = new RegExp(`<div\\s+class=["'][^"']*research-card[^"']*["']\\s+data-paper=["']${key}["'][\\s\\S]*?class=["'][^"']*research-footer[^"']*["']`, 'i');
+                assert.ok(cardRegex.test(html), `Research card for paper "${key}" must contain .research-footer`);
+
+                const titleLinkRegex = new RegExp(`data-paper=["']${key}["'][\\s\\S]*?<a\\s+[^>]*?class=["'][^"']*paper-title-link[^"']*["']`, 'i');
+                assert.ok(titleLinkRegex.test(html), `Research card "${key}" must contain .paper-title-link anchor`);
+
+                const bibtexBtnRegex = new RegExp(`class=["'][^"']*research-footer[^"']*["'][\\s\\S]*?<button\\s+type=["']button["']\\s+class=["'][^"']*bibtex-btn[^"']*["']\\s+data-paper=["']${key}["']\\s+aria-haspopup=["']dialog["']`, 'i');
+                assert.ok(bibtexBtnRegex.test(html), `Research card "${key}" must contain .bibtex-btn within .research-footer`);
+            }
+        });
+
+        it('defines BIBTEX_DATA object in client script with all 5 paper entries', () => {
+            assert.match(html, /const\s+BIBTEX_DATA\s*=\s*\{/, 'Script must declare BIBTEX_DATA dictionary');
+
+            for (const key of expectedPaperKeys) {
+                const keyEntryRegex = new RegExp(`${key}:\\s*\\{[\\s\\S]*?title:\\s*["'][^"']+["'],[\\s\\S]*?scholarUrl:\\s*["']https:\\/\\/scholar\\.google\\.com\\/[^"']+["'],[\\s\\S]*?bibtex:\\s*\`[\\s\\S]*?\`\\s*\\}`, 'i');
+                assert.ok(keyEntryRegex.test(html), `BIBTEX_DATA must define title, scholarUrl, and bibtex for "${key}"`);
+            }
+        });
+
+        it('defines and invokes initBibtexModal() in site bootstrap sequence', () => {
+            assert.match(html, /function\s+initBibtexModal\(\)\s*\{/, 'Script must define initBibtexModal() function');
+            assert.match(html, /initBibtexModal\(\);/, 'Script must call initBibtexModal() in bootstrap sequence');
+        });
+
+        it('includes responsive dialog CSS, footer alignment, and dark mode color overrides', () => {
+            assert.match(html, /\.bibtex-dialog\s*\{/i, 'CSS must style .bibtex-dialog');
+            assert.match(html, /\.bibtex-dialog::backdrop\s*\{/i, 'CSS must style .bibtex-dialog::backdrop');
+            assert.match(html, /\.research-footer\s*\{/i, 'CSS must style .research-footer');
+            assert.match(html, /\.bibtex-btn\s*\{/i, 'CSS must style .bibtex-btn');
+            assert.match(html, /@media\s*\(prefers-color-scheme:\s*dark\)\s*\{[\s\S]*?\.bibtex-dialog-content\s*\{/i, 'CSS must provide dark mode styles for dialog');
+            assert.match(html, /@media\s*\(prefers-color-scheme:\s*dark\)\s*\{[\s\S]*?\.bibtex-btn\s*\{/i, 'CSS must provide dark mode styles for .bibtex-btn');
+        });
+    });
 });
 

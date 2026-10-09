@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-08] - 1-Click BibTeX Citation Modal for Academic Research
+
+### Added
+- **1-Click BibTeX Citation Dialog Modal**:
+  - Implemented an accessible native HTML5 `<dialog id="bibtex-dialog">` modal displaying clean, pre-formatted BibTeX citation entries for all 5 peer-reviewed publications and UW technical reports.
+  - Added compact `.bibtex-btn` pill triggers with quotation mark icons in the bottom right of each research card (`.research-footer`) across all 5 publications (`microtalk`, `tactile_graphics`, `multiple_guesses`, `kimbee`, `commute`).
+  - Added 1-click `#bibtex-copy-btn` with visual confirmation state (`Copied! ✓` and `.copied` styling) using modern `navigator.clipboard.writeText()` with legacy fallback.
+  - Included a direct "Open in Google Scholar &rarr;" external link within the modal footer for fast access to full citation metrics and PDF assets.
+- **WAI-ARIA & Keyboard Accessibility**:
+  - Native `<dialog>.showModal()` integration providing backdrop blurring (`::backdrop`), top-layer rendering, focus trapping, and native `Escape` key close handling.
+  - Automatically focuses the Copy BibTeX button upon modal presentation for instant single-keystroke Enter/Space copying.
+  - Restores keyboard focus back to the triggering `.bibtex-btn` element upon modal dismissal.
+  - Accessible dialog labeling (`aria-labelledby="bibtex-dialog-title"`) and close button (`aria-label="Close dialog"`).
+  - Restructured research cards from outer `<a>` wrapper to `<div class="research-card">` with `.paper-title-link` stretched link pseudo-element to maintain semantic compliance while enabling independent clickable buttons.
+- **Styling & Responsive Design**:
+  - Styled with glassmorphic modal box shadow and entrance scale animation (`@keyframes modalFadeIn`), respecting `prefers-reduced-motion`.
+  - Comprehensive light mode and dark mode theme styling with high contrast borders, dark syntax pre block, and readable typography.
+- **Automated Tests**:
+  - Added 5 structural integrity tests in `test/html-structure.test.mjs` verifying modal markup, button attributes, `BIBTEX_DATA` dictionary records, and bootstrap initialization.
+  - Added 7 end-to-end browser tests in `e2e/bibtex-modal.spec.mjs` testing button presence, modal population, clipboard copy toggling, close button dismissal, `Escape` key dismissal, backdrop click closing, and multi-card dynamic switching.
+
 ## [2026-10-08] - CI/CD Deployment Concurrency & GitHub Actions Modernization
 
 ### Fixed
