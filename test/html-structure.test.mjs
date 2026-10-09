@@ -503,16 +503,16 @@ describe('Document & HTML Structure Integrity', () => {
             assert.match(html, /id=["']bibtex-copy-text["']/i, 'Dialog must contain #bibtex-copy-text button text');
         });
 
-        it('every research publication card contains a title link and a BibTeX button', () => {
+        it('every research publication card contains a title link and a BibTeX button in research-footer', () => {
             for (const key of expectedPaperKeys) {
-                const cardRegex = new RegExp(`<div\\s+class=["'][^"']*research-card[^"']*["']\\s+data-paper=["']${key}["'][\\s\\S]*?<\\/div>\\s*<\\/div>`, 'i');
-                assert.ok(cardRegex.test(html), `Research card for paper "${key}" must exist with data-paper="${key}"`);
+                const cardRegex = new RegExp(`<div\\s+class=["'][^"']*research-card[^"']*["']\\s+data-paper=["']${key}["'][\\s\\S]*?class=["'][^"']*research-footer[^"']*["']`, 'i');
+                assert.ok(cardRegex.test(html), `Research card for paper "${key}" must contain .research-footer`);
 
                 const titleLinkRegex = new RegExp(`data-paper=["']${key}["'][\\s\\S]*?<a\\s+[^>]*?class=["'][^"']*paper-title-link[^"']*["']`, 'i');
                 assert.ok(titleLinkRegex.test(html), `Research card "${key}" must contain .paper-title-link anchor`);
 
-                const bibtexBtnRegex = new RegExp(`<button\\s+type=["']button["']\\s+class=["'][^"']*bibtex-btn[^"']*["']\\s+data-paper=["']${key}["']\\s+aria-haspopup=["']dialog["']`, 'i');
-                assert.ok(bibtexBtnRegex.test(html), `Research card "${key}" must contain .bibtex-btn with data-paper="${key}" and aria-haspopup="dialog"`);
+                const bibtexBtnRegex = new RegExp(`class=["'][^"']*research-footer[^"']*["'][\\s\\S]*?<button\\s+type=["']button["']\\s+class=["'][^"']*bibtex-btn[^"']*["']\\s+data-paper=["']${key}["']\\s+aria-haspopup=["']dialog["']`, 'i');
+                assert.ok(bibtexBtnRegex.test(html), `Research card "${key}" must contain .bibtex-btn within .research-footer`);
             }
         });
 
@@ -530,9 +530,10 @@ describe('Document & HTML Structure Integrity', () => {
             assert.match(html, /initBibtexModal\(\);/, 'Script must call initBibtexModal() in bootstrap sequence');
         });
 
-        it('includes responsive dialog CSS and dark mode color overrides', () => {
+        it('includes responsive dialog CSS, footer alignment, and dark mode color overrides', () => {
             assert.match(html, /\.bibtex-dialog\s*\{/i, 'CSS must style .bibtex-dialog');
             assert.match(html, /\.bibtex-dialog::backdrop\s*\{/i, 'CSS must style .bibtex-dialog::backdrop');
+            assert.match(html, /\.research-footer\s*\{/i, 'CSS must style .research-footer');
             assert.match(html, /\.bibtex-btn\s*\{/i, 'CSS must style .bibtex-btn');
             assert.match(html, /@media\s*\(prefers-color-scheme:\s*dark\)\s*\{[\s\S]*?\.bibtex-dialog-content\s*\{/i, 'CSS must provide dark mode styles for dialog');
             assert.match(html, /@media\s*\(prefers-color-scheme:\s*dark\)\s*\{[\s\S]*?\.bibtex-btn\s*\{/i, 'CSS must provide dark mode styles for .bibtex-btn');
