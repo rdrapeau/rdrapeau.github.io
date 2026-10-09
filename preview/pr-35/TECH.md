@@ -29,7 +29,7 @@ This is a static GitHub Pages site hosting personal project showcases, mapped to
   - Hosted at root `/llms.txt` adhering to [llmstxt.org](https://llmstxt.org) standard with structured markdown indexing bio, projects, writings, patents, and papers.
   - Companion `/llms-full.txt` provides the complete unabridged dossier for token-efficient LLM context window ingestion without extra requests.
   - Linked in `index.html` head via `<link rel="alternate" type="text/markdown" href="./llms.txt" title="LLM Summary">`.
-  - Configured in `robots.txt` with `Allow: /` and `<meta name="robots" content="index, follow">` to enable full public discovery and indexing.
+  - Configured in `robots.txt` with `Disallow: /` and `<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">` for privacy preservation, while serving `llms.txt` and `llms-full.txt` directly.
 - Displays project cards sorted dynamically by last updated build date
 - Uses JavaScript `fetch()` to load `./<project>/build-info.json` from each project directory
 - **Path-Relative Design**: All links, images, and fetch requests use relative paths (`./`) so the site functions identically at the root domain (`drapeau.dev/`) or within preview subdirectories (`drapeau.dev/preview/pr-<number>/`).
