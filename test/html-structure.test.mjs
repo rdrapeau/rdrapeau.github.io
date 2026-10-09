@@ -1,6 +1,8 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { getIndexHtml, getElementsByClass, getElementTextById, getTabBadgeCount, getSectionHtml } from './helpers.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+import { getIndexHtml, getElementsByClass, getElementTextById, getTabBadgeCount, getSectionHtml, ROOT_DIR } from './helpers.mjs';
 
 describe('Document & HTML Structure Integrity', () => {
     const html = getIndexHtml();
@@ -240,5 +242,193 @@ describe('Document & HTML Structure Integrity', () => {
                 'CSS must contain prefers-reduced-motion media query'
             );
         });
+
+        it('includes a skip-to-content link pointing to #main-content', () => {
+            assert.match(
+                html,
+                /<a\s+[^>]*?href=["']#main-content["'][^>]*?class=["'][^"']*skip-link[^"']*["'][^>]*>Skip to main content<\/a>/i,
+                'Must include an accessible skip link targeting #main-content'
+            );
+        });
+
+        it('wraps main portfolio sections in semantic <main id="main-content"> landmark', () => {
+            assert.match(
+                html,
+                /<main\s+id=["']main-content["']>/i,
+                'Must include semantic <main id="main-content"> landmark'
+            );
+            assert.match(
+                html,
+                /<\/main>/i,
+                'Must properly close </main> landmark'
+            );
+        });
+
+        it('wraps site tabs in semantic <nav> landmark with aria-label', () => {
+            assert.match(
+                html,
+                /<nav\s+class=["'][^"']*site-tabs-nav[^"']*["']\s+aria-label=["'][^"']+["']>/i,
+                'Must include semantic <nav> landmark with aria-label for tabs navigation'
+            );
+        });
+
+        it('all interactive preview canvases have role="img" and descriptive aria-label', () => {
+            const canvasRegex = /<canvas\s+[^>]*?class=["'][^"']*preview-canvas[^"']*["'][^>]*>/gi;
+            let match;
+            let count = 0;
+            while ((match = canvasRegex.exec(html)) !== null) {
+                count++;
+                const canvasTag = match[0];
+                assert.match(canvasTag, /role=["']img["']/i, `Canvas must have role="img": ${canvasTag}`);
+                assert.match(canvasTag, /aria-label=["'][^"']+["']/i, `Canvas must have aria-label: ${canvasTag}`);
+            }
+            assert.ok(count >= 6, 'Must verify all preview canvases have accessible image semantics');
+        });
+
+        it('all portfolio card titles use h3.project-name heading elements', () => {
+            const h3CardsRegex = /<h3\s+class=["']project-name["']>/gi;
+            const matches = html.match(h3CardsRegex);
+            assert.ok(matches && matches.length >= 26, `Expected at least 26 <h3 class="project-name"> headings, found ${matches ? matches.length : 0}`);
+
+            // Ensure no old div.project-name remain
+            const divProjectNames = html.match(/<div\s+class=["']project-name["']>/gi);
+            assert.equal(divProjectNames, null, 'Must not have any lingering <div class="project-name"> elements');
+        });
+
+        it('filter buttons container has role="toolbar" and buttons declare aria-pressed', () => {
+            assert.match(
+                html,
+                /<div\s+class=["'][^"']*filter-bar[^"']*["']\s+role=["']toolbar["']\s+aria-label=["'][^"']+["']>/i,
+                'Filter buttons container must declare role="toolbar" and aria-label'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?data-filter=["']live["'][^>]*?aria-pressed=["']true["']/i,
+                'Active Live filter button must initially have aria-pressed="true"'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?data-filter=["']all["'][^>]*?aria-pressed=["']false["']/i,
+                'Inactive All filter button must initially have aria-pressed="false"'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?data-filter=["']in-dev["'][^>]*?aria-pressed=["']false["']/i,
+                'Inactive In-Dev filter button must initially have aria-pressed="false"'
+            );
+        });
+
+        it('tab buttons declare roving tabindex with active tab at 0 and inactive tabs at -1', () => {
+            assert.match(
+                html,
+                /<button\s+[^>]*?id=["']tab-projects["'][^>]*?tabindex=["']0["']/i,
+                'Active Projects tab button must initially have tabindex="0"'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?id=["']tab-writing["'][^>]*?tabindex=["']-1["']/i,
+                'Inactive Writing tab button must initially have tabindex="-1"'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?id=["']tab-patents["'][^>]*?tabindex=["']-1["']/i,
+                'Inactive Patents tab button must initially have tabindex="-1"'
+            );
+            assert.match(
+                html,
+                /<button\s+[^>]*?id=["']tab-research["'][^>]*?tabindex=["']-1["']/i,
+                'Inactive Research tab button must initially have tabindex="-1"'
+            );
+        });
+    });
+
+    describe('Modern Web Standards & Searchability', () => {
+        it('declares color-scheme: light dark on root in CSS', () => {
+            assert.match(
+                html,
+                /color-scheme:\s*light\s+dark/i,
+                'Root CSS must declare color-scheme: light dark'
+            );
+        });
+
+        it('includes adaptive light and dark meta theme-color tags', () => {
+            assert.match(
+                html,
+                /<meta\s+name=["']theme-color["']\s+content=["']#fafafa["']\s+media=["']\(prefers-color-scheme:\s*light\)["']/i,
+                'Must include light theme-color meta tag'
+            );
+            assert.match(
+                html,
+                /<meta\s+name=["']theme-color["']\s+content=["']#0f1117["']\s+media=["']\(prefers-color-scheme:\s*dark\)["']/i,
+                'Must include dark theme-color meta tag'
+            );
+        });
+
+        it('links valid web app manifest at ./manifest.webmanifest', () => {
+            assert.match(
+                html,
+                /<link\s+rel=["']manifest["']\s+href=["']\.\/manifest\.webmanifest["']/i,
+                'Must link ./manifest.webmanifest'
+            );
+            const manifestPath = path.join(ROOT_DIR, 'manifest.webmanifest');
+            assert.ok(fs.existsSync(manifestPath), 'manifest.webmanifest file must exist on disk');
+            const manifestContent = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+            assert.equal(manifestContent.display, 'standalone');
+            assert.ok(manifestContent.icons.length > 0);
+        });
+
+        it('includes Speculation Rules API script with valid JSON prefetch rules', () => {
+            const specMatch = html.match(/<script\s+type=["']speculationrules["']>([\s\S]*?)<\/script>/i);
+            assert.ok(specMatch, 'Expected <script type="speculationrules"> block in HTML');
+            const specJson = JSON.parse(specMatch[1]);
+            assert.ok(specJson.prefetch, 'Speculation rules must define prefetch rules');
+            assert.ok(Array.isArray(specJson.prefetch[0].urls), 'Must declare prefetch urls list');
+            assert.ok(specJson.prefetch[0].urls.includes('./fi_sim/'));
+        });
+
+        it('declares hidden="until-found" on initial inactive tab sections', () => {
+            assert.match(
+                html,
+                /<section\s+[^>]*?id=["']section-writing["'][^>]*?hidden=["']until-found["']/i,
+                'section-writing opening tag must have hidden="until-found"'
+            );
+            assert.match(
+                html,
+                /<section\s+[^>]*?id=["']section-patents["'][^>]*?hidden=["']until-found["']/i,
+                'section-patents opening tag must have hidden="until-found"'
+            );
+            assert.match(
+                html,
+                /<section\s+[^>]*?id=["']section-research["'][^>]*?hidden=["']until-found["']/i,
+                'section-research opening tag must have hidden="until-found"'
+            );
+        });
+
+        it('headshot image specifies fetchpriority="high" for LCP optimization', () => {
+            assert.match(
+                html,
+                /<img\s+[^>]*?class=["'][^"']*headshot[^"']*["'][^>]*?fetchpriority=["']high["']/i,
+                'Headshot image must have fetchpriority="high"'
+            );
+        });
+
+        it('CSS includes text-wrap: balance and text-wrap: pretty', () => {
+            assert.match(html, /text-wrap:\s*balance/i, 'CSS must include text-wrap: balance');
+            assert.match(html, /text-wrap:\s*pretty/i, 'CSS must include text-wrap: pretty');
+        });
+
+        it('CSS includes content-visibility: auto with contain-intrinsic-size', () => {
+            assert.match(html, /content-visibility:\s*auto/i, 'CSS must include content-visibility: auto');
+            assert.match(html, /contain-intrinsic-size:\s*auto\s+160px/i, 'CSS must include contain-intrinsic-size');
+        });
+
+        it('JavaScript registers beforematch event listeners on tab panels', () => {
+            assert.match(
+                html,
+                /addEventListener\(\s*['"]beforematch['"]/i,
+                'Tab navigation script must listen for beforematch events'
+            );
+        });
     });
 });
+

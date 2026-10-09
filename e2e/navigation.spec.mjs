@@ -78,8 +78,8 @@ test.describe('Navigation & Tab Switching', () => {
     });
 
     test('supports keyboard numeric shortcuts (1, 2, 3, 4)', async ({ page }) => {
-        // Focus body to ensure window receives keyboard events across all browser engines
-        await page.locator('body').click();
+        // Focus page heading to ensure window receives keyboard events without colliding with link targets
+        await page.locator('h1').click();
 
         // Press 2 -> Writing
         await page.keyboard.press('2');
@@ -140,4 +140,49 @@ test.describe('Navigation & Tab Switching', () => {
         expect(person.jobTitle).toBe('Principal Machine Learning Engineer');
         expect(person.worksFor.name).toBe('Stripe');
     });
+
+    test('supports find-in-page beforematch event to activate hidden tab panels', async ({ page }) => {
+        // Initially on projects tab
+        await expect(page.locator('#tab-projects')).toHaveClass(/\bactive\b/);
+        await expect(page.locator('#section-patents')).toHaveAttribute('hidden', 'until-found');
+
+        // Simulate browser Find-in-page beforematch event targeting an element inside patents section
+        await page.evaluate(() => {
+            const patentSection = document.getElementById('section-patents');
+            patentSection.dispatchEvent(new Event('beforematch', { bubbles: true }));
+        });
+
+        // Tab and panel states should be automatically synchronized
+        await expect(page.locator('#tab-patents')).toHaveClass(/\bactive\b/);
+        await expect(page.locator('#tab-patents')).toHaveAttribute('aria-selected', 'true');
+        await expect(page.locator('#section-patents')).toBeVisible();
+        await expect(page.locator('#section-patents')).toHaveClass(/\bactive-panel\b/);
+        await expect(page.locator('#section-projects')).toHaveAttribute('hidden', 'until-found');
+        expect(page.url()).toContain('#patents');
+    });
+
+    test('includes Speculation Rules API script, manifest, and modern head attributes', async ({ page }) => {
+        // Speculation Rules
+        const specRulesScript = page.locator('script[type="speculationrules"]');
+        await expect(specRulesScript).toBeAttached();
+        const specContent = await specRulesScript.textContent();
+        const specJson = JSON.parse(specContent);
+        expect(specJson.prefetch).toBeDefined();
+        expect(specJson.prefetch[0].eagerness).toBe('moderate');
+
+        // Web Manifest
+        const manifestLink = page.locator('link[rel="manifest"]');
+        await expect(manifestLink).toHaveAttribute('href', './manifest.webmanifest');
+
+        // Headshot fetchpriority="high"
+        const headshot = page.locator('img.headshot');
+        await expect(headshot).toHaveAttribute('fetchpriority', 'high');
+
+        // Dual theme-color meta tags
+        const lightTheme = page.locator('meta[name="theme-color"][media="(prefers-color-scheme: light)"]');
+        const darkTheme = page.locator('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]');
+        await expect(lightTheme).toHaveAttribute('content', '#fafafa');
+        await expect(darkTheme).toHaveAttribute('content', '#0f1117');
+    });
 });
+
