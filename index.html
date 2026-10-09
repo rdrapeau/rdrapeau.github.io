@@ -648,6 +648,8 @@
             gap: 0.35rem;
             flex-wrap: wrap;
             justify-content: flex-end;
+            position: relative;
+            z-index: 2;
         }
 
         .stripe-badge {
@@ -795,6 +797,9 @@
             overflow: hidden;
             box-sizing: border-box;
             cursor: pointer;
+        }
+
+        .project {
             content-visibility: auto;
             contain-intrinsic-size: auto 160px;
         }
@@ -1284,6 +1289,260 @@
             }
         }
 
+        /* --- BibTeX & Paper Link Styling --- */
+        .paper-title-link {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.18s ease;
+        }
+
+        .paper-title-link::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .paper-title-link:focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .bibtex-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.2rem 0.55rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            font-family: inherit;
+            color: #4338ca;
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            text-decoration: none;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bibtex-btn:hover {
+            background: #4f46e5;
+            color: #ffffff;
+            border-color: #4f46e5;
+            box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .bibtex-btn:focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 2px;
+        }
+
+        .bibtex-btn:active {
+            transform: translateY(0);
+        }
+
+        .bibtex-icon {
+            display: inline-block;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+
+        /* --- BibTeX Citation Dialog Modal --- */
+        .bibtex-dialog {
+            border: none;
+            border-radius: 16px;
+            padding: 0;
+            background: transparent;
+            max-width: 620px;
+            width: 90vw;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            color: #0f172a;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .bibtex-dialog::backdrop {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .bibtex-dialog[open] {
+            animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bibtex-dialog[open] {
+                animation: none;
+            }
+        }
+
+        .bibtex-dialog-content {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-sizing: border-box;
+        }
+
+        .bibtex-dialog-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .bibtex-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .bibtex-dialog-badge {
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .bibtex-dialog-title {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .bibtex-dialog-close {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            line-height: 1;
+            color: #64748b;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+
+        .bibtex-dialog-close:hover {
+            color: #0f172a;
+            background: #f1f5f9;
+        }
+
+        .bibtex-dialog-close:focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 2px;
+        }
+
+        .bibtex-paper-title {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #475569;
+            line-height: 1.4;
+        }
+
+        .bibtex-code-container {
+            position: relative;
+            background: #0f172a;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+            max-height: 280px;
+            border: 1px solid #1e293b;
+        }
+
+        .bibtex-pre {
+            margin: 0;
+            font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: #e2e8f0;
+            white-space: pre;
+        }
+
+        .bibtex-dialog-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-top: 0.5rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .bibtex-scholar-link {
+            font-size: 0.85rem;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s ease;
+        }
+
+        .bibtex-scholar-link:hover {
+            color: #3730a3;
+            text-decoration: underline;
+        }
+
+        .bibtex-scholar-link:focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        .bibtex-copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.5rem 1.1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+            background: #4f46e5;
+            border: 1px solid #4338ca;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+
+        .bibtex-copy-btn:hover {
+            background: #4338ca;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .bibtex-copy-btn:focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 2px;
+        }
+
+        .bibtex-copy-btn.copied {
+            background: #16a34a;
+            border-color: #15803d;
+        }
+
         /* --- Dark Mode --- */
         @media (prefers-color-scheme: dark) {
             body {
@@ -1645,6 +1904,68 @@
             .headshot {
                 box-shadow: 0 0 0 2px #262b38;
             }
+
+            .bibtex-btn {
+                background: rgba(99, 102, 241, 0.15);
+                color: #a5b4fc;
+                border-color: rgba(99, 102, 241, 0.3);
+            }
+
+            .bibtex-btn:hover {
+                background: #6366f1;
+                color: #ffffff;
+                border-color: #6366f1;
+                box-shadow: 0 2px 6px rgba(99, 102, 241, 0.35);
+            }
+
+            .bibtex-dialog-content {
+                background: #1e293b;
+                border-color: #334155;
+                color: #f8fafc;
+            }
+
+            .bibtex-dialog-title {
+                color: #f8fafc;
+            }
+
+            .bibtex-dialog-close {
+                color: #94a3b8;
+            }
+
+            .bibtex-dialog-close:hover {
+                color: #f8fafc;
+                background: #334155;
+            }
+
+            .bibtex-paper-title {
+                color: #94a3b8;
+            }
+
+            .bibtex-dialog-footer {
+                border-top-color: #334155;
+            }
+
+            .bibtex-scholar-link {
+                color: #818cf8;
+            }
+
+            .bibtex-scholar-link:hover {
+                color: #a5b4fc;
+            }
+
+            .bibtex-copy-btn {
+                background: #6366f1;
+                border-color: #4f46e5;
+            }
+
+            .bibtex-copy-btn:hover {
+                background: #4f46e5;
+            }
+
+            .bibtex-dialog-badge {
+                background: rgba(99, 102, 241, 0.2);
+                color: #a5b4fc;
+            }
         }
 
         /* --- Scroll Animations --- */
@@ -1808,7 +2129,7 @@
 </head>
 
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link" tabindex="0">Skip to main content</a>
     <div class="container">
         <header class="fade-in">
             <div class="header-content">
@@ -2337,13 +2658,19 @@
 
             <div class="research-grid">
                 <!-- 1. Microtalk -->
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="microtalk">
+                <div class="research-card fade-in" data-paper="microtalk">
                     <div class="project-top">
                         <div class="project-header">
                             <h3 class="project-name">
-                                Microtalk: Argumentation in Crowdsourcing
+                                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener noreferrer" class="paper-title-link">Microtalk: Argumentation in Crowdsourcing</a>
                             </h3>
-                            <span class="venue-badge venue-hcomp">AAAI HCOMP '16</span>
+                            <div class="card-badges">
+                                <span class="venue-badge venue-hcomp">AAAI HCOMP '16</span>
+                                <button type="button" class="bibtex-btn" data-paper="microtalk" aria-haspopup="dialog" aria-label="BibTeX citation for Microtalk">
+                                    <svg class="bibtex-icon" viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                                    BibTeX
+                                </button>
+                            </div>
                         </div>
                         <div class="paper-authors">
                             <span class="author-self">Ryan Drapeau</span>, Lydia B. Chilton, Jonathan Bragg, Daniel S. Weld
@@ -2352,16 +2679,22 @@
                             A peer argumentation protocol (<em>Assess &rarr; Justify &rarr; Reconsider</em>) where crowd workers exchange structured rationales, boosting individual and aggregate classification accuracy by <strong>+20%</strong> on challenging NLP tasks without ground truth.
                         </div>
                     </div>
-                </a>
+                </div>
 
                 <!-- 2. Tactile Graphics with a Voice -->
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="tactile_graphics">
+                <div class="research-card fade-in" data-paper="tactile_graphics">
                     <div class="project-top">
                         <div class="project-header">
                             <h3 class="project-name">
-                                Tactile Graphics with a Voice
+                                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener noreferrer" class="paper-title-link">Tactile Graphics with a Voice</a>
                             </h3>
-                            <span class="venue-badge venue-taccess">ACM TACCESS '16</span>
+                            <div class="card-badges">
+                                <span class="venue-badge venue-taccess">ACM TACCESS '16</span>
+                                <button type="button" class="bibtex-btn" data-paper="tactile_graphics" aria-haspopup="dialog" aria-label="BibTeX citation for Tactile Graphics with a Voice">
+                                    <svg class="bibtex-icon" viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                                    BibTeX
+                                </button>
+                            </div>
                         </div>
                         <div class="paper-authors">
                             Catherine M. Baker, Lauren R. Milne, <span class="author-self">Ryan Drapeau</span>, Jeffrey Scofield, Cynthia L. Bennett, Richard E. Ladner
@@ -2370,16 +2703,22 @@
                             A multimodal accessibility system combining physical relief graphics with smartphone camera QR scanning and finger-pointing guidance to provide localized audio explanations for complex STEM diagrams.
                         </div>
                     </div>
-                </a>
+                </div>
 
                 <!-- 3. The Wisdom of Multiple Guesses -->
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:d1gkVwhDpl0C" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="multiple_guesses">
+                <div class="research-card fade-in" data-paper="multiple_guesses">
                     <div class="project-top">
                         <div class="project-header">
                             <h3 class="project-name">
-                                The Wisdom of Multiple Guesses
+                                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:d1gkVwhDpl0C" target="_blank" rel="noopener noreferrer" class="paper-title-link">The Wisdom of Multiple Guesses</a>
                             </h3>
-                            <span class="venue-badge venue-ec">ACM EC '15</span>
+                            <div class="card-badges">
+                                <span class="venue-badge venue-ec">ACM EC '15</span>
+                                <button type="button" class="bibtex-btn" data-paper="multiple_guesses" aria-haspopup="dialog" aria-label="BibTeX citation for The Wisdom of Multiple Guesses">
+                                    <svg class="bibtex-icon" viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                                    BibTeX
+                                </button>
+                            </div>
                         </div>
                         <div class="paper-authors">
                             Johan Ugander, <span class="author-self">Ryan Drapeau</span>, Carlos Guestrin
@@ -2388,16 +2727,22 @@
                             A crowdsourced forecasting mechanism that elicits multiple ranked guesses per individual to capture heterogeneous confidence distributions, creating certainty-weighted crowd aggregations that outperform standard mean estimates.
                         </div>
                     </div>
-                </a>
+                </div>
 
                 <!-- 4. KIMBEE -->
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="kimbee">
+                <div class="research-card fade-in" data-paper="kimbee">
                     <div class="project-top">
                         <div class="project-header">
                             <h3 class="project-name">
-                                KIMBEE: Speech Therapy for Children
+                                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener noreferrer" class="paper-title-link">KIMBEE: Speech Therapy for Children</a>
                             </h3>
-                            <span class="venue-badge venue-uw">UW CSE '15</span>
+                            <div class="card-badges">
+                                <span class="venue-badge venue-uw">UW CSE '15</span>
+                                <button type="button" class="bibtex-btn" data-paper="kimbee" aria-haspopup="dialog" aria-label="BibTeX citation for KIMBEE">
+                                    <svg class="bibtex-icon" viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                                    BibTeX
+                                </button>
+                            </div>
                         </div>
                         <div class="paper-authors">
                             <span class="author-self">Ryan Drapeau</span>, Nicolas Huynh, Aaron Nech
@@ -2406,16 +2751,22 @@
                             A mobile acoustic speech therapy system providing children with real-time phonological feedback and articulation game mechanics, while streaming phoneme accuracy telemetry to speech-language pathologists.
                         </div>
                     </div>
-                </a>
+                </div>
 
                 <!-- 5. Contributing During the Commute -->
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener noreferrer" class="research-card fade-in" data-paper="commute">
+                <div class="research-card fade-in" data-paper="commute">
                     <div class="project-top">
                         <div class="project-header">
                             <h3 class="project-name">
-                                Contributing During the Commute
+                                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener noreferrer" class="paper-title-link">Contributing During the Commute</a>
                             </h3>
-                            <span class="venue-badge venue-uw">UW CSE '15</span>
+                            <div class="card-badges">
+                                <span class="venue-badge venue-uw">UW CSE '15</span>
+                                <button type="button" class="bibtex-btn" data-paper="commute" aria-haspopup="dialog" aria-label="BibTeX citation for Contributing During the Commute">
+                                    <svg class="bibtex-icon" viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                                    BibTeX
+                                </button>
+                            </div>
                         </div>
                         <div class="paper-authors">
                             Caitlin Bonnar, Meg Campbell, <span class="author-self">Ryan Drapeau</span>, Cynthia L. Bennett, Alan Borning
@@ -2424,11 +2775,38 @@
                             An empirical study within the OneBusAway mobile transit platform investigating prosocial volunteer dynamics when transit riders crowdsource bus stop accessibility attributes (shelters, seating, sidewalk ramps).
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
     </main>
 </div>
+
+    <!-- BibTeX Citation Modal Dialog -->
+    <dialog id="bibtex-dialog" class="bibtex-dialog" aria-labelledby="bibtex-dialog-title">
+        <div class="bibtex-dialog-content">
+            <div class="bibtex-dialog-header">
+                <div class="bibtex-header-left">
+                    <span class="bibtex-dialog-badge">BibTeX</span>
+                    <h3 id="bibtex-dialog-title" class="bibtex-dialog-title">Citation Entry</h3>
+                </div>
+                <button type="button" class="bibtex-dialog-close" id="bibtex-close-btn" aria-label="Close dialog">&times;</button>
+            </div>
+            <p id="bibtex-paper-title" class="bibtex-paper-title"></p>
+            <div class="bibtex-code-container">
+                <pre class="bibtex-pre"><code id="bibtex-code-text" class="bibtex-code"></code></pre>
+            </div>
+            <div class="bibtex-dialog-footer">
+                <a id="bibtex-scholar-link" href="#" target="_blank" rel="noopener noreferrer" class="bibtex-scholar-link">
+                    Open in Google Scholar &rarr;
+                </a>
+                <button type="button" id="bibtex-copy-btn" class="bibtex-copy-btn">
+                    <svg class="copy-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span id="bibtex-copy-text">Copy BibTeX</span>
+                </button>
+            </div>
+        </div>
+    </dialog>
+
     <script>
         // Fetch build dates from each project's build-info.json and sort them dynamically
         const projects = ['fi_sim', 'org_planning', 'connections', 'stitch_by_number', 'photo_stacker', 'rowing_performance'];
@@ -3501,10 +3879,186 @@
             });
         }
 
-        // Initialize projects filter, visualizers, tab navigation, and flag Easter egg immediately
+        // --- 1-Click BibTeX Citation Modal ---
+        const BIBTEX_DATA = {
+            microtalk: {
+                title: "Microtalk: Argumentation in Crowdsourcing",
+                scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:9yKSN-GCB0IC",
+                bibtex: `@inproceedings{drapeau2016microtalk,
+  title={Microtalk: Using Argumentation to Improve Crowdsourcing Accuracy},
+  author={Drapeau, Ryan and Chilton, Lydia B. and Bragg, Jonathan and Weld, Daniel S.},
+  booktitle={Proceedings of the Fourth AAAI Conference on Human Computation and Crowdsourcing (HCOMP '16)},
+  pages={32--41},
+  year={2016}
+}`
+            },
+            tactile_graphics: {
+                title: "Tactile Graphics with a Voice",
+                scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:u-x6o8ySG0sC",
+                bibtex: `@article{baker2016tactile,
+  title={Tactile Graphics with a Voice: Using a Smartphone to Access Tactile Diagrams},
+  author={Baker, Catherine M. and Milne, Lauren R. and Drapeau, Ryan and Scofield, Jeffrey and Bennett, Cynthia L. and Ladner, Richard E.},
+  journal={ACM Transactions on Accessible Computing (TACCESS)},
+  volume={8},
+  number={1},
+  pages={1--25},
+  year={2016},
+  publisher={ACM}
+}`
+            },
+            multiple_guesses: {
+                title: "The Wisdom of Multiple Guesses",
+                scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:d1gkVwhDpl0C",
+                bibtex: `@inproceedings{ugander2015wisdom,
+  title={The Wisdom of Multiple Guesses},
+  author={Ugander, Johan and Drapeau, Ryan and Guestrin, Carlos},
+  booktitle={Proceedings of the Sixteenth ACM Conference on Economics and Computation (EC '15)},
+  pages={583--600},
+  year={2015},
+  publisher={ACM}
+}`
+            },
+            kimbee: {
+                title: "KIMBEE: Speech Therapy for Children",
+                scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:qjMakFHDy7sC",
+                bibtex: `@techreport{drapeau2015kimbee,
+  title={KIMBEE: A Mobile Acoustic Speech Therapy System for Children},
+  author={Drapeau, Ryan and Huynh, Nicolas and Nech, Aaron},
+  institution={University of Washington, Department of Computer Science \\& Engineering},
+  number={UW-CSE-15-06-01},
+  year={2015}
+}`
+            },
+            commute: {
+                title: "Contributing During the Commute",
+                scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:UeHWp8X0CEIC",
+                bibtex: `@techreport{bonnar2015contributing,
+  title={Contributing During the Commute: A Mobile Crowdsourcing Approach for Transit Accessibility},
+  author={Bonnar, Caitlin and Campbell, Meg and Drapeau, Ryan and Bennett, Cynthia L. and Borning, Alan},
+  institution={University of Washington, Department of Computer Science \\& Engineering},
+  number={UW-CSE-15-06-02},
+  year={2015}
+}`
+            }
+        };
+
+        function initBibtexModal() {
+            const dialog = document.getElementById('bibtex-dialog');
+            const closeBtn = document.getElementById('bibtex-close-btn');
+            const copyBtn = document.getElementById('bibtex-copy-btn');
+            const copyText = document.getElementById('bibtex-copy-text');
+            const codeEl = document.getElementById('bibtex-code-text');
+            const titleEl = document.getElementById('bibtex-paper-title');
+            const scholarLink = document.getElementById('bibtex-scholar-link');
+
+            if (!dialog || !copyBtn || !codeEl) return;
+
+            let currentBibtex = '';
+            let copyTimeout = null;
+            let lastActiveElement = null;
+
+            function openModal(paperKey, triggerEl = null) {
+                const data = BIBTEX_DATA[paperKey];
+                if (!data) return;
+
+                lastActiveElement = triggerEl || document.activeElement;
+                currentBibtex = data.bibtex;
+                codeEl.textContent = data.bibtex;
+                if (titleEl) titleEl.textContent = data.title;
+                if (scholarLink) scholarLink.href = data.scholarUrl;
+
+                copyBtn.classList.remove('copied');
+                copyText.textContent = 'Copy BibTeX';
+
+                if (typeof dialog.showModal === 'function') {
+                    dialog.showModal();
+                } else {
+                    dialog.setAttribute('open', '');
+                }
+
+                // Focus copy button for rapid 1-click keyboard copy workflow
+                copyBtn.focus();
+            }
+
+            function closeModal() {
+                if (typeof dialog.close === 'function') {
+                    dialog.close();
+                } else {
+                    dialog.removeAttribute('open');
+                }
+                if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+                    lastActiveElement.focus();
+                }
+            }
+
+            async function copyBibtex() {
+                if (!currentBibtex) return;
+
+                try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        await navigator.clipboard.writeText(currentBibtex);
+                    } else {
+                        const textarea = document.createElement('textarea');
+                        textarea.value = currentBibtex;
+                        textarea.style.position = 'fixed';
+                        textarea.style.opacity = '0';
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textarea);
+                    }
+
+                    copyBtn.classList.add('copied');
+                    copyText.textContent = 'Copied! ✓';
+                    clearTimeout(copyTimeout);
+                    copyTimeout = setTimeout(() => {
+                        copyBtn.classList.remove('copied');
+                        copyText.textContent = 'Copy BibTeX';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy BibTeX to clipboard:', err);
+                }
+            }
+
+            document.querySelectorAll('.bibtex-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const paperKey = btn.getAttribute('data-paper');
+                    openModal(paperKey, btn);
+                });
+            });
+
+            copyBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                copyBibtex();
+            });
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    closeModal();
+                });
+            }
+
+            dialog.addEventListener('click', (e) => {
+                if (e.target === dialog) {
+                    closeModal();
+                }
+            });
+
+            dialog.addEventListener('cancel', () => {
+                if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+                    setTimeout(() => lastActiveElement.focus(), 0);
+                }
+            });
+        }
+
+        // Initialize projects filter, visualizers, tab navigation, flag Easter egg, and BibTeX modal
         applyFilter('live');
         initTabNavigation();
         initDrapeauFlagHover();
+        initBibtexModal();
         initProjectVisualizers();
         loadAndSortProjects();
     </script>
