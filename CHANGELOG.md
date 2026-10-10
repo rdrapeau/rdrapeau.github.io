@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-09] - Mobile Polish: Apple Touch Icon Support
+
+### Added
+- **Mobile iOS Apple Touch Icon (`<link rel="apple-touch-icon">`)**:
+  - Added `<link rel="apple-touch-icon" href="./drapeau.jpg">` to both `index.html` and `404.html`.
+  - Enables high-resolution icon rendering when saving the website to an iOS / iPadOS Home Screen or Safari bookmarks.
+- **Automated Verification**:
+  - Added unit/integrity test in `test/html-structure.test.mjs` and `test/404.test.mjs` verifying presence of `apple-touch-icon` and file existence on disk.
+  - Added Playwright E2E tests in `e2e/accessibility-responsive.spec.mjs` and `e2e/404.spec.mjs` asserting HTTP 200 delivery and correct link attributes.
+
 ## [2026-10-09] - Custom 404 Error Page (`404.html`)
 
 ### Added
