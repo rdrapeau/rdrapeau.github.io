@@ -399,6 +399,55 @@ describe('Document & HTML Structure Integrity', () => {
                 'Must include fallback concealment for sandboxed frames'
             );
         });
+
+        it('tightens Content-Security-Policy by disallowing external font origins and restricting font-src to self', () => {
+            const cspMatch = /<meta\s+http-equiv=["']Content-Security-Policy["']\s+content="([^"]+)"/i.exec(html);
+            assert.ok(cspMatch, 'Must include Content-Security-Policy meta tag');
+            const csp = cspMatch[1];
+            assert.doesNotMatch(csp, /fonts\.googleapis\.com/, 'CSP must not contain fonts.googleapis.com');
+            assert.doesNotMatch(csp, /fonts\.gstatic\.com/, 'CSP must not contain fonts.gstatic.com');
+            assert.match(csp, /font-src\s+'self'(\s+data:)?/, 'CSP font-src must be restricted to self');
+        });
+
+        it('self-hosts Inter and JetBrains Mono fonts locally with valid WOFF2 files and preloads', () => {
+            // Must not contain external Google Fonts stylesheet links
+            assert.doesNotMatch(html, /<link[^>]+href=["']https:\/\/fonts\.googleapis\.com/i, 'Must not link to fonts.googleapis.com');
+            assert.doesNotMatch(html, /<link[^>]+href=["']https:\/\/fonts\.gstatic\.com/i, 'Must not link to fonts.gstatic.com');
+
+            // Must preload primary latin subsets using relative paths
+            assert.match(
+                html,
+                /<link\s+rel=["']preload["']\s+href=["']\.\/assets\/fonts\/inter-latin\.woff2["']\s+as=["']font["']\s+type=["']font\/woff2["']\s+crossorigin/i,
+                'Must preload inter-latin.woff2'
+            );
+            assert.match(
+                html,
+                /<link\s+rel=["']preload["']\s+href=["']\.\/assets\/fonts\/jetbrains-mono-latin\.woff2["']\s+as=["']font["']\s+type=["']font\/woff2["']\s+crossorigin/i,
+                'Must preload jetbrains-mono-latin.woff2'
+            );
+
+            // Verify local font files exist on disk with valid WOFF2 magic numbers (wOF2 = 0x774F4632)
+            const expectedFonts = [
+                'inter-latin.woff2',
+                'inter-latin-ext.woff2',
+                'jetbrains-mono-latin.woff2',
+                'jetbrains-mono-latin-ext.woff2',
+                'jetbrains-mono-italic-latin.woff2'
+            ];
+
+            for (const fontFile of expectedFonts) {
+                const fontPath = path.join(ROOT_DIR, 'assets', 'fonts', fontFile);
+                assert.ok(fs.existsSync(fontPath), `Font file ${fontFile} must exist on disk`);
+                const stat = fs.statSync(fontPath);
+                assert.ok(stat.size > 10000, `Font file ${fontFile} must be non-trivial (>10KB)`);
+
+                const buffer = Buffer.alloc(4);
+                const fd = fs.openSync(fontPath, 'r');
+                fs.readSync(fd, buffer, 0, 4, 0);
+                fs.closeSync(fd);
+                assert.equal(buffer.toString('utf8'), 'wOF2', `Font file ${fontFile} must have WOFF2 header magic`);
+            }
+        });
     });
 
     describe('Modern Web Standards & Searchability', () => {
