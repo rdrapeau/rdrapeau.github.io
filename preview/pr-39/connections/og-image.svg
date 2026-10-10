@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1a1a2e"/>
+  
+  <!-- 4x4 grid of tiles -->
+  <g transform="translate(100, 140)">
+    <!-- Yellow tiles row -->
+    <rect x="0" y="0" width="90" height="90" rx="8" fill="#f9df6d"/>
+    <rect x="100" y="0" width="90" height="90" rx="8" fill="#f9df6d"/>
+    <rect x="200" y="0" width="90" height="90" rx="8" fill="#f9df6d"/>
+    <rect x="300" y="0" width="90" height="90" rx="8" fill="#f9df6d"/>
+    <!-- Green tiles row -->
+    <rect x="0" y="100" width="90" height="90" rx="8" fill="#a0c35a"/>
+    <rect x="100" y="100" width="90" height="90" rx="8" fill="#a0c35a"/>
+    <rect x="200" y="100" width="90" height="90" rx="8" fill="#a0c35a"/>
+    <rect x="300" y="100" width="90" height="90" rx="8" fill="#a0c35a"/>
+    <!-- Blue tiles row -->
+    <rect x="0" y="200" width="90" height="90" rx="8" fill="#b4c7e7"/>
+    <rect x="100" y="200" width="90" height="90" rx="8" fill="#b4c7e7"/>
+    <rect x="200" y="200" width="90" height="90" rx="8" fill="#b4c7e7"/>
+    <rect x="300" y="200" width="90" height="90" rx="8" fill="#b4c7e7"/>
+    <!-- Purple tiles row -->
+    <rect x="0" y="300" width="90" height="90" rx="8" fill="#ba81c5"/>
+    <rect x="100" y="300" width="90" height="90" rx="8" fill="#ba81c5"/>
+    <rect x="200" y="300" width="90" height="90" rx="8" fill="#ba81c5"/>
+    <rect x="300" y="300" width="90" height="90" rx="8" fill="#ba81c5"/>
+  </g>
+  
+  <!-- Title text -->
+  <text x="750" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="600" fill="white" text-anchor="middle">Connections</text>
+  <text x="750" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="32" fill="white" opacity="0.9" text-anchor="middle">A wedding word puzzle game</text>
+  <text x="750" y="520" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="white" opacity="0.7" text-anchor="middle">rdrapeau.github.io/connections</text>
+</svg>
