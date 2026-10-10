@@ -220,5 +220,34 @@ test.describe('Responsive Layout & Accessibility', () => {
         expect(response.status()).toBe(200);
         expect(response.headers()['content-type']).toContain('image/png');
     });
+
+    test('declares restrictive Permissions-Policy disabling camera, microphone, geolocation, and tracking', async ({ page }) => {
+        await page.goto('/');
+        const permissionsMeta = page.locator('meta[http-equiv="Permissions-Policy"]');
+        await expect(permissionsMeta).toHaveCount(1);
+        const policy = await permissionsMeta.getAttribute('content');
+        expect(policy).toContain('camera=()');
+        expect(policy).toContain('microphone=()');
+        expect(policy).toContain('geolocation=()');
+        expect(policy).toContain('browsing-topics=()');
+    });
+
+    test('executes anti-clickjacking defense when embedded in a framed context', async ({ page }) => {
+        // Test that when loaded normally (top level), content is visible
+        await page.goto('/');
+        const isVisible = await page.evaluate(() => document.documentElement.style.display !== 'none');
+        expect(isVisible).toBe(true);
+
+        // Test frame guard behavior when embedded in an iframe with sandbox blocking top navigation
+        await page.setContent('<iframe id="test-frame" sandbox="allow-scripts" src="/"></iframe>');
+        const frame = page.frameLocator('#test-frame');
+        await frame.locator('body').waitFor({ state: 'attached' });
+
+        // Under sandbox without allow-top-navigation, accessing top.location throws and conceals the DOM
+        const frameConcealed = await frame.locator('html').evaluate((el) => {
+            return el.style.display === 'none';
+        });
+        expect(frameConcealed).toBe(true);
+    });
 });
 
