@@ -26,11 +26,11 @@ describe('Custom 404 Page Integrity (404.html)', () => {
         assert.ok(html.includes("base-uri 'self'"), 'CSP missing base-uri self');
     });
 
-    it('all internal src and href attributes must start with ./ or #', () => {
+    it('all internal src and href attributes must use root-absolute paths (/) or # to resolve at arbitrary URL depths', () => {
         const srcAttributes = getAllAttributes(html, 'src');
         for (const { value, tag } of srcAttributes) {
             if (value.startsWith('http://') || value.startsWith('https://') || value.startsWith('data:')) continue;
-            assert.ok(value.startsWith('./'), `Non-relative src in 404.html: ${value} in <${tag}>`);
+            assert.ok(value.startsWith('/'), `404 asset src must start with root "/" to prevent nested URL resolution errors: ${value} in <${tag}>`);
         }
 
         const hrefAttributes = getAllAttributes(html, 'href');
@@ -41,7 +41,7 @@ describe('Custom 404 Page Integrity (404.html)', () => {
                 value.startsWith('mailto:') ||
                 value.startsWith('#')
             ) continue;
-            assert.ok(value.startsWith('./'), `Non-relative href in 404.html: ${value} in <${tag}>`);
+            assert.ok(value.startsWith('/'), `404 href must start with root "/" to prevent nested URL resolution errors: ${value} in <${tag}>`);
         }
     });
 
@@ -60,8 +60,8 @@ describe('Custom 404 Page Integrity (404.html)', () => {
                 value.startsWith('data:')
             ) continue;
 
-            const cleanPath = value.replace(/^\.\//, '').split('?')[0].split('#')[0];
-            if (!cleanPath) continue; // href="./" points to root directory itself
+            const cleanPath = value.replace(/^\//, '').split('?')[0].split('#')[0];
+            if (!cleanPath) continue; // href="/" points to root directory itself
             const localPath = path.join(ROOT_DIR, cleanPath);
             assert.ok(fs.existsSync(localPath), `File referenced in 404.html does not exist: ${value} -> ${localPath}`);
         }
@@ -75,9 +75,9 @@ describe('Custom 404 Page Integrity (404.html)', () => {
         assert.ok(html.includes('aria-label="Quick links"'), 'Missing aria-label on quick links nav');
     });
 
-    it('preloads and self-hosts Inter and JetBrains Mono fonts', () => {
-        assert.ok(html.includes('./assets/fonts/inter-latin.woff2'), 'Missing Inter font reference');
-        assert.ok(html.includes('./assets/fonts/jetbrains-mono-latin.woff2'), 'Missing JetBrains Mono font reference');
+    it('preloads and self-hosts Inter and JetBrains Mono fonts from domain root', () => {
+        assert.ok(html.includes('/assets/fonts/inter-latin.woff2'), 'Missing root Inter font reference');
+        assert.ok(html.includes('/assets/fonts/jetbrains-mono-latin.woff2'), 'Missing root JetBrains Mono font reference');
         assert.ok(html.includes('rel="preload"'), 'Missing font preload link');
     });
 
@@ -88,6 +88,6 @@ describe('Custom 404 Page Integrity (404.html)', () => {
     });
 
     it('links valid apple-touch-icon for mobile iOS browsers', () => {
-        assert.ok(html.includes('<link rel="apple-touch-icon" href="./drapeau.jpg">'), 'Missing apple-touch-icon link in 404.html');
+        assert.ok(html.includes('<link rel="apple-touch-icon" href="/drapeau.jpg">'), 'Missing apple-touch-icon link in 404.html');
     });
 });

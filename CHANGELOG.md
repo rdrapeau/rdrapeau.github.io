@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-09] - Fix: 404 Page Root Asset Paths & Dynamic Nested Route Resolution
+
+### Fixed
+- **Root-Absolute Asset Paths in `404.html`**:
+  - Converted relative `./` paths for `/drapeau.jpg`, `/assets/fonts/inter-latin.woff2`, and `/assets/fonts/jetbrains-mono-latin.woff2` to domain-root paths (`/`).
+  - Eliminates font download failures (`status=2147746065`) and broken avatar images when GitHub Pages serves `404.html` for arbitrary nested URLs (e.g. `/preview/...` or `/nested/missing-page`).
+  - Added client script to dynamically preserve and adapt return links to the active preview PR base when triggered in an ephemeral staging environment.
+- **Local Dev Server & Testing**:
+  - Updated `scripts/serve.mjs` to serve `404.html` on missing routes, mirroring GitHub Pages server behavior locally.
+  - Added Playwright test in `e2e/404.spec.mjs` verifying nested 404 route rendering and zero failed network requests.
+
 ## [2026-10-09] - Mobile Polish: Apple Touch Icon Support
 
 ### Added
