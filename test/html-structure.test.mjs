@@ -354,6 +354,51 @@ describe('Document & HTML Structure Integrity', () => {
                 'Inactive Research tab button must initially have tabindex="-1"'
             );
         });
+
+        it('declares restrictive Permissions-Policy disabling camera, microphone, geolocation, and tracking', () => {
+            assert.match(
+                html,
+                /<meta\s+http-equiv=["']Permissions-Policy["']\s+content=["'][^"']*camera=\(\)[^"']*["']/i,
+                'Must declare Permissions-Policy disabling camera'
+            );
+            assert.match(
+                html,
+                /<meta\s+http-equiv=["']Permissions-Policy["']\s+content=["'][^"']*microphone=\(\)[^"']*["']/i,
+                'Must declare Permissions-Policy disabling microphone'
+            );
+            assert.match(
+                html,
+                /<meta\s+http-equiv=["']Permissions-Policy["']\s+content=["'][^"']*geolocation=\(\)[^"']*["']/i,
+                'Must declare Permissions-Policy disabling geolocation'
+            );
+            assert.match(
+                html,
+                /<meta\s+http-equiv=["']Permissions-Policy["']\s+content=["'][^"']*browsing-topics=\(\)[^"']*["']/i,
+                'Must declare Permissions-Policy disabling browsing-topics tracking'
+            );
+        });
+
+        it('includes anti-clickjacking frame-busting defense script in document head', () => {
+            const headMatch = /<head>([\s\S]*?)<\/head>/i.exec(html);
+            assert.ok(headMatch, 'Must contain <head>');
+            const headContent = headMatch[1];
+
+            assert.match(
+                headContent,
+                /window\.top\s*!==\s*window\.self/,
+                'Must include top !== self frame check'
+            );
+            assert.match(
+                headContent,
+                /window\.top\.location\.href\s*=\s*window\.self\.location\.href/,
+                'Must include breakout top location redirect'
+            );
+            assert.match(
+                headContent,
+                /document\.documentElement\.style\.display\s*=\s*['"]none['"]/,
+                'Must include fallback concealment for sandboxed frames'
+            );
+        });
     });
 
     describe('Modern Web Standards & Searchability', () => {
