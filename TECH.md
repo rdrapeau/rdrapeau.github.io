@@ -24,6 +24,10 @@ This is a static GitHub Pages site hosting personal project showcases, mapped to
 - **Security Hardening (Permissions-Policy & Anti-Clickjacking Frameguard)**:
   - **Permissions-Policy**: Explicitly denies sensitive hardware and tracking browser capabilities via `<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), display-capture=(), browsing-topics=(), interest-cohort=()">`.
   - **Frame-Busting Clickjacking Defense**: Embedded early in `<head>` to detect frame embedding (`window.top !== window.self`). Automatically breaks out of frames by redirecting `window.top.location` or suppresses rendering with `document.documentElement.style.display = 'none'` when sandboxed, preventing clickjacking and UI redressing attacks without requiring server-side HTTP headers.
+- **Self-Hosted Typography & Zero-External-Origins CSP**:
+  - **Self-Hosted WOFF2 Fonts**: Main site serves vendored variable WOFF2 fonts from `./assets/fonts/` for **Inter** (weights 100–900, Latin & Latin-Ext) and **JetBrains Mono** (weights 100–800, Latin & Latin-Ext, plus Italic). Eliminates external network round-trips to Google Fonts.
+  - **Font Preloading**: Preloads primary Latin subsets (`./assets/fonts/inter-latin.woff2` and `./assets/fonts/jetbrains-mono-latin.woff2`) for zero render-blocking FOIT/CLS.
+  - **Tightened Content Security Policy**: Eliminates `fonts.googleapis.com` and `fonts.gstatic.com` from `style-src`, `connect-src`, and `font-src`, locking font delivery strictly down to `'self' data:`.
 - **Accessibility & Inclusive Design (WCAG 2.1 & 2.2 Level AA)**:
   - **Skip-to-Content Link**: Keyboard focusable `.skip-link` immediately inside `<body>` targeting `<main id="main-content">`.
   - **Landmarks & WAI-ARIA**: Tab navigation enclosed in `<nav class="site-tabs-nav" aria-label="Portfolio Sections">`; portfolio panels enclosed in `<main id="main-content">`; filter bar declares `role="toolbar"` and dynamic `aria-pressed` states.

@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-09] - Self-Hosted Fonts & Zero-External-Origins CSP Hardening
+
+### Added
+- **Self-Hosted Variable WOFF2 Typography (`assets/fonts/`)**:
+  - Vendored optimized variable WOFF2 font files for **Inter** (`inter-latin.woff2`, `inter-latin-ext.woff2`, weights 100–900) and **JetBrains Mono** (`jetbrains-mono-latin.woff2`, `jetbrains-mono-latin-ext.woff2`, `jetbrains-mono-italic-latin.woff2`, weights 100–800).
+  - Defined local `@font-face` blocks with path-relative URLs (`./assets/fonts/...`) and explicit unicode-range mappings.
+  - Added high-priority font preloading (`<link rel="preload" as="font" type="font/woff2" crossorigin>`) for `inter-latin.woff2` and `jetbrains-mono-latin.woff2` to eliminate layout shift (CLS) and FOIT.
+- **Zero Third-Party Origins & CSP Hardening**:
+  - Removed all external connections to Google Fonts (`fonts.googleapis.com` and `fonts.gstatic.com`).
+  - Tightened `Content-Security-Policy` by removing `https://fonts.googleapis.com` from `style-src` and `connect-src`, and locking `font-src` strictly down to `'self' data:`.
+  - Ensures zero external network requests or IP leakage to third parties during site visitation.
+- **Automated Verification**:
+  - Added unit/integrity tests in `test/html-structure.test.mjs` verifying CSP font restrictions, WOFF2 file presence/magic bytes on disk, and preload link attributes.
+  - Added E2E browser test in `e2e/accessibility-responsive.spec.mjs` asserting zero network requests to Google Fonts CDNs and successful HTTP 200 delivery of self-hosted font assets.
+
 ## [2026-10-09] - Security Hardening: Permissions-Policy & Anti-Clickjacking Frameguard
 
 ### Added
