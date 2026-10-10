@@ -84,6 +84,16 @@ test.describe('Responsive Layout & Accessibility', () => {
         expect(response.headers()['content-type']).toContain('image/jpeg');
     });
 
+    test('declares and verifies modern WebP headshot loads successfully with HTTP 200', async ({ page, request }) => {
+        await page.goto('/');
+        const webpSource = page.locator('picture source[type="image/webp"]');
+        await expect(webpSource).toHaveAttribute('srcset', './drapeau.webp');
+
+        const response = await request.get('/drapeau.webp');
+        expect(response.status()).toBe(200);
+        expect(response.headers()['content-type']).toContain('image/webp');
+    });
+
     test('verifies llms.txt and llms-full.txt load successfully with HTTP 200', async ({ request }) => {
         const llmsResp = await request.get('/llms.txt');
         expect(llmsResp.status()).toBe(200);

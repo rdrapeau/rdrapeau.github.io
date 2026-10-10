@@ -530,6 +530,18 @@ describe('Document & HTML Structure Integrity', () => {
             );
         });
 
+        it('headshot utilizes responsive picture element with modern WebP source and fallback JPEG', () => {
+            assert.match(
+                html,
+                /<picture[^>]*?>\s*<source\s+srcset=["']\.\/drapeau\.webp["']\s+type=["']image\/webp["']>\s*<img\s+[^>]*?class=["'][^"']*headshot[^"']*["']/i,
+                'Headshot must use <picture> with ./drapeau.webp source and <img> fallback'
+            );
+            const webpPath = path.join(ROOT_DIR, 'drapeau.webp');
+            assert.ok(fs.existsSync(webpPath), 'drapeau.webp must exist on disk');
+            const buffer = fs.readFileSync(webpPath);
+            assert.ok(buffer.slice(0, 4).toString() === 'RIFF' && buffer.slice(8, 12).toString() === 'WEBP', 'drapeau.webp must be valid WebP format');
+        });
+
         it('CSS includes text-wrap: balance and text-wrap: pretty', () => {
             assert.match(html, /text-wrap:\s*balance/i, 'CSS must include text-wrap: balance');
             assert.match(html, /text-wrap:\s*pretty/i, 'CSS must include text-wrap: pretty');

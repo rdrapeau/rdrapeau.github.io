@@ -9,6 +9,12 @@
   "theme_color": "#fafafa",
   "icons": [
     {
+      "src": "./drapeau.webp",
+      "sizes": "192x192 512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
       "src": "./drapeau.jpg",
       "sizes": "192x192 512x512",
       "type": "image/jpeg",

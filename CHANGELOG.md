@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-09] - Performance: WebP Headshot Optimization & Lossless PNG Compression
+
+### Added
+- **Modern Responsive WebP Avatar (`drapeau.webp`)**:
+  - Generated an optimized WebP version of the author headshot (`drapeau.webp`, 34.6 KB, 67.7% payload reduction from the 107 KB JPEG).
+  - Wrapped hero headshot images in `index.html` and `404.html` with responsive `<picture>` elements serving WebP with graceful fallback to `drapeau.jpg`.
+  - Added WebP icon specification to `manifest.webmanifest`.
+- **Lossless Open Graph Asset Compression**:
+  - Losslessly compressed `og-image.png` from 245.4 KB to 218.2 KB, shaving 27 KB off social crawler payloads.
+- **Automated Verification**:
+  - Added unit/integrity assertions in `test/html-structure.test.mjs` and `test/404.test.mjs` verifying picture element structure, file existence, and WebP magic bytes (`RIFF...WEBP`).
+  - Added Playwright E2E assertions in `e2e/accessibility-responsive.spec.mjs` and `e2e/404.spec.mjs` verifying HTTP 200 delivery and content-type header `image/webp`.
+
 ## [2026-10-09] - Fix: 404 Page Root Asset Paths & Dynamic Nested Route Resolution
 
 ### Fixed

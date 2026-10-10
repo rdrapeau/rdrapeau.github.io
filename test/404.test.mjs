@@ -75,6 +75,11 @@ describe('Custom 404 Page Integrity (404.html)', () => {
         assert.ok(html.includes('aria-label="Quick links"'), 'Missing aria-label on quick links nav');
     });
 
+    it('headshot utilizes responsive picture element with modern WebP source and fallback JPEG', () => {
+        assert.ok(html.includes('<source srcset="/drapeau.webp" type="image/webp">'), 'Missing /drapeau.webp source in 404.html');
+        assert.ok(html.includes('<img src="/drapeau.jpg" alt="Ryan Drapeau" class="headshot" width="68" height="68">'), 'Missing headshot fallback img in 404.html');
+    });
+
     it('preloads and self-hosts Inter and JetBrains Mono fonts from domain root', () => {
         assert.ok(html.includes('/assets/fonts/inter-latin.woff2'), 'Missing root Inter font reference');
         assert.ok(html.includes('/assets/fonts/jetbrains-mono-latin.woff2'), 'Missing root JetBrains Mono font reference');
