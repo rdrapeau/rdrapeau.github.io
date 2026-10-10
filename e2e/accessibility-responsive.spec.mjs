@@ -74,6 +74,16 @@ test.describe('Responsive Layout & Accessibility', () => {
         expect(json.display).toBe('standalone');
     });
 
+    test('declares and verifies apple-touch-icon loads successfully with HTTP 200', async ({ page, request }) => {
+        await page.goto('/');
+        const appleIconLink = page.locator('link[rel="apple-touch-icon"]');
+        await expect(appleIconLink).toHaveAttribute('href', './drapeau.jpg');
+
+        const response = await request.get('/drapeau.jpg');
+        expect(response.status()).toBe(200);
+        expect(response.headers()['content-type']).toContain('image/jpeg');
+    });
+
     test('verifies llms.txt and llms-full.txt load successfully with HTTP 200', async ({ request }) => {
         const llmsResp = await request.get('/llms.txt');
         expect(llmsResp.status()).toBe(200);

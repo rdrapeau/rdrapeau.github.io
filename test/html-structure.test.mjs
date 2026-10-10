@@ -485,6 +485,16 @@ describe('Document & HTML Structure Integrity', () => {
             assert.ok(manifestContent.icons.length > 0);
         });
 
+        it('links valid apple-touch-icon for mobile iOS browsers', () => {
+            assert.match(
+                html,
+                /<link\s+rel=["']apple-touch-icon["']\s+href=["']\.\/drapeau\.jpg["']/i,
+                'Must link ./drapeau.jpg as apple-touch-icon'
+            );
+            const iconPath = path.join(ROOT_DIR, 'drapeau.jpg');
+            assert.ok(fs.existsSync(iconPath), 'apple-touch-icon image file must exist on disk');
+        });
+
         it('includes Speculation Rules API script with valid JSON prefetch rules', () => {
             const specMatch = html.match(/<script\s+type=["']speculationrules["']>([\s\S]*?)<\/script>/i);
             assert.ok(specMatch, 'Expected <script type="speculationrules"> block in HTML');

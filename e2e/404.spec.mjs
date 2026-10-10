@@ -62,6 +62,11 @@ test.describe('Custom 404 Page (404.html)', () => {
         expect(darkBg).toBe('rgb(15, 17, 23)'); // #0f1117
     });
 
+    test('declares apple-touch-icon linking to drapeau.jpg', async ({ page }) => {
+        const appleIcon = page.locator('link[rel="apple-touch-icon"]');
+        await expect(appleIcon).toHaveAttribute('href', './drapeau.jpg');
+    });
+
     test('emits zero page errors or uncaught exceptions', async ({ page }) => {
         const errors = [];
         page.on('pageerror', (err) => errors.push(err));
