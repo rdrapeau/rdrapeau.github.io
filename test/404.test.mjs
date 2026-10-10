@@ -86,4 +86,8 @@ describe('Custom 404 Page Integrity (404.html)', () => {
         assert.ok(html.includes('prefers-color-scheme: dark'), 'Missing dark mode media query');
         assert.ok(html.includes('media="(prefers-color-scheme: dark)" content="#0f1117"'), 'Missing dark theme-color meta tag');
     });
+
+    it('links valid apple-touch-icon for mobile iOS browsers', () => {
+        assert.ok(html.includes('<link rel="apple-touch-icon" href="./drapeau.jpg">'), 'Missing apple-touch-icon link in 404.html');
+    });
 });
