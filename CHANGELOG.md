@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-09] - Fix: Eliminate Projects Tab Switching Canvas Subpixel Resize Jitter
+
+### Fixed
+- **Canvas Subpixel Dimension Flapping & Resize Jitter**:
+  - Diagnosed and resolved layout and visual jitter occurring when navigating back to the Projects tab (`#section-projects`) from Writing, Patents, or Research.
+  - Replaced unstable `canvas.getBoundingClientRect()` measurements in `setupCanvas()` with integer layout container dimensions (`wrapper.clientWidth` / `wrapper.clientHeight`), preventing fractional subpixel fluctuations during View Transition animations.
+  - Eliminated fallback dimensions (`300x110`) when visualizers are hidden (`width <= 0 || height <= 0`), ensuring canvases do not corrupt their bitmap buffers or trigger buffer reallocation while inactive.
+  - Removed redundant `requestAnimationFrame(() => window.dispatchEvent(new Event('resize')))` in `applyTabDOMUpdate()`, avoiding unnecessary canvas redraw passes during active tab cross-fade animations.
+  - Implemented dirty tracking (`projectsDirty`) and `projects:activated` event listener so visualizers only redraw after the View Transition has completely finished, and only if the viewport actually resized or the color scheme changed while the tab was hidden.
+- **Automated Verification**:
+  - Added Playwright end-to-end regression test in `e2e/interactive-visualizers.spec.mjs` verifying canvas bitmap dimensions (`width` / `height` attributes) remain identical and jitter-free before and after cycling through all tabs.
+
 ## [2026-10-09] - Self-Hosted Fonts & Zero-External-Origins CSP Hardening
 
 ### Added

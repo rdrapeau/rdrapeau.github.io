@@ -47,4 +47,54 @@ test.describe('Interactive Visualizer Widgets', () => {
         // Verify canvas is still intact and rendering
         await expect(rowingCanvas).toBeVisible();
     });
+
+    test('preserves canvas buffer dimensions without jitter when switching tabs back and forth', async ({ page }) => {
+        await page.goto('/');
+
+        // Wait for visible project visualizers to initialize
+        const visibleCanvases = page.locator('#section-projects .project:not(.hidden) canvas.preview-canvas');
+        await expect(visibleCanvases.first()).toBeVisible();
+
+        // Capture initial canvas bitmap width/height attributes
+        const initialDims = await page.evaluate(() => {
+            const canvases = Array.from(document.querySelectorAll('#section-projects .project:not(.hidden) canvas.preview-canvas'));
+            return canvases.map(c => ({
+                id: c.id,
+                width: c.width,
+                height: c.height
+            }));
+        });
+
+        expect(initialDims.length).toBeGreaterThan(0);
+        for (const dim of initialDims) {
+            expect(dim.width).toBeGreaterThan(0);
+            expect(dim.height).toBeGreaterThan(0);
+        }
+
+        // Switch to Writing
+        await page.click('#tab-writing');
+        await expect(page.locator('#section-writing')).toBeVisible();
+
+        // Switch to Patents
+        await page.click('#tab-patents');
+        await expect(page.locator('#section-patents')).toBeVisible();
+
+        // Switch back to Projects
+        await page.click('#tab-projects');
+        await expect(page.locator('#section-projects')).toBeVisible();
+
+        // Wait for View Transitions animation and settlement
+        await page.waitForTimeout(300);
+
+        const afterDims = await page.evaluate(() => {
+            const canvases = Array.from(document.querySelectorAll('#section-projects .project:not(.hidden) canvas.preview-canvas'));
+            return canvases.map(c => ({
+                id: c.id,
+                width: c.width,
+                height: c.height
+            }));
+        });
+
+        expect(afterDims).toEqual(initialDims);
+    });
 });

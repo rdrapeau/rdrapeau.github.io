@@ -3045,12 +3045,17 @@
 
             function setupCanvas(canvas) {
                 if (!canvas) return null;
-                const rect = canvas.getBoundingClientRect();
+                const wrapper = canvas.parentElement;
+                // If the element is hidden (e.g. inactive tab), its layout box has 0 width or height.
+                // Do not recalculate or reset canvas dimensions while hidden, as that would corrupt
+                // the canvas bitmap buffer with fallback sizes and trigger visual jitter when switching back.
+                const width = wrapper ? wrapper.clientWidth : 0;
+                const height = wrapper ? wrapper.clientHeight : 0;
+                if (width <= 0 || height <= 0) return null;
+
                 const dpr = window.devicePixelRatio || 1;
-                const width = Math.floor(rect.width || canvas.parentElement.clientWidth || 300);
-                const height = Math.floor(rect.height || canvas.parentElement.clientHeight || 110);
-                const targetW = Math.floor(width * dpr);
-                const targetH = Math.floor(height * dpr);
+                const targetW = Math.round(width * dpr);
+                const targetH = Math.round(height * dpr);
                 if (canvas.width !== targetW || canvas.height !== targetH) {
                     canvas.width = targetW;
                     canvas.height = targetH;
@@ -3786,13 +3791,35 @@
                 initRowingPerformance()
             ];
 
-            window.addEventListener('resize', () => {
+            const secProjects = document.getElementById('section-projects');
+            let projectsDirty = secProjects ? secProjects.hasAttribute('hidden') : false;
+
+            function redrawVisualizers() {
                 vizList.forEach(v => v && v.draw && v.draw());
+            }
+
+            window.addEventListener('resize', () => {
+                if (secProjects && secProjects.hasAttribute('hidden')) {
+                    projectsDirty = true;
+                    return;
+                }
+                redrawVisualizers();
+            });
+
+            window.addEventListener('projects:activated', () => {
+                if (projectsDirty) {
+                    projectsDirty = false;
+                    redrawVisualizers();
+                }
             });
 
             if (window.matchMedia) {
                 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-                    vizList.forEach(v => v && v.draw && v.draw());
+                    if (secProjects && secProjects.hasAttribute('hidden')) {
+                        projectsDirty = true;
+                        return;
+                    }
+                    redrawVisualizers();
                 });
             }
         }
@@ -3840,21 +3867,30 @@
                     if (updateHash) {
                         history.replaceState(null, '', `#${tabId}`);
                     }
+                }
 
-                    requestAnimationFrame(() => {
-                        window.dispatchEvent(new Event('resize'));
-                    });
+                function onTabActivated() {
+                    if (tabId === 'projects') {
+                        window.dispatchEvent(new CustomEvent('projects:activated'));
+                    }
                 }
 
                 const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                 if (!document.startViewTransition || prefersReducedMotion || skipTransition) {
                     applyTabDOMUpdate();
+                    onTabActivated();
                 } else {
                     const vt = document.startViewTransition(() => {
                         applyTabDOMUpdate();
                     });
                     if (vt && vt.finished) {
-                        vt.finished.catch(() => {});
+                        vt.finished.then(() => {
+                            onTabActivated();
+                        }).catch(() => {
+                            onTabActivated();
+                        });
+                    } else {
+                        onTabActivated();
                     }
                 }
             }
