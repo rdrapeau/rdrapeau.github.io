@@ -37,16 +37,16 @@ test.describe('Custom 404 Page (404.html)', () => {
     });
 
     test('quick links navigate to home section tabs', async ({ page }) => {
-        const projectsLink = page.locator('.quick-nav a[href="./#projects"]');
+        const projectsLink = page.locator('.quick-nav a[href="/#projects"]');
         await expect(projectsLink).toBeVisible();
 
-        const writingLink = page.locator('.quick-nav a[href="./#writing"]');
+        const writingLink = page.locator('.quick-nav a[href="/#writing"]');
         await expect(writingLink).toBeVisible();
 
-        const patentsLink = page.locator('.quick-nav a[href="./#patents"]');
+        const patentsLink = page.locator('.quick-nav a[href="/#patents"]');
         await expect(patentsLink).toBeVisible();
 
-        const researchLink = page.locator('.quick-nav a[href="./#research"]');
+        const researchLink = page.locator('.quick-nav a[href="/#research"]');
         await expect(researchLink).toBeVisible();
     });
 
@@ -62,9 +62,26 @@ test.describe('Custom 404 Page (404.html)', () => {
         expect(darkBg).toBe('rgb(15, 17, 23)'); // #0f1117
     });
 
-    test('declares apple-touch-icon linking to drapeau.jpg', async ({ page }) => {
+    test('declares apple-touch-icon linking to /drapeau.jpg', async ({ page }) => {
         const appleIcon = page.locator('link[rel="apple-touch-icon"]');
-        await expect(appleIcon).toHaveAttribute('href', './drapeau.jpg');
+        await expect(appleIcon).toHaveAttribute('href', '/drapeau.jpg');
+    });
+
+    test('renders correctly at arbitrary nested URL paths without asset errors', async ({ page }) => {
+        const failedRequests = [];
+        page.on('requestfailed', (req) => failedRequests.push(req.url()));
+
+        // Simulate deeply nested 404 URL (e.g. /preview/unknown/route)
+        await page.goto('/preview/nested/unknown/page');
+        await expect(page.locator('h1')).toHaveText('Page Not Found');
+
+        const headshot = page.locator('img.headshot');
+        await expect(headshot).toBeVisible();
+        const naturalWidth = await headshot.evaluate((img) => img.naturalWidth);
+        expect(naturalWidth).toBeGreaterThan(0);
+
+        // Verify zero failed font or image requests
+        expect(failedRequests).toEqual([]);
     });
 
     test('emits zero page errors or uncaught exceptions', async ({ page }) => {

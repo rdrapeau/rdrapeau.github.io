@@ -18,20 +18,20 @@
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fafafa">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f1117">
 
-    <link rel="icon" type="image/jpeg" href="./drapeau.jpg">
-    <link rel="apple-touch-icon" href="./drapeau.jpg">
-    <!-- Self-Hosted Fonts: Preload Primary Latin Subsets -->
-    <link rel="preload" href="./assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="./assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" type="image/jpeg" href="/drapeau.jpg">
+    <link rel="apple-touch-icon" href="/drapeau.jpg">
+    <!-- Self-Hosted Fonts: Preload Primary Latin Subsets from Domain Root -->
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
-        /* Self-Hosted Fonts: Inter & JetBrains Mono Variable WOFF2 */
+        /* Self-Hosted Fonts: Inter & JetBrains Mono Variable WOFF2 from Domain Root */
         @font-face {
             font-family: 'Inter';
             font-style: normal;
             font-weight: 100 900;
             font-display: swap;
-            src: url('./assets/fonts/inter-latin.woff2') format('woff2');
+            src: url('/assets/fonts/inter-latin.woff2') format('woff2');
             unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
         }
 
@@ -40,7 +40,7 @@
             font-style: normal;
             font-weight: 100 800;
             font-display: swap;
-            src: url('./assets/fonts/jetbrains-mono-latin.woff2') format('woff2');
+            src: url('/assets/fonts/jetbrains-mono-latin.woff2') format('woff2');
             unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
         }
 
@@ -247,8 +247,8 @@
 <body>
     <main class="container" id="main-content">
         <div class="avatar-wrap">
-            <a href="./" title="Ryan Drapeau Homepage">
-                <img src="./drapeau.jpg" alt="Ryan Drapeau" class="headshot" width="68" height="68">
+            <a href="/" title="Ryan Drapeau Homepage">
+                <img src="/drapeau.jpg" alt="Ryan Drapeau" class="headshot" width="68" height="68">
             </a>
         </div>
 
@@ -264,7 +264,7 @@
         </p>
 
         <div class="actions">
-            <a href="./" class="btn-home">
+            <a href="/" class="btn-home">
                 <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                 </svg>
@@ -273,13 +273,25 @@
 
             <nav class="quick-nav" aria-label="Quick links">
                 <span class="quick-nav-label">Explore:</span>
-                <a href="./#projects">Projects</a>
-                <a href="./#writing">Writing</a>
-                <a href="./#patents">Patents</a>
-                <a href="./#research">Research</a>
+                <a href="/#projects">Projects</a>
+                <a href="/#writing">Writing</a>
+                <a href="/#patents">Patents</a>
+                <a href="/#research">Research</a>
             </nav>
         </div>
     </main>
+
+    <script>
+        // Adapt navigation links dynamically if served from an ephemeral PR preview subdirectory
+        try {
+            const prefixMatch = window.location.pathname.match(/^(\/preview\/pr-\d+\/)/);
+            if (prefixMatch) {
+                const prBase = prefixMatch[1];
+                document.querySelectorAll('a[href="/"]').forEach(el => el.setAttribute('href', prBase));
+                document.querySelectorAll('a[href^="/#"]').forEach(el => el.setAttribute('href', prBase + el.getAttribute('href').substring(1)));
+            }
+        } catch (_) {}
+    </script>
 </body>
 
 </html>
