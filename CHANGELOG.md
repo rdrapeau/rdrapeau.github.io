@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-09] - Security Hardening: Permissions-Policy & Anti-Clickjacking Frameguard
+
+### Added
+- **Permissions-Policy Meta Tag**:
+  - Implemented a restrictive `<meta http-equiv="Permissions-Policy">` declaration explicitly denying sensitive and unneeded browser APIs: camera (`camera=()`), microphone (`microphone=()`), geolocation (`geolocation=()`), payment (`payment=()`), WebUSB (`usb=()`), screen capture (`display-capture=()`), and privacy-invasive ad tracking (`browsing-topics=()`, `interest-cohort=()`).
+- **Anti-Clickjacking / Frame-Busting Defense Guard**:
+  - Added an early defensive inline `<script>` in `<head>` that breaks out of unauthorized iframe embeds (`window.top.location.href = window.self.location.href`) if embedded cross-origin or within hostile frames.
+  - Implemented fallback concealment (`document.documentElement.style.display = 'none'`) if embedding frames use the HTML5 `sandbox` attribute without `allow-top-navigation`, concealing page contents and preventing UI redressing / clickjacking attacks.
+- **Automated Verification**:
+  - Added structural integrity assertions in `test/html-structure.test.mjs` verifying the presence and syntax of `Permissions-Policy` and the frameguard script in `<head>`.
+  - Added end-to-end tests in `e2e/accessibility-responsive.spec.mjs` validating meta tag presence and sandboxed iframe DOM concealment behavior.
+
 ## [2026-10-08] - Custom 1200×630 OpenGraph Social Preview Card (og:image)
 
 ### Added

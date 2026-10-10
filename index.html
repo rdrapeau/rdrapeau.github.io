@@ -12,6 +12,18 @@
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://drapeau.dev https://rdrapeau.github.io; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' data: blob: https://fonts.googleapis.com; worker-src 'self' blob:; child-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), display-capture=(), browsing-topics=(), interest-cohort=()">
+
+    <!-- Anti-Clickjacking / Frame-Busting Defense -->
+    <script>
+        try {
+            if (window.top !== window.self) {
+                window.top.location.href = window.self.location.href;
+            }
+        } catch (e) {
+            document.documentElement.style.display = 'none';
+        }
+    </script>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
