@@ -249,5 +249,33 @@ test.describe('Responsive Layout & Accessibility', () => {
         });
         expect(frameConcealed).toBe(true);
     });
+
+    test('self-hosts fonts locally with zero network requests to third-party font CDNs', async ({ page }) => {
+        const thirdPartyFontRequests = [];
+        page.on('request', (request) => {
+            const url = request.url();
+            if (url.includes('fonts.googleapis.com') || url.includes('fonts.gstatic.com')) {
+                thirdPartyFontRequests.push(url);
+            }
+        });
+
+        const fontResponses = [];
+        page.on('response', (response) => {
+            if (response.url().includes('/assets/fonts/')) {
+                fontResponses.push({ url: response.url(), status: response.status() });
+            }
+        });
+
+        await page.goto('/');
+
+        // Confirm zero requests to Google Fonts CDNs
+        expect(thirdPartyFontRequests).toEqual([]);
+
+        // Confirm self-hosted font assets were successfully fetched with HTTP 200
+        expect(fontResponses.length).toBeGreaterThan(0);
+        for (const fontRes of fontResponses) {
+            expect(fontRes.status).toBe(200);
+        }
+    });
 });
 
