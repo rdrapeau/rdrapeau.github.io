@@ -1,0 +1,24 @@
+{
+  "name": "Ryan Drapeau — Portfolio & Projects",
+  "short_name": "Ryan Drapeau",
+  "description": "Personal project portfolio of Ryan Drapeau, Principal ML Engineer at Stripe. Featuring client-side simulation engines, sports analytics, and creative tools.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa",
+  "icons": [
+    {
+      "src": "./drapeau.webp",
+      "sizes": "192x192 512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "./drapeau.jpg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

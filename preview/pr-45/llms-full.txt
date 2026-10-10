@@ -1,0 +1,182 @@
+# Ryan Drapeau - Full Portfolio & Research Dossier
+
+> Principal Machine Learning Engineer at Stripe. Builder of privacy-first financial tools, distributed ML systems, and accessible technologies. M.S. & B.S. in Computer Science from the University of Washington.
+
+This document contains the unabridged text, descriptions, technical abstracts, and metadata for all projects, technical writings, patents, and academic publications authored or co-authored by Ryan Drapeau.
+
+---
+
+## 1. Personal & Professional Profile
+
+- **Name**: Ryan Drapeau
+- **Current Position**: Principal Machine Learning Engineer at Stripe
+- **Tenure**: 2016 – Present
+- **Education**: 
+  - Master of Science (M.S.) in Computer Science, University of Washington
+  - Bachelor of Science (B.S.) in Computer Science, University of Washington
+- **Primary Expertise**: Distributed Machine Learning Systems, Real-Time Fraud Detection, Privacy-Preserving Computing, Graph Data Systems, Multimodal Human-Computer Interaction & Accessibility.
+- **Profiles & Links**:
+  - Website: https://drapeau.dev
+  - LinkedIn: https://www.linkedin.com/in/rdrapeau/
+  - Google Scholar: https://scholar.google.com/citations?user=yghhd38AAAAJ
+  - GitHub: https://github.com/rdrapeau
+
+---
+
+## 2. Personal Projects & Simulations
+
+### Financial Simulator (FiSim)
+- **URL**: https://drapeau.dev/fi_sim/
+- **Repository**: Built with Vue 3, Vite, and HTML5 Canvas.
+- **Status**: In Active Development.
+- **Description**: A privacy-first, client-side personal finance projection planner featuring localized U.S., UK, and Canadian tax engines, Required Minimum Distributions (RMDs), and Monte Carlo historical sequence-of-returns stress testing.
+- **Technical Capabilities**: All calculations run 100% locally in the browser with zero server data leakage. Includes tax bracket phaseouts, capital gains treatments, inflation adjustments, and visual fan-chart quantile probability bands.
+
+### Org Planning Simulator
+- **URL**: https://drapeau.dev/org_planning/
+- **Repository**: Built with React, Vite, and HTML5 Canvas.
+- **Status**: Live.
+- **Description**: An interactive Monte Carlo simulation tool designed for engineering leaders and executives to model organizational growth, attrition, promotions, and hiring trajectories.
+- **Technical Capabilities**: Simulates promotion cycles across engineering levels (L1 through L7+), variable attrition distributions, backfill lead times, and budget constraints across hundreds of randomized organizational iterations.
+
+### Connections
+- **URL**: https://drapeau.dev/connections/
+- **Repository**: Built with Next.js static export.
+- **Status**: Live.
+- **Description**: A custom wedding-themed word association puzzle game featuring 4x4 group matching mechanics.
+- **Technical Capabilities**: Players find groups of four interconnected items sharing common threads, featuring progressive difficulty tiers, celebratory animations, and shareable solve grids.
+
+### Stitch by Number
+- **URL**: https://drapeau.dev/stitch_by_number/
+- **Repository**: Built with React, TypeScript, and Vite.
+- **Status**: Live.
+- **Description**: An image-to-needlepoint design converter that quantizes uploaded imagery into DMC embroidery floss color palettes with printable PDF pattern charts.
+- **Technical Capabilities**: Performs CIELAB color-space nearest-neighbor quantization against real-world thread swatches, generates interactive grid previews, and renders high-resolution vector PDF export charts.
+
+### Photo Stacker
+- **URL**: https://drapeau.dev/photo_stacker/
+- **Repository**: Built with React, TypeScript, and Vite.
+- **Status**: Live.
+- **Description**: A client-side HDR exposure fusion application running entirely in the browser.
+- **Technical Capabilities**: Implements the Mertens-Kautz-Van Reeth multi-scale exposure fusion algorithm using Laplacian pyramids to blend bracketed exposure photographs into natural HDR images without tone-mapping halo artifacts.
+
+### 1Password Extension
+- **URL**: https://github.com/rdrapeau/1password_extension
+- **Repository**: WebExtension Manifest V3 / Firefox extension.
+- **Status**: Live.
+- **Description**: A native desktop Firefox browser extension for streamlined credential autofill, keyboard shortcut quick-access, and secure vault interaction.
+
+### Rowing Performance
+- **URL**: https://drapeau.dev/rowing_performance/
+- **Repository**: Built with React, Tailwind, and Vite.
+- **Status**: Live.
+- **Description**: A Concept2 rowing ergometer analytics and performance modeling dashboard providing power curves, stroke telemetry analysis, and VO₂ max estimations.
+- **Technical Capabilities**: Parses Concept2 workout logs, renders interactive stroke force curves with pointer scrubbing, and computes physiological efficiency metrics.
+
+---
+
+## 3. Technical Writing & Architecture Articles
+
+### Stripe Sigma: SQL for Payments
+- **URL**: https://stripe.com/blog/sigma-sql-for-payments
+- **Summary**: Details the design and architecture of Stripe Sigma, an interactive distributed SQL environment allowing millions of businesses to query payment telemetry directly. Explains schema virtualization, Presto query federation, and low-latency financial ledger views.
+
+### Building Large-Scale Machine Learning Platforms at Stripe
+- **URL**: https://stripe.com/blog/building-machine-learning-infrastructure-at-stripe
+- **Summary**: Explores Stripe's unified machine learning training and inference infrastructure. Discusses point-in-time correct feature generation, streaming event buses, model evaluation guards, and multi-region deployment mechanisms operating under strict sub-100ms latency SLAs.
+
+### Scaling Stripe's Identity Graph
+- **URL**: https://stripe.com/blog/scaling-stripes-identity-graph
+- **Summary**: Examines graph database engineering used to link accounts, hardware tokens, cards, and digital fingerprints across global financial networks, exposing coordinated fraud rings that evade single-account heuristics.
+
+### Machine Learning-Powered Fraud Detection
+- **URL**: https://stripe.com/blog/radar-fraud-detection-architecture
+- **Summary**: Deep dive into Stripe Radar's adaptive risk scoring architecture, detailing real-time feature engines, merchant-specific behavioral adjustments, and automated 3D Secure dynamic friction routing.
+
+---
+
+## 4. Patents & Inventions
+
+1. **Systems and methods for identity graph based fraud detection**
+   - Patent: US 11,704,673 (Granted July 18, 2023)
+   - Link: https://patents.google.com/patent/US11704673B1/en
+   - Abstract: Methods and systems for constructing and traversing multi-entity identity graphs linking transactions across merchants, devices, and financial instruments to uncover distributed fraud rings attempting identity obfuscation.
+
+2. **Systems and methods for secure identifiers for electronic transactions**
+   - Patent Application: US 2025/0125969 A1 (Published April 17, 2025)
+   - Link: https://patents.google.com/patent/US20250125969A1/en
+   - Abstract: Secure client-side and network-level cryptographic fingerprinting techniques enabling reliable repeat visitor verification and transaction safety without exposing raw consumer hardware identifiers.
+
+3. **Systems and methods for hard deletion of data across systems**
+   - Patent Application: US 2024/0126908 A1 (Published April 18, 2024)
+   - Link: https://patents.google.com/patent/US20240126908A1/en
+   - Abstract: Distributed consensus mechanisms ensuring verified, irreversible, and auditable hard deletion of personal user records across disparate transactional databases, message queues, and analytical data warehouses.
+
+4. **Systems and methods for privacy preserving fraud detection during electronic transactions**
+   - Patent Application: US 2025/0117802 A1 (Published April 10, 2025)
+   - Link: https://patents.google.com/patent/US20250117802A1/en
+   - Abstract: Privacy-preserving cryptographic protocols and homomorphic feature evaluation allowing payment risk assessment across shared transaction signals without exposing raw personally identifiable information (PII).
+
+5. **Merchant specific machine learning model for fraud detection**
+   - Patent Application: US 2025/0165978 A1 (Published May 22, 2025)
+   - Link: https://patents.google.com/patent/US20250165978A1/en
+   - Abstract: Automated transfer learning and meta-learning pipelines that train bespoke merchant-tailored machine learning models adapted to individual transaction volumes, return policies, and seasonal sales patterns.
+
+6. **Systems and methods for enhanced transaction authentication**
+   - Patent Application: US 2024/0112192 A1 (Published April 4, 2024)
+   - Link: https://patents.google.com/patent/US20240112192A1/en
+   - Abstract: Dynamic friction authentication routing that evaluates real-time risk scores to conditionally invoke two-factor or biometric verification only when transactions display anomalous risk patterns.
+
+7. **Systems and methods for smart remediation for transactions**
+   - Patent Application: US 2024/0152924 A1 (Published May 9, 2024)
+   - Link: https://patents.google.com/patent/US20240152924A1/en
+   - Abstract: Automated systems that detect post-transaction authorization anomalies, chargebacks, or network disputes and execute automated recovery remediation workflows across banking networks.
+
+8. **Fraud detection using real-time and batch features**
+   - Patent Application: US 2024/0161115 A1 (Published May 16, 2024)
+   - Link: https://patents.google.com/patent/US20240161115A1/en
+   - Abstract: Hybrid feature architectures that combine millisecond-latency streaming transaction signals with multi-terabyte historical batch aggregations to evaluate ML scoring models in sub-second payment gateways.
+
+9. **Systems and methods for machine learning feature generation**
+   - Patent Application: EP 4627492 A1 (Published October 8, 2025)
+   - Link: https://patents.google.com/patent/EP4627492A1/en
+   - Abstract: Automated feature engineering engines that discover high-entropy combinatorial signal patterns across global transaction flows, continually generating new feature candidates to counter adversarial fraud shifts.
+
+10. **Machine learning model training and deployment pipeline**
+    - Patent Application: US 2024/0070484 A1 (Published February 29, 2024)
+    - Link: https://patents.google.com/patent/US20240070484A1/en
+    - Abstract: Continuous training, validation, canary testing, and deployment pipelines enabling zero-downtime hot-swapping of mission-critical AI risk scoring models at massive global transaction scale.
+
+---
+
+## 5. Academic Research & Publications
+
+1. **Microtalk: Argumentation in Crowdsourcing**
+   - Venue: AAAI Conference on Human Computation and Crowdsourcing (HCOMP '16)
+   - Authors: Ryan Drapeau, Lydia B. Chilton, Jonathan Bragg, Daniel S. Weld
+   - Link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:9yKSN-GCB0IC
+   - Abstract: Introduces a peer argumentation protocol (Assess -> Justify -> Reconsider) where crowd workers exchange structured rationales. Demonstrates that deliberation boosts individual and aggregate classification accuracy by +20% on challenging natural language understanding and image categorization tasks lacking ground truth.
+
+2. **Tactile Graphics with a Voice**
+   - Venue: ACM Transactions on Accessible Computing (TACCESS '16)
+   - Authors: Catherine M. Baker, Lauren R. Milne, Ryan Drapeau, Jeffrey Scofield, Cynthia L. Bennett, Richard E. Ladner
+   - Link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:u-x6o8ySG0sC
+   - Abstract: Presents a multimodal accessibility system combining physical relief graphics with smartphone camera QR scanning and finger-pointing detection to provide localized spoken-audio descriptions for complex STEM tactile diagrams for blind and low-vision learners.
+
+3. **The Wisdom of Multiple Guesses**
+   - Venue: ACM Conference on Economics and Computation (EC '15)
+   - Authors: Johan Ugander, Ryan Drapeau, Carlos Guestrin
+   - Link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:d1gkVwhDpl0C
+   - Abstract: Investigates crowdsourced prediction mechanisms that elicit multiple ranked guesses per individual rather than single estimates. Shows that eliciting within-person distributions captures personal uncertainty, producing certainty-weighted aggregations that consistently outperform standard crowd averages.
+
+4. **KIMBEE: Speech Therapy for Children**
+   - Venue: University of Washington Technical Report (UW CSE '15)
+   - Authors: Ryan Drapeau, Nicolas Huynh, Aaron Nech
+   - Link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:qjMakFHDy7sC
+   - Abstract: A mobile acoustic speech therapy system providing children with real-time phonological feedback through articulation game mechanics while streaming phoneme accuracy telemetry to speech-language pathologists.
+
+5. **Contributing During the Commute**
+   - Venue: University of Washington Technical Report (UW CSE '15)
+   - Authors: Caitlin Bonnar, Meg Campbell, Ryan Drapeau, Cynthia L. Bennett, Alan Borning
+   - Link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yghhd38AAAAJ&citation_for_view=yghhd38AAAAJ:UeHWp8X0CEIC
+   - Abstract: An empirical study within the OneBusAway mobile transit platform investigating prosocial volunteer dynamics when transit riders crowdsource bus stop physical accessibility attributes (curb ramps, shelters, seating).
