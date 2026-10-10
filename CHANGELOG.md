@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-09] - Custom 404 Error Page (`404.html`)
+
+### Added
+- **Minimal, Accessible Custom 404 Page (`404.html`)**:
+  - Implemented custom GitHub Pages 404 error page matching the site's dark/light aesthetic, typography (`Inter` & `JetBrains Mono`), and styling.
+  - Included status badge (`404 · NOT FOUND`), clean explanation, and prominent return link (`Return to drapeau.dev`) pointing to `./`.
+  - Added quick explore links to key site sections (`./#projects`, `./#writing`, `./#patents`, `./#research`).
+  - Added strict `Content-Security-Policy`, `Permissions-Policy`, `noindex, nofollow` robots tags, and self-hosted font preloads.
+- **Automated Verification**:
+  - Added structural integrity suite in `test/404.test.mjs` verifying file presence, path relativity, CSP headers, font preloads, and accessible landmark elements.
+  - Added Playwright end-to-end tests in `e2e/404.spec.mjs` verifying HTTP 200 delivery, image rendering, home navigation, quick links, and light/dark theme switching.
+
 ## [2026-10-09] - Self-Hosted Fonts & Zero-External-Origins CSP Hardening
 
 ### Added
