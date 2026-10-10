@@ -22,10 +22,17 @@ test.describe('Custom 404 Page (404.html)', () => {
         await expect(description).toBeVisible();
     });
 
-    test('verifies headshot image loads successfully with HTTP 200', async ({ page }) => {
+    test('verifies headshot image loads successfully with WebP picture source', async ({ page, request }) => {
         const headshot = page.locator('img.headshot');
         const naturalWidth = await headshot.evaluate((img) => img.naturalWidth);
         expect(naturalWidth).toBeGreaterThan(0);
+
+        const webpSource = page.locator('picture source[type="image/webp"]');
+        await expect(webpSource).toHaveAttribute('srcset', '/drapeau.webp');
+
+        const webpResp = await request.get('/drapeau.webp');
+        expect(webpResp.status()).toBe(200);
+        expect(webpResp.headers()['content-type']).toContain('image/webp');
     });
 
     test('clicking "Return to drapeau.dev" navigates back to home page', async ({ page }) => {
