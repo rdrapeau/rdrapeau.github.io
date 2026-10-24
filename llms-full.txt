@@ -77,21 +77,25 @@ This document contains the unabridged text, descriptions, technical abstracts, a
 
 ## 3. Technical Writing & Architecture Articles
 
-### Stripe Sigma: SQL for Payments
-- **URL**: https://stripe.com/blog/sigma-sql-for-payments
-- **Summary**: Details the design and architecture of Stripe Sigma, an interactive distributed SQL environment allowing millions of businesses to query payment telemetry directly. Explains schema virtualization, Presto query federation, and low-latency financial ledger views.
+### Scaling Radar: Fighting fraud with agent-assisted machine learning
+- **URL**: https://stripe.dev/blog/scaling-radar-fighting-fraud-with-agent-assisted-machine-learning
+- **Summary**: Details how Stripe expanded Shield's training dataset from 800 million to 11 billion transactions, cut epoch runtime by 80% to 4.8 hours via S3 streaming and PyTorch compilation, and created AI agent tooling to investigate missed fraud and automate experimentation — boosting recall by over 8%.
 
-### Building Large-Scale Machine Learning Platforms at Stripe
-- **URL**: https://stripe.com/blog/building-machine-learning-infrastructure-at-stripe
-- **Summary**: Explores Stripe's unified machine learning training and inference infrastructure. Discusses point-in-time correct feature generation, streaming event buses, model evaluation guards, and multi-region deployment mechanisms operating under strict sub-100ms latency SLAs.
+### How we built it: Stripe Radar
+- **URL**: https://stripe.dev/blog/how-we-built-it-stripe-radar
+- **Summary**: Explores the architectural decisions, feature pipelines, and engineering lessons learned over years of building and scaling Stripe Radar to score 1,000+ transaction signals in sub-100ms latency envelopes.
 
-### Scaling Stripe's Identity Graph
-- **URL**: https://stripe.com/blog/scaling-stripes-identity-graph
-- **Summary**: Examines graph database engineering used to link accounts, hardware tokens, cards, and digital fingerprints across global financial networks, exposing coordinated fraud rings that evade single-account heuristics.
+### Lessons Learned Building Stripe Radar
+- **URL**: https://www.youtube.com/watch?v=6kpnaaz_RZA
+- **Summary**: Technical deep-dive on real-time feature engineering, neural network architectures (ResNets), model explainability vs. performance trade-offs, and managing the ML feedback flywheel.
 
-### Machine Learning-Powered Fraud Detection
-- **URL**: https://stripe.com/blog/radar-fraud-detection-architecture
-- **Summary**: Deep dive into Stripe Radar's adaptive risk scoring architecture, detailing real-time feature engines, merchant-specific behavioral adjustments, and automated 3D Secure dynamic friction routing.
+### Ryan Drapeau: Battling Fraud with ML at Stripe
+- **URL**: https://thegradientpub.substack.com/p/ryan-drapeau-battling-fraud-with
+- **Summary**: An in-depth interview exploring Stripe's global machine learning fraud defense across millions of businesses, extreme class imbalance (<0.1% fraud), adversarial dynamics, and model training velocity.
+
+### Optimizing payments at scale: How Stripe applies AI across the payment lifecycle
+- **URL**: https://stripe.com/guides/optimizing-payments-at-scale
+- **Summary**: A comprehensive guide detailing how Stripe orchestrates adaptive AI models across pre-auth risk scoring, smart network routing, adaptive 3D Secure, and intelligent retry engines to unlock billions in revenue.
 
 ---
 
