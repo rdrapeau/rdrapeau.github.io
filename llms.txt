@@ -23,10 +23,11 @@ This file provides a structured, machine-readable overview of Ryan Drapeau's per
 - [Rowing Performance](https://drapeau.dev/rowing_performance/): A Concept2 rowing ergometer analytics and performance modeling dashboard providing power curves, stroke telemetry analysis, and VO₂ max estimations. Built with React, Tailwind, and Vite.
 
 ## Writing & Talks
-- [Stripe Sigma: SQL for Payments](https://stripe.com/blog/sigma-sql-for-payments): Technical deep dive into building Stripe's distributed SQL engine for instant financial analytics across billions of transactions.
-- [Building Large-Scale Machine Learning Platforms at Stripe](https://stripe.com/blog/building-machine-learning-infrastructure-at-stripe): Architectural overview of low-latency model evaluation, streaming feature extraction, and continuous model training pipelines.
-- [Scaling Stripe's Identity Graph](https://stripe.com/blog/scaling-stripes-identity-graph): Engineering distributed entity resolution graphs to link devices, accounts, and payment credentials to fight financial fraud.
-- [Machine Learning-Powered Fraud Detection](https://stripe.com/blog/radar-fraud-detection-architecture): Inside the architecture and decision scoring engines of Stripe Radar.
+- [Scaling Radar: Fighting fraud with agent-assisted machine learning](https://stripe.dev/blog/scaling-radar-fighting-fraud-with-agent-assisted-machine-learning): How Stripe scaled Shield's training dataset to 11 billion transactions and accelerated model development through rapid agent-assisted experimentation for Radar, improving recall by over 8%.
+- [How we built it: Stripe Radar](https://stripe.dev/blog/how-we-built-it-stripe-radar): Architectural decisions, feature pipelines, and engineering lessons learned over years of building and scaling Stripe Radar to score 1,000+ transaction signals in sub-100ms latency envelopes.
+- [Lessons Learned Building Stripe Radar](https://www.youtube.com/watch?v=6kpnaaz_RZA): Technical talk on real-time feature engineering, neural network architectures (ResNets), model explainability vs. performance trade-offs, and managing the ML feedback flywheel.
+- [Ryan Drapeau: Battling Fraud with ML at Stripe](https://thegradientpub.substack.com/p/ryan-drapeau-battling-fraud-with): In-depth interview exploring Stripe's global machine learning fraud defense across millions of businesses, extreme class imbalance, and model training velocity.
+- [Optimizing payments at scale: How Stripe applies AI across the payment lifecycle](https://stripe.com/guides/optimizing-payments-at-scale): Comprehensive guide detailing how Stripe orchestrates adaptive AI models across pre-auth risk scoring, smart network routing, adaptive 3D Secure, and intelligent retry engines.
 
 ## Patents & Inventions
 - [Systems and methods for identity graph based fraud detection](https://patents.google.com/patent/US11704673B1/en): US Patent 11,704,673 (Granted). Connects related accounts and devices into identity networks to catch fraudsters attempting to disguise their identity.

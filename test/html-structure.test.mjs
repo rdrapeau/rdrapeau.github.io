@@ -214,6 +214,38 @@ describe('Document & HTML Structure Integrity', () => {
         });
     });
 
+    describe('Writing & Talks Section Integrity', () => {
+        const writingSection = getSectionHtml(html, 'section-writing');
+
+        it('has exactly 5 writing cards in section-writing', () => {
+            const cards = getElementsByClass(writingSection, 'writing-card');
+            assert.equal(cards.length, 5, 'Expected 5 writing cards');
+        });
+
+        it('every writing card is an anchor opening in a new tab with security attributes and metadata', () => {
+            const cards = getElementsByClass(writingSection, 'writing-card');
+            assert.equal(cards.length, 5);
+
+            for (const card of cards) {
+                assert.equal(card.tagName.toLowerCase(), 'a', 'Writing card must be an <a> element');
+                assert.ok(card.attributes.includes('target="_blank"'), 'Writing card must open in new tab');
+                assert.ok(card.attributes.includes('rel="noopener noreferrer"'), 'Writing card must have rel="noopener noreferrer"');
+                assert.match(card.attributes, /data-article=["'][^"']+["']/, 'Writing card must specify data-article');
+                assert.match(card.attributes, /href=["']https?:\/\/[^"']+["']/, 'Writing card must have valid external http(s) URL');
+            }
+        });
+
+        it('includes the Scaling Radar blog post with correct URL, article key, and content details', () => {
+            const expectedUrl = 'https://stripe.dev/blog/scaling-radar-fighting-fraud-with-agent-assisted-machine-learning';
+            assert.ok(writingSection.includes(expectedUrl), 'Must link to Scaling Radar Stripe blog post');
+            assert.ok(writingSection.includes('data-article="scaling-radar-agents"'), 'Must define data-article="scaling-radar-agents"');
+            assert.match(writingSection, /Scaling Radar:\s*Fighting fraud with agent-assisted machine learning/i);
+            assert.match(writingSection, /Shield/i);
+            assert.match(writingSection, /11B transactions/i);
+            assert.match(writingSection, /recall by over 8%/i);
+        });
+    });
+
     describe('Accessibility & Security Standards', () => {
         it('all links opening in new windows have rel="noopener noreferrer"', () => {
             const targetBlankRegex = /<a\s+[^>]*?target=["']_blank["'][^>]*>/gi;

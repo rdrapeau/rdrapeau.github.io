@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-10-23] - Scaling Radar Machine Learning Article in Writing & Talks
+
+### Added
+- **New Writing Entry — Scaling Radar**:
+  - Added Stripe engineering blog post, [Scaling Radar: Fighting fraud with agent-assisted machine learning](https://stripe.dev/blog/scaling-radar-fighting-fraud-with-agent-assisted-machine-learning), co-authored with Sai Samant.
+  - Highlights scaling Shield's training dataset from 800M to 11B transactions, reducing epoch training time by 80% to 4.8 hours using S3 memory streaming and PyTorch compilation, and accelerating model exploration with AI agent tooling to achieve an 8%+ recall improvement.
+- **Navigation Badge Synchronization**:
+  - Incremented Writing tab badge count indicator from 4 to 5 (`#tab-writing`).
+- **Synchronized LLM Dossiers**:
+  - Updated `/llms.txt` and `/llms-full.txt` to include the new post and aligned all catalog links.
+- **Automated Verification**:
+  - Added structural tests in `test/html-structure.test.mjs` verifying writing card count, external links, and accessibility attributes.
+  - Added Playwright E2E coverage in `e2e/navigation.spec.mjs` confirming visibility and external navigation.
+
 ## [2026-10-09] - Performance: WebP Headshot Optimization & Lossless PNG Compression
 
 ### Added
