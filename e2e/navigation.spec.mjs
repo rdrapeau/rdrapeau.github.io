@@ -161,6 +161,23 @@ test.describe('Navigation & Tab Switching', () => {
         expect(page.url()).toContain('#patents');
     });
 
+    test('renders all 5 writing cards in Writing tab including the Scaling Radar blog post', async ({ page }) => {
+        await page.click('#tab-writing');
+        await expect(page.locator('#section-writing')).toBeVisible();
+
+        const cards = page.locator('#section-writing .writing-card');
+        await expect(cards).toHaveCount(5);
+
+        const scalingRadarCard = page.locator('#section-writing .writing-card[data-article="scaling-radar-agents"]');
+        await expect(scalingRadarCard).toBeVisible();
+        await expect(scalingRadarCard).toHaveAttribute(
+            'href',
+            'https://stripe.dev/blog/scaling-radar-fighting-fraud-with-agent-assisted-machine-learning'
+        );
+        await expect(scalingRadarCard.locator('.project-name')).toContainText('Scaling Radar: Fighting fraud with agent-assisted machine learning');
+        await expect(scalingRadarCard.locator('.project-description')).toContainText('11B transactions');
+    });
+
     test('includes Speculation Rules API script, manifest, and modern head attributes', async ({ page }) => {
         // Speculation Rules
         const specRulesScript = page.locator('script[type="speculationrules"]');
