@@ -47,4 +47,24 @@ test.describe('Interactive Visualizer Widgets', () => {
         // Verify canvas is still intact and rendering
         await expect(rowingCanvas).toBeVisible();
     });
+
+    test('supports mouse pointer scrubbing on the water radio spectrum canvas', async ({ page }) => {
+        await page.goto('/');
+        await page.click('.filter-btn[data-filter="in-dev"]');
+
+        const waterRadioCanvas = page.locator('#canvas-water_radio');
+        await expect(waterRadioCanvas).toBeVisible();
+
+        const box = await waterRadioCanvas.boundingBox();
+        expect(box).not.toBeNull();
+
+        await page.mouse.move(box.x + box.width * 0.3, box.y + box.height * 0.5);
+        await page.waitForTimeout(100);
+
+        await page.mouse.move(box.x + box.width * 0.75, box.y + box.height * 0.5);
+        await page.waitForTimeout(100);
+
+        const metricsText = await page.locator('#metrics-water_radio').textContent();
+        expect(metricsText).toMatch(/MHz · .* dB SNR/);
+    });
 });

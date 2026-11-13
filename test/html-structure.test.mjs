@@ -151,8 +151,8 @@ describe('Document & HTML Structure Integrity', () => {
     describe('Projects Filter Synchronization', () => {
         const projects = getElementsByClass(getSectionHtml(html, 'section-projects'), 'project');
 
-        it('total project count is 7', () => {
-            assert.equal(projects.length, 7, 'Expected exactly 7 projects');
+        it('total project count is 8', () => {
+            assert.equal(projects.length, 8, 'Expected exactly 8 projects');
         });
 
         it('count-all badge matches total projects count', () => {
