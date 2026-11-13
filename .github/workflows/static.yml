@@ -37,4 +37,4 @@ jobs:
           publish_dir: ./
           publish_branch: gh-pages
           keep_files: true
-          exclude_assets: '.github'
+          exclude_assets: '.github,.agents,AGENTS.md,README.md,TECH.md,CHANGELOG.md,test,e2e,scripts,package.json,package-lock.json,playwright.config.mjs,.gitignore'
