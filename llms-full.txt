@@ -76,7 +76,7 @@ This document contains the unabridged text, descriptions, technical abstracts, a
 ### Water Radio (RF Telemetry)
 - **URL**: https://github.com/rdrapeau/water_radio
 - **Repository**: Built with Python, `rtl_433`, and `rtlamr` on macOS.
-- **Status**: Live.
+- **Status**: In Active Development.
 - **Description**: RTL-SDR reverse engineering and telemetry capture suite for 902–928 MHz ISM municipal utility meter broadcasts.
 - **Technical Capabilities**: Automated multi-band protocol sweeps, CU8 I/Q phase demodulation, and real-time endpoint tracking across Neptune R900, Arad Dialog 3G, and Landis+Gyr Gridstream signals.
 
