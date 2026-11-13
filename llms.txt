@@ -21,6 +21,7 @@ This file provides a structured, machine-readable overview of Ryan Drapeau's per
 - [Photo Stacker](https://drapeau.dev/photo_stacker/): A client-side HDR exposure fusion application in the browser implementing Mertens-Kautz-Van Reeth multi-exposure fusion algorithms. Built with React, TypeScript, and Vite.
 - [1Password Extension](https://github.com/rdrapeau/1password_extension): A native desktop Firefox browser extension for streamlined credential autofill and shortcut access.
 - [Rowing Performance](https://drapeau.dev/rowing_performance/): A Concept2 rowing ergometer analytics and performance modeling dashboard providing power curves, stroke telemetry analysis, and VO₂ max estimations. Built with React, Tailwind, and Vite.
+- [Water Radio (RF Telemetry)](https://github.com/rdrapeau/water_radio): RTL-SDR reverse engineering and telemetry capture suite for 902–928 MHz ISM municipal utility meter broadcasts (Neptune R900, Arad Dialog 3G, Landis+Gyr Gridstream). Built with Python, `rtlamr`, and `rtl_433`.
 
 ## Writing & Talks
 - [Scaling Radar: Fighting fraud with agent-assisted machine learning](https://stripe.dev/blog/scaling-radar-fighting-fraud-with-agent-assisted-machine-learning): How Stripe scaled Shield's training dataset to 11 billion transactions and accelerated model development through rapid agent-assisted experimentation for Radar, improving recall by over 8%.
