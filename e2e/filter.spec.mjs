@@ -10,7 +10,7 @@ test.describe('Projects Filter Bar', () => {
         await expect(liveBtn).toHaveClass(/active/);
 
         const visibleProjects = page.locator('#section-projects .project:not(.hidden)');
-        await expect(visibleProjects).toHaveCount(5);
+        await expect(visibleProjects).toHaveCount(6);
 
         const hiddenProjects = page.locator('#section-projects .project.hidden');
         await expect(hiddenProjects).toHaveCount(2);
@@ -37,7 +37,7 @@ test.describe('Projects Filter Bar', () => {
         await expect(allBtn).toHaveClass(/active/);
 
         const visibleProjects = page.locator('#section-projects .project:not(.hidden)');
-        await expect(visibleProjects).toHaveCount(7);
+        await expect(visibleProjects).toHaveCount(8);
 
         const hiddenProjects = page.locator('#section-projects .project.hidden');
         await expect(hiddenProjects).toHaveCount(0);
@@ -48,9 +48,9 @@ test.describe('Projects Filter Bar', () => {
         await expect(page.locator('#section-projects .project:not(.hidden)')).toHaveCount(2);
 
         await page.click('.filter-btn[data-filter="live"]');
-        await expect(page.locator('#section-projects .project:not(.hidden)')).toHaveCount(5);
+        await expect(page.locator('#section-projects .project:not(.hidden)')).toHaveCount(6);
 
         await page.click('.filter-btn[data-filter="all"]');
-        await expect(page.locator('#section-projects .project:not(.hidden)')).toHaveCount(7);
+        await expect(page.locator('#section-projects .project:not(.hidden)')).toHaveCount(8);
     });
 });

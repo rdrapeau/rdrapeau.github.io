@@ -2254,7 +2254,7 @@
                             <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
                         </svg>
                         <span>Projects</span>
-                        <span class="tab-badge">7</span>
+                        <span class="tab-badge">8</span>
                     </button>
                     <button class="site-tab" id="tab-writing" role="tab" aria-selected="false" aria-controls="section-writing" data-tab="writing" tabindex="-1">
                         <svg class="tab-icon" viewBox="0 0 20 20" fill="currentColor">
@@ -2286,7 +2286,7 @@
                 <div class="filter-bar fade-in" role="toolbar" aria-label="Filter projects by status">
                     <button class="filter-btn active" data-filter="live" aria-pressed="true">
                         <span class="filter-dot filter-dot-live" aria-hidden="true"></span> Live Projects
-                        <span class="filter-count" id="count-live" aria-label="5 live projects">5</span>
+                        <span class="filter-count" id="count-live" aria-label="6 live projects">6</span>
                     </button>
                     <button class="filter-btn" data-filter="in-dev" aria-pressed="false">
                         <span class="filter-dot filter-dot-dev" aria-hidden="true"></span> In Development
@@ -2294,7 +2294,7 @@
                     </button>
                     <button class="filter-btn" data-filter="all" aria-pressed="false">
                         All
-                        <span class="filter-count" id="count-all" aria-label="7 total projects">7</span>
+                        <span class="filter-count" id="count-all" aria-label="8 total projects">8</span>
                     </button>
                 </div>
             <div class="projects">
@@ -2473,6 +2473,37 @@
                     </div>
                     <div class="project-footer">
                         <span class="project-date" data-project="rowing_performance">Last updated: --</span>
+                    </div>
+                </a>
+                <a href="https://github.com/rdrapeau/water_radio" class="project fade-in" data-status="live" target="_blank"
+                    rel="noopener noreferrer">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <h3 class="project-name">
+                                <svg class="project-favicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+                                    <rect width="48" height="48" rx="10" fill="#0ea5e9" />
+                                    <path d="M24 12c-5 7-9 11.5-9 16a9 9 0 0 0 18 0c0-4.5-4-9-9-16z" fill="#fff" opacity="0.95" />
+                                    <path d="M12 18a16 16 0 0 1 24 0" stroke="#bae6fd" stroke-width="2.5" stroke-linecap="round" />
+                                    <path d="M15.5 22a11 11 0 0 1 17 0" stroke="#bae6fd" stroke-width="2.5" stroke-linecap="round" />
+                                </svg>
+                                Water Radio (RF Telemetry)
+                            </h3>
+                            <span class="spotlight-badge">Featured</span>
+                        </div>
+                        <div class="project-description">RTL-SDR reverse engineering and telemetry capture suite for 902–928 MHz ISM municipal utility meter broadcasts (Neptune R900, Dialog 3G, Gridstream).</div>
+                        <div class="project-preview" data-preview="water_radio">
+                            <div class="preview-header">
+                                <span class="preview-engine-tag">915 MHz ISM & RTL-SDR</span>
+                                <span class="preview-metrics" id="metrics-water_radio">912.38 MHz · 34.4 dB SNR</span>
+                            </div>
+                            <div class="preview-canvas-wrapper">
+                                <canvas class="preview-canvas" id="canvas-water_radio" role="img" aria-label="915 MHz ISM band RF spectrum and utility packet burst preview"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-date">Last updated: Sep 2026</span>
+                        <span class="external-arrow">↗</span>
                     </div>
                 </a>
             </div>
@@ -2918,7 +2949,8 @@
         
         // Static timestamps for project links that do not have build-info.json
         const staticTimestamps = {
-            'https://github.com/rdrapeau/1password_extension': new Date('2026-02-01T00:00:00.000Z').toISOString()
+            'https://github.com/rdrapeau/1password_extension': new Date('2026-02-01T00:00:00.000Z').toISOString(),
+            'https://github.com/rdrapeau/water_radio': new Date('2026-09-29T00:00:00.000Z').toISOString()
         };
 
         function applyFilter(filter) {
@@ -3794,6 +3826,104 @@
                 return { draw };
             }
 
+            // 8. Water Radio: 915 MHz ISM RF Spectrum & Packet Bursts
+            function initWaterRadio() {
+                const canvas = document.getElementById('canvas-water_radio');
+                const metricsEl = document.getElementById('metrics-water_radio');
+                if (!canvas) return;
+
+                let scrubFreq = 912.38;
+
+                function draw() {
+                    const setup = setupCanvas(canvas);
+                    if (!setup) return;
+                    const { ctx, width, height } = setup;
+                    const dark = isDark();
+
+                    ctx.clearRect(0, 0, width, height);
+
+                    const padX = 14;
+                    const padY = 14;
+                    const chartW = width - padX * 2;
+                    const chartH = height - padY * 2 - 12;
+                    const minF = 910.0;
+                    const maxF = 918.0;
+
+                    // Baseline noise floor & spectral peaks (R900 @ 912.38, Gridstream @ 915.2, Dialog3G @ 916.1)
+                    const peaks = [
+                        { f: 912.38, amp: 0.88, label: 'R900', color: '#0ea5e9' },
+                        { f: 915.20, amp: 0.72, label: 'Grid', color: '#10b981' },
+                        { f: 916.10, amp: 0.94, label: 'D3G', color: '#6366f1' }
+                    ];
+
+                    ctx.beginPath();
+                    const bins = 96;
+                    for (let i = 0; i <= bins; i++) {
+                        const f = minF + (i / bins) * (maxF - minF);
+                        let val = 0.08 + Math.sin(i * 1.7) * 0.025 + Math.cos(i * 3.1) * 0.015;
+                        for (const p of peaks) {
+                            const d = (f - p.f) / 0.22;
+                            val += p.amp * Math.exp(-d * d);
+                        }
+                        val = Math.min(1, val);
+                        const x = padX + (i / bins) * chartW;
+                        const y = padY + chartH - val * chartH;
+                        if (i === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.strokeStyle = dark ? '#38bdf8' : '#0284c7';
+                    ctx.lineWidth = 1.8;
+                    ctx.stroke();
+
+                    // Fill under spectrum
+                    ctx.lineTo(padX + chartW, padY + chartH);
+                    ctx.lineTo(padX, padY + chartH);
+                    ctx.closePath();
+                    ctx.fillStyle = dark ? 'rgba(56, 189, 248, 0.12)' : 'rgba(2, 132, 199, 0.1)';
+                    ctx.fill();
+
+                    // Peak markers
+                    ctx.font = '9px "JetBrains Mono", monospace';
+                    peaks.forEach((p) => {
+                        const px = padX + ((p.f - minF) / (maxF - minF)) * chartW;
+                        ctx.fillStyle = p.color;
+                        ctx.fillText(p.label, px - 10, padY + chartH + 11);
+                    });
+
+                    // Scrubber cursor
+                    const sx = padX + ((scrubFreq - minF) / (maxF - minF)) * chartW;
+                    ctx.strokeStyle = dark ? 'rgba(255,255,255,0.4)' : 'rgba(15,23,42,0.35)';
+                    ctx.lineWidth = 1;
+                    ctx.setLineDash([2, 2]);
+                    ctx.beginPath();
+                    ctx.moveTo(sx, padY);
+                    ctx.lineTo(sx, padY + chartH);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+
+                    if (metricsEl) {
+                        let snr = 6.2;
+                        for (const p of peaks) {
+                            const d = (scrubFreq - p.f) / 0.25;
+                            snr = Math.max(snr, 6.2 + p.amp * 30.0 * Math.exp(-d * d));
+                        }
+                        metricsEl.textContent = `${scrubFreq.toFixed(2)} MHz · ${snr.toFixed(1)} dB SNR`;
+                    }
+                }
+
+                const wrapper = canvas.parentElement;
+                wrapper.addEventListener('click', (e) => e.preventDefault());
+                wrapper.addEventListener('pointermove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                    scrubFreq = 910.0 + ratio * 8.0;
+                    draw();
+                });
+
+                draw();
+                return { draw };
+            }
+
             const vizList = [
                 initFiSim(),
                 initOrgPlanning(),
@@ -3801,7 +3931,8 @@
                 initStitchByNumber(),
                 initPhotoStacker(),
                 init1Password(),
-                initRowingPerformance()
+                initRowingPerformance(),
+                initWaterRadio()
             ];
 
             window.addEventListener('resize', () => {
