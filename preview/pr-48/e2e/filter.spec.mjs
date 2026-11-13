@@ -10,10 +10,10 @@ test.describe('Projects Filter Bar', () => {
         await expect(liveBtn).toHaveClass(/active/);
 
         const visibleProjects = page.locator('#section-projects .project:not(.hidden)');
-        await expect(visibleProjects).toHaveCount(6);
+        await expect(visibleProjects).toHaveCount(5);
 
         const hiddenProjects = page.locator('#section-projects .project.hidden');
-        await expect(hiddenProjects).toHaveCount(2);
+        await expect(hiddenProjects).toHaveCount(3);
     });
 
     test('filters to In Development projects when clicked', async ({ page }) => {
@@ -23,7 +23,7 @@ test.describe('Projects Filter Bar', () => {
         await expect(inDevBtn).toHaveClass(/active/);
 
         const visibleProjects = page.locator('#section-projects .project:not(.hidden)');
-        await expect(visibleProjects).toHaveCount(2);
+        await expect(visibleProjects).toHaveCount(3);
 
         // Verify only in-dev items are shown
         const statuses = await visibleProjects.evaluateAll(els => els.map(e => e.getAttribute('data-status')));
@@ -45,10 +45,10 @@ test.describe('Projects Filter Bar', () => {
 
     test('switches between filters repeatedly without layout glitches', async ({ page }) => {
         await page.click('.filter-btn[data-filter="in-dev"]');
-        await expect(page.locator('#section-projects .project:not(.hidden)')).toHaveCount(2);
+        await expect(page.locator('#section-projects .project:not(.hidden)')).toHaveCount(3);
 
         await page.click('.filter-btn[data-filter="live"]');
-        await expect(page.locator('#section-projects .project:not(.hidden)')).toHaveCount(6);
+        await expect(page.locator('#section-projects .project:not(.hidden)')).toHaveCount(5);
 
         await page.click('.filter-btn[data-filter="all"]');
         await expect(page.locator('#section-projects .project:not(.hidden)')).toHaveCount(8);

@@ -50,6 +50,7 @@ test.describe('Interactive Visualizer Widgets', () => {
 
     test('supports mouse pointer scrubbing on the water radio spectrum canvas', async ({ page }) => {
         await page.goto('/');
+        await page.click('.filter-btn[data-filter="in-dev"]');
 
         const waterRadioCanvas = page.locator('#canvas-water_radio');
         await expect(waterRadioCanvas).toBeVisible();
