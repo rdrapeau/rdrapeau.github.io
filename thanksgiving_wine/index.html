@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Valley Crush — Mock Sommelier Thanksgiving Pairing</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #faf6ef;
+      --surface: #fffdf9;
+      --surface-muted: #f2ebe0;
+      --surface-script: #f7f1e7;
+      --ink: #221b18;
+      --ink-muted: #5b4e47;
+      --accent: #6e1e30;
+      --accent-ink: #ffffff;
+      --gold: #8c6223;
+      --gold-soft: #f5ebd9;
+      --sage: #2d5a43;
+      --sage-soft: #e7f1eb;
+      --warn: #8a3f1b;
+      --warn-soft: #faece4;
+      --border: #dfd4c3;
+      --border-strong: #c4b39b;
+      --shadow: 0 4px 18px rgb(34 27 24 / 0.06);
+      --script-scale: 1;
+      --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #171211;
+      --surface: #211a18;
+      --surface-muted: #2b2220;
+      --surface-script: #261e1c;
+      --ink: #f4ede4;
+      --ink-muted: #c2b4a8;
+      --accent: #d97b8e;
+      --accent-ink: #1a0f12;
+      --gold: #dfb36b;
+      --gold-soft: #332717;
+      --sage: #7bc49c;
+      --sage-soft: #1a2d23;
+      --warn: #f09c75;
+      --warn-soft: #362118;
+      --border: #3d312c;
+      --border-strong: #5c4b44;
+      --shadow: 0 6px 24px rgb(0 0 0 / 0.35);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html:not([data-theme="light"]) {
+        --bg: #171211;
+        --surface: #211a18;
+        --surface-muted: #2b2220;
+        --surface-script: #261e1c;
+        --ink: #f4ede4;
+        --ink-muted: #c2b4a8;
+        --accent: #d97b8e;
+        --accent-ink: #1a0f12;
+        --gold: #dfb36b;
+        --gold-soft: #332717;
+        --sage: #7bc49c;
+        --sage-soft: #1a2d23;
+        --warn: #f09c75;
+        --warn-soft: #362118;
+        --border: #3d312c;
+        --border-strong: #5c4b44;
+        --shadow: 0 6px 24px rgb(0 0 0 / 0.35);
+      }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.55;
+      text-align: start;
+      overflow-wrap: break-word;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      line-height: 1.2;
+      margin-block: 0;
+      text-wrap: balance;
+    }
+
+    p {
+      margin-block: 0;
+      text-wrap: pretty;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      inset-inline-start: -9999px;
+      inset-block-start: 0.5rem;
+      background: var(--accent);
+      color: var(--accent-ink);
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      inset-inline-start: 0.5rem;
+    }
+
+    .page-shell {
+      max-inline-size: 72rem;
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 3vw, 2.25rem);
+      padding-block-end: 4rem;
+    }
+
+    .site-header {
+      padding-block: clamp(1.5rem, 4vw, 2.75rem) 1.5rem;
+      border-block-end: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-block-end: 0.5rem;
+    }
+
+    .site-header h1 {
+      font-size: clamp(1.85rem, 1.2rem + 2.5vw, 3rem);
+      color: var(--ink);
+      margin-block-end: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 0.92rem + 0.35vw, 1.1875rem);
+      color: var(--ink-muted);
+      max-inline-size: 62ch;
+      margin-block-end: 1.25rem;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem 1.25rem;
+      align-items: center;
+      font-size: 0.9375rem;
+      color: var(--ink-muted);
+      margin-block-end: 1.25rem;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+      align-items: center;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.3;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--ink);
+      padding: 0.55rem 0.95rem;
+      min-block-size: 2.5rem;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    button:hover {
+      background: var(--surface-muted);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+      background: var(--accent);
+    }
+
+    .btn-subtle {
+      background: var(--surface-muted);
+      border-color: var(--border);
+    }
+
+    .progress-pill {
+      margin-inline-start: auto;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold);
+      border: 1px solid var(--border);
+    }
+
+    .course-nav {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 20;
+      background: var(--bg);
+      border-block-end: 1px solid var(--border);
+      padding-block: 0.75rem;
+      margin-block-end: 1.75rem;
+    }
+
+    .course-nav-inner {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-gutter: stable;
+      padding-block-end: 0.125rem;
+    }
+
+    .filter-btn {
+      flex: none;
+      position: relative;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+    }
+
+    .filter-btn[aria-pressed="true"] {
+      color: var(--ink);
+      border-color: var(--accent);
+      background: var(--surface);
+    }
+
+    .filter-btn[aria-pressed="true"]::after {
+      content: "";
+      position: absolute;
+      inset-inline: 18%;
+      inset-block-end: 0.15rem;
+      border-block-end: 2px solid var(--accent);
+    }
+
+    .course-section {
+      margin-block-end: 2.75rem;
+    }
+
+    .course-section[hidden] {
+      display: none;
+    }
+
+    .course-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem 1rem;
+      padding-block-end: 0.75rem;
+      border-block-end: 2px solid var(--border);
+      margin-block-end: 1.25rem;
+    }
+
+    .course-header h2 {
+      font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+      color: var(--accent);
+    }
+
+    .course-allocation {
+      font-size: 0.9375rem;
+      color: var(--ink-muted);
+      font-weight: 600;
+    }
+
+    .course-dishes {
+      font-size: 0.9375rem;
+      color: var(--ink-muted);
+      margin-block-end: 1.25rem;
+      max-inline-size: 72ch;
+    }
+
+    .wine-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .wine-card-wrap {
+      container: wine-card / inline-size;
+    }
+
+    .wine-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 0.75rem;
+      padding: clamp(1rem, 2.5vw, 1.5rem);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .wine-card.is-backup {
+      border-inline-start-color: var(--gold);
+    }
+
+    .wine-card.is-poured {
+      border-inline-start-color: var(--sage);
+      opacity: 0.88;
+    }
+
+    .card-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .card-title-group {
+      display: grid;
+      gap: 0.25rem;
+      min-inline-size: 0;
+    }
+
+    .card-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--surface-muted);
+      color: var(--ink);
+    }
+
+    .badge-fav {
+      background: var(--gold-soft);
+      color: var(--gold);
+      border-color: currentColor;
+    }
+
+    .badge-role {
+      background: var(--sage-soft);
+      color: var(--sage);
+      border-color: currentColor;
+    }
+
+    .wine-card h3 {
+      font-size: clamp(1.25rem, 1.05rem + 0.7vw, 1.625rem);
+      color: var(--ink);
+    }
+
+    .wine-origin {
+      font-size: 0.9375rem;
+      color: var(--ink-muted);
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .poured-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.75rem;
+      border: 1px solid var(--border-strong);
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      user-select: none;
+      background: var(--surface);
+      min-block-size: 2.5rem;
+    }
+
+    .poured-toggle:has(:checked) {
+      background: var(--sage-soft);
+      border-color: var(--sage);
+      color: var(--sage);
+      font-weight: 600;
+    }
+
+    .script-box {
+      background: var(--surface-script);
+      border: 1px solid var(--border);
+      border-radius: 0.625rem;
+      padding: clamp(0.9rem, 2vw, 1.25rem);
+    }
+
+    .script-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-block-end: 0.45rem;
+    }
+
+    .script-text {
+      font-family: var(--font-serif);
+      font-size: calc(clamp(1.03rem, 0.98rem + 0.25vw, 1.18rem) * var(--script-scale));
+      line-height: 1.65;
+      max-inline-size: 60ch;
+      color: var(--ink);
+    }
+
+    .cue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      gap: 0.625rem;
+      padding-block-start: 0.25rem;
+    }
+
+    .cue-item {
+      background: var(--surface-muted);
+      border-radius: 0.5rem;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    .cue-item dt {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink-muted);
+      font-weight: 700;
+      margin-block-end: 0.15rem;
+    }
+
+    .cue-item dd {
+      margin: 0;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .pairing-notes-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.625rem;
+      font-size: 0.9rem;
+    }
+
+    @container wine-card (inline-size > 40rem) {
+      .pairing-notes-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .note-pill {
+      border-radius: 0.5rem;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--border);
+    }
+
+    .note-pill.good {
+      background: var(--sage-soft);
+    }
+
+    .note-pill.caution {
+      background: var(--warn-soft);
+    }
+
+    .note-pill strong {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-block-end: 0.2rem;
+    }
+
+    details.panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-block-end: 1rem;
+    }
+
+    details.panel > summary {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    details.panel[open] > summary {
+      margin-block-end: 0.85rem;
+      padding-block-end: 0.5rem;
+      border-block-end: 1px solid var(--border);
+    }
+
+    .timeline-list {
+      margin: 0;
+      padding-inline-start: 1.25rem;
+      display: grid;
+      gap: 0.5rem;
+      max-inline-size: 65ch;
+    }
+
+    dialog.cue-dialog {
+      inline-size: min(48rem, 94dvw);
+      max-block-size: 90dvb;
+      border: 1px solid var(--border-strong);
+      border-radius: 1rem;
+      padding: 0;
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: 0 20px 50px rgb(0 0 0 / 0.35);
+    }
+
+    dialog.cue-dialog::backdrop {
+      background: rgb(18 12 11 / 0.72);
+      backdrop-filter: blur(4px);
+    }
+
+    .dialog-shell {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      max-block-size: 90dvb;
+    }
+
+    .dialog-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      border-block-end: 1px solid var(--border);
+      background: var(--surface-muted);
+    }
+
+    .dialog-controls-top {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .dialog-body {
+      padding: clamp(1.25rem, 3vw, 2rem);
+      overflow-y: auto;
+      display: grid;
+      gap: 1.15rem;
+    }
+
+    .dialog-body h2 {
+      font-size: clamp(1.5rem, 1.15rem + 1.2vw, 2.15rem);
+      color: var(--ink);
+    }
+
+    .dialog-script {
+      font-family: var(--font-serif);
+      font-size: calc(clamp(1.15rem, 1.05rem + 0.45vw, 1.42rem) * var(--script-scale));
+      line-height: 1.68;
+      max-inline-size: 56ch;
+      background: var(--surface-script);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 0.625rem;
+      padding: 1.15rem 1.25rem;
+    }
+
+    .dialog-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1.25rem;
+      border-block-start: 1px solid var(--border);
+      background: var(--surface-muted);
+    }
+
+    .site-footer {
+      margin-block-start: 2.5rem;
+      padding-block-start: 1.25rem;
+      border-block-start: 1px solid var(--border);
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #111111;
+      }
+      .course-nav, .header-actions, .card-actions, .site-footer, dialog {
+        display: none !important;
+      }
+      .course-section[hidden] {
+        display: block !important;
+      }
+      .wine-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #999999;
+      }
+      .script-box {
+        background: #faf8f5;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to pairing lineup</a>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <p class="eyebrow"><a href="../" style="color: inherit; text-decoration: none; border-bottom: 1px solid currentColor;">drapeau.dev</a> · Mock Sommelier Script &amp; Table Guide · November 26, 2026</p>
+      <h1>The Valley Crush: A Wine Country Thanksgiving</h1>
+      <p class="subtitle">
+        A read-aloud wine guide for 10 guests with no duplicate bottles. Each course offers 2 to 4 different wines from your cellar to pick between or taste side by side, with a short card covering the wine, the maker, and where it comes from.
+      </p>
+      <div class="header-meta">
+        <span><strong>Service Plan:</strong> 12 unique wines (11 bottle equivalents) + 2 optional swaps</span>
+        <span><strong>How to Pour:</strong> Pick a 5 oz glass of your favorite OR taste 2.5 oz flights of each</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="btn-primary" id="open-reader-btn">Start Cue-Card Reader</button>
+        <button type="button" id="font-down-btn" aria-label="Decrease script text size">A−</button>
+        <button type="button" id="font-up-btn" aria-label="Increase script text size">A+</button>
+        <button type="button" class="btn-subtle" id="theme-toggle-btn">Toggle Candlelight Mode</button>
+        <button type="button" class="btn-subtle" id="print-btn">Print Cue Cards</button>
+        <span class="progress-pill" id="poured-counter" aria-live="polite">0 / 12 primary poured</span>
+      </div>
+    </header>
+
+    <nav class="course-nav" aria-label="Filter by Thanksgiving course">
+      <div class="course-nav-inner">
+        <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All Courses</button>
+        <button type="button" class="filter-btn" data-filter="course-1" aria-pressed="false">1 · Starters (3)</button>
+        <button type="button" class="filter-btn" data-filter="course-2" aria-pressed="false">2 · Salads &amp; Whites (3)</button>
+        <button type="button" class="filter-btn" data-filter="course-3" aria-pressed="false">3 · Turkey &amp; Reds (4)</button>
+        <button type="button" class="filter-btn" data-filter="course-4" aria-pressed="false">4 · Dessert (2)</button>
+        <button type="button" class="filter-btn" data-filter="backups" aria-pressed="false">Swaps &amp; Prep</button>
+      </div>
+    </nav>
+
+    <main id="main-content">
+      <div id="courses-container"></div>
+
+      <section class="course-section" id="prep-section" data-course="backups">
+        <div class="course-header">
+          <h2>Service Prep, Kitchen Wine &amp; Cellar Stewardship</h2>
+          <span class="course-allocation">10 Guests · 11 Bottle Equivalents (Zero Duplicates)</span>
+        </div>
+
+        <details class="panel" open>
+          <summary>Thanksgiving Day Chilling &amp; Decanting Timeline</summary>
+          <ol class="timeline-list">
+            <li><strong>11:00 AM (Morning Chill):</strong> Refrigerate <em>2022 Marine Layer Brut Rosé</em>, <em>NV Mumm Napa Brut Prestige</em>, <em>2023 Jericho Canyon Sauvignon Blanc</em>, <em>2023 Matthiasson Chardonnay Linda Vista</em>, <em>2024 Marine Layer Chardonnay Aries</em>, <em>2023 Dr. Loosen Riesling</em>, <em>2023 Novelty Hill Late Harvest Sémillon</em> (375 mL), and <em>2025 Quails' Gate Late Harvest Riesling</em> (375 mL).</li>
+            <li><strong>2:00 PM (Red Cellar Prep):</strong> Stand <em>2023 Matthiasson Pinot Meunier</em> and <em>2023 Marine Layer Pinot Noir River Camp Ridge</em> in a cool room or give a 20-minute fridge chill right before dinner so they hit 55–59°F.</li>
+            <li><strong>1 Hour Before Dinner:</strong> Open and decant <em>2020 Altamura Sangiovese</em> (~1 hour air softens youthful Wooden Valley grip).</li>
+            <li><strong>30 Minutes Before Dinner:</strong> Open and decant <em>2022 Matthiasson Cabernet Franc</em> (~30 minutes). Pull white and sparkling bottles from the fridge 15 minutes before pouring so aromatics bloom.</li>
+          </ol>
+        </details>
+
+        <details class="panel">
+          <summary>Kitchen Cooking Wine (2 Cups Total: Gravy &amp; Cranberry Sauce)</summary>
+          <p style="max-inline-size: 65ch;">
+            The Turkey Gravy and Red Wine Cranberry Sauce each call for 1 cup of dry red wine. <strong>Best move:</strong> pick up one clean $12–$18 Côtes du Rhône, basic Pinot Noir, or Barbera for the stove—or, if pulling from your cellar, use your single bottle of <strong>2023 Zumaya Ribera del Duero</strong> (~13.5% ABV, light 3-month oak). Keep all Napa/Washington Cabernets, Petit Verdots, Prisoner, and Amarone strictly out of the saucepan so heavy oak tannins don't turn bitter when reduced.
+          </p>
+        </details>
+
+        <details class="panel">
+          <summary>Cellar Bottles Intentionally Held Back Tonight</summary>
+          <ul class="timeline-list">
+            <li><strong>Explicitly Excluded:</strong> <em>2022 Matthiasson Ribolla Gialla</em> (marked disliked in your cellar log).</li>
+            <li><strong>Save for Future Steak / Winter Roasts:</strong> <em>2023 Marine Layer Pinot Noir Marine Layer Vineyard</em> ★ (2026–2056), <em>2018 Altamura Nebbiolo</em> ★, <em>2020 Januik Cab Sauv Ciel du Cheval</em> (9 btl) ★, <em>2022 Januik Petit Verdot</em> ★, <em>2016 Jericho Canyon Petit Verdot</em> ★, and <em>2022/2023 Matthiasson Cab Sauv Phoenix</em>.</li>
+            <li><strong>Skip High-ABV / Heavy-Oak Traps:</strong> <em>2022 Caymus 50th</em>, <em>2022/2023 The Prisoner</em>, <em>2020 Cecilia Beretta Amarone</em>, <em>2023 Rock View Chardonnay</em>, and <em>2024 Quails' Gate Fortified Foch</em> flare chili heat on the yams and Brie.</li>
+            <li><strong>Check on a Weeknight (Past-Peak Risk):</strong> <em>2020 LaCheteau Rosé d'Anjou</em>, <em>2019 Gérard Bertrand Cote des Roses Blanc</em>, <em>NV La Marca Prosecco</em>, and <em>2023 A3 Wine Co. Chardonnay</em>.</li>
+          </ul>
+        </details>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Prepared from your cellar inventory (69 in-stock wines, 107 bottles) and your 10-guest Napa-inspired Thanksgiving menu. Progress and theme preferences save locally in your browser.</p>
+    </footer>
+  </div>
+
+  <!-- Focused Cue-Card Teleprompter Dialog -->
+  <dialog class="cue-dialog" id="cue-dialog" aria-labelledby="dialog-wine-title" closedby="any">
+    <div class="dialog-shell">
+      <div class="dialog-header">
+        <div>
+          <span class="badge" id="dialog-step-badge">Pour 1 of 14</span>
+          <span class="badge badge-role" id="dialog-course-badge">Course 1</span>
+        </div>
+        <div class="dialog-controls-top">
+          <button type="button" id="dlg-font-down" aria-label="Decrease reader text size">A−</button>
+          <button type="button" id="dlg-font-up" aria-label="Increase reader text size">A+</button>
+          <form method="dialog" style="display:inline;">
+            <button type="submit" id="dlg-close-btn">Close</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="dialog-body">
+        <div>
+          <p class="eyebrow" id="dialog-origin" style="margin-block-end:0.35rem;"></p>
+          <h2 id="dialog-wine-title"></h2>
+        </div>
+
+        <div class="dialog-script" id="dialog-script"></div>
+
+        <dl class="cue-grid" id="dialog-cues"></dl>
+
+        <div class="pairing-notes-row" id="dialog-notes"></div>
+      </div>
+
+      <div class="dialog-footer">
+        <button type="button" id="dlg-prev-btn">← Previous Pour</button>
+        <label class="poured-toggle">
+          <input type="checkbox" id="dlg-poured-check">
+          <span>Mark as Poured</span>
+        </label>
+        <button type="button" class="btn-primary" id="dlg-next-btn">Next Pour →</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const COURSES = [
+      {
+        id: "course-1",
+        title: "Course 1: Aperitif & Starters",
+        allocation: "3 Different Bottles · Sparkling Rosé, Napa Brut, or Calistoga Sauvignon Blanc",
+        dishes: "Apple-Maple Baked Brie (Honeycrisp apples, maple syrup, rosemary, shallots, chili flakes, almonds) · Crudité with Garlic-Dill-Mint Greek Yogurt Dip",
+        isBackup: false,
+        wines: [
+          {
+            id: "marine-layer-brut-rose",
+            order: 1,
+            role: "Choice A · Dry Sparkling Rosé",
+            vintage: "2022",
+            name: "Marine Layer Brut Rosé",
+            origin: "Sonoma Coast, California · Baron Ziegler & Rob Fischer",
+            favorite: false,
+            isBackup: false,
+            bottles: "Open 1 of 2 in cellar",
+            pourSize: "~5 oz (5 guests) or ~2.5 oz flight",
+            temp: "45–48°F · Tulip or white stems",
+            prep: "Pop & pour; disgorged ~early 2026",
+            script: "We're starting tonight with the 2022 Brut Rosé from Marine Layer Wines in Healdsburg, on the Sonoma Coast. Founders Baron Ziegler and winemaker Rob Fischer, who previously started Banshee Wines, buy fruit from foggy coastal vineyards like Gap's Crown and the Petaluma Gap. They made this bottle in the Champagne method from Pinot Noir and Chardonnay, aged eighteen months on the lees in neutral oak, and finished it very dry at 12.5% alcohol with wild strawberry and toasted bread notes. Those crisp bubbles cut right through the warm, melted Baked Brie.",
+            pairWith: "Apple-Maple Baked Brie, Crudité, almonds, toasted baguette",
+            watchOut: "Extra Brut (2 g/L) is very dry. Guests who want a little more cushion against the maple syrup can pick Mumm Napa Brut Prestige."
+          },
+          {
+            id: "mumm-napa-brut",
+            order: 2,
+            role: "Choice B · Classic Napa Brut",
+            vintage: "NV",
+            name: "Mumm Napa Brut Prestige",
+            origin: "Rutherford / Carneros, Napa Valley · Founded by Guy Devaux",
+            favorite: false,
+            isBackup: false,
+            bottles: "Open 1 of 1 in cellar",
+            pourSize: "~5 oz (5 guests) or ~2.5 oz flight",
+            temp: "45°F · Champagne or tulip stems",
+            prep: "Chill well; pop & pour",
+            script: "Your second sparkling option is Mumm Napa's Brut Prestige, made along the Silverado Trail in Rutherford. Back in the late 1970s, the Champagne house G.H. Mumm sent winemaker Guy Devaux to Napa Valley to figure out where traditional French-method sparkling wine could work in California, and he settled on Carneros fruit for the winery's base cuvées. Brut Prestige is mostly Chardonnay and Pinot Noir, and it smells like baked apple and toasted almonds. Because it has a bit more dosage than the Marine Layer rosé, it handles the maple syrup and chili flakes on the Brie comfortably.",
+            pairWith: "Apple-Maple Baked Brie, salted almonds, Crudité",
+            watchOut: "Good side-by-side comparison with Marine Layer Brut Rosé: softer Napa Brut vs. sharper Sonoma Coast Extra Brut."
+          },
+          {
+            id: "jericho-canyon-sb",
+            order: 3,
+            role: "Choice C · Crisp White for Crudité",
+            vintage: "2023",
+            name: "Jericho Canyon Vineyard Sauvignon Blanc",
+            origin: "Calistoga, Napa Valley · Dale, Marla & Nicholas Bleecher",
+            favorite: false,
+            isBackup: false,
+            bottles: "Open 1 of 1 in cellar",
+            pourSize: "~2.5 oz flight or ~5 oz white option",
+            temp: "46–50°F · White wine stems",
+            prep: "Chill only; no decanting needed",
+            script: "If you'd rather start with a still white, try the 2023 Sauvignon Blanc from Jericho Canyon Vineyard up in Calistoga at the north end of Napa Valley. Dale and Marla Bleecher bought the old 135-acre cattle ranch at the base of Mount St. Helena in 1989, and their son Nicholas Bleecher now makes the wine after studying at UC Davis. He ferments half the Sauvignon Blanc in stainless steel and half in neutral French oak, which keeps the wine crisp while rounding out the pear and white-flower notes. Drink this one with the crudités and garlic-herb yogurt dip, since it holds up cleanly against raw garlic and fresh dill.",
+            pairWith: "Crudité platter, garlic-dill-mint yogurt dip, snap peas, endive",
+            watchOut: "Higher house ABV (~14%) can warm up chili flakes, so stick to the crudités with this glass rather than the chili-flecked Brie."
+          }
+        ]
+      },
+      {
+        id: "course-2",
+        title: "Course 2: Salads, Roasted Yams & Table Whites",
+        allocation: "3 Different Bottles · Napa vs. Sonoma Coast Chardonnay + Mosel Riesling",
+        dishes: "Celery Salad With Pink Lady Apples & Blue Cheese · Beet Orange Salad With Pomegranate · Gjelina's Roasted Yams (lime, honey, yogurt, Espelette) · Turkey Breast & Mashed Potatoes",
+        isBackup: false,
+        wines: [
+          {
+            id: "matthiasson-linda-vista",
+            order: 4,
+            role: "Choice A · Napa Chardonnay",
+            vintage: "2023",
+            name: "Matthiasson Chardonnay Linda Vista Vineyard",
+            origin: "Oak Knoll District, Napa Valley · Steve & Jill Klein Matthiasson",
+            favorite: true,
+            isBackup: false,
+            bottles: "Open 1 of 1 in cellar",
+            pourSize: "~5 oz (5 guests) or ~2.5 oz flight",
+            temp: "50–55°F · Burgundy stems",
+            prep: "Pull 15 min before pouring to open",
+            script: "On the white side for dinner, we have the 2023 Linda Vista Chardonnay from Matthiasson Wines in Napa's Oak Knoll District. Steve Matthiasson is a viticulturist who consulted for places like Spottswoode and Stag's Leap before he and his wife Jill Klein Matthiasson, a botanist, started their own winery in 2003 to make lower-alcohol, food-friendly Napa wines. Linda Vista sits right behind their house, planted in 1989 and farmed organically by the family since 2011, and they pick early so the wine finishes around 12.5% alcohol with lemon and crisp pear flavors. It pairs easily with the cider-brined turkey breast and brown butter mashed potatoes.",
+            pairWith: "Cider-brined turkey breast, Brown Butter Mashed Potatoes, Pecorino Green Beans",
+            watchOut: "Delicate 12.5% profile gets overpowered by blue cheese, so switch to the Dr. Loosen Riesling for the Celery Salad."
+          },
+          {
+            id: "marine-layer-aries",
+            order: 5,
+            role: "Choice B · Sonoma Coast Chardonnay",
+            vintage: "2024",
+            name: "Marine Layer Chardonnay Aries",
+            origin: "Sonoma Coast, California · Rob Fischer & Baron Ziegler",
+            favorite: false,
+            isBackup: false,
+            bottles: "Open 1 of 3 in cellar",
+            pourSize: "~5 oz (5 guests) or ~2.5 oz flight",
+            temp: "48–52°F · Burgundy stems",
+            prep: "Chill; leave other 2 bottles in cellar",
+            script: "Next to the Napa Chardonnay is a Sonoma Coast comparison: the 2024 Aries Chardonnay from Marine Layer. Winemaker Rob Fischer pulls this blend from cold, wind-exposed sites in the Petaluma Gap and Sebastopol Hills, fermenting the juice in concrete eggs and large French oak puncheons. That gives the Aries a little more weight and brioche texture at 13% alcohol while keeping sharp green-apple acidity. Try it alongside the Cacio e Pepe green beans and mashed potatoes to feel how well it cuts through butter and Pecorino.",
+            pairWith: "Roast Heritage Turkey (white meat), Brown Butter Mashed Potatoes, Cacio e Pepe Green Beans",
+            watchOut: "Dry Chardonnays clash with raw blue cheese and sherry vinegar; reach for your Riesling on the salads."
+          },
+          {
+            id: "dr-loosen-riesling",
+            order: 6,
+            role: "Choice C · Salad & Yam Bridge",
+            vintage: "2023",
+            name: "Dr. Loosen Riesling Blue Slate Kabinett",
+            origin: "Middle Mosel, Germany · Ernst 'Ernie' Loosen",
+            favorite: false,
+            isBackup: false,
+            bottles: "Open 1 of 1 in cellar",
+            pourSize: "~2.5 oz flight (split Salads + Yams)",
+            temp: "45–48°F · White stems",
+            prep: "Serve well-chilled; pace across salads & yams",
+            script: "This 2023 Blue Slate Kabinett comes from Weingut Dr. Loosen in Bernkastel-Kues, in Germany's Middle Mosel valley. Ernst Loosen took over his family's two-hundred-year-old estate in 1988, cut crop yields way down, and got rid of chemical fertilizers to revive classic dry and off-dry Mosel Riesling. The grapes grow on steep blue Devonian slate hillsides that hold daytime sun, giving the wine wet-stone minerality, 8.5% alcohol, and light sweetness backed by sharp acidity. Grab a pour of this for the celery blue-cheese salad, the beet-orange salad, and the spicy lime yams, because that touch of sweetness calms down salt, vinegar, and chili heat.",
+            pairWith: "Celery & Blue Cheese Salad, Beet Orange Pomegranate Salad, Gjelina's Roasted Yams, Apple-Maple Brie",
+            watchOut: "Even if you drink Chardonnay with turkey, grab a small pour of this for the Blue Cheese Salad and Espelette Yams."
+          }
+        ]
+      },
+      {
+        id: "course-3",
+        title: "Course 3: Heritage Turkey, Red Wine Gravy & Hot Sides",
+        allocation: "4 Different Bottles · Bright Red Fruit, Coastal Pinot, Savory Cab Franc, or Sangiovese",
+        dishes: "Roast Heritage Turkey & Red Wine Gravy · Red Wine Cranberry Sauce With Ginger & Honey · Brown Butter Mashed Potatoes · Cacio e Pepe Green Beans · Beet Orange Salad",
+        isBackup: false,
+        wines: [
+          {
+            id: "matthiasson-pinot-meunier",
+            order: 7,
+            role: "Choice A · All-Around Turkey Red",
+            vintage: "2023",
+            name: "Matthiasson Pinot Meunier Yount Mill Vineyard",
+            origin: "Yountville, Napa Valley · Steve & Jill Klein Matthiasson",
+            favorite: true,
+            isBackup: false,
+            bottles: "Open 1 of 6 in cellar",
+            pourSize: "~5 oz choice or ~2.5 oz flight",
+            temp: "55–58°F · Slight cellar chill",
+            prep: "20 min chill; pop & pour",
+            script: "For the main red on the table, we're opening the 2023 Matthiasson Pinot Meunier from the historic Yount Mill Vineyard near Yountville in Napa Valley. Steve and Jill Matthiasson seek out older Napa blocks that most cabernet houses ignore, fermenting half of this Pinot Meunier whole-cluster in used French oak. Pinot Meunier is usually blended into Champagne, so drinking it as a 12.5% still red is a treat, full of tart cranberry and pomegranate flavors. It works with white meat, dark meat, the ginger cranberry sauce, and even the beet salad.",
+            pairWith: "Whole Heritage Turkey, Red Wine Gravy, Ginger Cranberry Sauce, Beet Orange Salad, Mashed Potatoes",
+            watchOut: "Easygoing across the whole plate, including Gjelina's Roasted Yams, thanks to 12.5% ABV and soft tannins."
+          },
+          {
+            id: "marine-layer-river-camp",
+            order: 8,
+            role: "Choice B · Coastal Pinot Noir",
+            vintage: "2023",
+            name: "Marine Layer Pinot Noir River Camp Ridge",
+            origin: "Anderson Valley, California · Rob Fischer & Baron Ziegler",
+            favorite: false,
+            isBackup: false,
+            bottles: "Open 1 of 2 in cellar",
+            pourSize: "~5 oz choice or ~2.5 oz flight",
+            temp: "56–60°F · Burgundy stems",
+            prep: "Pop & pour or 20 min glass air",
+            script: "Alongside the Pinot Meunier is the 2023 Marine Layer Pinot Noir from River Camp Ridge in Mendocino's Anderson Valley. Winemaker Rob Fischer sources this wine from the cold western end of the valley where Pacific fog meets the Navarro River over sandy soils. He uses native yeasts and about ten percent whole clusters before eleven months in French oak, which gives the wine cranberry, blood orange peel, and pine aromas. Because its tannins are soft and its acidity is brisk, it goes smoothly with both the turkey and the lime-dressed roasted yams.",
+            pairWith: "Roast Heritage Turkey, Red Wine Cranberry Sauce, Beet Orange Salad, Roasted Yams",
+            watchOut: "Zero yam-heat risk, making it an easy pick for anyone who wants classic California coastal Pinot Noir."
+          },
+          {
+            id: "matthiasson-cab-franc",
+            order: 9,
+            role: "Choice C · Savory Herb Napa Red",
+            vintage: "2022",
+            name: "Matthiasson Cabernet Franc Matthiasson Vineyard",
+            origin: "Oak Knoll District, Napa Valley · Steve & Jill Klein Matthiasson",
+            favorite: true,
+            isBackup: false,
+            bottles: "Open 1 of 6 in cellar",
+            pourSize: "~5 oz choice or ~2.5 oz flight",
+            temp: "58–62°F · Bordeaux/universal stems",
+            prep: "Decant 30 minutes before dinner",
+            script: "If you want a deeper red, the 2022 Matthiasson Cabernet Franc comes from the Matthiassons' own organic home vineyard in Napa's Oak Knoll District. Steve Matthiasson ages this wine in older French oak barrels so the grape's natural aromatics stay clear at 12.5% alcohol. You'll taste red currant and black pepper along with dried bay leaf and sage. Those herbal notes match the rosemary, thyme, and bay-leaf brine on the heritage turkey and fit right into the red-wine pan gravy.",
+            pairWith: "Herb-roasted turkey (white & dark), Red Wine Gravy, Cacio e Pepe Green Beans",
+            watchOut: "Keep away from raw blue cheese on the Celery Salad."
+          },
+          {
+            id: "altamura-sangiovese",
+            order: 10,
+            role: "Choice D · Italian-Style Napa Red",
+            vintage: "2020",
+            name: "Altamura Sangiovese",
+            origin: "Wooden Valley, Napa Valley · Frank & Karen Altamura",
+            favorite: true,
+            isBackup: false,
+            bottles: "Open 1 of 2 in cellar",
+            pourSize: "~5 oz choice or ~2.5 oz flight",
+            temp: "60–63°F · Universal/red stems",
+            prep: "Decant ~1 hour before dinner",
+            script: "Our fourth red is the 2020 Altamura Sangiovese from Wooden Valley, a cool pocket in the hills east of the main Napa Valley floor. Frank and Karen Altamura started their ranch there in 1985 after Frank spent years working at Sterling and Caymus, planting Sangiovese in 1986 on volcanic soils that run about ten degrees cooler than central Napa. They make a 100% varietal wine from free-run juice aged in French oak inside stone caves, giving it dark cherry flavors and firm acidity. Pour this for dark-meat turkey, gravy, and the Pecorino green beans, though it runs around 14.5% alcohol so skip it with the spicy yams.",
+            pairWith: "Cacio e Pepe Green Beans (Pecorino & black pepper), dark-meat turkey, Red Wine Gravy",
+            watchOut: "At ~14.5% ABV, it will turn up the Espelette heat on the Roasted Yams—stick to turkey, gravy, and green beans."
+          }
+        ]
+      },
+      {
+        id: "course-4",
+        title: "Course 4: Dessert",
+        allocation: "2 Different 375 mL Half-Bottles (= 750 mL) · Honeyed Sémillon vs. Crisp Riesling",
+        dishes: "Pear Almond Cake (almond flour, sliced almonds, baked pears, butter, almond & vanilla extracts)",
+        isBackup: false,
+        wines: [
+          {
+            id: "novelty-hill-semillon",
+            order: 11,
+            role: "Choice A · Rich Honeyed Sémillon",
+            vintage: "2023",
+            name: "Novelty Hill Late Harvest Sémillon Stillwater Creek Vineyard",
+            origin: "Royal Slope, Columbia Valley, WA · Mike Januik",
+            favorite: true,
+            isBackup: false,
+            bottles: "Open 1 of 3 half-bottles (375 mL)",
+            pourSize: "~2.5 oz (5 guests) or ~1.25 oz taste",
+            temp: "45–48°F · Small white/dessert stems",
+            prep: "Serve well-chilled; pop & pour",
+            script: "With the pear almond cake, our first dessert pour is the 2023 Late Harvest Sémillon from Novelty Hill in Washington's Columbia Valley. Longtime Washington winemaker Mike Januik makes it for the Alberg family using fruit from Stillwater Creek Vineyard, a steep, basalt-strewn site on the Royal Slope. They leave the Sémillon on the vines late into fall until noble rot concentrates the berries, then age it in neutral oak for rich apricot and honey flavors at 11% alcohol. A dessert wine needs to be sweeter than the cake, and this one matches the baked pears and toasted almonds without feeling cloying.",
+            pairWith: "Pear Almond Cake, extra Brie or Blue Cheese bites",
+            watchOut: "Serve well-chilled (45–48°F) so its 262 g/L sweetness stays lively."
+          },
+          {
+            id: "quails-gate-riesling",
+            order: 12,
+            role: "Choice B · Light Late Harvest Riesling",
+            vintage: "2025",
+            name: "Quails' Gate Estate Winery Late Harvest Riesling",
+            origin: "Okanagan Valley, British Columbia · The Stewart Family",
+            favorite: false,
+            isBackup: false,
+            bottles: "Open 1 of 2 half-bottles (375 mL)",
+            pourSize: "~2.5 oz (5 guests) or ~1.25 oz taste",
+            temp: "44–48°F · Small white/dessert stems",
+            prep: "Serve well-chilled; pop & pour",
+            script: "Your second dessert choice comes north from Canada's Okanagan Valley: the 2025 Late Harvest Riesling from Quails' Gate Estate Winery in West Kelowna. The Stewart family has farmed in the Okanagan since 1908, planting grapes on this hillside in 1961 before brothers Ben and Tony Stewart opened the winery in 1989. Leaving Riesling on the vine into late autumn concentrates the juice naturally without any oak, keeping bright Meyer lemon and peach aromas intact. It is lighter and crisper than the Sémillon, so it refreshes the palate after the rich almond cake.",
+            pairWith: "Pear Almond Cake, fresh fruit, or leftover Apple-Maple Brie",
+            watchOut: "Lighter and crisper than the Sémillon—great if guests want a brighter finish."
+          }
+        ]
+      },
+      {
+        id: "backups",
+        title: "Optional Cellar Swaps & Upgrades",
+        allocation: "Bonus Cue Cards · Swap into Course 2 or Course 4 if desired",
+        dishes: "Alternatives if you want a dedicated Rosé for the salads or a 2-vintage Sauternes dessert vertical",
+        isBackup: true,
+        wines: [
+          {
+            id: "mckinney-rose",
+            order: 13,
+            role: "Optional Add-On · Salad Bridge Rosé",
+            vintage: "2025",
+            name: "McKinney Family Vineyards Rosé of Sangiovese",
+            origin: "Santa Barbara County, CA · Matt McKinney & Justice Massara",
+            favorite: false,
+            isBackup: true,
+            bottles: "1 of 1 in cellar",
+            pourSize: "~2.5 oz flight or ~5 oz glass",
+            temp: "46–50°F · White stems",
+            prep: "Open in Course 2 to pair with Beet Salad & Green Beans",
+            script: "This optional salad bottle is the 2025 Rosé of Sangiovese from McKinney Family Vineyards in California's Santa Ynez Valley. Santa Ynez native Matt McKinney, a former UCLA basketball player, runs the small winery with UC Davis-trained head winemaker Justice Massara. Fermented dry in neutral oak from Santa Barbara County fruit, the wine shows pale copper color with tangerine peel and crisp red-berry flavors. It is a great bridge for the beet-orange-pomegranate salad and the Pecorino green beans if you want to save the Riesling strictly for the blue cheese and yams.",
+            pairWith: "Beet Orange Salad With Pomegranate, Cacio e Pepe Green Beans, Crudité",
+            watchOut: "Bone-dry style—keep Dr. Loosen for the sweet/spicy yams."
+          },
+          {
+            id: "suduiraut-vertical",
+            order: 14,
+            role: "Optional Upgrade · Sauternes Vertical",
+            vintage: "2010 & 2016",
+            name: "Château Suduiraut (2-Vintage Vertical)",
+            origin: "Preignac, Sauternes, Bordeaux · Christian Seely & Pierre Montégut",
+            favorite: false,
+            isBackup: true,
+            bottles: "1 btl each (verify if 375 mL halves!)",
+            pourSize: "~2.5 oz total vertical (if 2×375 mL)",
+            temp: "46–50°F · Dessert/white stems",
+            prep: "Verify bottle sizes first; decant 30–45 min",
+            script: "For a classic Old World dessert upgrade, we have the 2010 and 2016 vintages of Château Suduiraut from Preignac in Bordeaux's Sauternes region. Rated a Premier Cru Classé in 1855, the estate has been managed in recent decades by Christian Seely and technical director Pierre Montégut for AXA Millésimes, who send pickers through the vineyard multiple times to gather individual botrytized berries. Tasting the two side by side shows how Sauternes ages: the 2016 is bright with apricot and crème brûlée, while the sixteen-year-old 2010 has deepened into burnt orange and toasted marzipan. Those nutty, caramelized flavors go directly with the almond flour and pears in the cake.",
+            pairWith: "Pear Almond Cake, Blue Cheese bites",
+            watchOut: "14% ABV & 50% new oak—keep strictly at dessert or cheese, away from leftover spicy yams."
+          }
+        ]
+      }
+    ];
+
+    const ALL_WINES = COURSES.flatMap(course =>
+      course.wines.map(wine => ({ ...wine, courseTitle: course.title, courseId: course.id }))
+    );
+
+    const STORAGE_KEY = "valley_crush_poured_v2";
+    const THEME_KEY = "valley_crush_theme_v1";
+    const pouredSet = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"));
+
+    let scriptScale = 1;
+    let activeReaderIndex = 0;
+
+    function savePoured() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...pouredSet]));
+      updatePouredCounter();
+    }
+
+    function updatePouredCounter() {
+      const primaryWines = ALL_WINES.filter(w => !w.isBackup);
+      const count = primaryWines.filter(w => pouredSet.has(w.id)).length;
+      document.getElementById("poured-counter").textContent = `${count} / ${primaryWines.length} primary poured`;
+    }
+
+    function createBadge(text, cls = "") {
+      const span = document.createElement("span");
+      span.className = `badge ${cls}`.trim();
+      span.textContent = text;
+      return span;
+    }
+
+    function renderCourses() {
+      const container = document.getElementById("courses-container");
+      container.replaceChildren();
+
+      for (const course of COURSES) {
+        const section = document.createElement("section");
+        section.className = "course-section";
+        section.dataset.course = course.id;
+
+        const header = document.createElement("div");
+        header.className = "course-header";
+        const h2 = document.createElement("h2");
+        h2.textContent = course.title;
+        const alloc = document.createElement("span");
+        alloc.className = "course-allocation";
+        alloc.textContent = course.allocation;
+        header.append(h2, alloc);
+
+        const dishes = document.createElement("p");
+        dishes.className = "course-dishes";
+        dishes.innerHTML = `<strong>On the Table:</strong> ${course.dishes}`;
+
+        const grid = document.createElement("div");
+        grid.className = "wine-grid";
+
+        for (const wine of course.wines) {
+          const wrap = document.createElement("div");
+          wrap.className = "wine-card-wrap";
+
+          const card = document.createElement("article");
+          card.className = `wine-card${wine.isBackup ? " is-backup" : ""}${pouredSet.has(wine.id) ? " is-poured" : ""}`;
+          card.dataset.wineId = wine.id;
+
+          const cardTop = document.createElement("div");
+          cardTop.className = "card-top";
+
+          const titleGroup = document.createElement("div");
+          titleGroup.className = "card-title-group";
+
+          const kicker = document.createElement("div");
+          kicker.className = "card-kicker";
+          kicker.append(createBadge(`Pour #${wine.order}`));
+          kicker.append(createBadge(wine.role, wine.isBackup ? "" : "badge-role"));
+          if (wine.favorite) {
+            kicker.append(createBadge("★ Host Favorite", "badge-fav"));
+          }
+
+          const h3 = document.createElement("h3");
+          h3.textContent = `${wine.vintage} ${wine.name}`;
+
+          const origin = document.createElement("p");
+          origin.className = "wine-origin";
+          origin.textContent = wine.origin;
+
+          titleGroup.append(kicker, h3, origin);
+
+          const actions = document.createElement("div");
+          actions.className = "card-actions";
+
+          const readBtn = document.createElement("button");
+          readBtn.type = "button";
+          readBtn.textContent = "Read Cue Card";
+          readBtn.addEventListener("click", () => openReaderById(wine.id));
+
+          const label = document.createElement("label");
+          label.className = "poured-toggle";
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.checked = pouredSet.has(wine.id);
+          checkbox.addEventListener("change", () => {
+            if (checkbox.checked) pouredSet.add(wine.id);
+            else pouredSet.delete(wine.id);
+            card.classList.toggle("is-poured", checkbox.checked);
+            savePoured();
+          });
+          const lblSpan = document.createElement("span");
+          lblSpan.textContent = "Poured";
+          label.append(checkbox, lblSpan);
+
+          actions.append(readBtn, label);
+          cardTop.append(titleGroup, actions);
+
+          const scriptBox = document.createElement("div");
+          scriptBox.className = "script-box";
+          const scriptLbl = document.createElement("p");
+          scriptLbl.className = "script-label";
+          scriptLbl.textContent = "Read-Aloud Sommelier Script";
+          const scriptP = document.createElement("p");
+          scriptP.className = "script-text";
+          scriptP.textContent = wine.script;
+          scriptBox.append(scriptLbl, scriptP);
+
+          const cues = document.createElement("dl");
+          cues.className = "cue-grid";
+          for (const [dtText, ddText] of [
+            ["Cellar Pull", wine.bottles],
+            ["Pour Options", wine.pourSize],
+            ["Serving Temp", wine.temp],
+            ["Prep / Decant", wine.prep]
+          ]) {
+            const item = document.createElement("div");
+            item.className = "cue-item";
+            const dt = document.createElement("dt");
+            dt.textContent = dtText;
+            const dd = document.createElement("dd");
+            dd.textContent = ddText;
+            item.append(dt, dd);
+            cues.append(item);
+          }
+
+          const notesRow = document.createElement("div");
+          notesRow.className = "pairing-notes-row";
+          const good = document.createElement("div");
+          good.className = "note-pill good";
+          good.innerHTML = `<strong>Best With</strong>${wine.pairWith}`;
+          const caution = document.createElement("div");
+          caution.className = "note-pill caution";
+          caution.innerHTML = `<strong>Table Note</strong>${wine.watchOut}`;
+          notesRow.append(good, caution);
+
+          card.append(cardTop, scriptBox, cues, notesRow);
+          wrap.append(card);
+          grid.append(wrap);
+        }
+
+        section.append(header, dishes, grid);
+        container.append(section);
+      }
+    }
+
+    const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+    for (const btn of filterButtons) {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.filter;
+        for (const b of filterButtons) {
+          b.setAttribute("aria-pressed", String(b === btn));
+        }
+        const sections = document.querySelectorAll(".course-section");
+        for (const sec of sections) {
+          sec.hidden = target !== "all" && sec.dataset.course !== target;
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+
+    function adjustScale(delta) {
+      scriptScale = Math.min(1.45, Math.max(0.85, +(scriptScale + delta).toFixed(2)));
+      document.documentElement.style.setProperty("--script-scale", String(scriptScale));
+    }
+    document.getElementById("font-up-btn").addEventListener("click", () => adjustScale(0.1));
+    document.getElementById("font-down-btn").addEventListener("click", () => adjustScale(-0.1));
+    document.getElementById("dlg-font-up").addEventListener("click", () => adjustScale(0.1));
+    document.getElementById("dlg-font-down").addEventListener("click", () => adjustScale(-0.1));
+
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+
+    document.getElementById("theme-toggle-btn").addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const isDark = current === "dark" || (!current && prefersDark);
+      const next = isDark ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem(THEME_KEY, next);
+    });
+
+    document.getElementById("print-btn").addEventListener("click", () => window.print());
+
+    const dialog = document.getElementById("cue-dialog");
+    const dlgCheck = document.getElementById("dlg-poured-check");
+
+    function renderDialogWine() {
+      const w = ALL_WINES[activeReaderIndex];
+      document.getElementById("dialog-step-badge").textContent = `Pour ${activeReaderIndex + 1} of ${ALL_WINES.length}${w.isBackup ? " · Optional Swap" : ""}`;
+      document.getElementById("dialog-course-badge").textContent = w.courseTitle;
+      document.getElementById("dialog-origin").textContent = w.origin;
+      document.getElementById("dialog-wine-title").textContent = `${w.vintage} ${w.name}${w.favorite ? " ★" : ""}`;
+      document.getElementById("dialog-script").textContent = w.script;
+
+      const cues = document.getElementById("dialog-cues");
+      cues.replaceChildren();
+      for (const [dtText, ddText] of [
+        ["Cellar Pull", w.bottles],
+        ["Pour Options", w.pourSize],
+        ["Serving Temp", w.temp],
+        ["Prep / Decant", w.prep]
+      ]) {
+        const div = document.createElement("div");
+        div.className = "cue-item";
+        div.innerHTML = `<dt>${dtText}</dt><dd>${ddText}</dd>`;
+        cues.append(div);
+      }
+
+      const notes = document.getElementById("dialog-notes");
+      notes.innerHTML = `
+        <div class="note-pill good"><strong>Best With</strong>${w.pairWith}</div>
+        <div class="note-pill caution"><strong>Table Note</strong>${w.watchOut}</div>
+      `;
+
+      dlgCheck.checked = pouredSet.has(w.id);
+      document.getElementById("dlg-prev-btn").disabled = activeReaderIndex === 0;
+      document.getElementById("dlg-next-btn").disabled = activeReaderIndex === ALL_WINES.length - 1;
+    }
+
+    function openReaderById(wineId) {
+      const idx = ALL_WINES.findIndex(w => w.id === wineId);
+      activeReaderIndex = idx >= 0 ? idx : 0;
+      renderDialogWine();
+      dialog.showModal();
+    }
+
+    document.getElementById("open-reader-btn").addEventListener("click", () => {
+      const firstUnpoured = ALL_WINES.findIndex(w => !w.isBackup && !pouredSet.has(w.id));
+      activeReaderIndex = firstUnpoured >= 0 ? firstUnpoured : 0;
+      renderDialogWine();
+      dialog.showModal();
+    });
+
+    document.getElementById("dlg-prev-btn").addEventListener("click", () => {
+      if (activeReaderIndex > 0) {
+        activeReaderIndex--;
+        renderDialogWine();
+      }
+    });
+
+    document.getElementById("dlg-next-btn").addEventListener("click", () => {
+      if (activeReaderIndex < ALL_WINES.length - 1) {
+        activeReaderIndex++;
+        renderDialogWine();
+      }
+    });
+
+    dlgCheck.addEventListener("change", () => {
+      const w = ALL_WINES[activeReaderIndex];
+      if (dlgCheck.checked) pouredSet.add(w.id);
+      else pouredSet.delete(w.id);
+      savePoured();
+      const card = document.querySelector(`.wine-card[data-wine-id="${w.id}"]`);
+      if (card) {
+        card.classList.toggle("is-poured", dlgCheck.checked);
+        const cb = card.querySelector('input[type="checkbox"]');
+        if (cb) cb.checked = dlgCheck.checked;
+      }
+    });
+
+    dialog.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" && activeReaderIndex < ALL_WINES.length - 1) {
+        activeReaderIndex++;
+        renderDialogWine();
+      } else if (e.key === "ArrowLeft" && activeReaderIndex > 0) {
+        activeReaderIndex--;
+        renderDialogWine();
+      }
+    });
+
+    renderCourses();
+    updatePouredCounter();
+  </script>
+</body>
+</html>

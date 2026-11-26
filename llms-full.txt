@@ -80,6 +80,13 @@ This document contains the unabridged text, descriptions, technical abstracts, a
 - **Description**: RTL-SDR reverse engineering and telemetry capture suite for 902–928 MHz ISM municipal utility meter broadcasts.
 - **Technical Capabilities**: Automated multi-band protocol sweeps, CU8 I/Q phase demodulation, and real-time endpoint tracking across Neptune R900, Arad Dialog 3G, and Landis+Gyr Gridstream signals.
 
+### Thanksgiving Sommelier Pairing
+- **URL**: https://drapeau.dev/thanksgiving_wine/
+- **Repository**: Static HTML, modern CSS, and vanilla JavaScript.
+- **Status**: Live.
+- **Description**: An interactive read-aloud mock sommelier cue-card guide for a 10-guest Napa-inspired Thanksgiving dinner matching 12 cellar wines across four courses.
+- **Technical Capabilities**: Features course filtering, a keyboard-navigable `<dialog>` cue-card reader, persistent poured-bottle tracking, text-size scaling, Candlelight dark mode, and print-ready cue cards.
+
 ---
 
 ## 3. Technical Writing & Architecture Articles

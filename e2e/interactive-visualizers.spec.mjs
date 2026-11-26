@@ -67,4 +67,22 @@ test.describe('Interactive Visualizer Widgets', () => {
         const metricsText = await page.locator('#metrics-water_radio').textContent();
         expect(metricsText).toMatch(/MHz · .* dB SNR/);
     });
+
+    test('supports mouse pointer scrubbing on the Thanksgiving wine pairing canvas', async ({ page }) => {
+        await page.goto('/');
+
+        const wineCanvas = page.locator('#canvas-thanksgiving_wine');
+        await expect(wineCanvas).toBeVisible();
+
+        const box = await wineCanvas.boundingBox();
+        expect(box).not.toBeNull();
+
+        await page.mouse.move(box.x + box.width * 0.1, box.y + box.height * 0.5);
+        await page.waitForTimeout(100);
+        await expect(page.locator('#metrics-thanksgiving_wine')).toContainText('C1');
+
+        await page.mouse.move(box.x + box.width * 0.9, box.y + box.height * 0.5);
+        await page.waitForTimeout(100);
+        await expect(page.locator('#metrics-thanksgiving_wine')).toContainText('C4');
+    });
 });
