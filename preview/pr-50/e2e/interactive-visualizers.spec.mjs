@@ -70,8 +70,10 @@ test.describe('Interactive Visualizer Widgets', () => {
 
     test('supports mouse pointer scrubbing on the Thanksgiving wine pairing canvas', async ({ page }) => {
         await page.goto('/');
+        await expect(page.locator('[data-project="thanksgiving_wine"]')).toContainText('Nov 2026');
 
         const wineCanvas = page.locator('#canvas-thanksgiving_wine');
+        await wineCanvas.scrollIntoViewIfNeeded();
         await expect(wineCanvas).toBeVisible();
 
         const box = await wineCanvas.boundingBox();
