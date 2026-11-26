@@ -16,6 +16,7 @@ Personal website and showcase for side projects, hosted on GitHub Pages with cus
 - **[stitch_by_number](./stitch_by_number/)** - Image to needlepoint design converter with thread color mapping and PDF export (React + TypeScript + Vite).
 - **[photo_stacker](./photo_stacker/)** - HDR exposure fusion in the browser (React + TypeScript + Vite).
 - **[rowing_performance](./rowing_performance/)** - Concept2 rowing analytics and VO₂ Max estimator (React + Tailwind + Vite).
+- **[thanksgiving_wine](./thanksgiving_wine/)** - Interactive read-aloud mock sommelier cue-card guide for a 10-guest Thanksgiving wine pairing (Vanilla HTML/CSS/JS).
 
 ---
 

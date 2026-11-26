@@ -61,6 +61,7 @@ The main `index.html` fetches these files and sorts the project cards dynamicall
 - **stitch_by_number** - Vite + React + TypeScript app for needlepoint design (`base: './'`)
 - **photo_stacker** - Vite + React + TypeScript app for HDR exposure fusion (`base: './'`)
 - **rowing_performance** - Vite + React + Tailwind app for Concept2 rowing analytics (`base: './'`)
+- **thanksgiving_wine** - Self-contained static HTML/CSS/JS Thanksgiving sommelier cue-card guide (`./thanksgiving_wine/`)
 
 ### Deployment & Environments
 

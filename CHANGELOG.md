@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-11-26] - Add Thanksgiving Sommelier Pairing Subproject
+
+### Added
+- **New Subproject (`./thanksgiving_wine/`)**:
+  - Added self-contained interactive mock sommelier cue-card guide (`thanksgiving_wine/index.html`, `favicon.svg`, `build-info.json`) pairing 12 cellar wines across four Thanksgiving dinner courses for 10 guests.
+  - Includes course filter tabs, a keyboard-navigable `<dialog>` cue-card reader, persistent poured tracking, Candlelight dark mode, script scaling, and print styling.
+- **Landing Page & Visualizer Integration (`index.html`)**:
+  - Added project card with interactive 4-course pairing progression canvas (`#canvas-thanksgiving_wine`), Speculation Rules prefetching, and updated badge/filter counts (`6 Live`, `3 In Dev`, `9 Total`).
+- **Synchronized LLM Dossiers & Documentation**:
+  - Updated `llms.txt`, `llms-full.txt`, `README.md`, and `TECH.md`.
+- **Automated Verification**:
+  - Updated `test/html-structure.test.mjs`, `e2e/filter.spec.mjs`, and `e2e/interactive-visualizers.spec.mjs`, and added `e2e/thanksgiving-wine.spec.mjs`.
+
 ## [2026-10-23] - Scaling Radar Machine Learning Article in Writing & Talks
 
 ### Added

@@ -151,8 +151,8 @@ describe('Document & HTML Structure Integrity', () => {
     describe('Projects Filter Synchronization', () => {
         const projects = getElementsByClass(getSectionHtml(html, 'section-projects'), 'project');
 
-        it('total project count is 8', () => {
-            assert.equal(projects.length, 8, 'Expected exactly 8 projects');
+        it('total project count is 9', () => {
+            assert.equal(projects.length, 9, 'Expected exactly 9 projects');
         });
 
         it('count-all badge matches total projects count', () => {
@@ -534,6 +534,7 @@ describe('Document & HTML Structure Integrity', () => {
             assert.ok(specJson.prefetch, 'Speculation rules must define prefetch rules');
             assert.ok(Array.isArray(specJson.prefetch[0].urls), 'Must declare prefetch urls list');
             assert.ok(specJson.prefetch[0].urls.includes('./fi_sim/'));
+            assert.ok(specJson.prefetch[0].urls.includes('./thanksgiving_wine/'));
         });
 
         it('declares hidden="until-found" on initial inactive tab sections', () => {

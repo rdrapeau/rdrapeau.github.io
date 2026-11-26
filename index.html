@@ -285,7 +285,8 @@
                     "./connections/",
                     "./stitch_by_number/",
                     "./photo_stacker/",
-                    "./rowing_performance/"
+                    "./rowing_performance/",
+                    "./thanksgiving_wine/"
                 ],
                 "eagerness": "moderate"
             }
@@ -2254,7 +2255,7 @@
                             <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
                         </svg>
                         <span>Projects</span>
-                        <span class="tab-badge">8</span>
+                        <span class="tab-badge">9</span>
                     </button>
                     <button class="site-tab" id="tab-writing" role="tab" aria-selected="false" aria-controls="section-writing" data-tab="writing" tabindex="-1">
                         <svg class="tab-icon" viewBox="0 0 20 20" fill="currentColor">
@@ -2286,7 +2287,7 @@
                 <div class="filter-bar fade-in" role="toolbar" aria-label="Filter projects by status">
                     <button class="filter-btn active" data-filter="live" aria-pressed="true">
                         <span class="filter-dot filter-dot-live" aria-hidden="true"></span> Live Projects
-                        <span class="filter-count" id="count-live" aria-label="5 live projects">5</span>
+                        <span class="filter-count" id="count-live" aria-label="6 live projects">6</span>
                     </button>
                     <button class="filter-btn" data-filter="in-dev" aria-pressed="false">
                         <span class="filter-dot filter-dot-dev" aria-hidden="true"></span> In Development
@@ -2294,10 +2295,34 @@
                     </button>
                     <button class="filter-btn" data-filter="all" aria-pressed="false">
                         All
-                        <span class="filter-count" id="count-all" aria-label="8 total projects">8</span>
+                        <span class="filter-count" id="count-all" aria-label="9 total projects">9</span>
                     </button>
                 </div>
             <div class="projects">
+                <a href="./thanksgiving_wine/" class="project fade-in" data-status="live">
+                    <div class="project-top">
+                        <div class="project-header">
+                            <h3 class="project-name">
+                                <img src="./thanksgiving_wine/favicon.svg" alt="" class="project-favicon">
+                                Thanksgiving Sommelier Pairing
+                            </h3>
+                            <span class="spotlight-badge">Featured</span>
+                        </div>
+                        <div class="project-description">An interactive read-aloud sommelier cue-card guide for a 10-guest Napa-inspired Thanksgiving dinner — 12 cellar wines matched across four courses with tasting notes and service prep.</div>
+                        <div class="project-preview" data-preview="thanksgiving_wine">
+                            <div class="preview-header">
+                                <span class="preview-engine-tag">4-Course Flight Matrix</span>
+                                <span class="preview-metrics" id="metrics-thanksgiving_wine">C3 · 4 Reds · 12.5–14.5% ABV</span>
+                            </div>
+                            <div class="preview-canvas-wrapper">
+                                <canvas class="preview-canvas" id="canvas-thanksgiving_wine" role="img" aria-label="Four-course Thanksgiving wine pairing progression chart across sparkling, white, red, and dessert flights"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-date" data-project="thanksgiving_wine">Last updated: --</span>
+                    </div>
+                </a>
                 <a href="./fi_sim/" class="project project-in-dev fade-in" data-status="in-dev">
                     <div class="project-top">
                         <div class="project-header">
@@ -2944,7 +2969,7 @@
 
     <script>
         // Fetch build dates from each project's build-info.json and sort them dynamically
-        const projects = ['fi_sim', 'org_planning', 'connections', 'stitch_by_number', 'photo_stacker', 'rowing_performance'];
+        const projects = ['thanksgiving_wine', 'fi_sim', 'org_planning', 'connections', 'stitch_by_number', 'photo_stacker', 'rowing_performance'];
         const projectsContainer = document.querySelector('.projects');
         let currentFilter = 'live'; // In-development projects hidden by default
         
@@ -3925,7 +3950,84 @@
                 return { draw };
             }
 
+            // 9. Thanksgiving Wine Pairing: 4-Course Tasting Progression
+            function initThanksgivingWine() {
+                const canvas = document.getElementById('canvas-thanksgiving_wine');
+                const metricsEl = document.getElementById('metrics-thanksgiving_wine');
+                if (!canvas) return;
+
+                let activeCourse = 2;
+                const courses = [
+                    { label: 'C1 Starters', abv: 12.8, body: 0.35, color: '#f59e0b', detail: 'C1 · 3 Wines · 12.5–14.0% ABV' },
+                    { label: 'C2 Salads', abv: 11.3, body: 0.52, color: '#10b981', detail: 'C2 · 3 Wines · 8.5–13.0% ABV' },
+                    { label: 'C3 Turkey', abv: 13.1, body: 0.78, color: '#e11d48', detail: 'C3 · 4 Reds · 12.5–14.5% ABV' },
+                    { label: 'C4 Dessert', abv: 10.5, body: 0.92, color: '#8b5cf6', detail: 'C4 · 2 Late Harvest · 9.5–11.0% ABV' }
+                ];
+
+                function draw() {
+                    const setup = setupCanvas(canvas);
+                    if (!setup) return;
+                    const { ctx, width, height } = setup;
+                    const dark = isDark();
+
+                    ctx.clearRect(0, 0, width, height);
+                    const padX = 18;
+                    const padY = 14;
+                    const chartW = width - padX * 2;
+                    const chartH = height - padY * 2 - 14;
+
+                    ctx.strokeStyle = dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+                    ctx.lineWidth = 1;
+                    for (let i = 0; i <= 2; i++) {
+                        const gy = padY + (chartH / 2) * i;
+                        ctx.beginPath();
+                        ctx.moveTo(padX, gy);
+                        ctx.lineTo(padX + chartW, gy);
+                        ctx.stroke();
+                    }
+
+                    const colW = chartW / courses.length;
+                    courses.forEach((c, idx) => {
+                        const x = padX + idx * colW + colW * 0.2;
+                        const w = colW * 0.6;
+                        const h = c.body * chartH;
+                        const y = padY + chartH - h;
+                        const isSelected = idx === activeCourse;
+
+                        ctx.fillStyle = isSelected ? c.color : (dark ? 'rgba(148,163,184,0.28)' : 'rgba(100,116,139,0.22)');
+                        if (ctx.roundRect) {
+                            ctx.beginPath();
+                            ctx.roundRect(x, y, w, h, 4);
+                            ctx.fill();
+                        } else {
+                            ctx.fillRect(x, y, w, h);
+                        }
+
+                        ctx.fillStyle = isSelected ? (dark ? '#f8fafc' : '#0f172a') : (dark ? '#94a3b8' : '#64748b');
+                        ctx.font = `${isSelected ? 'bold ' : ''}9px "JetBrains Mono", monospace`;
+                        ctx.fillText(c.label.split(' ')[0], x + w * 0.5 - 7, padY + chartH + 11);
+                    });
+
+                    if (metricsEl) {
+                        metricsEl.textContent = courses[activeCourse].detail;
+                    }
+                }
+
+                const wrapper = canvas.parentElement;
+                wrapper.addEventListener('click', (e) => e.preventDefault());
+                wrapper.addEventListener('pointermove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    const ratio = Math.max(0, Math.min(0.999, (e.clientX - rect.left) / rect.width));
+                    activeCourse = Math.floor(ratio * courses.length);
+                    draw();
+                });
+
+                draw();
+                return { draw };
+            }
+
             const vizList = [
+                initThanksgivingWine(),
                 initFiSim(),
                 initOrgPlanning(),
                 initConnections(),
